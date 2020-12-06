@@ -117,7 +117,7 @@ def handle_update_posts(id):
 @api.route('/posts/<int:id>', methods=['DELETE'])
 def handle_delete_posts(id):
     
-    return "Post #{} updated.".format(id)
+    return "Post #{} deleted.".format(id)
 
 ### FOLLOWERS ###
 
@@ -147,4 +147,56 @@ def handle_delete_followers(id):
     return "follower #{} deleted.".format(id)
 
 
+### LIKES ###
 
+#Hacer el like al post
+@api.route('/likes/<int:id_post>/<int:id_user>', methods=['POST'])
+def handle_likes(id_post, id_user):
+    payload = request.get_json()
+    print(payload)
+    return "Like a post"
+
+#Obtener la lista de likes (queremos que esto se vea?), no se si el id debe ser el mismo de arriba
+@api.route('/likes/<int:id>', methods=['GET'])
+def handle_list_of_likes():
+    return "List of all the likes from a post."
+
+#Devuelve el like específico que quieras buscar.
+#Esto sería si quiero ver algún like en específico?
+@api.route('/likes/<int:id>', methods=['GET'])
+def handle_get_likes(id):
+    like1 = followers.query.get(id)
+    return jsonify(like1.serialize()), 200
+
+#Borrar el like. 
+@api.route('/likes/<int:id>', methods=['DELETE'])
+def handle_delete_likes(id):
+    
+    return "Like #{} deleted.".format(id)
+
+### COMMENTS ###
+
+#Creación del comentario
+@api.route('/comments/<int:id>', methods=['POST'])
+def handle_create_comments():
+    payload = request.get_json()
+    print(payload)
+    return "Create text inside a comment"
+
+#Obtener la lista de todos los comentarios en un post
+@api.route('/comments/<int:id>', methods=['GET'])
+def handle_list_comments():
+    return "List of all comments from a post."
+
+#Se actualiza un comentario de un post.
+@api.route('/comments/<int:id>', methods=['PUT'])
+def handle_update_comments(id):
+    payload = request.get_json()
+    print(payload)
+    return "Comments #{} updated.".format(id)
+
+#Borrar un comentario de un post.
+@api.route('/comments/<int:id>', methods=['DELETE'])
+def handle_delete_comments(id):
+    
+    return "Comment #{} deleted.".format(id)
