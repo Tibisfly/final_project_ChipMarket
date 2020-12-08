@@ -30,7 +30,7 @@ def handle_get_user(id):
 
 
 #Se crea un usario nuevo o cualquier cosa nueva que se añada en la base de datos. 
-# AQUÍ CREO QUE NO VA TODAVÍA EL <int:id> porque se debe genrar es después de que se haga el POST.
+
 @api.route('/users/<int:id>', methods=['POST'])
 def handle_create_user():
     payload = request.get_json()
@@ -53,15 +53,15 @@ def handle_delete_user(id):
 ### COMMERCES ###
 
 #Creación del commerce
-# ASOCIA EL USUARIO A UN NUEVO COMERCIO, ese <int:id> es el id del usuario, pero con el post se crea el owner_id
-@api.route('/commerces/<int:id_user>', methods=['POST'])
+# ASOCIA EL USUARIO A UN NUEVO COMERCIO.
+@api.route('/commerces', methods=['POST'])
 def handle_create_commerce():
     payload = request.get_json()
     print(payload)
     return "Create Commerce and put as owner_id the user_id"
 
-#Obtener la lista de todos los comercios, aquí mi duda es si en el endpoint lleva el <int:id>
-@api.route('/commerces/<int:id>', methods=['GET'])
+#Obtener la lista de todos los comercios.
+@api.route('/commerces', methods=['GET'])
 def handle_list_commerces():
     return "List all commerces."
 
@@ -86,17 +86,15 @@ def handle_delete_commerce(id):
 
 ### POSTS ###
 
-#Creación del POST, recordemos que sólo lo puede hacer el commerce
-#Si estamos logeados como commerce no debería hacer falta pasar el id (porque ya sabemos quién es el que hace el post)
-#Si es un usuario debe dar error 404 (seguro habrá que hacer un if)
-@api.route('/posts/<int:id>', methods=['POST'])
+#Creación del POST.
+@api.route('/posts', methods=['POST'])
 def handle_create_posts():
     payload = request.get_json()
     print(payload)
     return "Create Post"
 
-#Obtener la lista de todos los posts, aquí mi duda es si en el endpoint lleva el <int:id> (al igual que en los de arriba)
-@api.route('/posts/<int:id>', methods=['GET'])
+#Obtener la lista de todos los posts.
+@api.route('/posts', methods=['GET'])
 def handle_list_posts():
     return "List all Posts of the commerces."
 
@@ -122,26 +120,24 @@ def handle_delete_posts(id):
 ### FOLLOWERS ###
 
 #Acción de seguir, no entiendo muy bien como relacionar ambos id (user+commerce)
-@api.route('/followers/<int:id_commerce>/<int:id_user>', methods=['POST'])
-def handle_create_followers(id_commerce, id_user):
+@api.route('/followers', methods=['POST'])
+def handle_create_followers():
     payload = request.get_json()
     print(payload)
     return "Follow a commerce"
 
-#Obtener la lista de todos los followers de un comercio? No se como hacer con ese id
-@api.route('/followers/<int:id>', methods=['GET'])
-def handle_list_followers():
-    return "List of all followes."
+#Obtener la lista de todos los comercios seguidos pur un usuario.
+@api.route('/users/<int:user_id>/followers', methods=['GET'])
+def handle_list_followers_user(user_id):
+    return "List of all the commerces this user is following."
 
-#Devuelve el follower específico que quieras buscar.
-#Esto sería si quiero ver algún follower en específico?
-@api.route('/followers/<int:id>', methods=['GET'])
-def handle_get_followers(id):
-    follower1 = followers.query.get(id)
-    return jsonify(follower1.serialize()), 200
+#Obtener la lista de todos los usuarios que siguen a este comercio..
+@api.route('/commerces/<int:commerce_id>/followers', methods=['GET'])
+def handle_list_followers_commerce(commerce_id):
+    return "List of all the users following this commerce."
 
 #Dejar de seguir. 
-@api.route('/followers/<int:id>', methods=['DELETE'])
+@api.route('/commerces/<int:commerce_id>/followers', methods=['DELETE'])
 def handle_delete_followers(id):
     
     return "follower #{} deleted.".format(id)
@@ -150,43 +146,42 @@ def handle_delete_followers(id):
 ### LIKES ###
 
 #Hacer el like al post
-@api.route('/likes/<int:id_post>/<int:id_user>', methods=['POST'])
-def handle_likes(id_post, id_user):
+@api.route('/likes', methods=['POST'])
+def handle_likes():
     payload = request.get_json()
     print(payload)
     return "Like a post"
 
 #Obtener la lista de likes (queremos que esto se vea?), no se si el id debe ser el mismo de arriba
-@api.route('/likes/<int:id>', methods=['GET'])
-def handle_list_of_likes():
-    return "List of all the likes from a post."
+@api.route('/users/<int:user_id>/likes', methods=['GET'])
+def handle_list_of_likes(user_id):
+    return "List of all the likes from a user to the commerce."
 
-#Devuelve el like específico que quieras buscar.
-#Esto sería si quiero ver algún like en específico?
-@api.route('/likes/<int:id>', methods=['GET'])
-def handle_get_likes(id):
-    like1 = followers.query.get(id)
-    return jsonify(like1.serialize()), 200
 
 #Borrar el like. 
-@api.route('/likes/<int:id>', methods=['DELETE'])
-def handle_delete_likes(id):
+@api.route('/users/<int:user_id>/likes', methods=['DELETE'])
+def handle_delete_likes(user_id):
     
     return "Like #{} deleted.".format(id)
 
 ### COMMENTS ###
 
 #Creación del comentario
-@api.route('/comments/<int:id>', methods=['POST'])
+@api.route('/comments', methods=['POST'])
 def handle_create_comments():
     payload = request.get_json()
     print(payload)
     return "Create text inside a comment"
 
-#Obtener la lista de todos los comentarios en un post
-@api.route('/comments/<int:id>', methods=['GET'])
-def handle_list_comments():
-    return "List of all comments from a post."
+#Obtener la lista de todos los comentarios en un post hecho por comercios
+@api.route('/commerces/<int:commerce_id>/comments', methods=['GET'])
+def handle_list_comments_commerce(commerce_id):
+    return "List of all comments in a post from a commerce."
+
+#Obtener la lista de todos los comentarios en un post hecho por usuarios
+@api.route('/users/<int:user_id>/comments', methods=['GET'])
+def handle_list_comments_user(user_id):
+    return "List of all comments in a post from a user."
 
 #Se actualiza un comentario de un post.
 @api.route('/comments/<int:id>', methods=['PUT'])
