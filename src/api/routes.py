@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Users
+from api.models import db, Users, Commerces, Followers, Likes, Comments, Posts
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint( 'api', __name__)
@@ -20,35 +20,65 @@ api = Blueprint( 'api', __name__)
 #Devuelve la lista de todos los usuarios.
 @api.route('/users', methods=['GET'])
 def handle_list_users():
-    return "List all users."
+    users = []
+
+    for user in Users.query.all():
+        users.append(user.serialize())
+    
+    return jsonify(users), 200
 
 #Devuelve el usuario que se busca.
 @api.route('/users/<int:id>', methods=['GET'])
 def handle_get_user(id):
-    user1 = Users.query.get(id)
-    return jsonify(user1.serialize()), 200
+    users = Users.query.get(id)
+
+    if not users:
+        return "User not found", 404
+
+    return jsonify(users.serialize()), 200
 
 
 #Se crea un usario nuevo o cualquier cosa nueva que se añada en la base de datos. 
 
-@api.route('/users/<int:id>', methods=['POST'])
+@api.route('/users', methods=['POST'])
 def handle_create_user():
     payload = request.get_json()
-    print(payload)
-    return "Create user."
+    user = Users(**payload)
+    
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify(user.serialize()), 201
 
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
 def handle_update_user(id):
+    user = Users.query.get(id)
+    if not user:
+        return "User not found", 404
+
     payload = request.get_json()
-    print(payload)
+    user.first_name = payload["first_name"]
+    user.last_name = payload["last_name"]
+    user.email = payload["email"]
+    #user.password = payload["password"]
+    user.username = payload["username"]
+
     return "User #{} updated.".format(id)
 
 #Borrar usuario.
 @api.route('/users/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
+    user = Users.query.get(id)
+
+    if not user:
+        return "User not found", 404
     
-    return "User #{} updated.".format(id)
+    data = user.serialize()
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify("This user has been eliminated successfully", data), 200
 
 ### COMMERCES ###
 
@@ -57,32 +87,68 @@ def handle_delete_user(id):
 @api.route('/commerces', methods=['POST'])
 def handle_create_commerce():
     payload = request.get_json()
-    print(payload)
-    return "Create Commerce and put as owner_id the user_id"
+    commerce = Commerces(**payload)
+        
+    db.session.add(commerce)
+    db.session.commit()
 
+    return jsonify(commerce.serialize()), 201
+
+    
 #Obtener la lista de todos los comercios.
 @api.route('/commerces', methods=['GET'])
 def handle_list_commerces():
-    return "List all commerces."
+    commerces = []
+
+    for commerce in Commerces.query.all():
+        commerces.append(commerce.serialize())
+    
+    return jsonify(commerces), 200
 
 #Devuelve el comercio que se busca.
 @api.route('/commerces/<int:id>', methods=['GET'])
-def handle_get_commerces(id):
-    commerce1 = commerces.query.get(id)
-    return jsonify(commerce1.serialize()), 200
+def handle_get_commerce(id):
+    commerce = Commerces.query.get(id)
+
+    if not commerce:
+        return "Commerce not found", 404
+
+    return jsonify(commerce.serialize()), 200
 
 #Se actualiza un comercio ya creado.
 @api.route('/commerces/<int:id>', methods=['PUT'])
 def handle_update_commerce(id):
+    commerce = Commerces.query.get(id)
+    if not commerce:
+        return "Commerce not found", 404
+
     payload = request.get_json()
-    print(payload)
+    commerce.business_name = payload["business_name"]
+    commerce.title = payload["title"]
+    commerce.description = payload["description"]
+    commerce.street_name = payload["street_name"]
+    commerce.street_number = payload["street_number"]
+    commerce.zip_code = payload["zip_code"]
+    commerce.city = payload["city"]
+    commerce.country = payload["country"]
+    #commerce.owner_id = payload["owner_id"]
+
     return "Commerce #{} updated.".format(id)
 
 #Borrar un comercio.
 @api.route('/commerces/<int:id>', methods=['DELETE'])
 def handle_delete_commerce(id):
+    commerce = Commerces.query.get(id)
+
+    if not commerce:
+        return "Commerce not found", 404
     
-    return "Commerce #{} updated.".format(id)
+    data = commerce.serialize()
+    db.session.delete(commerce)
+    db.session.commit()
+
+    return jsonify("This commerce has been eliminated successfully", data), 200
+
 
 ### POSTS ###
 
