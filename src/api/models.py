@@ -17,6 +17,7 @@ class Users(db.Model):
     avatar = db.Column(db.String(80))
 
     commerce = db.relationship("Commerces")
+
     follower = db.relationship("Followers")
     like = db.relationship("Likes")
     comment = db.relationship("Comments")
@@ -31,7 +32,8 @@ class Users(db.Model):
             "last_name": self.last_name,
             "username": self.username,
             "email": self.email,
-            "avatar": self.avatar
+            "avatar": self.avatar,
+            #"follower": self.follower.serialize()
         }
 
 
@@ -41,7 +43,7 @@ class Commerces(db.Model):
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     deleted_at = db.Column(db.DateTime)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    business_name = db.Column(db.String(80), nullable=False)
+    business_name = db.Column(db.String(80), unique=True, nullable=False)
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(80), nullable=False)
     street_name = db.Column(db.String(30), nullable=False) 
@@ -53,7 +55,9 @@ class Commerces(db.Model):
     longitude = db.Column(db.Float)
     website = db.Column(db.String(300))
     phone_number = db.Column(db.String(12))
-
+    avatar = db.Column(db.String(80))
+    
+    user = db.relationship("Users")
     followers = db.relationship("Followers")
     posts = db.relationship("Posts")
 
@@ -64,7 +68,7 @@ class Commerces(db.Model):
         return{
             "id": self.id,
             "owner_id": self.owner_id,
-            "user": self.user.serialize,
+            "user": self.user.serialize(),
             "business_name": self.business_name,
             "title": self.title,
             "description": self.description,
@@ -81,7 +85,7 @@ class Followers(db.Model):
     deleted_at = db.Column(db.DateTime)
     commerce_id = db.Column(db.Integer, db.ForeignKey('commerces.id'),  nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),  nullable=False)
-
+    
     user = db.relationship("Users")
     commerce = db.relationship("Commerces")
 
@@ -92,7 +96,8 @@ class Followers(db.Model):
         return{
             "id": self.id,
             "commerce_id": self.commerce_id,
-            "user_id": self. user_id
+            "user_id": self.user_id,
+            #"user": self.user.serialize()
         }
 
 class Posts(db.Model):
