@@ -17,7 +17,6 @@ class Users(db.Model):
     avatar = db.Column(db.String(80))
 
     commerce = db.relationship("Commerces")
-
     follower = db.relationship("Followers")
     like = db.relationship("Likes")
     comment = db.relationship("Comments")
@@ -122,7 +121,7 @@ class Posts(db.Model):
         return{
             "id": self.id,
             "commerce_id": self.commerce_id,
-            "commerce": self.commerce.serialize,
+            "commerce": self.commerce.serialize(),
             "media_type": self.media_type,
             "media_url": self.media_url,
             "title": self.title,

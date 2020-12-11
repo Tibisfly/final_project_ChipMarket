@@ -156,32 +156,60 @@ def handle_delete_commerce(id):
 @api.route('/posts', methods=['POST'])
 def handle_create_posts():
     payload = request.get_json()
-    print(payload)
-    return "Create Post"
+    post = Posts(**payload)
+        
+    db.session.add(post)
+    db.session.commit()
+
+    return jsonify(post.serialize()), 201
 
 #Obtener la lista de todos los posts.
 @api.route('/posts', methods=['GET'])
 def handle_list_posts():
-    return "List all Posts of the commerces."
+    posts = []
+
+    for post in Posts.query.all():
+        posts.append(post.serialize())
+    
+    return jsonify(posts), 200
 
 #Devuelve el post del comercio que se busca.
 @api.route('/posts/<int:id>', methods=['GET'])
 def handle_get_posts(id):
-    post1 = posts.query.get(id)
-    return jsonify(post1.serialize()), 200
+    post = Posts.query.get(id)
+
+    if not post:
+        return "Post not found", 404
+
+    return jsonify(post.serialize()), 200
 
 #Se actualiza un post ya creado.
 @api.route('/posts/<int:id>', methods=['PUT'])
 def handle_update_posts(id):
+    post = Posts.query.get(id)
+    
+    if not post:
+        return "Post not found", 404
+
     payload = request.get_json()
-    print(payload)
+    post.title = payload["title"]
+    post.description = payload["description"]
+
     return "Post #{} updated.".format(id)
 
 #Borrar un post.
 @api.route('/posts/<int:id>', methods=['DELETE'])
 def handle_delete_posts(id):
+    post = Posts.query.get(id)
+
+    if not post:
+        return "Post not found", 404
     
-    return "Post #{} deleted.".format(id)
+    data = post.serialize()
+    db.session.delete(post)
+    db.session.commit()
+
+    return jsonify("This post has been eliminated successfully", data), 200
 
 ### FOLLOWERS ###
 
@@ -195,6 +223,7 @@ def handle_create_followers():
 #Obtener la lista de todos los comercios seguidos pur un usuario.
 @api.route('/users/<int:user_id>/followers', methods=['GET'])
 def handle_list_followers_user(user_id):
+    #follower = request.user. hay que obtener el usuario y luego hacer todo normal con follower.
     return "List of all the commerces this user is following."
 
 #Obtener la lista de todos los usuarios que siguen a este comercio..
