@@ -7,16 +7,6 @@ from api.utils import generate_sitemap, APIException
 
 api = Blueprint( 'api', __name__)
 
-
-#@api.route('/hello', methods=['POST', 'GET'])
-#def handle_hello():
-
-    #response_body = {
-      #  "message": "Hello! I'm a message that came from the backend"
-   # }
-
-    #return jsonify(response_body), 200
-
 #Devuelve la lista de todos los usuarios.
 @api.route('/users', methods=['GET'])
 def handle_list_users():
@@ -163,7 +153,7 @@ def handle_create_posts():
 
     return jsonify(post.serialize()), 201
 
-#Obtener la lista de todos los posts.
+#Obtener la lista de todos los posts. 
 @api.route('/posts', methods=['GET'])
 def handle_list_posts():
     posts = []
@@ -220,21 +210,39 @@ def handle_create_followers():
     print(payload)
     return "Follow a commerce"
 
-#Obtener la lista de todos los comercios seguidos pur un usuario.
+#Obtener la lista de todos los comercios seguidos por un usuario. (Following - Siguiendo)
 @api.route('/users/<int:user_id>/followers', methods=['GET'])
 def handle_list_followers_user(user_id):
-    #follower = request.user. hay que obtener el usuario y luego hacer todo normal con follower.
-    return "List of all the commerces this user is following."
+    #follower = request.user? hay que obtener el usuario y luego hacer todo normal con follower. Es una lista de followers, de la relación entre usuario 1 con el comercio X, usiario 1, comercio X
+    list_of_follows = Followers.query.filter_by(user_id = user_id)
+    business_name_followed = []
+    
+    for follow_relation in list_of_follows:
+        business_name_followed.append(follow_relation.commerce.business_name)
 
-#Obtener la lista de todos los usuarios que siguen a este comercio..
+    return jsonify(business_name_followed), 200
+    
+#Obtener la lista de todos los usuarios que siguen a este comercio. (Followers - Seguidores)
 @api.route('/commerces/<int:commerce_id>/followers', methods=['GET'])
 def handle_list_followers_commerce(commerce_id):
-    return "List of all the users following this commerce."
+
+    list_of_followers = Followers.query.filter_by(commerce_id = commerce_id)
+    user_follower = []
+    
+    for follow_relation in list_of_followers:
+        user_follower.append(follow_relation.user.username)
+
+    return jsonify(user_follower), 200
 
 #Dejar de seguir. 
 @api.route('/commerces/<int:commerce_id>/followers', methods=['DELETE'])
 def handle_delete_followers(id):
-    
+    list_of_follows = Followers.query.filter_by(user_id = user_id)
+    print(list_of_follows)
+
+    # if not list_of_follows:
+    #     return "Post not found", 404
+
     return "follower #{} deleted.".format(id)
 
 

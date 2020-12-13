@@ -32,7 +32,7 @@ class Users(db.Model):
             "username": self.username,
             "email": self.email,
             "avatar": self.avatar,
-            #"follower": self.follower.serialize()
+            # "follower": self.follower.serialize()
         }
 
 
@@ -96,7 +96,8 @@ class Followers(db.Model):
             "id": self.id,
             "commerce_id": self.commerce_id,
             "user_id": self.user_id,
-            #"user": self.user.serialize()
+            "user": self.user.serialize(),
+            "commerce": self.commerce.serialize()
         }
 
 class Posts(db.Model):
