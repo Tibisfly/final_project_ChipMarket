@@ -230,7 +230,6 @@ def handle_list_followers_user(user_id):
 #Obtener la lista de todos los usuarios que siguen a este comercio. (Followers - Seguidores)
 @api.route('/commerces/<int:commerce_id>/followers', methods=['GET'])
 def handle_list_followers_commerce(commerce_id):
-
     list_of_followers = Followers.query.filter_by(commerce_id = commerce_id)
     user_follower = []
     
@@ -301,7 +300,7 @@ def handle_delete_likes(like_id):
 def handle_create_comments():
     payload = request.get_json()
     comments = Comments(**payload)
-        
+       
     db.session.add(comments)
     db.session.commit()
 
@@ -310,12 +309,35 @@ def handle_create_comments():
 #Obtener la lista de todos los comentarios en un post hecho por comercios
 @api.route('/commerces/<int:commerce_id>/comments', methods=['GET'])
 def handle_list_comments_commerce(commerce_id):
-    return "List of all comments in a post from a commerce."
+    list_of_comments = Comments.query.filter_by(commerce_id = commerce_id)
+    comment_of_commerce = []
+    
+    for comment_relation in list_of_comments:
+        comment_of_commerce.append(comment_relation.serialize())
+
+    return jsonify(comment_of_commerce), 200
 
 #Obtener la lista de todos los comentarios en un post hecho por usuarios
 @api.route('/users/<int:user_id>/comments', methods=['GET'])
 def handle_list_comments_user(user_id):
-    return "List of all comments in a post from a user."
+    list_of_user_comments = Comments.query.filter_by(user_id = user_id)
+    comment_of_user = []
+    
+    for comment_relation in list_of_user_comments:
+        comment_of_user.append(comment_relation.serialize())
+
+    return jsonify(comment_of_user), 200
+
+#Obtener la lista de TODOS los comentarios en un post
+@api.route('/posts/<int:post_id>/comments', methods=['GET'])
+def handle_list_comments_post(post_id):
+    list_of_comments_on_a_post = Comments.query.filter_by(post_id = post_id)
+    comment_on_a_post = []
+    
+    for comment_relation in list_of_comments_on_a_post:
+        comment_on_a_post.append(comment_relation.serialize())
+
+    return jsonify(comment_on_a_post), 200
 
 #Se actualiza un comentario de un post.
 @api.route('/comments/<int:id>', methods=['PUT'])
