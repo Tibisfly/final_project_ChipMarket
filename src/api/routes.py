@@ -7,6 +7,7 @@ from api.utils import generate_sitemap, APIException
 
 api = Blueprint( 'api', __name__)
 
+################################## USERS #########################################
 #Devuelve la lista de todos los usuarios.
 @api.route('/users', methods=['GET'])
 def handle_list_users():
@@ -70,7 +71,7 @@ def handle_delete_user(id):
 
     return jsonify("This user has been eliminated successfully", data), 200
 
-### COMMERCES ###
+################################## COMMERCES #########################################
 
 #Creación del commerce
 # ASOCIA EL USUARIO A UN NUEVO COMERCIO.
@@ -140,7 +141,7 @@ def handle_delete_commerce(id):
     return jsonify("This commerce has been eliminated successfully", data), 200
 
 
-### POSTS ###
+################################## POSTS #########################################
 
 #Creación del POST.
 @api.route('/posts', methods=['POST'])
@@ -201,14 +202,18 @@ def handle_delete_posts(id):
 
     return jsonify("This post has been eliminated successfully", data), 200
 
-### FOLLOWERS ###
+################################## FOLLOWERS #########################################
 
 #Acción de seguir, no entiendo muy bien como relacionar ambos id (user+commerce)
 @api.route('/followers', methods=['POST'])
 def handle_create_followers():
     payload = request.get_json()
-    print(payload)
-    return "Follow a commerce"
+    followers = Followers(**payload)
+        
+    db.session.add(followers)
+    db.session.commit()
+
+    return jsonify(followers.serialize()), 201
 
 #Obtener la lista de todos los comercios seguidos por un usuario. (Following - Siguiendo)
 @api.route('/users/<int:user_id>/followers', methods=['GET'])
@@ -235,46 +240,72 @@ def handle_list_followers_commerce(commerce_id):
     return jsonify(user_follower), 200
 
 #Dejar de seguir. 
-@api.route('/commerces/<int:commerce_id>/followers', methods=['DELETE'])
-def handle_delete_followers(id):
-    list_of_follows = Followers.query.filter_by(user_id = user_id)
-    print(list_of_follows)
+@api.route('/commerces/<int:follow_id>/followers', methods=['DELETE'])
+def handle_delete_followers(follow_id):
+    follow = Followers.query.get(follow_id)
 
-    # if not list_of_follows:
-    #     return "Post not found", 404
+    if not follow:
+        return "Follower not found", 404
+    
+    data = follow.serialize()
+    db.session.delete(follow)
+    db.session.commit()
 
-    return "follower #{} deleted.".format(id)
+    return jsonify("This follower has been eliminated successfully", data), 200
 
 
-### LIKES ###
+################################## LIKES #########################################
 
 #Hacer el like al post
 @api.route('/likes', methods=['POST'])
 def handle_likes():
     payload = request.get_json()
-    print(payload)
-    return "Like a post"
+    likes = Likes(**payload)
+        
+    db.session.add(likes)
+    db.session.commit()
+
+    return jsonify(likes.serialize()), 201
 
 #Obtener la lista de likes (queremos que esto se vea?), no se si el id debe ser el mismo de arriba
 @api.route('/users/<int:user_id>/likes', methods=['GET'])
 def handle_list_of_likes(user_id):
-    return "List of all the likes from a user to the commerce."
+    
+    list_of_likes = Likes.query.filter_by(user_id = user_id)
+    user_like = []
+    
+    for like_relation in list_of_likes:
+        user_like.append(like_relation.user.username)
 
+    return jsonify(user_like), 200
+   
 
 #Borrar el like. 
-@api.route('/users/<int:user_id>/likes', methods=['DELETE'])
-def handle_delete_likes(user_id):
-    
-    return "Like #{} deleted.".format(id)
+@api.route('/users/<int:like_id>/likes', methods=['DELETE'])
+def handle_delete_likes(like_id):
+    like_deleted = Likes.query.get(like_id)
 
-### COMMENTS ###
+    if not like_deleted:
+        return "Like not found", 404
+    
+    data = like_deleted.serialize()
+    db.session.delete(like_deleted)
+    db.session.commit()
+
+    return jsonify("This like has been eliminated successfully", data), 200
+
+################################## COMMENTS #########################################
 
 #Creación del comentario
 @api.route('/comments', methods=['POST'])
 def handle_create_comments():
     payload = request.get_json()
-    print(payload)
-    return "Create text inside a comment"
+    comments = Comments(**payload)
+        
+    db.session.add(comments)
+    db.session.commit()
+
+    return jsonify(comments.serialize()), 201
 
 #Obtener la lista de todos los comentarios en un post hecho por comercios
 @api.route('/commerces/<int:commerce_id>/comments', methods=['GET'])
@@ -289,12 +320,27 @@ def handle_list_comments_user(user_id):
 #Se actualiza un comentario de un post.
 @api.route('/comments/<int:id>', methods=['PUT'])
 def handle_update_comments(id):
+    comment = Comments.query.get(id)
+    
+    if not comment:
+        return "Comment not found", 404
+
     payload = request.get_json()
-    print(payload)
-    return "Comments #{} updated.".format(id)
+    comment.text = payload["text"]
+    
+    return "Comment #{} updated.".format(id)
 
 #Borrar un comentario de un post.
-@api.route('/comments/<int:id>', methods=['DELETE'])
-def handle_delete_comments(id):
+@api.route('/comments/<int:comment_id>', methods=['DELETE'])
+def handle_delete_comments(comment_id):
+    comment_deleted = Comments.query.get(comment_id)
+
+    if not comment_deleted:
+        return "Comment not found", 404
     
-    return "Comment #{} deleted.".format(id)
+    data = comment_deleted.serialize()
+    db.session.delete(comment_deleted)
+    db.session.commit()
+
+    return jsonify("This comment has been eliminated successfully", data), 200
+  

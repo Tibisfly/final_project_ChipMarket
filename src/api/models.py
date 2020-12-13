@@ -73,6 +73,7 @@ class Commerces(db.Model):
             "description": self.description,
             "city": self.city,
             "country": self.country,
+            "zip_code": self.zip_code,
             "website": self.website,
             "phone_number": self.phone_number
         }
