@@ -32,7 +32,7 @@ class Users(db.Model):
             "username": self.username,
             "email": self.email,
             "avatar": self.avatar,
-            #"follower": self.follower.serialize()
+            # "follower": self.follower.serialize()
         }
 
 
@@ -73,6 +73,7 @@ class Commerces(db.Model):
             "description": self.description,
             "city": self.city,
             "country": self.country,
+            "zip_code": self.zip_code,
             "website": self.website,
             "phone_number": self.phone_number
         }
@@ -96,7 +97,8 @@ class Followers(db.Model):
             "id": self.id,
             "commerce_id": self.commerce_id,
             "user_id": self.user_id,
-            #"user": self.user.serialize()
+            "user": self.user.serialize(),
+            "commerce": self.commerce.serialize()
         }
 
 class Posts(db.Model):
@@ -153,6 +155,8 @@ class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    commerce_id = db.Column(db.Integer, db.ForeignKey('commerces.id'))
+    comment_response_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     deleted_at = db.Column(db.DateTime)
@@ -160,6 +164,7 @@ class Comments(db.Model):
 
     user = db.relationship("Users")
     post = db.relationship("Posts")
+    commerce = db.relationship("Commerces")
     
     def __str__(self):
         return  '{}:{}'.format(self.user.username, self.text) #los commerce tambien pueden hacer el comment, basta con user?
@@ -169,6 +174,7 @@ class Comments(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "post_id": self.post_id,
+            "commerce_id": self.commerce_id,
             "text": self.text
         }
 
