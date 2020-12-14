@@ -93,6 +93,7 @@ class Followers(db.Model):
         return  '{}:{}'.format(self.user.username, self.commerce.business_name) 
     
     def serialize(self):
+    #self.commerce.post, hacer la relacion que alejandro explico en clases de comments. simplificar peticiones. 
         return{
             "id": self.id,
             "commerce_id": self.commerce_id,
@@ -155,8 +156,6 @@ class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
-    commerce_id = db.Column(db.Integer, db.ForeignKey('commerces.id'))
-    comment_response_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     deleted_at = db.Column(db.DateTime)
@@ -164,7 +163,7 @@ class Comments(db.Model):
 
     user = db.relationship("Users")
     post = db.relationship("Posts")
-    commerce = db.relationship("Commerces")
+    
     
     def __str__(self):
         return  '{}:{}'.format(self.user.username, self.text) #los commerce tambien pueden hacer el comment, basta con user?
@@ -174,8 +173,8 @@ class Comments(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "post_id": self.post_id,
-            "commerce_id": self.commerce_id,
-            "text": self.text
+            "text": self.text,
+            "author": self.user_id == self.post.commerce.owner_id
         }
 
 

@@ -45,17 +45,21 @@ def handle_create_user():
 @api.route('/users/<int:id>', methods=['PUT'])
 def handle_update_user(id):
     user = Users.query.get(id)
+
     if not user:
         return "User not found", 404
 
     payload = request.get_json()
+
     user.first_name = payload["first_name"]
     user.last_name = payload["last_name"]
     user.email = payload["email"]
-    #user.password = payload["password"]
     user.username = payload["username"]
 
-    return "User #{} updated.".format(id)
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify(user.serialize()), 200
 
 #Borrar usuario.
 @api.route('/users/<int:id>', methods=['DELETE'])
@@ -110,10 +114,12 @@ def handle_get_commerce(id):
 @api.route('/commerces/<int:id>', methods=['PUT'])
 def handle_update_commerce(id):
     commerce = Commerces.query.get(id)
+
     if not commerce:
         return "Commerce not found", 404
 
     payload = request.get_json()
+
     commerce.business_name = payload["business_name"]
     commerce.title = payload["title"]
     commerce.description = payload["description"]
@@ -122,9 +128,11 @@ def handle_update_commerce(id):
     commerce.zip_code = payload["zip_code"]
     commerce.city = payload["city"]
     commerce.country = payload["country"]
-    #commerce.owner_id = payload["owner_id"]
 
-    return "Commerce #{} updated.".format(id)
+    db.session.add(commerce)
+    db.session.commit()
+
+    return jsonify(commerce.serialize()), 200
 
 #Borrar un comercio.
 @api.route('/commerces/<int:id>', methods=['DELETE'])
@@ -183,10 +191,17 @@ def handle_update_posts(id):
         return "Post not found", 404
 
     payload = request.get_json()
-    post.title = payload["title"]
-    post.description = payload["description"]
 
-    return "Post #{} updated.".format(id)
+    if "title" in payload:
+        post.title = payload["title"]
+
+    if "description" in payload:
+        post.description = payload["description"]
+
+    db.session.add(post)
+    db.session.commit()
+
+    return jsonify(post.serialize()), 200
 
 #Borrar un post.
 @api.route('/posts/<int:id>', methods=['DELETE'])
@@ -218,7 +233,7 @@ def handle_create_followers():
 #Obtener la lista de todos los comercios seguidos por un usuario. (Following - Siguiendo)
 @api.route('/users/<int:user_id>/followers', methods=['GET'])
 def handle_list_followers_user(user_id):
-    #follower = request.user? hay que obtener el usuario y luego hacer todo normal con follower. Es una lista de followers, de la relación entre usuario 1 con el comercio X, usiario 1, comercio X
+    #follower = request.user? hay que obtener el usuario y luego hacer todo normal con follower. Es una lista de followers, de la relación entre usuario 1 con el comercio X, usuario 1, comercio X
     list_of_follows = Followers.query.filter_by(user_id = user_id)
     business_name_followed = []
     
@@ -328,29 +343,15 @@ def handle_list_comments_user(user_id):
 
     return jsonify(comment_of_user), 200
 
-#Obtener la lista de TODOS los comentarios en un post
+#Obtener la lista de TODOS los comentarios en un post, la forma de ser más semántico es estar claro de que si estás dentro de la función no necesitas repetir que estás en otra lista.
 @api.route('/posts/<int:post_id>/comments', methods=['GET'])
 def handle_list_comments_post(post_id):
-    list_of_comments_on_a_post = Comments.query.filter_by(post_id = post_id)
-    comment_on_a_post = []
-    
-    for comment_relation in list_of_comments_on_a_post:
-        comment_on_a_post.append(comment_relation.serialize())
+    comments = []
 
-    return jsonify(comment_on_a_post), 200
-
-#Se actualiza un comentario de un post.
-@api.route('/comments/<int:id>', methods=['PUT'])
-def handle_update_comments(id):
-    comment = Comments.query.get(id)
+    for comment in  Comments.query.filter_by(post_id = post_id):
+        comments.append(comment.serialize())
     
-    if not comment:
-        return "Comment not found", 404
-
-    payload = request.get_json()
-    comment.text = payload["text"]
-    
-    return "Comment #{} updated.".format(id)
+    return jsonify(comments), 200
 
 #Borrar un comentario de un post.
 @api.route('/comments/<int:comment_id>', methods=['DELETE'])
