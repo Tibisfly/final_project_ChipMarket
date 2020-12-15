@@ -22,3 +22,4 @@ GET/users/<int:id>
     "avatar": "url",      
 }
 
+### USERS, COMMERCE, POSTS
