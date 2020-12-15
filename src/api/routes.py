@@ -151,7 +151,7 @@ def handle_delete_commerce(id):
 
 ################################## POSTS #########################################
 
-#Creación del POST.
+#Creación del POST. USERS es con quien tengo que relacionarla, esta es una tabla secundaria. Hay que hacer dos endpoints uno con commerce y otro con users.
 @api.route('/posts', methods=['POST'])
 def handle_create_posts():
     payload = request.get_json()
@@ -231,38 +231,46 @@ def handle_create_followers():
     return jsonify(followers.serialize()), 201
 
 #Obtener la lista de todos los comercios seguidos por un usuario. (Following - Siguiendo)
+#Maneja los follows del usuario (nombre de la función)
 @api.route('/users/<int:user_id>/followers', methods=['GET'])
-def handle_list_followers_user(user_id):
-    #follower = request.user? hay que obtener el usuario y luego hacer todo normal con follower. Es una lista de followers, de la relación entre usuario 1 con el comercio X, usuario 1, comercio X
-    list_of_follows = Followers.query.filter_by(user_id = user_id)
-    business_name_followed = []
-    
-    for follow_relation in list_of_follows:
-        business_name_followed.append(follow_relation.commerce.business_name)
+def handle_user_follows(user_id):
+    follows = Followers.query.filter_by(user_id = user_id, deleted_at=None)
 
-    return jsonify(business_name_followed), 200
+    commerces = []
+    
+    for follow in follows:
+        commerces.append(follow.commerce.business_name)
+
+    return jsonify(commerces), 200
     
 #Obtener la lista de todos los usuarios que siguen a este comercio. (Followers - Seguidores)
 @api.route('/commerces/<int:commerce_id>/followers', methods=['GET'])
-def handle_list_followers_commerce(commerce_id):
-    list_of_followers = Followers.query.filter_by(commerce_id = commerce_id)
-    user_follower = []
-    
-    for follow_relation in list_of_followers:
-        user_follower.append(follow_relation.user.username)
+def handle_followers_commerce(commerce_id):
+    followers = Followers.query.filter_by(commerce_id = commerce_id, deleted_at=None)
 
-    return jsonify(user_follower), 200
+    users= []
+    
+    for follow in followers:
+        users(follow.user.username)
+
+    return jsonify(users), 200
 
 #Dejar de seguir. 
 @api.route('/commerces/<int:follow_id>/followers', methods=['DELETE'])
 def handle_delete_followers(follow_id):
     follow = Followers.query.get(follow_id)
-
-    if not follow:
-        return "Follower not found", 404
     
+    if not follow:
+        return "Post not found", 404
+
+    payload = request.get_json()
+
+    if "deleted_at" in payload:
+        follow.deleted_at = payload["deleted_at"]
+    else: 
+        return "No estás introduciendo la fecha de borrado"
+   
     data = follow.serialize()
-    db.session.delete(follow)
     db.session.commit()
 
     return jsonify("This follower has been eliminated successfully", data), 200

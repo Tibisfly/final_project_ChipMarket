@@ -32,7 +32,6 @@ class Users(db.Model):
             "username": self.username,
             "email": self.email,
             "avatar": self.avatar,
-            # "follower": self.follower.serialize()
         }
 
 
@@ -99,7 +98,7 @@ class Followers(db.Model):
             "commerce_id": self.commerce_id,
             "user_id": self.user_id,
             "user": self.user.serialize(),
-            "commerce": self.commerce.serialize()
+            "commerce": self.commerce.serialize(),
         }
 
 class Posts(db.Model):
@@ -108,6 +107,7 @@ class Posts(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     deleted_at = db.Column(db.DateTime)
+    promo_expired_at = db.Column(db.DateTime)
     media_type=db.Column(db.String(10)) 
     media_url=db.Column(db.String(255)) 
     title = db.Column(db.String(80), nullable=False)
