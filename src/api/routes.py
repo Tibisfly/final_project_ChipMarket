@@ -189,32 +189,29 @@ def handle_create_posts():
 
     return jsonify(post.serialize()), 201
 
-#Obtener la lista de todos los posts= Posts de los Comerces que Users sigue 
-@api.route('commerces/<int:user_id>/posts', methods=['GET'])
+#Obtener la lista de todos los posts = Posts de los Comerces que Users sigue 
+@api.route('users/<int:user_id>/commerces/posts', methods=['GET'])
 def handle_list_posts(user_id):
     follows = Followers.query.filter_by(user_id = user_id)
-    commerces_ids = []
+    posts = []
     for follow in follows:
-        commerces_ids.append(follow.commerce_id)
+        post = Posts.query.filter_by(commerce_id = follow.commerce_id).order_by(Posts.updated_at.desc()).first()
+        posts.append(post.serialize())
+        #commerces_ids.append(follow.commerce_id)
 
-    posts = Posts.query.filter(Posts.commerce_id.in_(commerces_ids)).all()
+        #posts = Posts.query.filter(Posts.commerce_id.in_(commerces_ids)).first()
 
-    feed = []
+    # feed = []
     
-    for post in posts:
-        feed.append(post.serialize())
+    # for post in posts:
+    #     feed.append(post.serialize())
 
-    return jsonify(feed), 200
+    return jsonify(posts), 200
 
 #Devuelve el post del comercio que se busca.
-# @api.route('/posts/<int:id>', methods=['GET'])
-# def handle_get_posts(id):
-#     post = Posts.query.get(id)
-
-#     if not post:
-#         return "Post not found", 404
-
-#     return jsonify(post.serialize()), 200
+@api.route('/posts/<int:id>', methods=['GET'])
+def handle_get_posts(id):
+    return get_one_or_error_404(Posts, id)
 
 #Se actualiza un post ya creado.
 @api.route('/posts/<int:id>', methods=['PUT'])
