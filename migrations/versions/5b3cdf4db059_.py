@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/d0d4e62f1541_.py
-Revision ID: d0d4e62f1541
+Revision ID: 5b3cdf4db059
 Revises: 
-Create Date: 2020-12-15 16:31:35.359876
-=======
-Revision ID: da5d97f62ded
-Revises: 
-Create Date: 2020-12-14 17:38:08.199191
->>>>>>> 4f9ac668c112c3799dfead27f72483528c19b7ce:migrations/versions/da5d97f62ded_.py
+Create Date: 2020-12-16 13:41:02.278039
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/d0d4e62f1541_.py
-revision = 'd0d4e62f1541'
-=======
-revision = 'da5d97f62ded'
->>>>>>> 4f9ac668c112c3799dfead27f72483528c19b7ce:migrations/versions/da5d97f62ded_.py
+revision = '5b3cdf4db059'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -83,6 +73,7 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('deleted_at', sa.DateTime(), nullable=True),
+    sa.Column('promo_expired_at', sa.DateTime(), nullable=True),
     sa.Column('media_type', sa.String(length=10), nullable=True),
     sa.Column('media_url', sa.String(length=255), nullable=True),
     sa.Column('title', sa.String(length=80), nullable=False),
@@ -94,14 +85,10 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('post_id', sa.Integer(), nullable=True),
-    sa.Column('commerce_id', sa.Integer(), nullable=True),
-    sa.Column('comment_response_id', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('deleted_at', sa.DateTime(), nullable=True),
     sa.Column('text', sa.Text(), nullable=False),
-    sa.ForeignKeyConstraint(['comment_response_id'], ['comments.id'], ),
-    sa.ForeignKeyConstraint(['commerce_id'], ['commerces.id'], ),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

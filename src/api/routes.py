@@ -7,39 +7,46 @@ from api.utils import generate_sitemap, APIException
 
 api = Blueprint( 'api', __name__)
 
+def get_one_or_error_404(models, id):
+    row = models.query.get(id)
+
+    if not row:
+        return "Not found", 404
+
+    return jsonify(row.serialize()), 200
+
+def get_list_of(Models):
+    list_models = []
+
+    for model in Models.query.all():
+        list_models.append(model.serialize())
+    
+    return jsonify(list_models), 200
+
+def create_one(Models):
+    payload = request.get_json()
+    model = Models(**payload)
+    
+    db.session.add(model)
+    db.session.commit()
+
+    return jsonify(model.serialize()), 201
+
 ################################## USERS #########################################
 #Devuelve la lista de todos los usuarios.
 @api.route('/users', methods=['GET'])
 def handle_list_users():
-    users = []
-
-    for user in Users.query.all():
-        users.append(user.serialize())
-    
-    return jsonify(users), 200
+    return get_list_of(Users)
 
 #Devuelve el usuario que se busca.
 @api.route('/users/<int:id>', methods=['GET'])
 def handle_get_user(id):
-    users = Users.query.get(id)
-
-    if not users:
-        return "User not found", 404
-
-    return jsonify(users.serialize()), 200
-
+    return get_one_or_error_404(Users, id)
 
 #Se crea un usario nuevo o cualquier cosa nueva que se añada en la base de datos. 
-
 @api.route('/users', methods=['POST'])
 def handle_create_user():
-    payload = request.get_json()
-    user = Users(**payload)
-    
-    db.session.add(user)
-    db.session.commit()
-
-    return jsonify(user.serialize()), 201
+    return create_one(Users)
 
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
@@ -51,10 +58,18 @@ def handle_update_user(id):
 
     payload = request.get_json()
 
-    user.first_name = payload["first_name"]
-    user.last_name = payload["last_name"]
-    user.email = payload["email"]
-    user.username = payload["username"]
+    if "first_name" in payload:
+        user.first_name = payload["first_name"]
+    
+    if "last_name" in payload:
+        user.last_name = payload["last_name"]
+    
+    if "email" in payload:
+        user.email = payload["email"]
+    
+    if "username" in payload:
+        user.username = payload["username"]
+    
 
     db.session.add(user)
     db.session.commit()
@@ -93,22 +108,12 @@ def handle_create_commerce():
 #Obtener la lista de todos los comercios.
 @api.route('/commerces', methods=['GET'])
 def handle_list_commerces():
-    commerces = []
-
-    for commerce in Commerces.query.all():
-        commerces.append(commerce.serialize())
-    
-    return jsonify(commerces), 200
+    return get_list_of(Commerces)
 
 #Devuelve el comercio que se busca.
 @api.route('/commerces/<int:id>', methods=['GET'])
 def handle_get_commerce(id):
-    commerce = Commerces.query.get(id)
-
-    if not commerce:
-        return "Commerce not found", 404
-
-    return jsonify(commerce.serialize()), 200
+    return get_one_or_error_404(Commerces, id)
 
 #Se actualiza un comercio ya creado.
 @api.route('/commerces/<int:id>', methods=['PUT'])
@@ -120,14 +125,36 @@ def handle_update_commerce(id):
 
     payload = request.get_json()
 
-    commerce.business_name = payload["business_name"]
-    commerce.title = payload["title"]
-    commerce.description = payload["description"]
-    commerce.street_name = payload["street_name"]
-    commerce.street_number = payload["street_number"]
-    commerce.zip_code = payload["zip_code"]
-    commerce.city = payload["city"]
-    commerce.country = payload["country"]
+    if "business_name" in payload:
+        commerce.first_name = payload["business_name"]
+    
+    if "street_name" in payload:
+        commerce.last_name = payload["street_name"]
+    
+    if "street_number" in payload:
+        commerce.email = payload["street_number"]
+    
+    if "zip_code" in payload:
+        commerce.email = payload["zip_code"]
+    
+    if "city" in payload:
+        commerce.email = payload["city"]
+    
+    if "country" in payload:
+        commerce.email = payload["country"]
+    
+    if "title" in payload:
+        commerce.email = payload["title"]
+    
+    if "description" in payload:
+        commerce.email = payload["description"]
+
+    if "phone_number" in payload:
+        commerce.email = payload["phone_number"]
+
+    if "website" in payload:
+        commerce.email = payload["website"]
+    
 
     db.session.add(commerce)
     db.session.commit()
@@ -150,9 +177,9 @@ def handle_delete_commerce(id):
 
 
 ################################## POSTS #########################################
-
-#Creación del POST. USERS es con quien tengo que relacionarla, esta es una tabla secundaria. Hay que hacer dos endpoints uno con commerce y otro con users.
-@api.route('/posts', methods=['POST'])
+#Creación del POST. USERS es con quien tengo que relacionarla, esta es una tabla secundaria. 
+# Hay que hacer dos endpoints uno con commerce y otro con users.
+@api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
     payload = request.get_json()
     post = Posts(**payload)
@@ -162,25 +189,32 @@ def handle_create_posts():
 
     return jsonify(post.serialize()), 201
 
-#Obtener la lista de todos los posts. 
-@api.route('/posts', methods=['GET'])
-def handle_list_posts():
-    posts = []
+#Obtener la lista de todos los posts= Posts de los Comerces que Users sigue 
+@api.route('commerces/<int:user_id>/posts', methods=['GET'])
+def handle_list_posts(user_id):
+    follows = Followers.query.filter_by(user_id = user_id)
+    commerces_ids = []
+    for follow in follows:
+        commerces_ids.append(follow.commerce_id)
 
-    for post in Posts.query.all():
-        posts.append(post.serialize())
+    posts = Posts.query.filter(Posts.commerce_id.in_(commerces_ids)).all()
+
+    feed = []
     
-    return jsonify(posts), 200
+    for post in posts:
+        feed.append(post.serialize())
+
+    return jsonify(feed), 200
 
 #Devuelve el post del comercio que se busca.
-@api.route('/posts/<int:id>', methods=['GET'])
-def handle_get_posts(id):
-    post = Posts.query.get(id)
+# @api.route('/posts/<int:id>', methods=['GET'])
+# def handle_get_posts(id):
+#     post = Posts.query.get(id)
 
-    if not post:
-        return "Post not found", 404
+#     if not post:
+#         return "Post not found", 404
 
-    return jsonify(post.serialize()), 200
+#     return jsonify(post.serialize()), 200
 
 #Se actualiza un post ya creado.
 @api.route('/posts/<int:id>', methods=['PUT'])
@@ -293,25 +327,25 @@ def handle_likes():
 @api.route('/users/<int:user_id>/likes', methods=['GET'])
 def handle_list_of_likes(user_id):
     
-    list_of_likes = Likes.query.filter_by(user_id = user_id)
-    user_like = []
+    likes = Likes.query.filter_by(user_id = user_id)
+    like = []
     
-    for like_relation in list_of_likes:
-        user_like.append(like_relation.user.username)
+    for like in likes:
+        like.append(like.user.username)
 
-    return jsonify(user_like), 200
+    return jsonify(like), 200
    
 
 #Borrar el like. 
 @api.route('/users/<int:like_id>/likes', methods=['DELETE'])
 def handle_delete_likes(like_id):
-    like_deleted = Likes.query.get(like_id)
+    like = Likes.query.get(like_id)
 
-    if not like_deleted:
+    if not like:
         return "Like not found", 404
     
-    data = like_deleted.serialize()
-    db.session.delete(like_deleted)
+    data = like.serialize()
+    db.session.delete(like)
     db.session.commit()
 
     return jsonify("This like has been eliminated successfully", data), 200
@@ -332,24 +366,24 @@ def handle_create_comments():
 #Obtener la lista de todos los comentarios en un post hecho por comercios
 @api.route('/commerces/<int:commerce_id>/comments', methods=['GET'])
 def handle_list_comments_commerce(commerce_id):
-    list_of_comments = Comments.query.filter_by(commerce_id = commerce_id)
-    comment_of_commerce = []
+    comments = Comments.query.filter_by(commerce_id = commerce_id)
+    lists_comments = []
     
-    for comment_relation in list_of_comments:
-        comment_of_commerce.append(comment_relation.serialize())
+    for comment in comments:
+        lists_comments.append(comment.serialize())
 
-    return jsonify(comment_of_commerce), 200
+    return jsonify(lists_comments), 200
 
 #Obtener la lista de todos los comentarios en un post hecho por usuarios
 @api.route('/users/<int:user_id>/comments', methods=['GET'])
 def handle_list_comments_user(user_id):
-    list_of_user_comments = Comments.query.filter_by(user_id = user_id)
-    comment_of_user = []
+    comments = Comments.query.filter_by(user_id = user_id)
+    user_comment = []
     
-    for comment_relation in list_of_user_comments:
-        comment_of_user.append(comment_relation.serialize())
+    for comment in comments:
+        user_comment.append(comment.serialize())
 
-    return jsonify(comment_of_user), 200
+    return jsonify(user_comment), 200
 
 #Obtener la lista de TODOS los comentarios en un post, la forma de ser más semántico es estar claro de que si estás dentro de la función no necesitas repetir que estás en otra lista.
 @api.route('/posts/<int:post_id>/comments', methods=['GET'])
@@ -364,13 +398,13 @@ def handle_list_comments_post(post_id):
 #Borrar un comentario de un post.
 @api.route('/comments/<int:comment_id>', methods=['DELETE'])
 def handle_delete_comments(comment_id):
-    comment_deleted = Comments.query.get(comment_id)
+    comment = Comments.query.get(comment_id)
 
-    if not comment_deleted:
+    if not comment:
         return "Comment not found", 404
     
-    data = comment_deleted.serialize()
-    db.session.delete(comment_deleted)
+    data = comment.serialize()
+    db.session.delete(comment)
     db.session.commit()
 
     return jsonify("This comment has been eliminated successfully", data), 200
