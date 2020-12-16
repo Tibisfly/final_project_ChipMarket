@@ -327,25 +327,25 @@ def handle_likes():
 @api.route('/users/<int:user_id>/likes', methods=['GET'])
 def handle_list_of_likes(user_id):
     
-    list_of_likes = Likes.query.filter_by(user_id = user_id)
-    user_like = []
+    likes = Likes.query.filter_by(user_id = user_id)
+    like = []
     
-    for like_relation in list_of_likes:
-        user_like.append(like_relation.user.username)
+    for like in likes:
+        like.append(like.user.username)
 
-    return jsonify(user_like), 200
+    return jsonify(like), 200
    
 
 #Borrar el like. 
 @api.route('/users/<int:like_id>/likes', methods=['DELETE'])
 def handle_delete_likes(like_id):
-    like_deleted = Likes.query.get(like_id)
+    like = Likes.query.get(like_id)
 
-    if not like_deleted:
+    if not like:
         return "Like not found", 404
     
-    data = like_deleted.serialize()
-    db.session.delete(like_deleted)
+    data = like.serialize()
+    db.session.delete(like)
     db.session.commit()
 
     return jsonify("This like has been eliminated successfully", data), 200
@@ -366,24 +366,24 @@ def handle_create_comments():
 #Obtener la lista de todos los comentarios en un post hecho por comercios
 @api.route('/commerces/<int:commerce_id>/comments', methods=['GET'])
 def handle_list_comments_commerce(commerce_id):
-    list_of_comments = Comments.query.filter_by(commerce_id = commerce_id)
-    comment_of_commerce = []
+    comments = Comments.query.filter_by(commerce_id = commerce_id)
+    lists_comments = []
     
-    for comment_relation in list_of_comments:
-        comment_of_commerce.append(comment_relation.serialize())
+    for comment in comments:
+        lists_comments.append(comment.serialize())
 
-    return jsonify(comment_of_commerce), 200
+    return jsonify(lists_comments), 200
 
 #Obtener la lista de todos los comentarios en un post hecho por usuarios
 @api.route('/users/<int:user_id>/comments', methods=['GET'])
 def handle_list_comments_user(user_id):
-    list_of_user_comments = Comments.query.filter_by(user_id = user_id)
-    comment_of_user = []
+    comments = Comments.query.filter_by(user_id = user_id)
+    user_comment = []
     
-    for comment_relation in list_of_user_comments:
-        comment_of_user.append(comment_relation.serialize())
+    for comment in comments:
+        user_comment.append(comment.serialize())
 
-    return jsonify(comment_of_user), 200
+    return jsonify(user_comment), 200
 
 #Obtener la lista de TODOS los comentarios en un post, la forma de ser más semántico es estar claro de que si estás dentro de la función no necesitas repetir que estás en otra lista.
 @api.route('/posts/<int:post_id>/comments', methods=['GET'])
@@ -398,13 +398,13 @@ def handle_list_comments_post(post_id):
 #Borrar un comentario de un post.
 @api.route('/comments/<int:comment_id>', methods=['DELETE'])
 def handle_delete_comments(comment_id):
-    comment_deleted = Comments.query.get(comment_id)
+    comment = Comments.query.get(comment_id)
 
-    if not comment_deleted:
+    if not comment:
         return "Comment not found", 404
     
-    data = comment_deleted.serialize()
-    db.session.delete(comment_deleted)
+    data = comment.serialize()
+    db.session.delete(comment)
     db.session.commit()
 
     return jsonify("This comment has been eliminated successfully", data), 200
