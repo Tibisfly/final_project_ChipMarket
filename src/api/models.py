@@ -121,6 +121,11 @@ class Posts(db.Model):
         return  '{}'.format(self.title)
     
     def serialize(self):
+        comments = []
+
+        for comment in self.comments:
+            comments.append(comment.serialize())
+
         return{
             "id": self.id,
             "commerce_id": self.commerce_id,
@@ -129,6 +134,7 @@ class Posts(db.Model):
             "media_url": self.media_url,
             "title": self.title,
             "description": self.description,
+            "comments": comments
         }
 
 class Likes(db.Model):
