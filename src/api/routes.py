@@ -189,24 +189,16 @@ def handle_create_posts():
 
     return jsonify(post.serialize()), 201
 
-#Obtener la lista de todos los posts = Posts de los Comerces que Users sigue 
-@api.route('users/<int:user_id>/commerces/posts', methods=['GET'])
+#Obtener la lista de todos los posts = Posts de los Comerces que Users sigue :users/<int:user_id>/commerces/posts
+@api.route('users/<int:user_id>/feed', methods=['GET'])
 def handle_list_posts(user_id):
     follows = Followers.query.filter_by(user_id = user_id)
-    posts = []
-    for follow in follows:
-        post = Posts.query.filter_by(commerce_id = follow.commerce_id).order_by(Posts.updated_at.desc()).first()
-        posts.append(post.serialize())
-        #commerces_ids.append(follow.commerce_id)
+    commerce_ids = [f.commerce_id for f in follows] #forma de hacer un loop en una línea (pythonic)
+    posts = Posts.query.filter(Posts.commerce_id.in_(commerce_ids)).order_by(Posts.updated_at.desc())
 
-        #posts = Posts.query.filter(Posts.commerce_id.in_(commerces_ids)).first()
+    feed = [post.serialize() for post in posts] #un loop en una línea
 
-    # feed = []
-    
-    # for post in posts:
-    #     feed.append(post.serialize())
-
-    return jsonify(posts), 200
+    return jsonify(feed), 200
 
 #Devuelve el post del comercio que se busca.
 @api.route('/posts/<int:id>', methods=['GET'])
@@ -334,7 +326,7 @@ def handle_list_of_likes(user_id):
    
 
 #Borrar el like. 
-@api.route('/users/<int:like_id>/likes', methods=['DELETE'])
+@api.route('/likes/<int:like_id>', methods=['DELETE'])
 def handle_delete_likes(like_id):
     like = Likes.query.get(like_id)
 
