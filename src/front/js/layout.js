@@ -7,7 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Register } from "./component/navbar";
+import { Register } from "./component/register";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -33,6 +33,9 @@ const Layout = () => {
 							<Single />
 						</Route>
 						<Route exact path="/users">
+							<Register />
+						</Route>
+						<Route exact path="/users/:id">
 							<Register />
 						</Route>
 						<Route>
