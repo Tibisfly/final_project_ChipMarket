@@ -8,6 +8,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
+import { Register } from "./components/register";
 
 //create your first component
 const Layout = () => {
@@ -28,6 +29,12 @@ const Layout = () => {
 							<Feed />
 						</Route>
 
+						<Route exact path="/users">
+							<Register />
+						</Route>
+						<Route exact path="/users/:id">
+							<Register />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

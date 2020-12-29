@@ -1,49 +1,93 @@
+import { node } from "prop-types";
+
+const baseUrl = "https://3001-a5e205e9-112a-43e9-913d-0dc80cdb9a32.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			users: [],
+			posts: [],
+			feed: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			createUser(data) {
+				const endpoint = `${baseUrl}/users`;
+				const config = {
+					method: "POST",
+					mode: "no-cors",
+					body: JSON.stringify({
+						first_name: data.first_name,
+						last_name: data.last_name,
+						email: data.email,
+						password: data.password,
+						username: data.username
+					}),
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*"
+					}
+				};
+				fetch(endpoint, config)
+					.then(response => {
+						//check if is a 201 and if the response has the id of the user/model
+						return response.json();
+					})
+					.then(json => {
+						console.log(response.json());
+					});
 			},
+			getAllUsers() {
+				// la necesito?
+				const store = setStore();
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
+				const endpoint = `${baseUrl}/users`;
+				const config = {
+					method: "GET"
+				};
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ users: json });
+					});
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			// getFeed(id) {
+			// 	const store = setStore();
+			// 	const endpoint = `${baseUrl}/users/${id}/feed`;
+			// 	const config = {
+			// 		method: "GET",
+			// 		mode: "no-cors"
+			// 	};
+			// 	fetch(endpoint, config)
+			// 		.then(response => response.text())
+			// 		.then(result => console.log(result))
+			// 		.catch(error => console.log("error", error));
+			// }
+			getFeedAsync: async id => {
+				//async way
+				const endpoint = `${baseUrl}/users/${id}/feed`;
+				let requestOptions = { method: "GET", redirect: "follow" };
+				try {
+					let res = await fetch(endpoint, requestOptions);
+					let result = await res.json();
+					let active = await setStore({});
+					let feed = await result;
+					setStore({ feed: feed });
+				} catch (error) {
+					console.log("error", error);
+				}
 			}
+			// getPost(){
+			//     const store = setStore();
+			// 	const endpoint = `${baseUrl}/posts/<int:id>`;
+			// 	const config = {
+			// 		method: "GET",
+			// 		mode: "no-cors"
+			// };
+			//     fetch(endpoint, config).
+			//         then(response => {
+			// 		return response.json();
 		}
 	};
 };
-
 export default getState;
