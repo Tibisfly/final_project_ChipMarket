@@ -10,6 +10,7 @@ import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./components/register";
 
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
