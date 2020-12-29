@@ -1,4 +1,4 @@
-const baseUrl = "https://3001-b163d749-d004-4edb-a277-5b7230bcd50e.ws-eu03.gitpod.io/";
+const baseUrl = "https://3001-b163d749-d004-4edb-a277-5b7230bcd50e.ws-eu03.gitpod.io/api/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			createUser(data) {
-				const endpoint = `${baseUrl}/api/users`;
+				const endpoint = `${baseUrl}users`;
 				const config = {
 					method: "POST",
 					body: JSON.stringify({
@@ -33,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// la necesito?
 				const store = setStore();
 
-				const endpoint = `${baseUrl}/api/users`;
+				const endpoint = `${baseUrl}users`;
 				const config = {
 					method: "GET"
 				};
