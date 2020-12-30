@@ -33,6 +33,11 @@ export const Register = function(props) {
 		<div className="container">
 			<h1>{params.id ? "Actualizar usuario" : "Crear usuario"} </h1>
 			<form>
+				<img
+					src="https://randomuser.me/api/portraits/lego/1.jpghttps://randomuser.me/api/portraits/lego/1.jpg"
+					alt="avatar"
+					className="img-thumbnail rounded-circle"
+				/>
 				<div className="form-group">
 					<label htmlFor="inputFirstName">Nombre</label>
 					<input
@@ -89,7 +94,13 @@ export const Register = function(props) {
 					/>
 				</div>
 				<div className="form-check">
-					<input className="form-check-input" type="checkbox" checked={active} id="defaultCheck1" />
+					<input
+						className="form-check-input"
+						type="checkbox"
+						checked={active}
+						id="defaultCheck1"
+						onChange={event => setActive(event.target.value)}
+					/>
 					<label className="form-check-label" htmlFor="defaultCheck1">
 						¿Está Activo?
 					</label>

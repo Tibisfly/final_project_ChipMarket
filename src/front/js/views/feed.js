@@ -10,7 +10,7 @@ export const Feed = function(props) {
 	console.log(props);
 	const { store, actions } = useContext(Context);
 	useEffect(() => {
-		actions.getFeed();
+		actions.getFeedAsync();
 	}, []);
 	return (
 		<div className="post">

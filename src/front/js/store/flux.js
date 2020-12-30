@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-const baseUrl = "https://3001-b163d749-d004-4edb-a277-5b7230bcd50e.ws-eu03.gitpod.io/api/";
-=======
 import { node } from "prop-types";
 
 const baseUrl = "https://3001-a5e205e9-112a-43e9-913d-0dc80cdb9a32.ws-eu03.gitpod.io/api";
->>>>>>> 9241c93058ec6a416f9a2eecd729b5615fbd5baf
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -14,11 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			createUser(data) {
-<<<<<<< HEAD
-				const endpoint = `${baseUrl}users`;
-=======
 				const endpoint = `${baseUrl}/users`;
->>>>>>> 9241c93058ec6a416f9a2eecd729b5615fbd5baf
 				const config = {
 					method: "POST",
 					mode: "no-cors",
@@ -47,11 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// la necesito?
 				const store = setStore();
 
-<<<<<<< HEAD
-				const endpoint = `${baseUrl}users`;
-=======
 				const endpoint = `${baseUrl}/users`;
->>>>>>> 9241c93058ec6a416f9a2eecd729b5615fbd5baf
 				const config = {
 					method: "GET"
 				};

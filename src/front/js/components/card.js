@@ -16,7 +16,7 @@ export default function Card(props) {
 				<div className="card-body">
 					<Upbutton />
 
-					<div className="row justify-content-between"></div>
+					<div className="row justify-content-between" />
 				</div>
 			</div>
 		</div>
