@@ -89,16 +89,26 @@ export const Register = function(props) {
 					/>
 				</div>
 				<div className="form-check">
-					<input className="form-check-input" type="checkbox" checked={active} id="defaultCheck1" />
+					<input
+						className="form-check-input"
+						type="checkbox"
+						checked={active}
+						id="defaultCheck1"
+						onChange={event => setActive(event.target.value)}
+					/>
 					<label className="form-check-label" htmlFor="defaultCheck1">
 						¿Está Activo?
 					</label>
 				</div>
 				<br />
-				<button type="button" className="btn btn-info btn-lg btn-block" onClick={handleSubmit}>
+				<button type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
 				</button>
 			</form>
+			<br />
+			<Link to="/commerces" type="button" className="btn btn-outline-dark">
+				¿Eres un comercio?. Pincha aquí
+			</Link>
 		</div>
 	);
 };
