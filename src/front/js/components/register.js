@@ -33,11 +33,6 @@ export const Register = function(props) {
 		<div className="container">
 			<h1>{params.id ? "Actualizar usuario" : "Crear usuario"} </h1>
 			<form>
-				<img
-					src="https://randomuser.me/api/portraits/lego/1.jpghttps://randomuser.me/api/portraits/lego/1.jpg"
-					alt="avatar"
-					className="img-thumbnail rounded-circle"
-				/>
 				<div className="form-group">
 					<label htmlFor="inputFirstName">Nombre</label>
 					<input
@@ -106,10 +101,14 @@ export const Register = function(props) {
 					</label>
 				</div>
 				<br />
-				<button type="button" className="btn btn-info btn-lg btn-block" onClick={handleSubmit}>
+				<button type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
 				</button>
 			</form>
+			<br />
+			<Link to="/commerces" type="button" className="btn btn-outline-dark">
+				¿Eres un comercio?. Pincha aquí
+			</Link>
 		</div>
 	);
 };

@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Users, Commerces, Followers, Likes, Comments, Posts
 from api.utils import generate_sitemap, APIException
+import json
 
 api = Blueprint( 'api', __name__)
 
@@ -24,7 +25,8 @@ def get_list_of(Models):
     return jsonify(list_models), 200
 
 def create_one(Models):
-    payload = request.get_json()
+    print(request)
+    payload = json.loads(request.data)
     model = Models(**payload)
     
     db.session.add(model)

@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-a5e205e9-112a-43e9-913d-0dc80cdb9a32.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-bd6a8101-44e1-427c-8eef-22d39b528d93.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -15,8 +15,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					mode: "no-cors",
 					body: JSON.stringify({
-						first_name: data.first_name,
-						last_name: data.last_name,
+						first_name: data.firstName,
+						last_name: data.lastName,
 						email: data.email,
 						password: data.password,
 						username: data.username
@@ -28,15 +28,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetch(endpoint, config)
 					.then(response => {
-						//check if is a 201 and if the response has the id of the user/model
+						console.log(response);
 						return response.json();
 					})
 					.then(json => {
-						console.log(response.json());
+						console.log(json);
+					})
+					.catch(error => {
+						console.log(error);
 					});
 			},
 			getAllUsers() {
-				// la necesito?
 				const store = setStore();
 
 				const endpoint = `${baseUrl}/users`;
