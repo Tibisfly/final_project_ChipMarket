@@ -18,8 +18,8 @@ export const Register = function(props) {
 
 	function handleSubmit() {
 		const data = {
-			firstName: firstName,
-			lastName: lastName,
+			first_name: firstName,
+			last_name: lastName,
 			email: email,
 			password: password,
 			username: username,
