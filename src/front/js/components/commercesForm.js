@@ -25,19 +25,20 @@ export const CommercesForm = function(props) {
 
 	function handleSubmit() {
 		const data = {
-			business_name: businessName,
-			street_name: streetName,
-			street_number: streetNumber,
+			ownerId: 8,
+			businessName: businessName,
+			streetName: streetName,
+			streetNumber: streetNumber,
 			title: title,
 			description: description,
 			city: city,
 			country: country,
-			zip_code: zipCode,
+			zipCode: zipCode,
 			website: website,
-			phone_number: phoneNumber,
+			phoneNumber: phoneNumber,
 			avatar: avatar
 		};
-
+		console.log("Esto es data en form de commerce:", data);
 		actions.createCommerce(data);
 	}
 	return (

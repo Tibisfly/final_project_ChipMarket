@@ -9,7 +9,6 @@ export const Register = function(props) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
-	const [active, setActive] = useState(false);
 	const [avatar, setAvatar] = useState("");
 
 	const params = useParams();
@@ -18,12 +17,11 @@ export const Register = function(props) {
 
 	function handleSubmit() {
 		const data = {
-			first_name: firstName,
-			last_name: lastName,
+			firstName: firstName,
+			lastName: lastName,
 			email: email,
 			password: password,
 			username: username,
-			active: active,
 			avatar: avatar
 		};
 
@@ -87,18 +85,6 @@ export const Register = function(props) {
 						value={username}
 						onChange={event => setUsername(event.target.value)}
 					/>
-				</div>
-				<div className="form-check">
-					<input
-						className="form-check-input"
-						type="checkbox"
-						checked={active}
-						id="defaultCheck1"
-						onChange={event => setActive(event.target.value)}
-					/>
-					<label className="form-check-label" htmlFor="defaultCheck1">
-						¿Está Activo?
-					</label>
 				</div>
 				<br />
 				<button type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
