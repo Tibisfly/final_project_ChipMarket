@@ -21,9 +21,13 @@ export const CommercesForm = function(props) {
 
 	const params = useParams();
 
+	const { store, actions } = useContext(Context);
+
 	function handleSubmit() {
 		const data = {
 			business_name: businessName,
+			street_name: streetName,
+			street_number: streetNumber,
 			title: title,
 			description: description,
 			city: city,
@@ -34,7 +38,7 @@ export const CommercesForm = function(props) {
 			avatar: avatar
 		};
 
-		// actions.aquí debe ir la función que no he creado(data);
+		actions.createCommerce(data);
 	}
 	return (
 		<div className="container">

@@ -66,15 +66,14 @@ def handle_get_user(id):
 @api.route('/users', methods=['POST'])
 def handle_create_user():
     payload = json.loads(request.data)
-    user = Users(**payload)
-    required = ["first_name", "last_name", "username", "email", "password", "is_active"]
+  
+    required = ["first_name", "last_name", "username", "email", "password"]
     types = {
         "first_name": str,
         "last_name": str,
         "username": str,
         "email": str,
-        "password": str,
-        "is_active": bool
+        "password": str
     }
     
     for key, value in payload.items():
@@ -86,7 +85,6 @@ def handle_create_user():
             abort(400)
     
     user = Users(**payload)
-    
     db.session.add(user)
     db.session.commit()
 
@@ -141,7 +139,33 @@ def handle_delete_user(id):
 # ASOCIA EL USUARIO A UN NUEVO COMERCIO.
 @api.route('/commerces', methods=['POST'])
 def handle_create_commerce():
-    return create_one(Commerces)
+    payload = json.loads(request.data)
+
+    required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description"]
+    types = {
+        "business_name": str,
+        "city": str,
+        "country": str,
+        "street_name": str,
+        "street_number": str,
+        "zip_code": str,
+        "title": str,
+        "description": str
+    }
+    
+    for key, value in payload.items():
+        if key in types and not isinstance(value, types(key)):
+            abort(400, f"{key} is not {types[key]}")
+
+    for field in required:
+        if field not in payload or payload[field] is None:
+            abort(400)
+    
+    commerce = Commerces(**payload)
+    db.session.add(commerce)
+    db.session.commit()
+
+    return jsonify(commerce.serialize()), 201
 
 #Obtener la lista de todos los comercios.
 @api.route('/commerces', methods=['GET'])
@@ -208,7 +232,6 @@ def handle_delete_commerce(id):
         return "Commerce not found", 404
     
     commerce.deleted_at = datetime.datetime.utcnow()
-    
     data = commerce.serialize()
     db.session.delete(commerce)
     db.session.commit()
