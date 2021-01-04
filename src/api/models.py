@@ -13,7 +13,7 @@ class Users(db.Model):
     username =db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False)
+    is_active = db.Column(db.Boolean(), unique=False, default=True)
     avatar = db.Column(db.String(80))
 
     commerce = db.relationship("Commerces")
@@ -31,7 +31,7 @@ class Users(db.Model):
             "last_name": self.last_name,
             "username": self.username,
             "email": self.email,
-            "avatar": self.avatar,
+            "avatar": self.avatar
         }
 
 

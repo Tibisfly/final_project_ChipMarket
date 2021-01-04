@@ -13,7 +13,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const endpoint = `${baseUrl}/users`;
 				const config = {
 					method: "POST",
-					mode: "no-cors",
 					body: JSON.stringify({
 						first_name: data.firstName,
 						last_name: data.lastName,
@@ -40,10 +39,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			createCommerce(data) {
 				const endpoint = `${baseUrl}/commerces`;
+				console.log("Esto es data:", data);
 				const config = {
 					method: "POST",
-					mode: "no-cors",
 					body: JSON.stringify({
+						owner_id: data.ownerId,
 						business_name: data.businessName,
 						street_name: data.streetName,
 						street_number: data.streetNumber,
@@ -58,6 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Access-Control-Allow-Origin": "*"
 					}
 				};
+
 				fetch(endpoint, config)
 					.then(response => {
 						console.log(response);

@@ -76,13 +76,14 @@ def handle_create_user():
         "password": str
     }
     
+    # print("esto es el payload.items:", payload.items())
     for key, value in payload.items():
-        if key in types and not isinstance(value, types(key)):
+        if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
 
     for field in required:
         if field not in payload or payload[field] is None:
-            abort(400)
+            abort(400, "este es un mensaje en el error 400")
     
     user = Users(**payload)
     db.session.add(user)
@@ -140,7 +141,6 @@ def handle_delete_user(id):
 @api.route('/commerces', methods=['POST'])
 def handle_create_commerce():
     payload = json.loads(request.data)
-
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description"]
     types = {
         "business_name": str,
@@ -152,9 +152,9 @@ def handle_create_commerce():
         "title": str,
         "description": str
     }
-    
+    print("Este es el payload de commerce", payload)
     for key, value in payload.items():
-        if key in types and not isinstance(value, types(key)):
+        if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
 
     for field in required:
