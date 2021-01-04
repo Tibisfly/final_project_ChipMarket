@@ -15,47 +15,101 @@ export const LogIn = function(props) {
 		<div className="container">
 			<h1 className="display-3 text-center">Entra a ChipMarket</h1>
 			<br />
-			<form>
-				<div className="form-group row">
-					<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
-						Correo electrónico
-					</label>
-					<div className="col-sm-10">
-						<input
-							type="text"
-							className="form-control-plaintext"
-							id="staticEmail"
-							value={email}
-							onChange={event => setEmail(event.target.value)}
-							placeholder="Introduce tu correo electrónico"
-						/>
+			<div>
+				<form className="px-4 py-3">
+					<div className="form-group row">
+						<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
+							Correo electrónico
+						</label>
+						<div className="col-sm-10">
+							<input
+								type="text"
+								className="form-control-plaintext"
+								id="staticEmail"
+								value={email}
+								onChange={event => setEmail(event.target.value)}
+								placeholder="Introduce tu correo electrónico"
+							/>
+						</div>
 					</div>
-				</div>
-				<div className="form-group row">
-					<label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-						Contraseña
-					</label>
-					<div className="col-sm-10">
-						<input
-							type="password"
-							className="form-control-plaintext"
-							id="inputPassword"
-							value={password}
-							onChange={event => setPassword(event.target.value)}
-							placeholder="Introduce tu contraseña"
-						/>
+					<div className="form-group row">
+						<label htmlFor="inputPassword" className="col-sm-2 col-form-label">
+							Contraseña
+						</label>
+						<div className="col-sm-10">
+							<input
+								type="password"
+								className="form-control-plaintext"
+								id="inputPassword"
+								value={password}
+								onChange={event => setPassword(event.target.value)}
+								placeholder="Introduce tu contraseña"
+							/>
+						</div>
 					</div>
-				</div>
-			</form>
-			<button type="button" className="btn btn-dark btn-lg btn-block">
-				Entrar
-			</button>
-			<br />
+					<div className="form-group">
+						<div className="form-check">
+							<input type="checkbox" className="form-check-input" id="dropdownCheck" />
+							<label className="form-check-label" htmlFor="dropdownCheck">
+								Remember me
+							</label>
+						</div>
+					</div>
+					<button type="submit" className="btn btn-dark">
+						Entrar
+					</button>
+				</form>
+				<br />
+				<Link className="dropdown-item" to="/users">
+					Nuevo por aquí?. Regístrate
+				</Link>
+				<button type="button" className="btn btn-link" onClick={() => setState({ showModal: true })}>
+					¿Olvidó su contraseña?. Pinche aquí.
+				</button>
 
-			<button type="button" className="btn btn-link" onClick={() => setState({ showModal: true })}>
-				¿Olvidó su contraseña?. Pinche aquí.
-			</button>
-			<ModalPassword show={state.showModal} onClose={() => setState({ showModal: false })} />
+				<ModalPassword show={state.showModal} onClose={() => setState({ showModal: false })} />
+			</div>
 		</div>
+
+		// <div className="dropdown-menu">
+		// 	<form className="px-4 py-3">
+		// 		<div className="form-group">
+		// 			<label htmlFor="exampleDropdownFormEmail1">Email address</label>
+		// 			<input
+		// 				type="email"
+		// 				className="form-control"
+		// 				id="exampleDropdownFormEmail1"
+		// 				placeholder="email@example.com"
+		// 			/>
+		// 		</div>
+		// 		<div className="form-group">
+		// 			<label htmlFor="exampleDropdownFormPassword1">Password</label>
+		// 			<input
+		// 				type="password"
+		// 				className="form-control"
+		// 				id="exampleDropdownFormPassword1"
+		// 				placeholder="Password"
+		// 			/>
+		// 		</div>
+		// 		<div className="form-group">
+		// 			<div className="form-check">
+		// 				<input type="checkbox" className="form-check-input" id="dropdownCheck" />
+		// 				<label className="form-check-label" htmlFor="dropdownCheck">
+		// 					Remember me
+		// 				</label>
+		// 			</div>
+		// 		</div>
+		// <button type="submit" className="btn btn-primary">
+		// 	Sign in
+		// </button>
+		// 	</form>
+		// 	<div className="dropdown-divider"></div>
+		// 	<a className="dropdown-item" href="#">
+		// 		New around here? Sign up
+		// 	</a>
+		// 	<a className="dropdown-item" href="#">
+		// 		Forgot password?
+		// 	</a>
+		// </div>
 	);
 };

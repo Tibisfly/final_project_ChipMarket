@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-bd6a8101-44e1-427c-8eef-22d39b528d93.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-a550d32a-7d97-4fc5-ac77-0a631b1b2277.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -20,6 +20,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 						email: data.email,
 						password: data.password,
 						username: data.username
+					}),
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*"
+					}
+				};
+				fetch(endpoint, config)
+					.then(response => {
+						console.log(response);
+						return response.json();
+					})
+					.then(json => {
+						console.log(json);
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			},
+			createCommerce(data) {
+				const endpoint = `${baseUrl}/commerces`;
+				const config = {
+					method: "POST",
+					mode: "no-cors",
+					body: JSON.stringify({
+						business_name: data.businessName,
+						street_name: data.streetName,
+						street_number: data.streetNumber,
+						title: data.title,
+						description: data.description,
+						city: data.city,
+						country: data.country,
+						zip_code: data.zipCode
 					}),
 					headers: {
 						"Content-Type": "application/json",
