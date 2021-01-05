@@ -29,8 +29,10 @@ def get_list_of(Models):
 
 def create_one(Models, required, types):
     payload = json.loads(request.data)
+    print("esto es el payload", payload)
     # payload = request.get_json()
     model = Models(**payload)
+    print("esto es model", model)
     
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
@@ -39,6 +41,7 @@ def create_one(Models, required, types):
     for field in required:
         if field not in payload or payload[field] is None:
             abort(400, "este es un mensaje en el error 400")
+
 
     db.session.add(model)
     db.session.commit()
@@ -157,7 +160,6 @@ def handle_delete_user(id):
 # ASOCIA EL USUARIO A UN NUEVO COMERCIO.
 @api.route('/commerces', methods=['POST'])
 def handle_create_commerce():
-    payload = request.get_json()
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description"]
     types = {
         "business_name": str,
@@ -240,13 +242,17 @@ def handle_delete_commerce(id):
 # Hay que hacer dos endpoints uno con commerce y otro con users.
 @api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
-    payload = json.loads(request.data)
-    post = Posts(**payload)
-        
-    db.session.add(post)
-    db.session.commit()
+    required = ["title", "description", "media_type", "media_url", "comments", "commerce_id"]
+    types = {
+        "commerce_id": int,
+        "media_type": str,
+        "media_url": str,
+        "comments": list,
+        "title": str,
+        "description": str
+    }
 
-    return jsonify(post.serialize()), 201
+    return create_one(Posts, required, types)
 
 #Obtener la lista de todos los posts = Posts de los Comerces que Users sigue :users/<int:user_id>/commerces/posts
 @api.route('users/<int:user_id>/feed', methods=['GET'])
