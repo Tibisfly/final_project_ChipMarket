@@ -70,6 +70,11 @@
 		]
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.32",
+		"@fortawesome/free-brands-svg-icons": "^5.15.1",
+		"@fortawesome/free-regular-svg-icons": "^5.15.1",
+		"@fortawesome/free-solid-svg-icons": "^5.15.1",
+		"@fortawesome/react-fontawesome": "^0.1.14",
 		"bootstrap": "^4.5.3",
 		"prop-types": "^15.7.2",
 		"react": "^16.14.0",
