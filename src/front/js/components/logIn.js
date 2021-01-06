@@ -51,7 +51,7 @@ export const LogIn = function(props) {
 						<div className="form-check">
 							<input type="checkbox" className="form-check-input" id="dropdownCheck" />
 							<label className="form-check-label" htmlFor="dropdownCheck">
-								Remember me
+								Recuérdame
 							</label>
 						</div>
 					</div>
@@ -60,9 +60,10 @@ export const LogIn = function(props) {
 					</button>
 				</form>
 				<br />
-				<Link to="/users">Nuevo por aquí?. Regístrate</Link>
+				<Link to="/users">Nuevo por aquí? Regístrate</Link>
+
 				<button type="button" className="btn btn-link" onClick={() => setState({ showModal: true })}>
-					¿Olvidó su contraseña?. Pinche aquí.
+					¿Olvidó su contraseña? Pinche aquí.
 				</button>
 
 				<ModalPassword show={state.showModal} onClose={() => setState({ showModal: false })} />
