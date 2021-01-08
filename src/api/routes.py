@@ -66,7 +66,7 @@ def update_one(Models, id, required, types):
             abort(400, "este es un mensaje en el error 400")
     
     for key, value in payload.items():
-        model.key = payload[key]
+        setattr(model, key, payload[key])
     # model.last_name = payload["last_name"]
     # model.email = payload["email"]
     # model.username = payload["username"]
@@ -116,12 +116,12 @@ def handle_create_user():
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
 def handle_update_user(id):
-    user = Users.query.filter_by(id=id, deleted_at=None).first()
+    # user = Users.query.filter_by(id=id, deleted_at=None).first()
 
-    if not user:
-        return "User not found", 404
+    # if not user:
+    #     return "User not found", 404
 
-    payload = request.get_json()
+    # payload = request.get_json()
 
     required = ["first_name", "last_name", "username", "email"]
     types = {
@@ -132,23 +132,24 @@ def handle_update_user(id):
         "password": str
     }
     
-    for key, value in payload.items():
-        if key in types and not isinstance(value, types[key]):
-            abort(400, f"{key} is not {types[key]}")
+    # for key, value in payload.items():
+    #     if key in types and not isinstance(value, types[key]):
+    #         abort(400, f"{key} is not {types[key]}")
 
-    for field in required:
-        if field not in payload or payload[field] is None:
-            abort(400, "este es un mensaje en el error 400")
+    # for field in required:
+    #     if field not in payload or payload[field] is None:
+    #         abort(400, "este es un mensaje en el error 400")
 
-    user.first_name = payload["first_name"]
-    user.last_name = payload["last_name"]
-    user.email = payload["email"]
-    user.username = payload["username"]
+    # user.first_name = payload["first_name"]
+    # user.last_name = payload["last_name"]
+    # user.email = payload["email"]
+    # user.username = payload["username"]
     
-    db.session.add(user)
-    db.session.commit()
+    # db.session.add(user)
+    # db.session.commit()
 
-    return jsonify(user.serialize()), 200
+    # return jsonify(user.serialize()), 200
+    return update_one(Users, id, required, types)
 
 #Borrar usuario.
 @api.route('/users/<int:id>', methods=['DELETE'])
@@ -186,12 +187,12 @@ def handle_get_commerce(id):
 #Se actualiza un comercio ya creado.
 @api.route('/commerces/<int:id>', methods=['PUT'])
 def handle_update_commerce(id):
-    commerce = Commerces.query.get(id)
+    # commerce = Commerces.query.get(id)
 
-    if not commerce:
-        return "Commerce not found", 404
+    # if not commerce:
+    #     return "Commerce not found", 404
 
-    payload = request.get_json()
+    # payload = request.get_json()
 
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description", "phone_number", "website"]
     types = {
@@ -207,29 +208,30 @@ def handle_update_commerce(id):
         "website": str
     }
    
-    for key, value in payload.items():
-        if key in types and not isinstance(value, types[key]):
-            abort(400, f"{key} is not {types[key]}")
+    # for key, value in payload.items():
+    #     if key in types and not isinstance(value, types[key]):
+    #         abort(400, f"{key} is not {types[key]}")
 
-    for field in required:
-        if field not in payload or payload[field] is None:
-            abort(400)
+    # for field in required:
+    #     if field not in payload or payload[field] is None:
+    #         abort(400)
 
-    commerce.business_name = payload["business_name"]
-    commerce.street_name = payload["street_name"]
-    commerce.street_number = payload["street_number"]
-    commerce.zip_code = payload["zip_code"]
-    commerce.city = payload["city"]
-    commerce.country = payload["country"]
-    commerce.title = payload["title"]
-    commerce.description = payload["description"]
-    commerce.phone_number = payload["phone_number"]
-    commerce.website = payload["website"]
+    # commerce.business_name = payload["business_name"]
+    # commerce.street_name = payload["street_name"]
+    # commerce.street_number = payload["street_number"]
+    # commerce.zip_code = payload["zip_code"]
+    # commerce.city = payload["city"]
+    # commerce.country = payload["country"]
+    # commerce.title = payload["title"]
+    # commerce.description = payload["description"]
+    # commerce.phone_number = payload["phone_number"]
+    # commerce.website = payload["website"]
     
-    db.session.add(commerce)
-    db.session.commit()
+    # db.session.add(commerce)
+    # db.session.commit()
 
-    return jsonify(commerce.serialize()), 200
+    # return jsonify(commerce.serialize()), 200
+    return update_one(Commerces, id, required, types)
 
 #Borrar un comercio.
 @api.route('/commerces/<int:id>', methods=['DELETE'])
