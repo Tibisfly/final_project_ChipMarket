@@ -15,6 +15,14 @@ export const ModalUpload = function(props) {
 				<div className="modal-content">
 					<div className="modal-header">
 						<h4 className="modal-title">Crear Post</h4>
+						<button
+							onClick={() => props.onClose()}
+							type="button"
+							className="close"
+							data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
 					<div>
 						<input method="post" name="text-post" size="50" width="100%" />
@@ -29,6 +37,7 @@ export const ModalUpload = function(props) {
 			            </button> */}
 						{/* </label> */}
 					</div>
+
 					<div className="modal-footer">
 						<button
 							type="button"
