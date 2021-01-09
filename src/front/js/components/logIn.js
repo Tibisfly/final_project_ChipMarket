@@ -49,7 +49,7 @@ export const LogIn = function(props) {
 						<div className="form-check">
 							<input type="checkbox" className="form-check-input" id="dropdownCheck" />
 							<label className="form-check-label" htmlFor="dropdownCheck">
-								Remember me
+								Recuérdame
 							</label>
 						</div>
 					</div>

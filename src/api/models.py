@@ -111,7 +111,7 @@ class Posts(db.Model):
     media_type=db.Column(db.String(10)) 
     media_url=db.Column(db.String(255)) 
     title = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.Text, nullable=True)
+    description = db.Column(db.String(500), nullable=True)
 
     commerce = db.relationship("Commerces")
     comments = db.relationship("Comments")
