@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ModalUpload } from "./modalUpload";
+import { ModalUpload } from "./modal-upload";
 
 export const Navbar = () => {
 	const [modal, setModal] = useState(false);

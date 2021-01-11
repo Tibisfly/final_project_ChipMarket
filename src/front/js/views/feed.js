@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import Card from "../components/card.js";
+import { Card } from "../components/card.js";
 import { Context } from "../store/appContext.js";
 
-export const Feed = function(props) {
+export const Feed = props => {
 	const params = useParams();
 	console.log(params);
 	console.log(props);
@@ -19,8 +19,8 @@ export const Feed = function(props) {
 	);
 };
 
-Feed.propTypes = {
-	children: PropTypes.any,
-	title: PropTypes.string,
-	active: PropTypes.bool
-};
+// Feed.propTypes = {
+// 	children: PropTypes.any,
+// 	// title: PropTypes.string,
+// 	// active: PropTypes.bool
+// };

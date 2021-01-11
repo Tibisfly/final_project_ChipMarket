@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Upbutton from "../components/upbutton.js";
+import { UpButton } from "./upbutton.js";
 import { Context } from "../store/appContext.js";
 
 export function Card(props) {
@@ -14,7 +14,7 @@ export function Card(props) {
 			<div className="card">
 				<img src={pathImg} className="card-img-top" alt="..." />
 				<div className="card-body">
-					<Upbutton />
+					<UpButton />
 
 					<div className="row justify-content-between" />
 				</div>
