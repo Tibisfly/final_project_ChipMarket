@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ModalUpload } from "./modalUpload";
 
 export const Navbar = () => {
@@ -11,9 +11,6 @@ export const Navbar = () => {
 				<span className="navbar-brand mb-0 h1">CHIPMARKET</span>
 			</Link>
 			<div className="ml-auto">
-				{/* <Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link> */}
 				<ModalUpload show={modal} onClose={() => setModal(false)} />
 			</div>
 			<button type="button" className="btn btn-link" onClick={() => setModal(true)}>

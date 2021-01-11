@@ -8,10 +8,13 @@ export const Feed = function(props) {
 	const params = useParams();
 	console.log(params);
 	console.log(props);
+
 	const { store, actions } = useContext(Context);
+
 	useEffect(() => {
 		actions.getFeedAsync();
 	}, []);
+
 	return (
 		<div className="post">
 			<Card />

@@ -87,9 +87,9 @@ export const Register = function(props) {
 					/>
 				</div>
 				<br />
-				<button type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
+				<Link to="/feed" type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
-				</button>
+				</Link>
 			</form>
 			<br />
 			<Link to="/commerces" type="button" className="btn btn-outline-dark">

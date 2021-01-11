@@ -8,9 +8,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { Register } from "./components/register";
-import { CommercesForm } from "./components/commercesForm";
-import { LogIn } from "./components/logIn";
+import { Register } from "./views/register";
+import { CommercesForm } from "./views/commerces-form";
+import { LogIn } from "./views/log-in";
 
 //create your first component
 const Layout = () => {
