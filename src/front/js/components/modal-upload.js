@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
-import { UpButton } from "./upbutton";
+import { UpButton } from "./up-button";
 
 //Cuando el usuario no tiene comercio no podrá añadir un post. Hacer un UseEffect con params.id para crear comercio si aun no ha hecho el "upgrade".
 

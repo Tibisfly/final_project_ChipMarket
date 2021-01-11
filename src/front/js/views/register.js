@@ -24,7 +24,7 @@ export const Register = function(props) {
 			username: username,
 			avatar: avatar
 		};
-
+		// cuando tenga en flux la funcion de ACTUALIZAR (PUT) hago aqui un if params.id
 		actions.createUser(data);
 	}
 	return (
