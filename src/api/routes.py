@@ -263,7 +263,7 @@ def handle_list_posts(user_id):
     commerce_ids = [f.commerce_id for f in follows] #forma de hacer un loop en una línea (pythonic)
     posts = Posts.query.filter(Posts.commerce_id.in_(commerce_ids)).order_by(Posts.updated_at.desc())
 
-    feed = [post.serialize() for post in posts] #un loop en una línea
+    feed = [post.serialize() for post in posts] 
 
     return jsonify(feed), 200
 

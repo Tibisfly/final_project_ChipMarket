@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
-import { ModalPassword } from "./modalPassword.js";
+import { ModalPassword } from "../components/modal-password.js";
 
 export const LogIn = function(props) {
 	const [email, setEmail] = useState("");

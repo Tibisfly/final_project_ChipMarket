@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
 
-// seguro que nos hacen reutilizar el form de Register, pero la verdad es que no se como hacerlo
-
 export const CommercesForm = function(props) {
 	const [businessName, setBusinessName] = useState("");
 	const [title, setTitle] = useState("");

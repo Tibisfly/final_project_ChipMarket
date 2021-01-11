@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-ad20bf71-6074-40b7-8231-ac646af9fcc4.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-c4d502f2-94b6-4071-b772-b60086883f92.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -84,6 +84,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(json => {
 						setStore({ users: json });
+					});
+			},
+			getOneUser(id) {
+				const endpoint = `${baseUrl}/users/${id}`;
+				const config = {
+					method: "GET"
+				};
+
+				return fetch(endpoint, config).then(response => {
+					return response.json();
+				});
+			},
+			getOneCommerce(id) {
+				const endpoint = `${baseUrl}/commerces/${id}`;
+				const config = {
+					method: "GET"
+				};
+
+				return fetch(endpoint, config).then(response => {
+					return response.json();
+				});
+			},
+			deleteCommerce() {
+				const endpoint = `${baseUrl}/commerces/${id}`;
+
+				const config = {
+					method: "DELETE"
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						return console.log(json());
 					});
 			},
 			// getFeed(id) {
