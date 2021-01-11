@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { UpButton } from "./upbutton";
 
+//Cuando el usuario no tiene comercio no podrá añadir un post. Hacer un UseEffect con params.id para crear comercio si aun no ha hecho el "upgrade".
+
 // seguro que nos hacen reutilizar el form de Register, pero la verdad es que no se como hacerlo
 
 export const ModalUpload = function(props) {
