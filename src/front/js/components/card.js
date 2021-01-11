@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Upbutton from "../components/upbutton.js";
 import { Context } from "../store/appContext.js";
 
-export default function Card(props) {
+export function Card(props) {
 	const { store, actions } = useContext(Context);
 
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);

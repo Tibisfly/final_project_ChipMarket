@@ -7,9 +7,7 @@ import { ModalPassword } from "./modalPassword.js";
 export const LogIn = function(props) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [state, setState] = useState({
-		showModal: false
-	});
+	const [modal, setModal] = useState(false);
 
 	return (
 		<div className="container">
@@ -60,13 +58,12 @@ export const LogIn = function(props) {
 					</button>
 				</form>
 				<br />
-				<Link to="/users">Nuevo por aquí? Regístrate</Link>
-
-				<button type="button" className="btn btn-link" onClick={() => setState({ showModal: true })}>
-					¿Olvidó su contraseña? Pinche aquí.
+				<Link to="/users">Nuevo por aquí?. Regístrate</Link>
+				<button type="button" className="btn btn-link" onClick={() => setModal(true)}>
+					¿Olvidó su contraseña?. Pinche aquí.
 				</button>
 
-				<ModalPassword show={state.showModal} onClose={() => setState({ showModal: false })} />
+				<ModalPassword show={modal} onClose={() => setModal(false)} />
 			</div>
 		</div>
 	);
