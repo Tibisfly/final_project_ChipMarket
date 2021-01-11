@@ -9,6 +9,15 @@ export const LogIn = function(props) {
 	const [password, setPassword] = useState("");
 	const [modal, setModal] = useState(false);
 
+	function handleSubmit() {
+		const data = {
+			email: email,
+			password: password
+		};
+
+		console.log(data);
+	}
+
 	return (
 		<div className="container">
 			<h1 className="display-3 text-center">Entra a ChipMarket</h1>
@@ -21,7 +30,7 @@ export const LogIn = function(props) {
 						</label>
 						<div className="col-sm-10">
 							<input
-								type="text"
+								type="email"
 								className="form-control-plaintext"
 								id="staticEmail"
 								value={email}
@@ -53,9 +62,9 @@ export const LogIn = function(props) {
 							</label>
 						</div>
 					</div>
-					<button type="submit" className="btn btn-dark">
+					<Link to="/feed/:id" type="button" className="btn btn-dark" onClick={() => handleSubmit()}>
 						Entrar
-					</button>
+					</Link>
 				</form>
 				<br />
 				<Link to="/users">Nuevo por aquí?. Regístrate</Link>

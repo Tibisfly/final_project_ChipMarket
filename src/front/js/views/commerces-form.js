@@ -75,7 +75,8 @@ export const CommercesForm = function(props) {
 						id="description"
 						rows="3"
 						value={description}
-						onChange={event => setDescription(event.target.value)}></textarea>
+						onChange={event => setDescription(event.target.value)}
+					/>
 				</div>
 				<div className="form-group">
 					<label htmlFor="inputCountry">País</label>

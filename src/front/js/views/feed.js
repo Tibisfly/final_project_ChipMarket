@@ -17,7 +17,22 @@ export const Feed = props => {
 
 	return (
 		<div className="post">
-			<Card />
+			<Card
+				title="vendo pelo quemado"
+				description="este pelo viene de una fina pela espectacular"
+				media_type=""
+				media_url=""
+				business_name="PRUEBA"
+				expired_at="por ahora un string, pero aqui va la fecha de expiracion"
+			/>
+			<Card
+				title="vendo pelo quemado"
+				description="este pelo viene de una fina pela espectacular"
+				media_type=""
+				media_url=""
+				business_name="PRUEBA"
+				expired_at="por ahora un string, pero aqui va la fecha de expiracion"
+			/>
 		</div>
 	);
 };

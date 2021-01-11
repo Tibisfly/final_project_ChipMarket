@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./components/scrollToTop";
+import ScrollToTop from "./components/scroll-to-top";
 
 import { Home } from "./views/home";
 import { Feed } from "./views/feed";
