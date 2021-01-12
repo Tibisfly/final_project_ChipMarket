@@ -6,8 +6,6 @@ import { Context } from "../store/appContext.js";
 
 export const Feed = props => {
 	const params = useParams();
-	console.log(params);
-	console.log(props);
 
 	const { store, actions } = useContext(Context);
 
@@ -24,7 +22,22 @@ export const Feed = props => {
 				media_url=""
 				business_name="PRUEBA"
 				expired_at="por ahora un string, pero aqui va la fecha de expiracion"
+				comments={["esto es un array de comentarios", "esto es otro comentario dentro de un aerray"]}
 			/>
+			{/* {store.feed.map((element, index) => {
+                    console.log(element); recuerda que fuera return
+                    return (
+                        <Card
+                            title={element.title}
+                            description={element.description}
+                            media_type=""
+                            media_url=""
+                            business_name="PRUEBA"
+                            expired_at="por ahora un string, pero aqui va la fecha de expiracion"
+                            comments= {element.comments}
+                        />
+                    );
+                })} */}
 			<Card
 				title="vendo pelo quemado"
 				description="este pelo viene de una fina pela espectacular"
@@ -32,6 +45,7 @@ export const Feed = props => {
 				media_url=""
 				business_name="PRUEBA"
 				expired_at="por ahora un string, pero aqui va la fecha de expiracion"
+				comments={["esto es un array de comentarios", "esto es otro comentario dentro de un aerray"]}
 			/>
 		</div>
 	);

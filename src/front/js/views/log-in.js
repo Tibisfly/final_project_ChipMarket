@@ -62,7 +62,7 @@ export const LogIn = function(props) {
 							</label>
 						</div>
 					</div>
-					<Link to="/feed/:id" type="button" className="btn btn-dark" onClick={() => handleSubmit()}>
+					<Link to="/feed" type="button" className="btn btn-dark" onClick={() => handleSubmit()}>
 						Entrar
 					</Link>
 				</form>

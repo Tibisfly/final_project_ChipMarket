@@ -71,21 +71,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
-			getAllUsers() {
-				const store = setStore();
+			// getAllUsers() {
+			// 	const store = setStore();
 
-				const endpoint = `${baseUrl}/users`;
-				const config = {
-					method: "GET"
-				};
-				fetch(endpoint, config)
-					.then(response => {
-						return response.json();
-					})
-					.then(json => {
-						setStore({ users: json });
-					});
-			},
+			// 	const endpoint = `${baseUrl}/users`;
+			// 	const config = {
+			// 		method: "GET"
+			// 	};
+			// 	fetch(endpoint, config)
+			// 		.then(response => {
+			// 			return response.json();
+			// 		})
+			// 		.then(json => {
+			// 			setStore({ users: json });
+			// 		});
+			//creo que no lo necesitamos en el front. Para qué? },
 			getOneUser(id) {
 				const endpoint = `${baseUrl}/users/${id}`;
 				const config = {
