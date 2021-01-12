@@ -13,6 +13,12 @@ export const Navbar = () => {
 			<div className="ml-auto">
 				<ModalUpload show={modal} onClose={() => setModal(false)} />
 			</div>
+			<form className="d-flex">
+				<input className="form-control me-2 " type="search" placeholder="Search" aria-label="Search" />
+				<button className="btn btn-outline-primary" type="submit">
+					Search
+				</button>
+			</form>
 			<button type="button" className="btn btn-link" onClick={() => setModal(true)}>
 				<i className="fas fa-plus" />
 			</button>
