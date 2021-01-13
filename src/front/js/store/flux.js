@@ -36,6 +36,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
+            },
+            LogIn(data) {
+				const endpoint = `${baseUrl}/login`;
+				const config = {
+					method: "POST",
+					body: JSON.stringify({
+					
+						email: data.email,
+						password: data.password,
+						
+					}),
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*"
+					}
+				};
+				fetch(endpoint, config)
+					.then(response => {
+						console.log(response);
+						return response.json();
+					})
+					.then(json => {
+						console.log(json);
+					})
+					.catch(error => {
+						console.log(error);
+					});
 			},
 			createCommerce(data) {
 				const endpoint = `${baseUrl}/commerces`;
