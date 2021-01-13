@@ -5,7 +5,7 @@ import ScrollToTop from "./components/scroll-to-top";
 import { Home } from "./views/home";
 import { Feed } from "./views/feed";
 import injectContext from "./store/appContext";
-
+import { Profile } from "./views/profile";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
