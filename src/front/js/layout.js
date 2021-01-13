@@ -5,7 +5,7 @@ import ScrollToTop from "./components/scroll-to-top";
 import { Home } from "./views/home";
 import { Feed } from "./views/feed";
 import injectContext from "./store/appContext";
-
+import { Profile } from "./views/profiles";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
@@ -35,6 +35,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/users/:id">
 							<Register />
+						</Route>
+						<Route exact path="/profiles">
+							<Profile />
 						</Route>
 						<Route exact path="/commerces">
 							<CommercesForm />
