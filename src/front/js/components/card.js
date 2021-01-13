@@ -6,11 +6,20 @@ import { Context } from "../store/appContext.js";
 
 export function Card(props) {
 	const { store, actions } = useContext(Context);
-	const [comments, setComment] = useState("");
+	const [newComment, setNewComment] = useState([""]);
 
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);
 	let pathImg = "https://picsum.photos/400/200?random=" + imgRandom;
 
+	console.log("primer console.log", props.comments);
+	const comments = props.comments.map((comment, index) => {
+		console.log("esto es un solo comentarios", comment);
+		return (
+			<li className="list-group-item" key={index}>
+				{comment}
+			</li>
+		);
+	});
 	return (
 		<div className="container">
 			<div className="card-body">
@@ -22,11 +31,7 @@ export function Card(props) {
 					<span className="card-text">{props.expired_at}</span>
 					<p className="card-text">{props.description}</p>
 					<div className="card-comments-post">
-						<ul className="list-group list-group-flush">
-							<li className="list-group-item">Un comentario</li>
-							<li className="list-group-item">Otro comentario</li>
-							<li className="list-group-item">Tercer comentario</li>
-						</ul>
+						<ul className="list-group list-group-flush">{comments}</ul>
 					</div>
 					<div className="form-group">
 						<label htmlFor="comments">Comentarios:</label>
@@ -34,10 +39,10 @@ export function Card(props) {
 							className="form-control"
 							id="comments"
 							rows="3"
-							value={comments}
-							onChange={event => setComment(event.target.value)}></textarea>
+							value={newComment}
+							onChange={event => setNewComment(event.target.value)}></textarea>
 						<button type="button" className="btn btn-primary">
-							Añadir
+							Añadir, onClick y hacer la funcion de flux con console.log por ahora.
 						</button>
 					</div>
 					{/* <div className="row justify-content-between" /> */}
@@ -53,5 +58,6 @@ Card.propTypes = {
 	media_type: PropTypes.string,
 	media_url: PropTypes.string,
 	business_name: PropTypes.string,
-	expired_at: PropTypes.string
+	expired_at: PropTypes.string,
+	comments: PropTypes.array
 };
