@@ -4,9 +4,13 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint, abort
 from api.models import db, Users, Commerces, Followers, Likes, Comments, Posts
 from api.utils import generate_sitemap, APIException
+import hashlib
+import hmac
 import json, datetime
 
 api = Blueprint( 'api', __name__)
+
+MAC = 'SPAkdj892ARHSZgVKTct9fJSZbxw8Y3zt'
 
 def get_one_or_error_404(Models, id):
     row = models.query.get(id)
@@ -111,7 +115,31 @@ def handle_create_user():
         "email": str,
         "password": str
     }
-    return create_one(Users, required, types)
+    # return create_one(Users, required, types)
+    
+
+#Log in del usuario ya creado.
+@api.route('/login', methods=['POST'])
+def login():
+    payload = request_get_json()
+    email = payload['email']
+    password = payload ['password']
+
+    user = Users.query.filter_by(email=email, deleted_at=None).first()
+
+    if not user:
+        return 'Not allow to access', 403
+
+    key = MAC.encode('utf-8')
+    msg = password
+    algo = haslib.sha512
+
+    hashed_password = hmac.new(key, msg, algo).hexdigest()
+
+    if hashed_password != user.password:
+        return 'Not allow to access', 403
+    
+    return jsonify(model.serialize()), 201
  
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
