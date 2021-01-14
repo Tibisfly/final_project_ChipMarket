@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-c4d502f2-94b6-4071-b772-b60086883f92.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3000-deb9554a-d555-4392-9396-5948c120b67c.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -36,16 +36,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
-            },
-            LogIn(data) {
+			},
+			LogIn(data) {
 				const endpoint = `${baseUrl}/login`;
 				const config = {
 					method: "POST",
 					body: JSON.stringify({
-					
 						email: data.email,
-						password: data.password,
-						
+						password: data.password
 					}),
 					headers: {
 						"Content-Type": "application/json",
