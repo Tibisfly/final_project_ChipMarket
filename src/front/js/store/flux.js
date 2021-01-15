@@ -36,6 +36,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
+            },
+            updateUser(data,id) {
+                const state = getState()
+				const endpoint = `${baseUrl}/users${id}`;
+				const config = {
+					method: "PUT",
+					body: JSON.stringify({
+						first_name: data.firstName,
+						last_name: data.lastName,
+						username: data.username
+					}),
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*"
+					}
+				};
+				fetch(endpoint, config)
+					.then(response => {
+						console.log(response);
+						return response.json();
+					})
+					.then(json => {
+						state.setStore(store.users);
+					})
+					.catch(error => {
+						console.log(error);
+					});
 			},
 			LogIn(data) {
 				const endpoint = `${baseUrl}/login`;

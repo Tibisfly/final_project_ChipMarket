@@ -28,7 +28,7 @@ export const Register = function(props) {
 		actions.createUser(data);
 	}
 	return (
-		<div className="container">
+		<div className="container-fluid">
 			<h1>{params.id ? "Actualizar usuario" : "Crear usuario"} </h1>
 			<form>
 				<div className="form-group">
@@ -87,7 +87,7 @@ export const Register = function(props) {
 					/>
 				</div>
 				<br />
-				<Link to="/feed" type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
+				<Link to="/feed" type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
 				</Link>
 			</form>
