@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3000-deb9554a-d555-4392-9396-5948c120b67c.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-f36ac933-2712-4800-98a0-26bbdd047064.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -20,6 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: data.password,
 						username: data.username
 					}),
+
 					headers: {
 						"Content-Type": "application/json",
 						"Access-Control-Allow-Origin": "*"
@@ -36,9 +37,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
-            },
-            updateUser(data,id) {
-                const state = getState()
+			},
+			updateUser(data, id) {
+				const state = getState();
 				const endpoint = `${baseUrl}/users${id}`;
 				const config = {
 					method: "PUT",
