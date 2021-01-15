@@ -24,11 +24,64 @@ export const LogIn = function(props) {
 			<section>
 				<div className="row g-0">
 					<div className="col-lg-7">
-						<></>
+						<>
+							<div
+								id="carouselExampleDark"
+								className="carousel carousel-dark slide"
+								data-bs-ride="carousel">
+								<ol className="carousel-indicators">
+									<li
+										data-bs-target="#carouselExampleDark"
+										data-bs-slide-to="0"
+										className="active"></li>
+									<li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
+								</ol>
+								<div className="carousel-inner">
+									<div className="carousel-item active">
+										<img
+											src="https://images.unsplash.com/photo-1555421689-491a97ff2040?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzJ8fGVjb21tZXJjZSUyMDEwNTB4OTYwJTIwcHh8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+											className="d-block w-100"
+											alt="..."
+										/>
+										<div className="carousel-caption d-none d-md-block">
+											<h5>First slide label</h5>
+											<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+										</div>
+									</div>
+									<div className="carousel-item">
+										<img
+											src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDV8fHNob3BwaW5nJTIwLmpwZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+											className="d-block w-100 "
+											alt="..."
+										/>
+										<div className="carousel-caption d-none d-md-block">
+											<h5>Second slide label</h5>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+										</div>
+									</div>
+								</div>
+								<a
+									className="carousel-control-prev"
+									href="#carouselExampleDark"
+									role="button"
+									data-bs-slide="prev">
+									<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span className="visually-hidden">Previous</span>
+								</a>
+								<a
+									className="carousel-control-next"
+									href="#carouselExampleDark"
+									role="button"
+									data-bs-slide="next">
+									<span className="carousel-control-next-icon" aria-hidden="true"></span>
+									<span className="visually-hidden">Next</span>
+								</a>
+							</div>
+						</>
 					</div>
 
-					<div className="col-lg-5 mb-4">
-						<div className="logo-login px-lg-5 pt-lg-4 pb-lg-3 p-4 d-flex">
+					<div className="col-lg-5 d-flex flex-column align-items-end min-vh-100">
+						<div className="logo-login px-lg-5 pt-lg-4 pb-lg-3 p-4 d-flex w-100">
 							<img
 								className="logo-login"
 								width="70"
@@ -37,8 +90,8 @@ export const LogIn = function(props) {
 							<h2 className="align-self-center">ChipMarket</h2>
 						</div>
 						<hr />
-						<div className="divider bg-warning"></div>
-						<div className="title-login px-lg-5 py-lg-4 p-4 mt-4">
+
+						<div className="title-login px-lg-5 py-lg-4 p-4 mt-4 w-100">
 							<h1 className="mb-4 font-weight-bold">Bienvenido ChipAddict</h1>
 
 							<form>
@@ -71,7 +124,7 @@ export const LogIn = function(props) {
 								</div>
 								<button
 									type="button"
-									className="btn btn-link text-muted text-decoration-none my-2"
+									className="btn btn-link text-muted my-2"
 									onClick={() => setModal(true)}>
 									¿Olvidó su contraseña?. Pinche aquí.
 								</button>
@@ -91,9 +144,9 @@ export const LogIn = function(props) {
 									Iniciar Sesión
 								</Link>
 							</form>
-							<div className="btn btn-link  text-end">
-								<Link to="/users" style={{ textDecoration: "none", color: "success" }}>
-									¿Nuevo en ChipMarket? Pincha aquí
+							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">
+								<Link to="/users" style={{ textDecoration: "none", color: "green" }}>
+									¿Todavía no tienes cuenta? Pincha aquí y únete.
 								</Link>
 							</div>
 						</div>
