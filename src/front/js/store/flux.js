@@ -36,16 +36,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
-            },
-            LogIn(data) {
+			},
+			LogIn(data) {
 				const endpoint = `${baseUrl}/login`;
 				const config = {
 					method: "POST",
 					body: JSON.stringify({
-					
 						email: data.email,
-						password: data.password,
-						
+						password: data.password
 					}),
 					headers: {
 						"Content-Type": "application/json",
