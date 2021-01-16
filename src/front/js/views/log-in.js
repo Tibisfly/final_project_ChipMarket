@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { ModalPassword } from "../components/modal-password.js";
 import "../../styles/forms.scss";
 
 export const LogIn = function(props) {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("rodrike90@mgail.com");
+	const [password, setPassword] = useState("1234");
 	const [modal, setModal] = useState(false);
+	const history = useHistory();
 
 	function handleSubmit() {
 		const data = {
@@ -16,7 +18,9 @@ export const LogIn = function(props) {
 			password: password
 		};
 
-		console.log(data);
+		actions.LogIn(data, () => {
+			history.push("/feed");
+		});
 	}
 
 	return (
@@ -136,13 +140,12 @@ export const LogIn = function(props) {
 										</label>
 									</div>
 								</div>
-								<Link
-									to="/feed"
+								<button
 									type="button"
 									className="btn btn-success w-100 mb-4"
 									onClick={() => handleSubmit()}>
 									Iniciar Sesión
-								</Link>
+								</button>
 							</form>
 							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">
 								<Link to="/users" style={{ textDecoration: "none", color: "green" }}>

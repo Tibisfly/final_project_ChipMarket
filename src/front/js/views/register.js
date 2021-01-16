@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 
 export const Register = function(props) {
+	const { store, actions } = useContext(Context);
+
 	// const [firstName, setFirstName] = useState("");
 	// const [lastName, setLastName] = useState("");
 	// const [email, setEmail] = useState("");
@@ -19,8 +21,6 @@ export const Register = function(props) {
 	const [avatar, setAvatar] = useState("");
 
 	const params = useParams();
-
-	const { store, actions } = useContext(Context);
 
 	function handleSubmit() {
 		const data = {

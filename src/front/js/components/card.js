@@ -11,9 +11,9 @@ export function Card(props) {
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);
 	let pathImg = "https://picsum.photos/400/200?random=" + imgRandom;
 
-	console.log("primer console.log", props.comments);
+	// console.log("primer console.log", props.comments);
 	const comments = props.comments.map((comment, index) => {
-		console.log("esto es un solo comentarios", comment);
+		// console.log("esto es un solo comentarios", comment);
 		return (
 			<li className="list-group-item" key={index}>
 				{comment}

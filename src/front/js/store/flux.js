@@ -1,12 +1,13 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-f36ac933-2712-4800-98a0-26bbdd047064.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-d926ec90-50cf-447a-9841-b879f415a9ec.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			users: [],
+			user: [],
 			posts: [],
-			feed: []
+			feed: [],
+			token: null
 		},
 		actions: {
 			createUser(data) {
@@ -65,7 +66,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
-			LogIn(data) {
+
+			LogIn(data, callback) {
 				const endpoint = `${baseUrl}/login`;
 				const config = {
 					method: "POST",
@@ -80,36 +82,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetch(endpoint, config)
 					.then(response => {
-						console.log(response);
 						return response.json();
 					})
 					.then(json => {
-						console.log(json);
-					})
-					.catch(error => {
-						console.log(error);
-					});
-			},
-			LogIn(data) {
-				const endpoint = `${baseUrl}/login`;
-				const config = {
-					method: "POST",
-					body: JSON.stringify({
-						email: data.email,
-						password: data.password
-					}),
-					headers: {
-						"Content-Type": "application/json",
-						"Access-Control-Allow-Origin": "*"
-					}
-				};
-				fetch(endpoint, config)
-					.then(response => {
-						console.log(response);
-						return response.json();
-					})
-					.then(json => {
-						console.log(json);
+						setStore({ token: json });
+						callback();
+						// getActions().getOneUser();
 					})
 					.catch(error => {
 						console.log(error);
@@ -164,15 +142,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 			setStore({ users: json });
 			// 		});
 			//creo que no lo necesitamos en el front. Para qué? },
-			getOneUser(id) {
-				const endpoint = `${baseUrl}/users/${id}`;
+			getOneUser() {
+				const store = getStore();
+				console.log(store.token, "Esto es un string");
+				const endpoint = `${baseUrl}/users`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
 				const config = {
+					headers: headers,
 					method: "GET"
 				};
 
-				return fetch(endpoint, config).then(response => {
-					return response.json();
-				});
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ user: json });
+					});
 			},
 			getOneCommerce(id) {
 				const endpoint = `${baseUrl}/commerces/${id}`;
