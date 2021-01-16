@@ -4,11 +4,18 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 
 export const Register = function(props) {
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [username, setUsername] = useState("");
+	// const [firstName, setFirstName] = useState("");
+	// const [lastName, setLastName] = useState("");
+	// const [email, setEmail] = useState("");
+	// const [password, setPassword] = useState("");
+	// const [username, setUsername] = useState("");
+	// const [avatar, setAvatar] = useState("");
+
+	const [firstName, setFirstName] = useState("Enrique");
+	const [lastName, setLastName] = useState("Rodriguez");
+	const [email, setEmail] = useState("rodrike90@mgail.com");
+	const [password, setPassword] = useState("1234");
+	const [username, setUsername] = useState("rodrike90");
 	const [avatar, setAvatar] = useState("");
 
 	const params = useParams();

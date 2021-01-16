@@ -6,11 +6,13 @@ from api.models import db, Users, Commerces, Followers, Likes, Comments, Posts
 from api.utils import generate_sitemap, APIException
 import hashlib
 import hmac
+import jwt
 import json, datetime
 
 api = Blueprint( 'api', __name__)
 
 MAC = 'SPAkdj892ARHSZgVKTct9fJSZbxw8Y3zt'
+JWT_SECRET = 'FtvZjNnBWRaGaErzdFaQU5W9yMcVdWTd'
 
 def get_one_or_error_404(Models, id):
     row = models.query.get(id)
@@ -31,12 +33,11 @@ def get_list_of(Models):
     
     return jsonify(list_models), 200
 
-def create_one(Models, required, types):
-    payload = json.loads(request.data)
+def create_one(Model, required, types, payload=None):
+    # payload = json.loads(request.data)
+    payload = payload or request.get_json()
     print("esto es el payload", payload)
-    # payload = request.get_json()
-    model = Models(**payload)
-    print("esto es model", model)
+    
     
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
@@ -46,7 +47,7 @@ def create_one(Models, required, types):
         if field not in payload or payload[field] is None:
             abort(400, "este es un mensaje en el error 400")
 
-
+    model = Model(**payload)
     db.session.add(model)
     db.session.commit()
 
@@ -115,13 +116,26 @@ def handle_create_user():
         "email": str,
         "password": str
     }
-    # return create_one(Users, required, types)
+    payload = request.get_json()
+    # payload = json.loads(request.data)
+    # print(payload)
+    key = MAC.encode('utf-8')
+    msg = payload['password'].encode('utf-8')
+    algo = hashlib.sha512
+
+    
+    payload['password'] = hmac.new(key, msg, algo).hexdigest()
+
+   
+
+    # return '', 200
+    return create_one(Users, required, types, payload)
     
 
 #Log in del usuario ya creado.
 @api.route('/login', methods=['POST'])
 def login():
-    payload = request_get_json()
+    payload = request.get_json()
     email = payload['email']
     password = payload ['password']
 
@@ -131,15 +145,39 @@ def login():
         return 'Not allow to access', 403
 
     key = MAC.encode('utf-8')
-    msg = password
-    algo = haslib.sha512
+    msg = password.encode('utf-8')
+    algo = hashlib.sha512
 
     hashed_password = hmac.new(key, msg, algo).hexdigest()
 
     if hashed_password != user.password:
         return 'Not allow to access', 403
     
-    return jsonify(model.serialize()), 201
+    payload = {'sub': email}
+    secret = JWT_SECRET.encode('utf-8')
+    algo="HS256"
+
+    token = jwt.encode(payload, secret, algorithm=algo)
+
+    return jsonify(token), 201
+
+def authorized_user():
+
+    authorization = request.headers.get('Authorization')
+
+    if not authorization:
+        abort (403)
+
+    token = authorization [7:]
+    secret = JWTT_SECRET.encode('utf-8')
+    algo ="HS256"
+
+    payload = jwt.decode(token, secret, algorithms = [algo])
+    user = Users.query.filter_by(email = payload['sub'], deleted_at=None).first()
+
+    return user
+
+
  
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
@@ -183,6 +221,14 @@ def handle_update_user(id):
 @api.route('/users/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
     return delete_one(Users, id)
+
+
+
+@api.route('/test', methods=['GET'])
+def test():
+    user = authorized_user()
+
+    return jsonify(user.serialize()), 200
 
 ################################## COMMERCES #########################################
 #Creación del commerce

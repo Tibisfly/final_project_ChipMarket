@@ -9,9 +9,9 @@ export const Feed = props => {
 
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.getFeedAsync();
-	}, []);
+	// useEffect(() => {
+	// 	actions.getFeedAsync();
+	// }, []);
 
 	return (
 		<div className="post">
