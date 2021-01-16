@@ -96,14 +96,15 @@ def delete_one(Models, id):
 
 ################################## USERS #########################################
 #Devuelve la lista de todos los usuarios.
-@api.route('/users', methods=['GET'])
-def handle_list_users():
-    return get_list_of(Users)
+# @api.route('/users', methods=['GET'])
+# def handle_list_users():
+#     return get_list_of(Users)
 
 #Devuelve el usuario que se busca.
-@api.route('/users/<int:id>', methods=['GET'])
-def handle_get_user(id):
-    return get_one_or_error_404(Users, id)
+@api.route('/users', methods=['GET'])
+def handle_get_user():
+    user = authorized_user()
+    return jsonify(user.serialize()), 200
 
 #Se crea un usario nuevo o cualquier cosa nueva que se añada en la base de datos. 
 @api.route('/users', methods=['POST'])
@@ -125,6 +126,7 @@ def handle_create_user():
 
     
     payload['password'] = hmac.new(key, msg, algo).hexdigest()
+
 
    
 
@@ -164,15 +166,16 @@ def login():
 def authorized_user():
 
     authorization = request.headers.get('Authorization')
-
+    print(authorization)
+    
     if not authorization:
         abort (403)
 
     token = authorization [7:]
-    secret = JWTT_SECRET.encode('utf-8')
+    secret = JWT_SECRET.encode('utf-8')
     algo ="HS256"
 
-    payload = jwt.decode(token, secret, algorithms = [algo])
+    payload = jwt.decode(token, secret, algorithms = algo)
     user = Users.query.filter_by(email = payload['sub'], deleted_at=None).first()
 
     return user
@@ -454,9 +457,13 @@ def handle_likes():
     return jsonify(likes.serialize()), 201
 
 #Obtener la lista de likes (queremos que esto se vea?), no se si el id debe ser el mismo de arriba
-@api.route('/users/<int:user_id>/likes', methods=['GET'])
-def handle_list_of_likes(user_id):
-    
+@api.route('/users/likes', methods=['GET'])
+def handle_list_of_likes():
+
+    user = authorized_user()
+    # if not user:
+    #     abort (403)
+    user_id = user.id
     likes = Likes.query.filter_by(user_id = user_id, deleted_at=None)
     like = []
     
