@@ -32,7 +32,10 @@ export const Register = function(props) {
 			avatar: avatar
 		};
 		// cuando tenga en flux la funcion de ACTUALIZAR (PUT) hago aqui un if params.id
-		actions.createUser(data);
+		// if params.id:
+		//     actions.updateUser(data)
+		// else:
+		//     actions.createUser(data);
 	}
 	return (
 		<div className="container-fluid">

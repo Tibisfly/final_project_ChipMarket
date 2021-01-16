@@ -7,7 +7,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container-fluid">
+		<div className="container">
 			<div className="text-center mt-5">
 				<h1>Bienvenido a Chip Market, este es el home</h1>
 			</div>
