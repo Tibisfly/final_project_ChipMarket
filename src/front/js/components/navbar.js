@@ -15,16 +15,21 @@ export const Navbar = () => {
 						<img
 							className="logo-login m-4"
 							width="70"
-							src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
+							// src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
+							src="./img/ChipMarket.jpg"
 						/>
 					</Link>
 
 					<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 							<li className="nav-item">
-								<a className="nav-link active font-weight-bold" aria-current="page" href="/about-us">
-									About ChipMarket
-								</a>
+								<Link
+									to="/about-us"
+									className="nav-link active font-weight-bold"
+									aria-current="page"
+									href="/about-us">
+									About Us
+								</Link>
 							</li>
 							<li className="nav-item">
 								<a

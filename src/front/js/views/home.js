@@ -20,10 +20,10 @@ export const Home = () => {
 						interval="5000"
 						pause="hover"
 						className="active"></li>
-					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" interval="5000">
+					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1">
 						Prueba de texto 1
 					</li>
-					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" interval="5000"></li>
+					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
 				</ol>
 				<div className="carousel-inner">
 					<div className="carousel-item active">
