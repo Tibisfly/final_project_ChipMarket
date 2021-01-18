@@ -1,13 +1,18 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import hashlib
+import hmac
+
+import jwt
+
+import json, datetime
+
 from flask import Flask, request, jsonify, url_for, Blueprint, abort
 from api.models import db, Users, Commerces, Followers, Likes, Comments, Posts
 from api.utils import generate_sitemap, APIException
-import hashlib
-import hmac
-import jwt
-import json, datetime
+
+
 
 api = Blueprint( 'api', __name__)
 
@@ -34,7 +39,6 @@ def get_list_of(Models):
     return jsonify(list_models), 200
 
 def create_one(Model, required, types, payload=None):
-    # payload = json.loads(request.data)
     payload = payload or request.get_json()
     print("esto es el payload", payload)
     
@@ -95,11 +99,6 @@ def delete_one(Models, id):
     return jsonify("This user has been eliminated successfully", data), 200
 
 ################################## USERS #########################################
-#Devuelve la lista de todos los usuarios.
-# @api.route('/users', methods=['GET'])
-# def handle_list_users():
-#     return get_list_of(Users)
-
 #Devuelve el usuario que se busca.
 @api.route('/users', methods=['GET'])
 def handle_get_user():
@@ -118,19 +117,13 @@ def handle_create_user():
         "password": str
     }
     payload = request.get_json()
-    # payload = json.loads(request.data)
-    # print(payload)
+
     key = MAC.encode('utf-8')
     msg = payload['password'].encode('utf-8')
     algo = hashlib.sha512
 
-    
     payload['password'] = hmac.new(key, msg, algo).hexdigest()
 
-
-   
-
-    # return '', 200
     return create_one(Users, required, types, payload)
     
 
@@ -138,6 +131,7 @@ def handle_create_user():
 @api.route('/login', methods=['POST'])
 def login():
     payload = request.get_json()
+    
     email = payload['email']
     password = payload ['password']
 
@@ -161,12 +155,15 @@ def login():
 
     token = jwt.encode(payload, secret, algorithm=algo)
 
+    print("este es el token del back", token)
+
     return jsonify(token), 201
+    
 
 def authorized_user():
 
     authorization = request.headers.get('Authorization')
-    print(authorization)
+    print("esto es el authorizaton", authorization)
     
     if not authorization:
         abort (403)
@@ -180,18 +177,10 @@ def authorized_user():
 
     return user
 
-
  
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
 def handle_update_user(id):
-    # user = Users.query.filter_by(id=id, deleted_at=None).first()
-
-    # if not user:
-    #     return "User not found", 404
-
-    # payload = request.get_json()
-
     required = ["first_name", "last_name", "username", "email"]
     types = {
         "first_name": str,
@@ -200,24 +189,7 @@ def handle_update_user(id):
         "email": str,
         "password": str
     }
-    
-    # for key, value in payload.items():
-    #     if key in types and not isinstance(value, types[key]):
-    #         abort(400, f"{key} is not {types[key]}")
 
-    # for field in required:
-    #     if field not in payload or payload[field] is None:
-    #         abort(400, "este es un mensaje en el error 400")
-
-    # user.first_name = payload["first_name"]
-    # user.last_name = payload["last_name"]
-    # user.email = payload["email"]
-    # user.username = payload["username"]
-    
-    # db.session.add(user)
-    # db.session.commit()
-
-    # return jsonify(user.serialize()), 200
     return update_one(Users, id, required, types)
 
 #Borrar usuario.
@@ -264,13 +236,6 @@ def handle_get_commerce(id):
 #Se actualiza un comercio ya creado.
 @api.route('/commerces/<int:id>', methods=['PUT'])
 def handle_update_commerce(id):
-    # commerce = Commerces.query.get(id)
-
-    # if not commerce:
-    #     return "Commerce not found", 404
-
-    # payload = request.get_json()
-
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description", "phone_number", "website"]
     types = {
         "business_name": str,
@@ -284,30 +249,7 @@ def handle_update_commerce(id):
         "phone_number": str,
         "website": str
     }
-   
-    # for key, value in payload.items():
-    #     if key in types and not isinstance(value, types[key]):
-    #         abort(400, f"{key} is not {types[key]}")
 
-    # for field in required:
-    #     if field not in payload or payload[field] is None:
-    #         abort(400)
-
-    # commerce.business_name = payload["business_name"]
-    # commerce.street_name = payload["street_name"]
-    # commerce.street_number = payload["street_number"]
-    # commerce.zip_code = payload["zip_code"]
-    # commerce.city = payload["city"]
-    # commerce.country = payload["country"]
-    # commerce.title = payload["title"]
-    # commerce.description = payload["description"]
-    # commerce.phone_number = payload["phone_number"]
-    # commerce.website = payload["website"]
-    
-    # db.session.add(commerce)
-    # db.session.commit()
-
-    # return jsonify(commerce.serialize()), 200
     return update_one(Commerces, id, required, types)
 
 #Borrar un comercio.
@@ -321,6 +263,7 @@ def handle_delete_commerce(id):
 # Hay que hacer dos endpoints uno con commerce y otro con users.
 @api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
+
     required = ["title", "description", "media_type", "media_url", "comments", "commerce_id"]
     types = {
         "commerce_id": int,
@@ -425,6 +368,7 @@ def handle_followers_commerce(commerce_id):
 #Dejar de seguir. 
 @api.route('/commerces/<int:follow_id>/followers', methods=['DELETE'])
 def handle_delete_followers(follow_id):
+    
     follow = Followers.query.get(follow_id)
     
     if not follow:
@@ -461,8 +405,7 @@ def handle_likes():
 def handle_list_of_likes():
 
     user = authorized_user()
-    # if not user:
-    #     abort (403)
+
     user_id = user.id
     likes = Likes.query.filter_by(user_id = user_id, deleted_at=None)
     like = []
@@ -474,9 +417,13 @@ def handle_list_of_likes():
    
 
 #Borrar el like. 
-@api.route('/likes/<int:like_id>', methods=['DELETE'])
+@api.route('/users/likes', methods=['DELETE'])
 def handle_delete_likes(like_id):
-    like = Likes.query.get(like_id)
+    user = authorized_user()
+
+    user_id = user.id
+    like =  Likes.query.filter_by(user_id = user_id, like_id = like_id)
+    like = []
 
     if not like:
         return "Like not found", 404
@@ -492,6 +439,7 @@ def handle_delete_likes(like_id):
 #Creación del comentario
 @api.route('/comments', methods=['POST'])
 def handle_create_comments():
+
     payload = json.loads(request.data)
     comments = Comments(**payload)
        
@@ -512,8 +460,11 @@ def handle_list_comments_commerce(commerce_id):
     return jsonify(lists_comments), 200
 
 #Obtener la lista de todos los comentarios en un post hecho por usuarios
-@api.route('/users/<int:user_id>/comments', methods=['GET'])
+@api.route('/users/comments', methods=['GET'])
 def handle_list_comments_user(user_id):
+    user = authorized_user()
+
+    user_id = user.id
     comments = Comments.query.filter_by(user_id = user_id, deleted_at=None)
     user_comment = []
     
