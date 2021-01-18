@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 
@@ -12,6 +12,7 @@ export const Register = function(props) {
 	// const [password, setPassword] = useState("");
 	// const [username, setUsername] = useState("");
 	// const [avatar, setAvatar] = useState("");
+	const history = useHistory();
 
 	const [firstName, setFirstName] = useState("Enrique");
 	const [lastName, setLastName] = useState("Rodriguez");
@@ -35,7 +36,7 @@ export const Register = function(props) {
 		// if params.id:
 		//     actions.updateUser(data)
 		// else:
-		//     actions.createUser(data);
+		// useHistory()actions.createUser(data);
 	}
 	return (
 		<div className="container-fluid">
@@ -97,9 +98,9 @@ export const Register = function(props) {
 					/>
 				</div>
 				<br />
-				<Link to="/feed" type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
+				<button to="/feed" type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
-				</Link>
+				</button>
 			</form>
 			<br />
 			<Link to="/commerces" type="button" className="btn btn-outline-dark">

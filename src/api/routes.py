@@ -34,11 +34,8 @@ def get_list_of(Models):
     return jsonify(list_models), 200
 
 def create_one(Model, required, types, payload=None):
-    # payload = json.loads(request.data)
     payload = payload or request.get_json()
-    print("esto es el payload", payload)
-    
-    
+ 
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
@@ -94,6 +91,15 @@ def delete_one(Models, id):
 
     return jsonify("This user has been eliminated successfully", data), 200
 
+def authorized_commerce(commerce_id):
+    user = authorized_user()
+    commerce = Commerces.query.filter_by(commerce_id = commerce_id, deleted_at=None).first()
+
+    if user.id != commerce.owner_id:
+        return False
+    
+    return True
+
 ################################## USERS #########################################
 #Devuelve la lista de todos los usuarios.
 # @api.route('/users', methods=['GET'])
@@ -118,20 +124,32 @@ def handle_create_user():
         "password": str
     }
     payload = request.get_json()
-    # payload = json.loads(request.data)
-    # print(payload)
+    
+    for key, value in payload.items():
+        if key in types and not isinstance(value, types[key]):
+            abort(400, f"{key} is not {types[key]}")
+
+    for field in required:
+        if field not in payload or payload[field] is None:
+            abort(400, "este es un mensaje en el error 400")
+
     key = MAC.encode('utf-8')
     msg = payload['password'].encode('utf-8')
     algo = hashlib.sha512
 
-    
     payload['password'] = hmac.new(key, msg, algo).hexdigest()
 
+    user = Users(**payload)
+    db.session.add(user)
+    db.session.commit()
+    
+    email = {'sub': user.email}
+    secret = JWT_SECRET.encode('utf-8')
+    algo="HS256"
 
-   
+    token = jwt.encode(email, secret, algorithm=algo)    
 
-    # return '', 200
-    return create_one(Users, required, types, payload)
+    return jsonify(token), 201
     
 
 #Log in del usuario ya creado.
@@ -185,12 +203,7 @@ def authorized_user():
 #Se actualiza un usuario ya creado.
 @api.route('/users/<int:id>', methods=['PUT'])
 def handle_update_user(id):
-    # user = Users.query.filter_by(id=id, deleted_at=None).first()
-
-    # if not user:
-    #     return "User not found", 404
-
-    # payload = request.get_json()
+ 
 
     required = ["first_name", "last_name", "username", "email"]
     types = {
@@ -399,9 +412,11 @@ def handle_create_followers():
 
 #Obtener la lista de todos los comercios seguidos por un usuario. (Following - Siguiendo)
 #Maneja los follows del usuario (nombre de la función)
-@api.route('/users/<int:user_id>/followers', methods=['GET'])
-def handle_user_follows(user_id):
-    follows = Followers.query.filter_by(user_id = user_id, deleted_at=None)
+@api.route('/users/followers', methods=['GET'])
+def handle_user_follows():
+    user = authorized_user()
+
+    follows = Followers.query.filter_by(user_id = user.id, deleted_at=None)
 
     commerces = []
     
@@ -413,6 +428,9 @@ def handle_user_follows(user_id):
 #Obtener la lista de todos los usuarios que siguen a este comercio. (Followers - Seguidores)
 @api.route('/commerces/<int:commerce_id>/followers', methods=['GET'])
 def handle_followers_commerce(commerce_id):
+    if not authorized_commerce():
+        return "Not allowed", 403
+
     followers = Followers.query.filter_by(commerce_id = commerce_id, deleted_at=None)
 
     users= []

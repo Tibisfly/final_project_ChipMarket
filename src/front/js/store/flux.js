@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-d926ec90-50cf-447a-9841-b879f415a9ec.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-b3ae0769-ca53-49a8-b68c-9ac28a435196.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -87,7 +87,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(json => {
 						setStore({ token: json });
 						callback();
-						// getActions().getOneUser();
 					})
 					.catch(error => {
 						console.log(error);
@@ -144,7 +143,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//creo que no lo necesitamos en el front. Para qué? },
 			getOneUser() {
 				const store = getStore();
-				console.log(store.token, "Esto es un string");
+				console.log(store.token, "Esto es token en el getOneUser");
 				const endpoint = `${baseUrl}/users`;
 				let headers = { "Content-Type": "application/json" };
 				headers["Authorization"] = `Bearer ${store.token}`;
