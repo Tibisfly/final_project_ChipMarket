@@ -17,10 +17,12 @@ export const LogIn = function(props) {
 			email: email,
 			password: password
 		};
-
+		console.log("Antes de llamar al login");
 		actions.LogIn(data, () => {
+			console.log("Durante de llamar al login");
 			history.push("/feed");
 		});
+		console.log("Después de llamar al login");
 	}
 
 	return (
@@ -48,7 +50,7 @@ export const LogIn = function(props) {
 											alt="..."
 										/>
 										<div className="carousel-caption d-none d-md-block">
-											<h5>First slide label</h5>
+											<h5>Donde esta este texto??</h5>
 											<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 										</div>
 									</div>

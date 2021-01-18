@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 
@@ -12,6 +12,7 @@ export const Register = function(props) {
 	// const [password, setPassword] = useState("");
 	// const [username, setUsername] = useState("");
 	// const [avatar, setAvatar] = useState("");
+	const history = useHistory();
 
 	const [firstName, setFirstName] = useState("Enrique");
 	const [lastName, setLastName] = useState("Rodriguez");
@@ -33,10 +34,23 @@ export const Register = function(props) {
 		};
 		// cuando tenga en flux la funcion de ACTUALIZAR (PUT) hago aqui un if params.id
 		// if params.id:
-		//     actions.updateUser(data)
+		// actions.updateUser(data);
 		// else:
-		//     actions.createUser(data);
+		actions.createUser;
 	}
+
+	// useEffect(() => {
+	// 	const init = async () => {
+	// 		if (store.token) {
+	// 			await actions.test();
+	// 		} else {
+	// 			history.push("/login");
+	// 		}
+	// 	};
+
+	// 	init();
+	// }, []);
+
 	return (
 		<div className="container-fluid">
 			<h1>{params.id ? "Actualizar usuario" : "Crear usuario"} </h1>
