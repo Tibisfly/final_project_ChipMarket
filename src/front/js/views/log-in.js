@@ -7,9 +7,11 @@ import "../../styles/forms.scss";
 
 export const LogIn = function(props) {
 	const { store, actions } = useContext(Context);
+
 	const [email, setEmail] = useState("rodrike90@mgail.com");
 	const [password, setPassword] = useState("1234");
 	const [modal, setModal] = useState(false);
+
 	const history = useHistory();
 
 	function handleSubmit() {
@@ -17,9 +19,12 @@ export const LogIn = function(props) {
 			email: email,
 			password: password
 		};
-
+		console.log("Antes del login");
 		actions.LogIn(data, () => {
-			history.push("/feed");
+			if (store.error == null) {
+				console.log("error:", store.error);
+				history.push("/feed");
+			}
 		});
 	}
 
@@ -48,7 +53,7 @@ export const LogIn = function(props) {
 											alt="..."
 										/>
 										<div className="carousel-caption d-none d-md-block">
-											<h5>First slide label</h5>
+											<h5>Donde esta este texto??</h5>
 											<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 										</div>
 									</div>
@@ -146,6 +151,9 @@ export const LogIn = function(props) {
 									onClick={() => handleSubmit()}>
 									Iniciar Sesión
 								</button>
+								<div className="error" style={{ display: store.error != null ? "block" : "none" }}>
+									<p>Usuario y contraseña incorrectos</p>
+								</div>
 							</form>
 							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">
 								<Link to="/users" style={{ textDecoration: "none", color: "green" }}>

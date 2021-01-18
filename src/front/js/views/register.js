@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
@@ -32,12 +32,18 @@ export const Register = function(props) {
 			username: username,
 			avatar: avatar
 		};
-		// cuando tenga en flux la funcion de ACTUALIZAR (PUT) hago aqui un if params.id
-		// if params.id:
-		//     actions.updateUser(data)
-		// else:
-		// useHistory()actions.createUser(data);
+
+		if (store.token) {
+			actions.updateUser(data, () => {
+				history.push("/profiles");
+			});
+		} else {
+			actions.createUser(data, () => {
+				history.push("/feed");
+			});
+		}
 	}
+
 	return (
 		<div className="container-fluid">
 			<h1>{params.id ? "Actualizar usuario" : "Crear usuario"} </h1>
@@ -98,7 +104,7 @@ export const Register = function(props) {
 					/>
 				</div>
 				<br />
-				<button to="/feed" type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
+				<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
 				</button>
 			</form>
