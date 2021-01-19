@@ -10,6 +10,7 @@ import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
 import { CommercesForm } from "./views/commerces-form";
+import { CommercesProfiles } from "./views/commerces-profiles";
 import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
 
@@ -42,6 +43,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/commerces">
 							<CommercesForm />
+						</Route>
+						<Route exact path="/commerces/profiles">
+							<CommercesProfiles />
 						</Route>
 						<Route exact path="/login">
 							<LogIn />
