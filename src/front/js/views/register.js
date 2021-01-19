@@ -32,24 +32,17 @@ export const Register = function(props) {
 			username: username,
 			avatar: avatar
 		};
-		// cuando tenga en flux la funcion de ACTUALIZAR (PUT) hago aqui un if params.id
-		// if params.id:
-		// actions.updateUser(data);
-		// else:
-		actions.createUser;
+
+		if (store.token) {
+			actions.updateUser(data, () => {
+				history.push("/profiles");
+			});
+		} else {
+			actions.createUser(data, () => {
+				history.push("/feed");
+			});
+		}
 	}
-
-	// useEffect(() => {
-	// 	const init = async () => {
-	// 		if (store.token) {
-	// 			await actions.test();
-	// 		} else {
-	// 			history.push("/login");
-	// 		}
-	// 	};
-
-	// 	init();
-	// }, []);
 
 	return (
 		<div className="container-fluid">
@@ -111,9 +104,9 @@ export const Register = function(props) {
 					/>
 				</div>
 				<br />
-				<Link to="/feed" type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
+				<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
-				</Link>
+				</button>
 			</form>
 			<br />
 			<Link to="/commerces" type="button" className="btn btn-outline-dark">

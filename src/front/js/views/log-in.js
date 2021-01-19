@@ -7,9 +7,11 @@ import "../../styles/forms.scss";
 
 export const LogIn = function(props) {
 	const { store, actions } = useContext(Context);
+
 	const [email, setEmail] = useState("rodrike90@mgail.com");
 	const [password, setPassword] = useState("1234");
 	const [modal, setModal] = useState(false);
+
 	const history = useHistory();
 
 	function handleSubmit() {
@@ -17,12 +19,13 @@ export const LogIn = function(props) {
 			email: email,
 			password: password
 		};
-		console.log("Antes de llamar al login");
+		console.log("Antes del login");
 		actions.LogIn(data, () => {
-			console.log("Durante de llamar al login");
-			history.push("/feed");
+			if (store.error == null) {
+				console.log("error:", store.error);
+				history.push("/feed");
+			}
 		});
-		console.log("Después de llamar al login");
 	}
 
 	return (
@@ -148,6 +151,9 @@ export const LogIn = function(props) {
 									onClick={() => handleSubmit()}>
 									Iniciar Sesión
 								</button>
+								<div className="error" style={{ display: store.error != null ? "block" : "none" }}>
+									<p>Usuario y contraseña incorrectos</p>
+								</div>
 							</form>
 							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">
 								<Link to="/users" style={{ textDecoration: "none", color: "green" }}>
