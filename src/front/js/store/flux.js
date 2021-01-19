@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-b3ae0769-ca53-49a8-b68c-9ac28a435196.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-eaf48e3c-46f8-4c64-a309-93bb5f6f1c3d.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -32,11 +32,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetch(endpoint, config)
 					.then(response => {
-						console.log(response);
 						return response.json();
 					})
 					.then(json => {
-						console.log(data, "usuario creado");
 						setStore({ token: json.token });
 						localStorage.setItem("token", json.token);
 						callback();
@@ -106,29 +104,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						callback();
 					});
 			},
-			// async test() {
-			// 	const store = getStore();
-			// 	console.log(store.token, "Esto es un string");
-			// 	const endpoint = `${baseUrl}/test`;
-			// 	const headers = { "Content-Type": "application/json" };
-
-			// 	if (store.token) {
-			// 		headers["Authorization"] = `Bearer ${store.token}`;
-			// 	}
-
-			// 	const config = {
-			// 		headers: headers,
-			// 		method: "GET"
-			// 	};
-
-			// 	await fetch(endpoint, config)
-			// 		.then(response => {
-			// 			return response.json();
-			// 		})
-			// 		.then(json => {
-			// 			setStore({ user: json });
-			// 		});
-			// },
 			createCommerce(data) {
 				const endpoint = `${baseUrl}/commerces`;
 				console.log("Esto es data:", data);
@@ -165,7 +140,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getOneUser() {
 				const store = getStore();
-				console.log(store, "Esto es token en el getOneUser");
+
 				const endpoint = `${baseUrl}/users`;
 				let headers = { "Content-Type": "application/json" };
 				headers["Authorization"] = `Bearer ${store.token}`;
@@ -208,18 +183,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			getFeedAsync: async id => {
-				const endpoint = `${baseUrl}/users/${id}/feed`;
-				let requestOptions = { method: "GET", redirect: "follow" };
-				try {
-					let res = await fetch(endpoint, requestOptions);
-					let result = await res.json();
-					let active = await setStore({});
-					let feed = await result;
-					setStore({ feed: feed });
-				} catch (error) {
-					console.log("error", error);
-				}
+			// getFeedAsync: async id => {
+			// 	const endpoint = `${baseUrl}/users/feed`;
+			//     let requestOptions = { method: "GET", redirect: "follow" };
+
+			// 	try {
+			// 		let res = await fetch(endpoint, requestOptions);
+			// 		let result = await res.json();
+			// 		let active = await setStore({});
+			// 		let feed = await result;
+			// 		setStore({ feed: feed });
+			// 	} catch (error) {
+			// 		console.log("error", error);
+			// 	}
+			// },
+			getUserFeed() {
+				const store = getStore();
+
+				const endpoint = `${baseUrl}/users/feed`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
+				const config = {
+					headers: headers,
+					method: "GET"
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ feed: json });
+					});
 			}
 			// getPost(){
 			//     const store = setStore();

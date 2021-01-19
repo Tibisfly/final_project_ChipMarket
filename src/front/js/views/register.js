@@ -6,20 +6,20 @@ import { Context } from "../store/appContext.js";
 export const Register = function(props) {
 	const { store, actions } = useContext(Context);
 
-	// const [firstName, setFirstName] = useState("");
-	// const [lastName, setLastName] = useState("");
-	// const [email, setEmail] = useState("");
-	// const [password, setPassword] = useState("");
-	// const [username, setUsername] = useState("");
-	// const [avatar, setAvatar] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("");
+	const [avatar, setAvatar] = useState("");
 	const history = useHistory();
 
-	const [firstName, setFirstName] = useState("Enrique");
-	const [lastName, setLastName] = useState("Rodriguez");
-	const [email, setEmail] = useState("rodrike90@mgail.com");
-	const [password, setPassword] = useState("1234");
-	const [username, setUsername] = useState("rodrike90");
-	const [avatar, setAvatar] = useState("");
+	// const [firstName, setFirstName] = useState("Enrique");
+	// const [lastName, setLastName] = useState("Rodriguez");
+	// const [email, setEmail] = useState("rodrike90@mgail.com");
+	// const [password, setPassword] = useState("1234");
+	// const [username, setUsername] = useState("rodrike90");
+	// const [avatar, setAvatar] = useState("");
 
 	const params = useParams();
 
@@ -105,7 +105,7 @@ export const Register = function(props) {
 				</div>
 				<br />
 				<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
-					{params.id ? "Update" : "Create"}
+					{store.token ? "Update" : "Create"}
 				</button>
 			</form>
 			<br />

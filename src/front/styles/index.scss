@@ -13,11 +13,9 @@ body{
     padding-top: 6rem;
     padding-bottom: 6rem;
 }
-.profile-picture{
-    background-image: "https://i.pinimg.com/236x/74/33/fd/7433fd17e0f81426f2a7a66388bba0a9.jpg";
+.profile-picture rounded-circle mr-3{
     width: 3rem;
     height: 3rem;
-    background-size: cover;
 }
 .img-fluid{
     height: auto;

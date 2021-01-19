@@ -5,12 +5,14 @@ import ScrollToTop from "./components/scroll-to-top";
 import { Home } from "./views/home";
 import { Feed } from "./views/feed";
 import injectContext from "./store/appContext";
-import { Profile } from "./views/profiles";
+
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
 import { CommercesForm } from "./views/commerces-form";
+import { CommercesProfiles } from "./views/commerces-profiles";
 import { LogIn } from "./views/log-in";
+import { AboutUs } from "./views/about-us";
 
 //create your first component
 const Layout = () => {
@@ -36,14 +38,18 @@ const Layout = () => {
 						<Route exact path="/users/:id">
 							<Register />
 						</Route>
-						<Route exact path="/profiles">
-							<Profile />
-						</Route>
+
 						<Route exact path="/commerces">
 							<CommercesForm />
 						</Route>
+						<Route exact path="/commerces/profiles">
+							<CommercesProfiles />
+						</Route>
 						<Route exact path="/login">
 							<LogIn />
+						</Route>
+						<Route exact path="/about-us">
+							<AboutUs />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
