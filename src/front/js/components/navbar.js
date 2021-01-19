@@ -15,8 +15,8 @@ export const Navbar = () => {
 						<img
 							className="logo-login m-4"
 							width="70"
-							// src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
-							src="./img/ChipMarket.jpg"
+							src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
+							// src="./img/ChipMarket.jpg"
 						/>
 					</Link>
 
