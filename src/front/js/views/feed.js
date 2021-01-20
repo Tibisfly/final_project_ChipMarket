@@ -31,7 +31,7 @@ export const Feed = () => {
 					businessName={post.business_name}
 					title={post.title}
 					description={post.description}
-					promoCode={post.promo_code}
+					promoCode={post.promoCode}
 					comments={post.comments}
 				/>
 			);
@@ -50,9 +50,9 @@ export const Feed = () => {
 								lastName={store.user.last_name}
 							/>
 
-							<CommercesLists title="Mis Comercios" commerce="Prueba" />
+							<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
 							<br />
-							<CommercesLists title="Siguiendo a:" commerce="Prueba" />
+							<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
 							<SearchZipCode />
 							<UploadPost />
 						</div>

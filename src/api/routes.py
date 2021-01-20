@@ -294,14 +294,17 @@ def handle_delete_commerce(id):
 @api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
     user = authorized_user()
+    commerce = user.commerces[0]
+    
     payload = request.get_json()
-    commerce = Commerces.query.filter_by(id = payload["commerce_id"], deleted_at=None).first()
+    payload["commerce_id"] = commerce.id
+    # commerce = Commerces.query.filter_by(id = payload["commerce_id"], deleted_at=None).first()
  
-    if commerce is None:
-        return 'Commerce does not exist', 403
+    # if commerce is None:
+    #     return 'Commerce does not exist', 403
 
-    if commerce.owner_id is not user.id:
-        return 'The user is not the owner of the commerce', 403
+    # if commerce.owner_id is not user.id:
+    #     return 'The user is not the owner of the commerce', 403
 
    
     required = ["title", "description", "media_type", "media_url", "commerce_id"]

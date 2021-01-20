@@ -45,23 +45,18 @@ export function Card(props) {
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
-						<i className="far fa-heart lead mr-3"></i>
+						<i className="far fa-bookmark lead mr-3 font-weight-bold" />
+						<small>Código promocional: {props.promoCode}</small>
+						{/* <i className="far fa-heart lead mr-3"></i>
 						<i className="far fa-comment lead mr-3"></i>
-						<i className="far fa-paper-plane lead mr-3"></i>
+						<i className="far fa-paper-plane lead mr-3"></i> */}
 					</div>
 					<div></div>
 				</div>
-				<p className="font-weight-bold">259 ChipLikes</p>
+				{/* <p className="font-weight-bold">259 ChipLikes</p> */}
 				<p className="title">{props.title}</p>
 				<p className="mb-0">{props.description}</p>
-				<i className="far fa-bookmark lead mr-3 font-weight-bold" />
-				<small>Código promocional: {props.promoCode}</small>
-				{/* <ul className="list-group m-1 list-group-flush">
-					{props.comments}
-					<li className="list-group-item"></li>
-					<li className="list-group-item"></li>
-					<li className="list-group-item"></li>
-				</ul> */}
+
 				<ListOfComments />
 				<div className="d-flex border-top py-3 px-2">
 					<input

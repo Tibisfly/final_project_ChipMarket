@@ -4,7 +4,7 @@ import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
 import chipMarket from "../../img/chipmarket.png";
 
-export const Navbar = () => {
+export const Navbar = props => {
 	const [modal, setModal] = useState(false);
 	const { store, actions } = useContext(Context);
 
@@ -38,6 +38,14 @@ export const Navbar = () => {
 								className="nav-link active mr-3"
 								style={{ textDecoration: "none", color: "black" }}>
 								¿Eres un comercio?. Únete a nuestra comunidad.
+							</Link>
+						</li>
+						<li className="nav-item font-weight-bold">
+							<Link
+								to="/feed"
+								className="nav-link active mr-3"
+								style={{ textDecoration: "none", color: "black" }}>
+								Perfil
 							</Link>
 						</li>
 						<li className="nav-item font-weight-bold">

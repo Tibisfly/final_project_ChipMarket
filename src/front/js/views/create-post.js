@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-
 import "../../styles/forms.scss";
 
 export const CreatePost = function(props) {
@@ -9,6 +8,8 @@ export const CreatePost = function(props) {
 	const [description, setDescription] = useState("");
 	const [mediaType, setMediaType] = useState("");
 	const [mediaUrl, setMediaUrl] = useState("");
+
+	const history = useHistory();
 
 	const { store, actions } = useContext(Context);
 
@@ -20,7 +21,9 @@ export const CreatePost = function(props) {
 			mediaUrl: mediaUrl
 		};
 
-		actions.createPost();
+		actions.createPost(data, () => {
+			history.push("/feed");
+		});
 	}
 
 	return (
@@ -53,11 +56,13 @@ export const CreatePost = function(props) {
 							</div>
 							<div className="form-field">
 								<input
-									accept="image/*"
-									className="input"
-									id="contained-button-file"
-									multiple
-									type="file"
+									type="url"
+									pattern="https://.*"
+									className="form-control"
+									id="inputmediaType"
+									placeholder="https://ejemplo.com"
+									value={mediaUrl}
+									onChange={event => setMediaUrl(event.target.value)}
 								/>
 								<label htmlFor="inputmediaURL">Introduce la URL de tu imagen</label>
 							</div>

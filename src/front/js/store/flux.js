@@ -6,8 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: [],
-			posts: [],
 			feed: [],
+			post: {},
 			commerce: [],
 			token: token,
 			error: null
@@ -156,6 +156,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
+						console.log("json de getoneUser", json);
 						setStore({ user: json });
 					});
 			},
@@ -188,21 +189,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return console.log(json());
 					});
 			},
-
-			// getFeedAsync: async id => {
-			// 	const endpoint = `${baseUrl}/users/feed`;
-			//     let requestOptions = { method: "GET", redirect: "follow" };
-
-			// 	try {
-			// 		let res = await fetch(endpoint, requestOptions);
-			// 		let result = await res.json();
-			// 		let active = await setStore({});
-			// 		let feed = await result;
-			// 		setStore({ feed: feed });
-			// 	} catch (error) {
-			// 		console.log("error", error);
-			// 	}
-			// },
 			getUserFeed() {
 				const store = getStore();
 
@@ -221,44 +207,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(json => {
 						setStore({ feed: json });
 					});
-			}
-			// getPost(){
-			//     const store = setStore();
-			// 	const endpoint = `${baseUrl}/posts/<int:id>`;
-			// 	const config = {
-			// 		method: "GET",
-			// 		mode: "no-cors"
-			// };
-			//     fetch(endpoint, config).
-			//         then(response => {
-			// 		return response.json();
-		},
-		createPost() {
-			const endpoint = `${baseUrl}/commerces/posts`;
-			const config = {
-				method: "POST",
-				body: JSON.stringify({
-					title: data.title,
-					description: data.description,
-					media_type: data.mediaType,
-					media_url: data.mediaUrl
-				})
-			};
-			let headers = { "Content-Type": "application/json" };
-			headers["Authorization"] = `Bearer ${store.token}`;
+			},
+			createPost(data, callback) {
+				const store = getStore();
+				const endpoint = `${baseUrl}/commerces/posts`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
 
-			fetch(endpoint, config)
-				.then(response => {
-					return response.json();
-				})
-				.then(json => {
-					setStore({ posts: json.posts });
-					localStorage.setItem("token", json.token);
-					callback();
-				})
-				.catch(error => {
-					console.log(error);
-				});
+				const config = {
+					method: "POST",
+					body: JSON.stringify({
+						title: data.title,
+						description: data.description,
+						media_type: data.mediaType,
+						media_url: data.mediaUrl
+					}),
+					headers: headers
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						callback();
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			},
+			getPost(id) {
+				const store = getStore();
+
+				const endpoint = `${baseUrl}/posts/${id}`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
+				const config = {
+					headers: headers,
+					method: "GET"
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ post: json });
+					});
+			}
 		}
 	};
 };

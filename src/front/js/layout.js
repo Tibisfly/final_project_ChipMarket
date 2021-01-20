@@ -14,6 +14,7 @@ import { CommercesProfiles } from "./views/commerces-profiles";
 import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
 import { CreatePost } from "./views/create-post";
+import { PostView } from "./views/post-view";
 
 //create your first component
 const Layout = () => {
@@ -47,6 +48,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/create/post">
 							<CreatePost />
+						</Route>
+						<Route exact path="/post/:id">
+							<PostView />
 						</Route>
 						<Route exact path="/login">
 							<LogIn />
