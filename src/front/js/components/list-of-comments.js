@@ -9,12 +9,13 @@ export const ListOfComments = function(props) {
 					className="accordion"
 					aria-expanded="true"
 					id="accordionExample"
-					style={{ display: props.show ? "inline-block" : "none" }}>
+					// style={{ display: props.show ? "inline-block" : "none" }}
+				>
 					<div className="card">
 						<div className="card-header" id="headingOne">
 							<h2 className="mb-0">
 								<button
-									onClick={() => props.onClose()}
+									// onClick={() => props.onClose()}
 									className="btn btn-link btn-block text-left"
 									type="button"
 									data-toggle="collapse"

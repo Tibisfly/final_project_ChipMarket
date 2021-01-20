@@ -19,27 +19,27 @@ export const Feed = () => {
 		actions.getOneUser();
 	}, []);
 
-	const cardList = store.feed.map((post, index) => {
-		return (
-			<Card
-				key={index}
-				img=""
-				businessName={post.business_name}
-				title={post.title}
-				description={post.description}
-				promoCode={post.promo_code}
-				comments={post.comments}
-			/>
-		);
-	});
+	let cardList = "";
+	if (store.feed.length == 0) {
+		cardList = <div className="card text-center ">Oops.. Todavía no hay ninguna publicación</div>;
+	} else {
+		cardList = store.feed.map((post, index) => {
+			return (
+				<Card
+					key={index}
+					img=""
+					businessName={post.business_name}
+					title={post.title}
+					description={post.description}
+					promoCode={post.promo_code}
+					comments={post.comments}
+				/>
+			);
+		});
+	}
 
 	return (
 		<div className="post">
-			{/* <p className="text-center">¡Welcome Back ChipAddict!</p>
-			<p className="text-center">
-				No olvides mostrar el código promocional cuando realices el canje de la ChipOferta. Coméntanos que tal
-				los comercios de tu barrio.
-			</p> */}
 			<section>
 				<div className="container">
 					<div className="row">
@@ -49,6 +49,7 @@ export const Feed = () => {
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
+							<Following />
 							<Following />
 							<SearchZipCode />
 							<UploadPost />

@@ -8,8 +8,8 @@ import "../../styles/forms.scss";
 export const LogIn = function(props) {
 	const { store, actions } = useContext(Context);
 
-	const [email, setEmail] = useState("rodrike90@mgail.com");
-	const [password, setPassword] = useState("1234");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [modal, setModal] = useState(false);
 
 	const history = useHistory();
@@ -19,10 +19,8 @@ export const LogIn = function(props) {
 			email: email,
 			password: password
 		};
-		console.log("Antes del login");
-		actions.LogIn(data, () => {
+		actions.logIn(data, () => {
 			if (store.error == null) {
-				console.log("error:", store.error);
 				history.push("/feed");
 			}
 		});

@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-eaf48e3c-46f8-4c64-a309-93bb5f6f1c3d.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-fd2c1ae3-04d5-4157-ba91-daee8df9b087.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -71,8 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
-
-			LogIn(data, callback) {
+			logIn(data, callback) {
 				const endpoint = `${baseUrl}/login`;
 				const config = {
 					method: "POST",
@@ -94,15 +93,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						console.log("esto es json en login flux: ", json);
 						setStore({ token: json.token });
 						localStorage.setItem("token", json.token);
 						callback();
 					})
 					.catch(error => {
-						console.log(error);
 						callback();
 					});
+			},
+			logOut() {
+				localStorage.removeItem("token");
+				setStore({ token: null });
 			},
 			createCommerce(data) {
 				const endpoint = `${baseUrl}/commerces`;

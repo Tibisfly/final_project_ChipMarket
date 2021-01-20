@@ -6,7 +6,7 @@ export const Following = function(props) {
 			<div className="card">
 				<div className="card-body">
 					<div>
-						<p className="font-weight-bold text-muted">Tus comercios</p>
+						<p className="font-weight-bold text-muted">Comercios seguidos</p>
 					</div>
 					<div className="commerces-container">
 						<div className="d-flex mb-4">
