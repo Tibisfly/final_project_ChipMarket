@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
+import chipMarket from "../../img/chipmarket.png";
 
 export const Navbar = () => {
 	const [modal, setModal] = useState(false);
@@ -14,23 +15,14 @@ export const Navbar = () => {
 					<Link to="/" className="chip-market-navbar d-flex align-self-start">
 						<img
 							className="logo-login m-4"
-							width="70"
+							width="150"
 							// src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
-							src="./img/ChipMarket.jpg"
+							src={chipMarket}
 						/>
 					</Link>
 
 					<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-							<li className="nav-item">
-								<Link
-									to="/about-us"
-									className="nav-link active font-weight-bold"
-									aria-current="page"
-									href="/about-us">
-									About Us
-								</Link>
-							</li>
 							<li className="nav-item">
 								<a
 									className="nav-link font-weight-bold"
@@ -42,6 +34,15 @@ export const Navbar = () => {
 								<a className="nav-link active" href="#">
 									¿Eres un comercio?. Únete a nuestra comunidad.
 								</a>
+							</li>
+							<li className="nav-item">
+								<Link
+									to="/login"
+									className="nav-link active font-weight-bold"
+									aria-current="page"
+									href="">
+									Iniciar Sesion
+								</Link>
 							</li>
 						</ul>
 					</div>
