@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ModalUpload } from "./modal-upload";
+import { Link } from "react-router-dom";
 
 export const UploadPost = function(props) {
 	const [modal, setModal] = useState(false);
@@ -10,10 +11,10 @@ export const UploadPost = function(props) {
 				<div className="card-body">
 					<div>
 						<p className="font-weight-bold text-muted">Sube una foto</p>
-						<button type="button" className="btn btn-link-light" onClick={() => setModal(true)}>
+						<Link to="create/post" type="button" className="btn btn-link-light">
 							<i className="fas fa-plus">Añade una publicación</i>
-						</button>
-						<ModalUpload show={modal} onClose={() => setModal(false)} />
+						</Link>
+						{/* <ModalUpload show={modal} onClose={() => setModal(false)} /> */}
 					</div>
 				</div>
 			</div>

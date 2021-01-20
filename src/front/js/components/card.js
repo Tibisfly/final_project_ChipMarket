@@ -62,7 +62,7 @@ export function Card(props) {
 					<li className="list-group-item"></li>
 					<li className="list-group-item"></li>
 				</ul> */}
-				<ListOfComments show={modal} onClose={() => setModal(false)} />
+				<ListOfComments />
 				<div className="d-flex border-top py-3 px-2">
 					<input
 						type="text"

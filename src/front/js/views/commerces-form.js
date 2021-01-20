@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import PropTypes from "prop-types";
+
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
+import "../../styles/forms.scss";
 
 export const CommercesForm = function(props) {
 	const [businessName, setBusinessName] = useState("");
@@ -23,7 +24,6 @@ export const CommercesForm = function(props) {
 
 	function handleSubmit() {
 		const data = {
-			ownerId: 8,
 			businessName: businessName,
 			streetName: streetName,
 			streetNumber: streetNumber,
@@ -36,7 +36,9 @@ export const CommercesForm = function(props) {
 			phoneNumber: phoneNumber,
 			avatar: avatar
 		};
-		actions.createCommerce(data);
+		actions.createCommerce(data, () => {
+			history.push("/feed");
+		});
 	}
 	return (
 		<div className="create-user">

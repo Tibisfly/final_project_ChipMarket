@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
+import "../../styles/modal.scss";
 
 export const ModalPassword = function(props) {
 	const [state, setState] = useState({});

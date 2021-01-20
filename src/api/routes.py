@@ -180,7 +180,7 @@ def login():
 def authorized_user():
 
     authorization = request.headers.get('Authorization')
-    
+
     if not authorization:
         abort (403)
 
@@ -235,8 +235,8 @@ def handle_create_commerce():
     user = authorized_user()
 
     payload= request.get_json()
+   
     payload["owner_id"] = user.id
-  
     
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description"]
     types = {

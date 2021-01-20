@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Card } from "../components/card.js";
 import { Context } from "../store/appContext.js";
 import { Profiles } from "../components/profiles";
-import { Following } from "../components/following";
+import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
 
@@ -49,8 +49,10 @@ export const Feed = () => {
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
-							<Following />
-							<Following />
+
+							<CommercesLists title="Mis Comercios" commerce="Prueba" />
+							<br />
+							<CommercesLists title="Siguiendo a:" commerce="Prueba" />
 							<SearchZipCode />
 							<UploadPost />
 						</div>

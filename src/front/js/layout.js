@@ -13,6 +13,7 @@ import { CommercesForm } from "./views/commerces-form";
 import { CommercesProfiles } from "./views/commerces-profiles";
 import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
+import { CreatePost } from "./views/create-post";
 
 //create your first component
 const Layout = () => {
@@ -38,12 +39,14 @@ const Layout = () => {
 						<Route exact path="/users/:id">
 							<Register />
 						</Route>
-
 						<Route exact path="/commerces">
 							<CommercesForm />
 						</Route>
 						<Route exact path="/commerces/profiles">
 							<CommercesProfiles />
+						</Route>
+						<Route exact path="/create/post">
+							<CreatePost />
 						</Route>
 						<Route exact path="/login">
 							<LogIn />

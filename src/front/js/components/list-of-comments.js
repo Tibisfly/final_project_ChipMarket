@@ -1,35 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 export const ListOfComments = function(props) {
+	const [show, setShow] = useState(false);
+	const [display, setDisplay] = useState("hide");
+
+	function handleShow() {
+		console.log("antes", show, display);
+
+		if (show == true) {
+			setDisplay("hide");
+		} else {
+			setDisplay("show");
+		}
+		setShow(!show);
+		console.log("después", show, display);
+	}
+
 	return (
 		<>
 			<div className="container">
-				<div
-					className="accordion"
-					aria-expanded="true"
-					id="accordionExample"
-					// style={{ display: props.show ? "inline-block" : "none" }}
-				>
+				<div className="accordion" aria-expanded="true" id="accordionExample">
 					<div className="card">
 						<div className="card-header" id="headingOne">
 							<h2 className="mb-0">
 								<button
-									// onClick={() => props.onClose()}
+									onClick={() => handleShow()}
 									className="btn btn-link btn-block text-left"
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseOne"
 									aria-expanded="true"
 									aria-controls="collapseOne">
-									Collapsible Group Item #1
+									Comentarios
 								</button>
 							</h2>
 						</div>
 
 						<div
 							id="collapseOne"
-							className="collapse show"
+							className={`collapse ${display}`}
 							aria-labelledby="headingOne"
 							data-parent="#accordionExample">
 							<div className="card-body">
@@ -38,63 +48,8 @@ export const ListOfComments = function(props) {
 							</div>
 						</div>
 					</div>
-					<div className="card">
-						<div className="card-header" id="headingTwo">
-							<h2 className="mb-0">
-								<button
-									className="btn btn-link btn-block text-left collapsed"
-									type="button"
-									data-toggle="collapse"
-									data-target="#collapseTwo"
-									aria-expanded="false"
-									aria-controls="collapseTwo">
-									Collapsible Group Item #2
-								</button>
-							</h2>
-						</div>
-						<div
-							id="collapseTwo"
-							className="collapse"
-							aria-labelledby="headingTwo"
-							data-parent="#accordionExample">
-							<div className="card-body">
-								Some placeholder content for the second accordion panel. This panel is hidden by
-								default.
-							</div>
-						</div>
-					</div>
-					<div className="card">
-						<div className="card-header" id="headingThree">
-							<h2 className="mb-0">
-								<button
-									className="btn btn-link btn-block text-left collapsed"
-									type="button"
-									data-toggle="collapse"
-									data-target="#collapseThree"
-									aria-expanded="false"
-									aria-controls="collapseThree">
-									Collapsible Group Item #3
-								</button>
-							</h2>
-						</div>
-						<div
-							id="collapseThree"
-							className="collapse"
-							aria-labelledby="headingThree"
-							data-parent="#accordionExample">
-							<div className="card-body">
-								And lastly, the placeholder content for the third and final accordion panel. This panel
-								is hidden by default.
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</>
 	);
-};
-
-ListOfComments.PropTypes = {
-	onClose: PropTypes.func,
-	show: PropTypes.bool
 };

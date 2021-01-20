@@ -30,14 +30,28 @@ export const Navbar = () => {
 	} else {
 		handleLoggin = (
 			<>
-				<Link
-					className="align-self-center"
-					to="/"
-					type="button"
-					style={{ textDecoration: "none", color: "green" }}
-					onClick={() => actions.logOut()}>
-					Log Out
-				</Link>
+				<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
+					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+						<li className="nav-item font-weight-bold">
+							<Link
+								to="/commerces"
+								className="nav-link active mr-3"
+								style={{ textDecoration: "none", color: "black" }}>
+								¿Eres un comercio?. Únete a nuestra comunidad.
+							</Link>
+						</li>
+						<li className="nav-item font-weight-bold">
+							<Link
+								className="align-self-center"
+								to="/"
+								type="button"
+								style={{ textDecoration: "none", color: "green" }}
+								onClick={() => actions.logOut()}>
+								Log Out
+							</Link>
+						</li>
+					</ul>
+				</div>
 			</>
 		);
 	}
@@ -66,24 +80,8 @@ export const Navbar = () => {
 									¡Ahorra tiempo y dinero mientras apoyas al autónomo!
 								</a>
 							</li>
-							<li className="nav-item font-weight-bold">
-								<Link
-									to="/commerces"
-									className="nav-link active"
-									style={{ textDecoration: "none", color: "black" }}>
-									¿Eres un comercio?. Únete a nuestra comunidad.
-								</Link>
-							</li>
+
 							{handleLoggin}
-							{/* <li className="nav-item">
-								<Link
-									to="/login"
-									className="nav-link active font-weight-bold"
-									aria-current="page"
-									href="">
-									Iniciar Sesion
-								</Link>
-							</li> */}
 						</ul>
 					</div>
 				</div>
