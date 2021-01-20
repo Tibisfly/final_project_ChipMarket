@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
@@ -17,7 +17,7 @@ export const CommercesForm = function(props) {
 	const [website, setWebsite] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [avatar, setAvatar] = useState("");
-
+	const history = useHistory();
 	const params = useParams();
 
 	const { store, actions } = useContext(Context);
@@ -37,7 +37,7 @@ export const CommercesForm = function(props) {
 			avatar: avatar
 		};
 		actions.createCommerce(data, () => {
-			history.push("/feed");
+			history.push("/feed-commerce");
 		});
 	}
 	return (

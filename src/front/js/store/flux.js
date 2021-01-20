@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-b2d4265c-8585-4c14-8b9a-6c32b36a2b07.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-cf543894-b2d0-433d-a331-6e4b86b637b0.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -160,6 +160,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getOneCommerce(id) {
+				const store = getStore();
+
 				const endpoint = `${baseUrl}/commerces/${id}`;
 				const config = {
 					method: "GET"

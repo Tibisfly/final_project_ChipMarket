@@ -17,17 +17,6 @@ export const Profiles = function(props) {
 				</div>
 			</div>
 		</>
-		// <div className="container-fluid p-4 d-flex">
-		// 	<img
-		// 		id="profile-picture"
-		// 		src="https://images.unsplash.com/photo-1610642433478-630fab962814?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-		// 		alt="..."
-		// 	/>
-		// 	<div className="mx-5">
-		// 		<h1 className="fw-bold">Perfil de ChipAddict:</h1>
-		// 		<h3 className="fw-bolder">Username:</h3>
-		// 	</div>
-		// </div>
 	);
 };
 

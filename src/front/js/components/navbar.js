@@ -20,7 +20,7 @@ export const Navbar = () => {
 					</li>
 					<span style={{ color: "green" }}>-</span>
 					<li className="nav-item font-weight-bold ml-3">
-						<Link type="button" to="/users" style={{ textDecoration: "none", color: "green" }}>
+						<Link type="button" to="/register" style={{ textDecoration: "none", color: "green" }}>
 							Registrarse
 						</Link>
 					</li>
