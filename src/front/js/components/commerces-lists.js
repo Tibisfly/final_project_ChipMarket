@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const CommercesLists = function(props) {
+	if (!props.commerces) {
+		return <div>Cargando. . .</div>;
+	}
 	return (
 		<>
 			<div className="card">
@@ -12,48 +15,17 @@ export const CommercesLists = function(props) {
 					</div>
 					<div className="commerces-container">
 						{/* aqui haces el map de todo este div className con los comercios creados y los comercios seguidos */}
-						<div className="d-flex mb-4">
-							<small className="font-weight-bold">
-								<Link to="/commerces/profiles" className="text-decoration-none text-dark">
-									{props.commerce}
-								</Link>
-							</small>
-						</div>
-						<div className="d-flex mb-4">
-							<small className="font-weight-bold">
-								<Link to="/commerces/profiles" className="text-decoration-none text-dark">
-									{props.commerce}
-								</Link>
-							</small>
-						</div>
-						<div className="d-flex mb-4">
-							<small className="font-weight-bold">
-								<Link to="/commerces/profiles" className="text-decoration-none text-dark">
-									{props.commerce}
-								</Link>
-							</small>
-						</div>
-						<div className="d-flex mb-4">
-							<small className="font-weight-bold">
-								<Link to="/commerces/profiles" className="text-decoration-none text-dark">
-									{props.commerce}
-								</Link>
-							</small>
-						</div>
-						<div className="d-flex mb-4">
-							<small className="font-weight-bold">
-								<Link to="/commerces/profiles" className="text-decoration-none text-dark">
-									{props.commerce}
-								</Link>
-							</small>
-						</div>
-						<div className="d-flex mb-4">
-							<small className="font-weight-bold">
-								<Link to="/commerces/profiles" className="text-decoration-none text-dark">
-									{props.commerce}
-								</Link>
-							</small>
-						</div>
+						{props.commerces.map((commerce, index) => {
+							return (
+								<div className="d-flex mb-4" key={index}>
+									<small className="font-weight-bold">
+										<Link to="/commerces/profiles" className="text-decoration-none text-dark">
+											{commerce.business_name}
+										</Link>
+									</small>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</div>
@@ -63,5 +35,5 @@ export const CommercesLists = function(props) {
 
 CommercesLists.propTypes = {
 	title: PropTypes.string,
-	commerce: PropTypes.string
+	commerces: PropTypes.array
 };

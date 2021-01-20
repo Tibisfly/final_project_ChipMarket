@@ -16,8 +16,8 @@ class Users(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, default=True)
     avatar = db.Column(db.String(80))
 
-    commerce = db.relationship("Commerces")
-    follower = db.relationship("Followers")
+    commerces = db.relationship("Commerces")
+    followers = db.relationship("Followers")
     like = db.relationship("Likes")
     comment = db.relationship("Comments")
 
@@ -25,13 +25,32 @@ class Users(db.Model):
         return '{}'.format(self.username)
     
     def serialize(self):
+
+        commerces_list = []
+        
+        for commerce in self.commerces:
+            commerces_list.append({
+                "business_name": commerce.business_name,
+                "commerce_id": commerce.id
+            })
+        
+        following_list = []
+        
+        for follow in self.followers:
+            following_list.append({
+                "business_name": follow.commerces.business_name,
+                "commerce_id": follow.commerces.id
+            })
+            
         return{
             "id" : self.id,
             "first_name" : self.first_name,
             "last_name": self.last_name,
             "username": self.username,
             "email": self.email,
-            "avatar": self.avatar
+            "avatar": self.avatar,
+            "commerce_list": commerces_list,
+            "following_list": following_list
         }
 
 
@@ -67,7 +86,6 @@ class Commerces(db.Model):
         posts_list = []
         
         for post in self.posts:
-            print("esto es el selfpost", post)
             posts_list.append(post.serialize())
 
         return{
@@ -94,7 +112,7 @@ class Followers(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),  nullable=False)
     
     user = db.relationship("Users")
-    commerce = db.relationship("Commerces")
+    commerces = db.relationship("Commerces")
 
     def __str__(self):
         return  '{}:{}'.format(self.user.username, self.commerce.business_name) 
