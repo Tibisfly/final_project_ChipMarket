@@ -18,12 +18,10 @@ export const Home = () => {
 						data-bs-target="#carouselExampleIndicators"
 						data-bs-slide-to="0"
 						interval="5000"
-						pause="hover"
-						className="active"></li>
-					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1">
-						Prueba de texto 1
-					</li>
-					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+						className="active"
+					/>
+					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" />
+					<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" />
 				</ol>
 				<div className="carousel-inner">
 					<div className="carousel-item active">
@@ -40,7 +38,7 @@ export const Home = () => {
 						/>
 					</div>
 					<div className="carousel-item">
-						<img src="https://picsum.photos/id/175/367/267" className="d-block w-100" alt="..." />
+						<img src="https://i.picsum.photos/id/1068/7117/4090.jpg?hmac=Y6xHXrzHsNlbRTbhzZ53Yk-Ux9lUECBLbbP4wb5a1qY" className="d-block w-100" alt="..." />
 					</div>
 				</div>
 				<a
@@ -80,19 +78,6 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
-			{/* <div className="text-center mt-5">
-				<h1>Hello Rigo!</h1>
-				<p>
-					<img src={rigoImageUrl} />
-				</p>
-				<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
-				<p>
-					This boilerplate comes with lots of documentation:{" "}
-					<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-						Read documentation
-					</a>
-				</p>
-			</div> */}
 		</div>
 	);
 };
