@@ -99,17 +99,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						callback();
 					})
 					.catch(error => {
-						callback();
+						console.log("error");
 					});
 			},
 			logOut() {
 				localStorage.removeItem("token");
 				setStore({ token: null });
 			},
-			createCommerce(data) {
+			createCommerce(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/commerces`;
-				console.log("Esto es data:", data);
 				let headers = { "Content-Type": "application/json" };
 				headers["Authorization"] = `Bearer ${store.token}`;
 				const config = {
@@ -133,12 +132,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(json => {
 						setStore({ commerce: json.commerce });
-						localStorage.setItem("token", json.token);
 						callback();
 					})
-					.catch(error => {
-						console.log(error);
-					});
+					.catch(error => {});
 			},
 			getOneUser() {
 				const store = getStore();
