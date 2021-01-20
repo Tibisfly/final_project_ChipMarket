@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import PropTypes from "prop-types";
+
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
+import "../../styles/forms.scss";
 
 export const CommercesForm = function(props) {
 	const [businessName, setBusinessName] = useState("");
@@ -23,7 +24,6 @@ export const CommercesForm = function(props) {
 
 	function handleSubmit() {
 		const data = {
-			ownerId: 8,
 			businessName: businessName,
 			streetName: streetName,
 			streetNumber: streetNumber,
@@ -36,16 +36,13 @@ export const CommercesForm = function(props) {
 			phoneNumber: phoneNumber,
 			avatar: avatar
 		};
-		console.log("Esto es data en form de commerce:", data);
-		actions.createCommerce(data);
+		actions.createCommerce(data, () => {
+			history.push("/feed");
+		});
 	}
 	return (
-		<div className="container">
-			<h3>
-				Bienvenido, en ChipMarket apoyamos al comercio local, por eso hemos creado este espacio para ti y tu
-				negocio.
-				<small className="text-muted">Por favor, rellene este formulario</small>
-			</h3>
+		<div className="create-user">
+			<h1 className="title">{false ? "Actualiza tu comercio" : "Crea tu comercio"}</h1>
 			<form>
 				<div className="form-group">
 					<label htmlFor="inputBusinessName">Nombre del comercio</label>
@@ -151,7 +148,7 @@ export const CommercesForm = function(props) {
 						onChange={event => setWebsite(event.target.value)}
 					/>
 				</div>
-				<button type="button" className="btn btn-info btn-block" onClick={handleSubmit}>
+				<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
 					{params.id ? "Update" : "Create"}
 				</button>
 			</form>

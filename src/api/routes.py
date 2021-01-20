@@ -6,7 +6,7 @@ import hmac
 
 import jwt
 
-import json, datetime
+import json, datetime, random, string
 
 from flask import Flask, request, jsonify, url_for, Blueprint, abort
 from api.models import db, Users, Commerces, Followers, Likes, Comments, Posts
@@ -56,8 +56,8 @@ def create_one(Model, required, types, payload=None):
     return jsonify(model.serialize()), 201
 
 
-def update_one(Models, id, required, types, payload=None):
-    payload = payload or request.get_json()
+def update_one(Models, id, types):
+    payload = request.get_json()
     model = Models.query.filter_by(id=id, deleted_at=None).first()
 
     if not model:
@@ -68,10 +68,6 @@ def update_one(Models, id, required, types, payload=None):
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
-
-    for field in required:
-        if field not in payload or payload[field] is None:
-            abort(400, "este es un mensaje en el error 400")
     
     for key, value in payload.items():
         setattr(model, key, payload[key])
@@ -122,7 +118,7 @@ def handle_create_user():
         "password": str
     }
     payload = request.get_json()
-    print("esto es payload en routes", payload)
+   
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
@@ -178,16 +174,13 @@ def login():
 
     token = jwt.encode(payload, secret, algorithm=algo)
 
-    print("este es el token del back", token)
-
     return jsonify({"token": token}), 201
     
 
 def authorized_user():
 
     authorization = request.headers.get('Authorization')
-    print("esto es el authorizaton", authorization)
-    
+
     if not authorization:
         abort (403)
 
@@ -205,11 +198,12 @@ def authorized_user():
 @api.route('/users', methods=['PUT'])
 def handle_update_user():
     user = authorized_user()
+    user_id = user.id
+    # payload = request.get_json()
+    # payload["user_id"] = user.id
+    
 
-    payload = request.get_json()
-    payload["user_id"] = user.id
-
-    required = ["first_name", "last_name", "username", "email"]
+    # required = ["first_name", "last_name", "username", "email"]
     types = {
         "first_name": str,
         "last_name": str,
@@ -218,7 +212,7 @@ def handle_update_user():
         "password": str
     }
 
-    return update_one(Users, required, types, payload)
+    return update_one(Users, user_id, types)
 
 #Borrar usuario.
 @api.route('/users', methods=['DELETE'])
@@ -241,8 +235,8 @@ def handle_create_commerce():
     user = authorized_user()
 
     payload= request.get_json()
+   
     payload["owner_id"] = user.id
-  
     
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description"]
     types = {
@@ -300,27 +294,34 @@ def handle_delete_commerce(id):
 @api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
     user = authorized_user()
+    payload = request.get_json()
+    commerce = Commerces.query.filter_by(id = payload["commerce_id"], deleted_at=None).first()
+ 
+    if commerce is None:
+        return 'Commerce does not exist', 403
 
-    payload= request.get_json()
-    payload["commerce_id"] = commerce.id
+    if commerce.owner_id is not user.id:
+        return 'The user is not the owner of the commerce', 403
 
-    required = ["title", "description", "media_type", "media_url", "comments", "commerce_id"]
+   
+    required = ["title", "description", "media_type", "media_url", "commerce_id"]
     types = {
         "commerce_id": int,
         "media_type": str,
         "media_url": str,
-        "comments": list,
         "title": str,
         "description": str
     }
 
-    return create_one(Posts, required, types)
+    payload["promo_code"] = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+   
+    return create_one(Posts, required, types, payload)
 
 #Obtener la lista de todos los posts = Posts de los Commerces que Users sigue :users/<int:user_id>/commerces/posts
 @api.route('users/feed', methods=['GET'])
 def handle_list_posts():
     user = authorized_user()
-    
+ 
     follows = Followers.query.filter_by(user_id = user.id, deleted_at=None)
     commerce_ids = [f.commerce_id for f in follows] #forma de hacer un loop en una línea (pythonic)
     posts = Posts.query.filter(Posts.commerce_id.in_(commerce_ids)).order_by(Posts.updated_at.desc())

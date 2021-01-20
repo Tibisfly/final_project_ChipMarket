@@ -63,6 +63,13 @@ class Commerces(db.Model):
         return  '{}'.format(self.business_name)
     
     def serialize(self):
+
+        posts_list = []
+        
+        for post in self.posts:
+            print("esto es el selfpost", post)
+            posts_list.append(post.serialize())
+
         return{
             "id": self.id,
             "owner_id": self.owner_id,
@@ -74,7 +81,8 @@ class Commerces(db.Model):
             "country": self.country,
             "zip_code": self.zip_code,
             "website": self.website,
-            "phone_number": self.phone_number
+            "phone_number": self.phone_number,
+            "posts_list" : posts_list
         }
 
 class Followers(db.Model):
@@ -108,7 +116,8 @@ class Posts(db.Model):
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
     deleted_at = db.Column(db.DateTime)
     promo_expired_at = db.Column(db.DateTime)
-    media_type=db.Column(db.String(10)) 
+    promo_code= db.Column(db.String(10))
+    media_type=db.Column(db.String(200)) 
     media_url=db.Column(db.String(255)) 
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(500), nullable=True)
@@ -129,12 +138,13 @@ class Posts(db.Model):
         return{
             "id": self.id,
             "commerce_id": self.commerce_id,
-            "commerce": self.commerce.serialize(),
             "media_type": self.media_type,
             "media_url": self.media_url,
             "title": self.title,
             "description": self.description,
-            "comments": comments
+            "business_name": self.commerce.business_name,
+            "comments": comments,
+            "promo_code": self.promo_code
         }
 
 class Likes(db.Model):

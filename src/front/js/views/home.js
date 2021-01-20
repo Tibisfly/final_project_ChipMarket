@@ -38,7 +38,11 @@ export const Home = () => {
 						/>
 					</div>
 					<div className="carousel-item">
-						<img src="https://i.picsum.photos/id/1068/7117/4090.jpg?hmac=Y6xHXrzHsNlbRTbhzZ53Yk-Ux9lUECBLbbP4wb5a1qY" className="d-block w-100" alt="..." />
+						<img
+							src="https://i.picsum.photos/id/1068/7117/4090.jpg?hmac=Y6xHXrzHsNlbRTbhzZ53Yk-Ux9lUECBLbbP4wb5a1qY"
+							className="d-block w-100"
+							alt="..."
+						/>
 					</div>
 				</div>
 				<a

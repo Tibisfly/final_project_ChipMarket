@@ -1,10 +1,60 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
+import { Context } from "../store/appContext";
 import chipMarket from "../../img/chipmarket.png";
 
 export const Navbar = () => {
 	const [modal, setModal] = useState(false);
+	const { store, actions } = useContext(Context);
+
+	let handleLoggin = "";
+	if (store.token === null) {
+		handleLoggin = (
+			<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
+				<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+					<li className="nav-item font-weight-bold mr-3">
+						<Link type="button" to="/login" style={{ textDecoration: "none", color: "green" }}>
+							Iniciar Sesión
+						</Link>
+					</li>
+					<span style={{ color: "green" }}>-</span>
+					<li className="nav-item font-weight-bold ml-3">
+						<Link type="button" to="/users" style={{ textDecoration: "none", color: "green" }}>
+							Registrarse
+						</Link>
+					</li>
+				</ul>
+			</div>
+		);
+	} else {
+		handleLoggin = (
+			<>
+				<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
+					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+						<li className="nav-item font-weight-bold">
+							<Link
+								to="/commerces"
+								className="nav-link active mr-3"
+								style={{ textDecoration: "none", color: "black" }}>
+								¿Eres un comercio?. Únete a nuestra comunidad.
+							</Link>
+						</li>
+						<li className="nav-item font-weight-bold">
+							<Link
+								className="align-self-center"
+								to="/"
+								type="button"
+								style={{ textDecoration: "none", color: "green" }}
+								onClick={() => actions.logOut()}>
+								Log Out
+							</Link>
+						</li>
+					</ul>
+				</div>
+			</>
+		);
+	}
 
 	return (
 		<>
@@ -30,37 +80,12 @@ export const Navbar = () => {
 									¡Ahorra tiempo y dinero mientras apoyas al autónomo!
 								</a>
 							</li>
-							<li className="nav-item font-weight-bold">
-								<a className="nav-link active" href="#">
-									¿Eres un comercio?. Únete a nuestra comunidad.
-								</a>
-							</li>
-							<li className="nav-item">
-								<Link
-									to="/login"
-									className="nav-link active font-weight-bold"
-									aria-current="page"
-									href="">
-									Iniciar Sesion
-								</Link>
-							</li>
+
+							{handleLoggin}
 						</ul>
 					</div>
 				</div>
 			</nav>
-			{/* Esto creo que deberíamos colocarlo en el perfil de usuarios y en el de comercios respectivamente */}
-			{/* <div className="ml-auto">
-					<ModalUpload show={modal} onClose={() => setModal(false)} />
-				</div>
-				<form className="d-flex">
-					<input className="form-control mx-4" type="search" placeholder="Search" aria-label="Search" />
-					<button className="btn btn-outline-success" type="submit">
-						Search
-					</button>
-				</form>
-				<button type="button" className="btn btn-link-light" onClick={() => setModal(true)}>
-					<i className="fas fa-plus">Añade una publicación</i>
-				</button> */}
 		</>
 	);
 };

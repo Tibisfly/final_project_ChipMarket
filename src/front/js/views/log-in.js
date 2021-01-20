@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { ModalPassword } from "../components/modal-password.js";
 import "../../styles/forms.scss";
+import chipMarket from "../../img/chipmarket.png";
 
 export const LogIn = function(props) {
 	const { store, actions } = useContext(Context);
 
-	const [email, setEmail] = useState("rodrike90@mgail.com");
-	const [password, setPassword] = useState("1234");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [modal, setModal] = useState(false);
 
 	const history = useHistory();
@@ -19,10 +20,8 @@ export const LogIn = function(props) {
 			email: email,
 			password: password
 		};
-		console.log("Antes del login");
-		actions.LogIn(data, () => {
+		actions.logIn(data, () => {
 			if (store.error == null) {
-				console.log("error:", store.error);
 				history.push("/feed");
 			}
 		});
@@ -90,14 +89,9 @@ export const LogIn = function(props) {
 					</div>
 
 					<div className="col-lg-5 d-flex flex-column align-items-end min-vh-100">
-						<div className="logo-login px-lg-5 pt-lg-4 pb-lg-3 p-4 d-flex w-100">
-							<img
-								className="logo-login"
-								width="70"
-								src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
-							/>
-							<h2 className="align-self-center">ChipMarket</h2>
-						</div>
+						{/* <div className="logo-login  d-flex w-100">
+							<img className="logo-login" width="50%" src={chipMarket} />
+						</div> */}
 						<hr />
 
 						<div className="title-login px-lg-5 py-lg-4 p-4 mt-4 w-100">
