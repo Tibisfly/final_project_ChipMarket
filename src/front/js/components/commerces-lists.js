@@ -14,7 +14,6 @@ export const CommercesLists = function(props) {
 						<p className="font-weight-bold text-muted">{props.title}</p>
 					</div>
 					<div className="commerces-container">
-						{/* aqui haces el map de todo este div className con los comercios creados y los comercios seguidos */}
 						{props.commerces.map((commerce, index) => {
 							return (
 								<div className="d-flex mb-4" key={index}>

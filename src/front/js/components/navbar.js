@@ -18,9 +18,8 @@ export const Navbar = props => {
 							Iniciar Sesión
 						</Link>
 					</li>
-					<span style={{ color: "green" }}>-</span>
 					<li className="nav-item font-weight-bold ml-3">
-						<Link type="button" to="/users" style={{ textDecoration: "none", color: "green" }}>
+						<Link type="button" to="/register" style={{ textDecoration: "none", color: "green" }}>
 							Registrarse
 						</Link>
 					</li>
@@ -48,7 +47,7 @@ export const Navbar = props => {
 								Perfil
 							</Link>
 						</li>
-						<li className="nav-item font-weight-bold">
+						<li className="nav-item font-weight-bold mt-2">
 							<Link
 								className="align-self-center"
 								to="/"

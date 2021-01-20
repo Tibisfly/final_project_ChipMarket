@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const SearchZipCode = function(props) {
 	return (
@@ -16,9 +17,9 @@ export const SearchZipCode = function(props) {
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<button className="btn btn-outline-success btn-sm" type="submit">
+						<Link to="/search/zipcode" className="btn btn-outline-success btn-sm" type="button">
 							Search
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

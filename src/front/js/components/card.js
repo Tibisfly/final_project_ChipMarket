@@ -13,13 +13,6 @@ export function Card(props) {
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);
 	let pathImg = "https://picsum.photos/400/200?random=" + imgRandom;
 
-	// const comments = props.comments.map((comment, index) => {
-	// 	return (
-	// 		<li className="list-group-item" key={index}>
-	// 			{comment}
-	// 		</li>
-	// 	);
-	// });
 	return (
 		<div className="card mb-5">
 			<div className="card-body d-flex">

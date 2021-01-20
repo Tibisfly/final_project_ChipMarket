@@ -4,13 +4,15 @@ import ScrollToTop from "./components/scroll-to-top";
 
 import { Home } from "./views/home";
 import { Feed } from "./views/feed";
+import { FeedCommerce } from "./views/feed-commerce";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
 import { CommercesForm } from "./views/commerces-form";
-import { CommercesProfiles } from "./views/commerces-profiles";
+// import { CommercesProfiles } from "./views/commerces-profiles";
+import { SearchZipCode } from "./views/search-zipcode";
 import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
 import { CreatePost } from "./views/create-post";
@@ -34,17 +36,17 @@ const Layout = () => {
 						<Route exact path="/feed">
 							<Feed />
 						</Route>
-						<Route exact path="/users">
-							<Register />
+						<Route exact path="/feed-commerce">
+							<FeedCommerce />
 						</Route>
-						<Route exact path="/users/:id">
+						<Route exact path="/register">
 							<Register />
 						</Route>
 						<Route exact path="/commerces">
 							<CommercesForm />
 						</Route>
-						<Route exact path="/commerces/profiles">
-							<CommercesProfiles />
+						<Route exact path="/search/zipcode">
+							<SearchZipCode />
 						</Route>
 						<Route exact path="/create/post">
 							<CreatePost />

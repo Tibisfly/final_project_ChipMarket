@@ -2,13 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../components/card.js";
 import { Context } from "../store/appContext.js";
-import { Profiles } from "../components/profiles";
+import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
-import { SearchZipCode } from "../components/search-zip-code";
 
-export const Feed = () => {
-	const params = useParams();
+export const FeedCommerce = () => {
+	// const params = useParams();
 
 	const { store, actions } = useContext(Context);
 
@@ -16,7 +15,7 @@ export const Feed = () => {
 
 	useEffect(() => {
 		actions.getUserFeed();
-		actions.getOneUser();
+		actions.getOneCommerce();
 	}, []);
 
 	let cardList = "";
@@ -31,7 +30,7 @@ export const Feed = () => {
 					businessName={post.business_name}
 					title={post.title}
 					description={post.description}
-					promoCode={post.promoCode}
+					promoCode={post.promo_code}
 					comments={post.comments}
 				/>
 			);
@@ -44,16 +43,13 @@ export const Feed = () => {
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-4">
-							<Profiles
-								username={store.user.username}
+							<CommercesProfiles
+								businessName={store.commerce.business_name}
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
 
-							<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
-							<br />
-							<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
-							<SearchZipCode />
+							<UploadPost />
 						</div>
 						<div className="col-lg-8">{cardList}</div>
 					</div>
