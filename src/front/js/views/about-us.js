@@ -39,7 +39,7 @@ export const AboutUs = () => {
 					<div className="col-md-8">
 						<h1>
 							<span> Enrique Rodriguez Cepeda</span>
-							{/* <span className="text-secondary">Will Catch Your Eye</span> */}
+							{/* <span className="text-secondary">Full-Stack Developer</span> */}
 						</h1>
 						<p className="lead">
 							Hace más de doce años que trabajo en diseño y desarrollo de productos digitales en la
