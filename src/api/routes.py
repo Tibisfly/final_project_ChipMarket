@@ -333,17 +333,16 @@ def handle_list_posts():
 
     return jsonify(feed), 200
 
-@api.route('commerces/<int:commerce_id>/feed', methods=['GET'])
+@api.route('commerces/feed/<int:commerce_id>', methods=['GET'])
 def handle_get_commerce_feed(commerce_id):
-    # user = authorized_user()
     commerce = Commerces.query.filter_by(id = commerce_id, deleted_at=None).first()
     serialized_commerce = commerce.serialize() 
-    posts_list= serialized_commerce.posts_list
+    
+    posts_list=  serialized_commerce["posts_list"]
 
-    # print("esto es commerce por id", posts_list, commerce_id)
-    # feed = [post for post in serialized_commerce.posts_list]
+    feed = [post for post in  posts_list]
 
-    return jsonify(posts_list), 200
+    return jsonify(feed), 200
 
 #Devuelve el post del comercio que se busca.
 @api.route('/posts/<int:id>', methods=['GET'])

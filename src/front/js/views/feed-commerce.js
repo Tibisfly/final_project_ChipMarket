@@ -34,6 +34,7 @@ export const FeedCommerce = () => {
 					description={post.description}
 					promo_code={post.promo_code}
 					comments={post.comments}
+					postId={post.id}
 				/>
 			);
 		});

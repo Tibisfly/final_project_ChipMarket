@@ -214,7 +214,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getCommerceFeed(id) {
 				const store = getStore();
 
-				const endpoint = `${baseUrl}/commerces/${id}/feed`;
+				const endpoint = `${baseUrl}/commerces/feed/${id}`;
 				let headers = { "Content-Type": "application/json" };
 				headers["Authorization"] = `Bearer ${store.token}`;
 				const config = {
