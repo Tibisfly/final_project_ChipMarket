@@ -34,6 +34,13 @@ export function Card(props) {
 				<div className="follow align-self-center">
 					<i className="fas fa-ellipsis-h"></i>
 				</div>
+				<div className="ml-auto p-2">
+					<Link to="/feed" className="nav-link active font-weight-bold" aria-current="page" href="/feed">
+						<button type="button" className="btn btn-outline-success btn-sm">
+							Seguir
+						</button>
+					</Link>
+				</div>
 			</div>
 			<p className="ml-5 mb-1">Publicado hace 8 horas</p>
 			<Link to={`/post/${props.postId}`}>
