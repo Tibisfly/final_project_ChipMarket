@@ -17,6 +17,7 @@ import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
 import { CreatePost } from "./views/create-post";
 import { PostView } from "./views/post-view";
+import { ContactUs } from "./views/contact-us";
 
 //create your first component
 const Layout = () => {
@@ -59,6 +60,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/about-us">
 							<AboutUs />
+						</Route>
+						<Route exact path="/contact-us">
+							<ContactUs />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

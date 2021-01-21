@@ -30,7 +30,7 @@ export const Navbar = props => {
 		handleLoggin = (
 			<>
 				<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row-reverse">
 						<li className="nav-item font-weight-bold">
 							<Link
 								to="/commerces"
