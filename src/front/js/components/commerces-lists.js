@@ -6,6 +6,7 @@ export const CommercesLists = function(props) {
 	if (!props.commerces) {
 		return <div>Cargando. . .</div>;
 	}
+
 	return (
 		<>
 			<div className="card">
@@ -18,7 +19,9 @@ export const CommercesLists = function(props) {
 							return (
 								<div className="d-flex mb-4" key={index}>
 									<small className="font-weight-bold">
-										<Link to="/commerces/profiles" className="text-decoration-none text-dark">
+										<Link
+											to={`/feed/commerce/${commerce.commerce_id}`}
+											className="text-decoration-none text-dark">
 											{commerce.business_name}
 										</Link>
 									</small>

@@ -15,7 +15,7 @@ export const FeedCommerce = () => {
 	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
-		actions.getUserFeed();
+		actions.getCommerceFeed(params.id);
 		actions.getOneCommerce(params.id);
 	}, []);
 

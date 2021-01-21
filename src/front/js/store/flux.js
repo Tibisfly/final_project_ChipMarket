@@ -131,7 +131,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						setStore({ commerce: json.commerce });
+						console.log(json, "de createcommerce");
+						setStore({ commerce: json });
 						callback();
 					})
 					.catch(error => {});
@@ -210,6 +211,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ feed: json });
 					});
 			},
+			getCommerceFeed(id) {
+				const store = getStore();
+
+				const endpoint = `${baseUrl}/commerces/${id}/feed`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
+				const config = {
+					headers: headers,
+					method: "GET"
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ feed: json });
+					});
+			},
+
 			createPost(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/commerces/posts`;
