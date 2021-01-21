@@ -160,7 +160,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 
 				const endpoint = `${baseUrl}/commerces/${id}`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
 				const config = {
+					headers: headers,
 					method: "GET"
 				};
 
@@ -169,6 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
+						console.log("json de getoneCommerce", json);
 						setStore({ commerce: json });
 					});
 			},

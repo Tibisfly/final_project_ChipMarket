@@ -5,6 +5,7 @@ import { Context } from "../store/appContext.js";
 import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
+import PropTypes from "prop-types";
 
 export const FeedCommerce = () => {
 	// const params = useParams();
@@ -45,8 +46,8 @@ export const FeedCommerce = () => {
 						<div className="col-lg-4">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
-								firstName={store.user.first_name}
-								lastName={store.user.last_name}
+								// firstName={store.user.first_name}
+								// lastName={store.user.last_name}
 							/>
 
 							<UploadPost />
