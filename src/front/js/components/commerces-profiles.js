@@ -8,9 +8,9 @@ export const CommercesProfiles = function(props) {
 				<div>
 					<img
 						className="profile-pic rounded-circle mr-3"
-						src="https://i.pinimg.com/236x/34/dd/f2/34ddf290ab42740d1ff1673cf5796f72.jpg"
+						src="https://i.pinimg.com/280x280_RS/e5/1a/27/e51a27a372f630ef9e5f940e4a11bada.jpg"
 					/>
-					<p className="d-block font-weight-bold mb-0 mt-4">{props.busisnessName}</p>
+					<p className="d-block font-weight-bold mb-0 mt-4">{props.businessName}</p>
 					<small className="text-muted">{props.streetName}</small>
 					<small className="text-muted">{props.streetNumber}</small>
 					<small className="text-muted">{props.city}</small>
@@ -23,7 +23,7 @@ export const CommercesProfiles = function(props) {
 };
 
 CommercesProfiles.propTypes = {
-	busisnessName: PropTypes.string,
+	businessName: PropTypes.string,
 	streetName: PropTypes.string,
 	streetNumber: PropTypes.string,
 	city: PropTypes.string,

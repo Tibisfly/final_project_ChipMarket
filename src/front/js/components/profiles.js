@@ -8,7 +8,7 @@ export const Profiles = function(props) {
 				<div>
 					<img
 						className="profile-pic rounded-circle mr-3"
-						src="https://i.pinimg.com/236x/34/dd/f2/34ddf290ab42740d1ff1673cf5796f72.jpg"
+						src="https://i.pinimg.com/474x/ea/12/1a/ea121ab5c320603cc21b2498429110ca.jpg"
 					/>
 					<p className="d-block font-weight-bold mb-0 mt-4">{props.username}</p>
 					<small className="text-muted">
