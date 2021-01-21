@@ -8,7 +8,7 @@ import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
 
 export const FeedCommerce = () => {
-	// const params = useParams();
+	const params = useParams();
 
 	const { store, actions } = useContext(Context);
 
@@ -16,7 +16,7 @@ export const FeedCommerce = () => {
 
 	useEffect(() => {
 		actions.getUserFeed();
-		actions.getOneCommerce();
+		actions.getOneCommerce(params.id);
 	}, []);
 
 	let cardList = "";
@@ -29,9 +29,10 @@ export const FeedCommerce = () => {
 					key={index}
 					img=""
 					businessName={post.business_name}
+					commerceId={post.commerce_id}
 					title={post.title}
 					description={post.description}
-					promoCode={post.promo_code}
+					promo_code={post.promo_code}
 					comments={post.comments}
 				/>
 			);
@@ -46,8 +47,11 @@ export const FeedCommerce = () => {
 						<div className="col-lg-4">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
-								// firstName={store.user.first_name}
-								// lastName={store.user.last_name}
+								streetName={store.commerce.street_name}
+								streetNumber={store.commerce.street_number}
+								zipCode={store.commerce.zip_code}
+								city={store.commerce.city}
+								country={store.commerce.city}
 							/>
 
 							<UploadPost />

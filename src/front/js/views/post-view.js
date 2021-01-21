@@ -12,8 +12,17 @@ export const PostView = function(props) {
 		actions.getPost(params.id);
 	}, []);
 	return (
-		<div className="container">
-			<Card />
+		<div className="container my-5">
+			<Card
+				img=""
+				businessName={store.post.business_name}
+				title={store.post.title}
+				description={store.post.description}
+				promo_code={store.post.promo_code}
+				comments={store.post.comments}
+				commerceId={store.post.commerce_id}
+				postId={store.post.id}
+			/>
 		</div>
 	);
 };

@@ -63,6 +63,33 @@ export const Navbar = props => {
 		);
 	}
 
+	// function smoothScroll(target) {
+	// 	var scrollContainer = target;
+	// 	do {
+	// 		//find scroll container
+	// 		scrollContainer = scrollContainer.parentNode;
+	// 		if (!scrollContainer) return;
+	// 		scrollContainer.scrollTop += 1;
+	// 	} while (scrollContainer.scrollTop == 0);
+
+	// 	var targetY = 0;
+	// 	do {
+	// 		//find the top of target relatively to the container
+	// 		if (target == scrollContainer) break;
+	// 		targetY += target.offsetTop;
+	// 	} while ((target = target.offsetParent));
+
+	// 	scroll = function(c, a, b, i) {
+	// 		i++;
+	// 		if (i > 30) return;
+	// 		c.scrollTop = a + ((b - a) / 30) * i;
+	// 		setTimeout(function() {
+	// 			scroll(c, a, b, i);
+	// 		}, 20);
+	// 	};
+	// 	// start scrolling
+	// 	scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+	// }
 	return (
 		<>
 			<nav
@@ -80,14 +107,13 @@ export const Navbar = props => {
 
 					<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-							<li className="nav-item">
+							{/* <li className="nav-item">
 								<a
-									className="nav-link font-weight-bold"
-									href="me gustaria que bajara en scroll a un sitio del home y luego en ese sitio haya un boton de login">
+									className="nav-link font-weight-bold pointer"
+									onClick={() => smoothScroll(document.getElementById("ahorraTiempo"))}>
 									¡Ahorra tiempo y dinero mientras apoyas al autónomo!
 								</a>
-							</li>
-
+							</li> */}
 							{handleLoggin}
 						</ul>
 					</div>

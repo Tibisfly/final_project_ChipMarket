@@ -38,7 +38,7 @@ export const CommercesForm = function(props) {
 			avatar: avatar
 		};
 		actions.createCommerce(data, () => {
-			history.push("/feed-commerce");
+			history.push("/feed/commerce/:id");
 		});
 	}
 	return (

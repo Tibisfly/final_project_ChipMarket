@@ -11,7 +11,7 @@ export function Card(props) {
 	const [modal, setModal] = useState(false);
 
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);
-	let pathImg = "https://picsum.photos/400/200?random=" + imgRandom;
+	let pathImg = "https://picsum.photos/800/600?random=1" + imgRandom;
 
 	return (
 		<div className="card mb-5">
@@ -25,21 +25,26 @@ export function Card(props) {
 						/>
 					</div>
 
-					<a href="" className="text-dark text-decoration-none font-weight-bold align-self-center">
+					<Link
+						to={`/feed/commerce/${props.commerceId}`}
+						className="text-dark text-decoration-none font-weight-bold align-self-center">
 						{props.businessName}
-					</a>
+					</Link>
 				</div>
 				<div className="follow align-self-center">
 					<i className="fas fa-ellipsis-h"></i>
 				</div>
 			</div>
 			<p className="ml-5 mb-1">Publicado hace 8 horas</p>
-			<img src={pathImg} className="img-fluid" />
+			<Link to={`/post/${props.postId}`}>
+				<img src={pathImg} className="img-fluid" />
+			</Link>
+
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
 						<i className="far fa-bookmark lead mr-3 font-weight-bold" />
-						<small>Código promocional: {props.promoCode}</small>
+						<small>Código promocional: {props.promo_code}</small>
 						{/* <i className="far fa-heart lead mr-3"></i>
 						<i className="far fa-comment lead mr-3"></i>
 						<i className="far fa-paper-plane lead mr-3"></i> */}
@@ -74,6 +79,8 @@ Card.propTypes = {
 	mediaType: PropTypes.string,
 	mediaUrl: PropTypes.string,
 	businessName: PropTypes.string,
-	promoCode: PropTypes.string,
-	comments: PropTypes.array
+	promo_code: PropTypes.string,
+	comments: PropTypes.array,
+	commerceId: PropTypes.int,
+	postId: PropTypes.int
 };

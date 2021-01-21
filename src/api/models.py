@@ -100,7 +100,9 @@ class Commerces(db.Model):
             "zip_code": self.zip_code,
             "website": self.website,
             "phone_number": self.phone_number,
-            "posts_list" : posts_list
+            "posts_list" : posts_list,
+            "street_name": self.street_name,
+            "street_number": self.street_number
         }
 
 class Followers(db.Model):
