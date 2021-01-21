@@ -7,15 +7,15 @@ export const CommercesProfiles = function(props) {
 			<div className="d-flex mb-4">
 				<div>
 					<img
-						className="profile-pic rounded-circle mr-3"
-						src="https://i.pinimg.com/280x280_RS/e5/1a/27/e51a27a372f630ef9e5f940e4a11bada.jpg"
+						className="profile-pic  mr-3"
+						src="https://i.pinimg.com/236x/c3/59/4f/c3594fb14297bd3cf16e43efc8a354a9.jpg"
 					/>
 					<p className="d-block font-weight-bold mb-0 mt-4">{props.businessName}</p>
-					<small className="text-muted">{props.streetName}</small>
-					<small className="text-muted">{props.streetNumber}</small>
-					<small className="text-muted">{props.city}</small>
-					<small className="text-muted">{props.zipCode}</small>
-					<small className="text-muted">{props.phoneNumber}</small>
+					<p className="d-block  mb-0 mt-4">{props.streetName}</p>
+					<p className="d-block  mb-0 mt-4">{props.streetNumber}</p>
+					<p className="d-block  mb-0 mt-4">{props.city}</p>
+					<p className="d-block  mb-0 mt-4">{props.zipCode}</p>
+					<p className="d-block  mb-0 mt-4">{props.phoneNumber}</p>
 				</div>
 			</div>
 		</>
@@ -27,6 +27,7 @@ CommercesProfiles.propTypes = {
 	streetName: PropTypes.string,
 	streetNumber: PropTypes.string,
 	city: PropTypes.string,
+	country: PropTypes.string,
 	zipCode: PropTypes.string,
 	phoneNumber: PropTypes.string
 };

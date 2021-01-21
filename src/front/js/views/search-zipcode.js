@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
 
-export const CommercesProfiles = function(props) {
+export const SearchZipCode = function(props) {
 	return (
 		<>
 			<div className="container my-3">

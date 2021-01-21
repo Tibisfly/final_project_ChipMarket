@@ -31,8 +31,10 @@ export const Feed = () => {
 					businessName={post.business_name}
 					title={post.title}
 					description={post.description}
-					promoCode={post.promoCode}
+					promo_code={post.promo_code}
 					comments={post.comments}
+					commerceId={post.commerce_id}
+					postId={post.id}
 				/>
 			);
 		});

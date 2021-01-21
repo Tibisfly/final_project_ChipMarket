@@ -89,9 +89,6 @@ export const LogIn = function(props) {
 					</div>
 
 					<div className="col-lg-5 d-flex flex-column align-items-end min-vh-100">
-						{/* <div className="logo-login  d-flex w-100">
-							<img className="logo-login" width="50%" src={chipMarket} />
-						</div> */}
 						<hr />
 
 						<div className="title-login px-lg-5 py-lg-4 p-4 mt-4 w-100">

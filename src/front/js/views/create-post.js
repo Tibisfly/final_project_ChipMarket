@@ -22,7 +22,7 @@ export const CreatePost = function(props) {
 		};
 
 		actions.createPost(data, () => {
-			history.push("/feed");
+			history.push("/feed/commerce/" + store.commerce.id);
 		});
 	}
 

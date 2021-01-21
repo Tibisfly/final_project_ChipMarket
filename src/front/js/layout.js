@@ -36,15 +36,12 @@ const Layout = () => {
 						<Route exact path="/feed">
 							<Feed />
 						</Route>
-						<Route exact path="/feed-commerce/:id">
+						<Route exact path="/feed/commerce/:id">
 							<FeedCommerce />
 						</Route>
 						<Route exact path="/register">
 							<Register />
 						</Route>
-						{/* <Route exact path="/users/:id">
-							<Register />
-						</Route> */}
 						<Route exact path="/commerces">
 							<CommercesForm />
 						</Route>

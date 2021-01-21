@@ -36,12 +36,6 @@ export const ModalUpload = function(props) {
 
 					<div className="modal uploadbutton">
 						<input accept="image/*" className="input" id="contained-button-file" multiple type="file" />
-
-						{/* <label htmlFor="contained-button-file"> */}
-						{/* <button variant="contained" color="primary" component="span">
-				        Upload
-			            </button> */}
-						{/* </label> */}
 					</div>
 
 					<div className="modal-footer">

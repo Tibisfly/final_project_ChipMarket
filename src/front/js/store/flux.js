@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-cf543894-b2d0-433d-a331-6e4b86b637b0.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-b2d4265c-8585-4c14-8b9a-6c32b36a2b07.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -99,18 +99,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						callback();
 					})
 					.catch(error => {
-						callback();
+						console.log("error");
 					});
 			},
 			logOut() {
 				localStorage.removeItem("token");
 				setStore({ token: null });
 			},
-			createCommerce(data) {
+			createCommerce(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/commerces`;
-				console.log("Esto es data:", data);
-				let headers = { "Content-Type": "application/json" };
+				let headers = { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" };
 				headers["Authorization"] = `Bearer ${store.token}`;
 				const config = {
 					method: "POST",
@@ -132,13 +131,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						setStore({ commerce: json.commerce });
-						localStorage.setItem("token", json.token);
+						console.log(json, "de createcommerce");
+						setStore({ commerce: json });
 						callback();
 					})
-					.catch(error => {
-						console.log(error);
-					});
+					.catch(error => {});
 			},
 			getOneUser() {
 				const store = getStore();
@@ -214,6 +211,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ feed: json });
 					});
 			},
+			getCommerceFeed(id) {
+				const store = getStore();
+
+				const endpoint = `${baseUrl}/commerces/feed/${id}`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
+				const config = {
+					headers: headers,
+					method: "GET"
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ feed: json });
+					});
+			},
+
 			createPost(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/commerces/posts`;
@@ -236,6 +253,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
+						setStore({ post: json.post });
 						callback();
 					})
 					.catch(error => {

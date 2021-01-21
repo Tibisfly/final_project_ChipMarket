@@ -13,6 +13,7 @@ export const Register = function(props) {
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
 	const [avatar, setAvatar] = useState("");
+
 	const history = useHistory();
 
 	const params = useParams();

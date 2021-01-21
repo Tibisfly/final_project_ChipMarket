@@ -24,7 +24,7 @@ def get_one_or_error_404(Models, id):
 
     if not row:
         abort(404)
-    
+
     if row.deleted_at:
         abort(401)
 
@@ -35,12 +35,12 @@ def get_list_of(Models):
         model.serialize()
         for model in Models.query.filter_by(deleted_at=None).all()
     ]
-    
+
     return jsonify(list_models), 200
 
 def create_one(Model, required, types, payload=None):
     payload = payload or request.get_json()
- 
+
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
@@ -68,10 +68,10 @@ def update_one(Models, id, types):
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
-    
+
     for key, value in payload.items():
         setattr(model, key, payload[key])
-    
+
     db.session.add(model)
     db.session.commit()
 
@@ -82,7 +82,7 @@ def delete_one(Models, id):
 
     if not model:
         return "Not found", 404
-    
+
     model.deleted_at = datetime.datetime.utcnow()
     data = model.serialize()
     db.session.delete(model)
@@ -96,7 +96,7 @@ def delete_one(Models, id):
 
 #     if user.id != commerce.owner_id:
 #         return False
-    
+
 #     return True
 
 ################################## USERS #########################################
@@ -106,7 +106,7 @@ def handle_get_user():
     user = authorized_user()
     return jsonify(user.serialize()), 200
 
-#Se crea un usario nuevo o cualquier cosa nueva que se añada en la base de datos. 
+#Se crea un usario nuevo o cualquier cosa nueva que se añada en la base de datos.
 @api.route('/users', methods=['POST'])
 def handle_create_user():
     required = ["first_name", "last_name", "username", "email", "password"]
@@ -118,7 +118,7 @@ def handle_create_user():
         "password": str
     }
     payload = request.get_json()
-   
+
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
@@ -136,21 +136,21 @@ def handle_create_user():
     user = Users(**payload)
     db.session.add(user)
     db.session.commit()
-    
+
     email = {'sub': user.email}
     secret = JWT_SECRET.encode('utf-8')
     algo="HS256"
 
-    token = jwt.encode(email, secret, algorithm=algo)    
+    token = jwt.encode(email, secret, algorithm=algo)
 
     return jsonify({"token":token}), 201
-    
+
 
 #Log in del usuario ya creado.
 @api.route('/login', methods=['POST'])
 def login():
     payload = request.get_json()
-    
+
     email = payload['email']
     password = payload ['password']
 
@@ -167,7 +167,7 @@ def login():
 
     if hashed_password != user.password:
         return 'Not allow to access', 403
-    
+
     payload = {'sub': email}
     secret = JWT_SECRET.encode('utf-8')
     algo="HS256"
@@ -175,7 +175,7 @@ def login():
     token = jwt.encode(payload, secret, algorithm=algo)
 
     return jsonify({"token": token}), 201
-    
+
 
 def authorized_user():
 
@@ -201,7 +201,7 @@ def handle_update_user():
     user_id = user.id
     # payload = request.get_json()
     # payload["user_id"] = user.id
-    
+
 
     # required = ["first_name", "last_name", "username", "email"]
     types = {
@@ -235,9 +235,9 @@ def handle_create_commerce():
     user = authorized_user()
 
     payload= request.get_json()
-   
+
     payload["owner_id"] = user.id
-    
+
     required = ["business_name", "city", "country", "street_name", "street_number", "zip_code", "title", "description"]
     types = {
         "business_name": str,
@@ -289,24 +289,24 @@ def handle_delete_commerce(id):
 
 
 ################################## POSTS #########################################
-#Creación del POST. USERS es con quien tengo que relacionarla, esta es una tabla secundaria. 
+#Creación del POST. USERS es con quien tengo que relacionarla, esta es una tabla secundaria.
 # Hay que hacer dos endpoints uno con commerce y otro con users.
 @api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
     user = authorized_user()
     commerce = user.commerces[0]
-    
+
     payload = request.get_json()
     payload["commerce_id"] = commerce.id
     # commerce = Commerces.query.filter_by(id = payload["commerce_id"], deleted_at=None).first()
- 
+
     # if commerce is None:
     #     return 'Commerce does not exist', 403
 
     # if commerce.owner_id is not user.id:
     #     return 'The user is not the owner of the commerce', 403
 
-   
+
     required = ["title", "description", "media_type", "media_url", "commerce_id"]
     types = {
         "commerce_id": int,
@@ -317,19 +317,30 @@ def handle_create_posts():
     }
 
     payload["promo_code"] = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-   
+
     return create_one(Posts, required, types, payload)
 
 #Obtener la lista de todos los posts = Posts de los Commerces que Users sigue :users/<int:user_id>/commerces/posts
 @api.route('users/feed', methods=['GET'])
 def handle_list_posts():
     user = authorized_user()
- 
+
     follows = Followers.query.filter_by(user_id = user.id, deleted_at=None)
     commerce_ids = [f.commerce_id for f in follows] #forma de hacer un loop en una línea (pythonic)
     posts = Posts.query.filter(Posts.commerce_id.in_(commerce_ids)).order_by(Posts.updated_at.desc())
 
-    feed = [post.serialize() for post in posts] 
+    feed = [post.serialize() for post in posts]
+
+    return jsonify(feed), 200
+
+@api.route('commerces/feed/<int:commerce_id>', methods=['GET'])
+def handle_get_commerce_feed(commerce_id):
+    commerce = Commerces.query.filter_by(id = commerce_id, deleted_at=None).first()
+    serialized_commerce = commerce.serialize() 
+    
+    posts_list=  serialized_commerce["posts_list"]
+
+    feed = [post for post in  posts_list]
 
     return jsonify(feed), 200
 
@@ -342,7 +353,7 @@ def handle_get_posts(id):
 @api.route('/posts/<int:id>', methods=['PUT'])
 def handle_update_posts(id):
     post = Posts.query.get(id)
-    
+
     if not post:
         return "Post not found", 404
 
@@ -367,7 +378,7 @@ def handle_delete_posts(id):
 
     if post.commerce_id != user.id:
         return "Post not found", 404
-    
+
     post.deleted_at = datetime.datetime.utcnow()
     data = post.serialize()
     db.session.delete(post)
@@ -385,7 +396,7 @@ def handle_create_followers():
     payload = json.loads(request.data)
     payload["user_id"] = user.id
     followers = Followers(**payload)
-        
+
     db.session.add(followers)
     db.session.commit()
 
@@ -400,32 +411,32 @@ def handle_user_follows():
     follows = Followers.query.filter_by(user_id = user.id, deleted_at=None)
 
     commerces = []
-    
+
     for follow in follows:
         commerces.append(follow.commerce.business_name)
 
     return jsonify(commerces), 200
-    
+
 #Obtener la lista de todos los usuarios que siguen a este comercio. (Followers - Seguidores)
 @api.route('/commerces/<int:commerce_id>/followers', methods=['GET'])
 def handle_followers_commerce(commerce_id):
     user = authorized_user()
-    
+
     followers = Followers.query.filter_by(commerce_id = commerce.owner_id, deleted_at=None)
 
     users= []
-    
+
     for follow in followers:
         users(follow.user.username)
 
     return jsonify(users), 200
 
-#Dejar de seguir. 
+#Dejar de seguir.
 @api.route('/commerces/<int:follow_id>/followers', methods=['DELETE'])
 def handle_delete_followers(follow_id):
-    
+
     follow = Followers.query.get(follow_id)
-    
+
     if not follow:
         return "Post not found", 404
 
@@ -433,9 +444,9 @@ def handle_delete_followers(follow_id):
 
     if "deleted_at" in payload:
         follow.deleted_at = payload["deleted_at"]
-    else: 
+    else:
         return "No estás introduciendo la fecha de borrado"
-   
+
     data = follow.serialize()
     db.session.commit()
 
@@ -449,7 +460,7 @@ def handle_delete_followers(follow_id):
 def handle_likes():
     payload = json.loads(request.data)
     likes = Likes(**payload)
-        
+
     db.session.add(likes)
     db.session.commit()
 
@@ -464,14 +475,14 @@ def handle_list_of_likes():
     user_id = user.id
     likes = Likes.query.filter_by(user_id = user_id, deleted_at=None)
     like = []
-    
+
     for like in likes:
         like.append(like.user.username)
 
     return jsonify(like), 200
-   
 
-#Borrar el like. 
+
+#Borrar el like.
 @api.route('/users/likes', methods=['DELETE'])
 def handle_delete_likes(like_id):
     user = authorized_user()
@@ -482,7 +493,7 @@ def handle_delete_likes(like_id):
 
     if not like:
         return "Like not found", 404
-    
+
     data = like.serialize()
     db.session.delete(like)
     db.session.commit()
@@ -499,7 +510,7 @@ def handle_create_comments():
     payload = json.loads(request.data)
     payload["user_id"] = user.id
     comments = Comments(**payload)
-       
+
     db.session.add(comments)
     db.session.commit()
 
@@ -510,7 +521,7 @@ def handle_create_comments():
 def handle_list_comments_commerce(commerce_id):
     comments = Comments.query.filter_by(commerce_id = commerce_id, deleted_at=None)
     lists_comments = []
-    
+
     for comment in comments:
         lists_comments.append(comment.serialize())
 
@@ -524,7 +535,7 @@ def handle_list_comments_user(user_id):
     user_id = user.id
     comments = Comments.query.filter_by(user_id = user_id, deleted_at=None)
     user_comment = []
-    
+
     for comment in comments:
         user_comment.append(comment.serialize())
 
@@ -537,7 +548,7 @@ def handle_list_comments_post(post_id):
 
     for comment in  Comments.query.filter_by(post_id = post_id, deleted_at=None):
         comments.append(comment.serialize())
-    
+
     return jsonify(comments), 200
 
 #Borrar un comentario de un post.
@@ -547,10 +558,9 @@ def handle_delete_comments(comment_id):
 
     if not comment:
         return "Comment not found", 404
-    
+
     data = comment.serialize()
     db.session.delete(comment)
     db.session.commit()
 
     return jsonify("This comment has been eliminated successfully", data), 200
-  

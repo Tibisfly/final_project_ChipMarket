@@ -15,7 +15,7 @@ export const FeedCommerce = () => {
 	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
-		actions.getUserFeed();
+		actions.getCommerceFeed(params.id);
 		actions.getOneCommerce(params.id);
 	}, []);
 
@@ -29,10 +29,12 @@ export const FeedCommerce = () => {
 					key={index}
 					img=""
 					businessName={post.business_name}
+					commerceId={post.commerce_id}
 					title={post.title}
 					description={post.description}
-					promoCode={post.promo_code}
+					promo_code={post.promo_code}
 					comments={post.comments}
+					postId={post.id}
 				/>
 			);
 		});
@@ -46,13 +48,13 @@ export const FeedCommerce = () => {
 						<div className="col-lg-4">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
-								// firstName={store.user.first_name}
-								// lastName={store.user.last_name}
+								streetName={store.commerce.street_name}
+								streetNumber={store.commerce.street_number}
+								zipCode={store.commerce.zip_code}
+								city={store.commerce.city}
+								country={store.commerce.city}
 							/>
 
-							{/* <CommercesLists title="Mis Comercios" commerce="Prueba" />
-							<br />
-							<CommercesLists title="Siguiendo a:" commerce="Prueba" /> */}
 							<UploadPost />
 						</div>
 						<div className="col-lg-8">{cardList}</div>
