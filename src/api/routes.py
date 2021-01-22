@@ -338,10 +338,9 @@ def handle_get_commerce_feed(commerce_id):
     commerce = Commerces.query.filter_by(id = commerce_id, deleted_at=None).first()
     serialized_commerce = commerce.serialize() 
     
-    posts_list=  serialized_commerce["posts_list"]
-
-    feed = [post for post in  posts_list]
-
+    feed =  serialized_commerce["posts_list"]
+    feed.sort(key=lambda x: x.get("updated_date"), reverse = True )
+    
     return jsonify(feed), 200
 
 #Devuelve el post del comercio que se busca.

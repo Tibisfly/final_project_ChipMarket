@@ -32,18 +32,16 @@ export function Card(props) {
 		<div className="card mb-5">
 			<div className="card-body d-flex">
 				<div className="d-flex flex-grow-1">
-					<div className="profile-picture rounded-circle">
+					<div className="profile-picture">
 						<img
 							style={{ width: "3rem", height: "3rem" }}
-							className="rounded-circle mr-3"
+							className="rounded-circle mr-3 mt-2"
 							src="https://i.pinimg.com/236x/59/54/6c/59546c2cf201e676b1c7b9f98df7a63b.jpg"
 						/>
 					</div>
 
-					<Link
-						to={`/feed/commerce/${props.commerceId}`}
-						className="text-dark text-decoration-none font-weight-bold align-self-center">
-						{props.businessName}
+					<Link to={`/feed/commerce/${props.commerceId}`} className="text-dark text-decoration-none">
+						<h5 className="font-weight-bold align-self-center mt-3">{props.businessName}</h5>
 					</Link>
 				</div>
 				<div className="follow align-self-center">
@@ -53,13 +51,12 @@ export function Card(props) {
 						className="nav-link active font-weight-bold text-decoration-none"
 						aria-current="page"
 						href="/feed"
-						style={{ color: "green" }}>
+						style={{ color: "green", marginTop: "12px", fontSize: "20px" }}>
 						Seguir
 					</Link>
 				</div>
 				<div className="ml-auto p-2"></div>
 			</div>
-			<p className="ml-5 mb-1">Publicado hace menos de un día</p>
 			<Link to={`/post/${props.postId}`}>
 				<img src={pathImg} className="img-fluid" />
 			</Link>
@@ -67,15 +64,23 @@ export function Card(props) {
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
-						<i className="far fa-bookmark lead mr-3 mb-3"> Código promocional: {props.promo_code}</i>
+						<i
+							className="far fa-bookmark lead mr-3 mb-3"
+							style={{ fontSize: "25px", fontWeight: "bold", color: "green" }}>
+							{" "}
+							Código promocional: {props.promo_code}
+						</i>
 						<br />
 						{/* <i className="far fa-heart lead mr-3"> 259 ChipLikes</i> */}
 					</div>
 				</div>
 
-				<p className="title">{props.title}</p>
-
-				<p className="mb-0 my-3">{props.description}</p>
+				<h5 className="title font-weight-bold" style={{ marginTop: "15px" }}>
+					{props.title}
+				</h5>
+				<p className="mb-0 my-3" style={{ fontSize: "20px" }}>
+					{props.description}
+				</p>
 
 				<ListOfComments
 					comments={comment.map((value, index) => (
@@ -84,7 +89,7 @@ export function Card(props) {
 						</li>
 					))}
 				/>
-				<div className="d-flex border-top py-3 px-2">
+				<div className="d-flex border-0 py-3 px-2">
 					<input
 						type="text"
 						placeholder="Agrega un comentario..."
