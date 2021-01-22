@@ -164,7 +164,8 @@ class Posts(db.Model):
             "description": self.description,
             "business_name": self.commerce.business_name,
             "comments": comments,
-            "promo_code": self.promo_code
+            "promo_code": self.promo_code,
+            "updated_date": self.updated_at
         }
 
 class Likes(db.Model):

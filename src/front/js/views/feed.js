@@ -45,7 +45,7 @@ export const Feed = () => {
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-3">
+						<div className="col-lg-4">
 							<Profiles
 								username={store.user.username}
 								firstName={store.user.first_name}
@@ -57,7 +57,7 @@ export const Feed = () => {
 							<br />
 							<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
 						</div>
-						<div className="col-lg-9">{cardList}</div>
+						<div className="col-lg-8">{cardList}</div>
 					</div>
 				</div>
 			</section>
