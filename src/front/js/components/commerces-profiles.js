@@ -7,7 +7,7 @@ export const CommercesProfiles = function(props) {
 			<div className="d-flex mb-4">
 				<div>
 					<img
-						className="profile-pic  mr-3 rounded-circle"
+						className="profile-pic  mr-3 rounded"
 						src="https://i.pinimg.com/236x/c3/59/4f/c3594fb14297bd3cf16e43efc8a354a9.jpg"
 					/>
 					<p className="d-block font-weight-bold mb-0 mt-4">{props.businessName}</p>
