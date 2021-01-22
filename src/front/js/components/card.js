@@ -10,7 +10,7 @@ export function Card(props) {
 	const [newComment, setNewComment] = useState([""]);
 	const [modal, setModal] = useState(false);
 
-	const [comment, setComment] = useState(["Primer comentario", "Segundo comentario"]);
+	const [comment, setComment] = useState(["Que ofertaza!!", "Guao, me parece genial, mañana voy a buscar mi oferta"]);
 	const [inputValue, setInputValue] = useState("");
 
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);
