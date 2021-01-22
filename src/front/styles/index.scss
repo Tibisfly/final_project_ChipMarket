@@ -9,6 +9,9 @@ body{
 .navbar{
     color: black  
 }
+.navbar .nav-item{
+    white-space: nowrap;
+}
 .pointer{
     cursor: pointer;
 }
