@@ -69,7 +69,7 @@ export const Home = () => {
 			<br />
 			<div className="card my-5 border-0">
 				<div className="row g-0">
-					<div className="col-md-4 d-flex justify-content-center">
+					<div className="col-lg-4 d-flex justify-content-center">
 						<img
 							src="https://images.unsplash.com/photo-1580361543250-301150bf6551?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3w5NjgzNjM5fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60"
 							alt="..."
@@ -77,7 +77,7 @@ export const Home = () => {
 							style={{ width: "100%", height: "auto" }}
 						/>
 					</div>
-					<div className="col-md-8 my-5">
+					<div className="col-lg-8 my-5">
 						<div className="card-body">
 							<h5 className="card-title">UNA REALIDAD QUE PODEMOS MEJORAR JUNTOS.</h5>
 							<p className="card-text text-justify fs-2">
@@ -93,7 +93,7 @@ export const Home = () => {
 			<br />
 			<div className="card mb-3 border-0 my-5">
 				<div className="row g-0">
-					<div className="col-md-7">
+					<div className="col-lg-7 order-sm-2 order-lg-1">
 						<div className="card-body">
 							<h5 className="card-title">AHORRA TIEMPO Y DINERO</h5>
 							<p className="card-text text-justify fs-2">
@@ -103,12 +103,12 @@ export const Home = () => {
 							</p>
 						</div>
 					</div>
-					<div className="col-md-5 rounded-pill">
+					<div className="col-lg-5 order-sm-1 order-lg-2 rounded-pill">
 						<img
 							src="https://images.unsplash.com/photo-1560472355-536de3962603?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
 							alt="..."
-							className="rounded-circle"
-							style={{ width: "77%", height: "auto" }}
+							className="rounded-circle img-mobile"
+							style={{ height: "auto" }}
 						/>
 					</div>
 				</div>
@@ -116,7 +116,7 @@ export const Home = () => {
 			<br />
 			<div className="card my-5 border-0">
 				<div className="row g-0">
-					<div className="col-md-4 d-flex justify-content-center">
+					<div className="col-lg-4 d-flex justify-content-center">
 						<img
 							src="https://images.unsplash.com/photo-1570358934836-6802981e481e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTV8fG9uZSUyMHdvcmxkfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 							alt="..."
@@ -124,7 +124,7 @@ export const Home = () => {
 							style={{ width: "98%", height: "auto" }}
 						/>
 					</div>
-					<div className="col-md-8 my-5">
+					<div className="col-lg-8 my-5">
 						<div className="card-body">
 							<h5 className="card-title">JUNTOS COMO CIUDADANOS DEL MUNDO.</h5>
 							<p className="card-text text-justify fs-2">
@@ -135,15 +135,10 @@ export const Home = () => {
 						</div>
 					</div>
 				</div>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<div className="container d-flex flex-lg-row align-space-between align-self-center">
-					<div className="card text-dark bg-light my-3 mx-5" style={{ maxWidth: "18rem" }}>
-						<div className="card-body align-self-center">
-							<p className="card-text text-justify">
+				<div className="container d-flex flex-lg-row align-space-between row" style={{ margin: "20px 0" }}>
+					<div className="card text-dark bg-light col-md-6 col-lg-4 col-12" style={{}}>
+						<div className="card-body ">
+							<p className="card-text ">
 								ChipMarket es una red social que crece gracias a ti. Desde tu perfil podrás disfrutar de
 								las ofertas únicas para ChipAddicts.
 							</p>
@@ -152,7 +147,7 @@ export const Home = () => {
 							</Link>
 						</div>
 					</div>
-					<div className="card text-dark bg-light my-3 mx-5 align-self-center" style={{ maxWidth: "18rem" }}>
+					<div className="card text-dark bg-light col-md-6 col-lg-4 col-12" style={{}}>
 						<div className="card-body ">
 							<p className="card-text">
 								¿Eres un comercio?, si te das de alta con ChipMarket podrás aparecer en la búsqueda por
@@ -164,9 +159,9 @@ export const Home = () => {
 							</Link>
 						</div>
 					</div>
-					<div className="card text-dark bg-light my-3 mx-5 align-self-center" style={{ maxWidth: "18rem" }}>
-						<div className="card-body align-self-center">
-							<p className="card-text text-justify">
+					<div className="card text-dark bg-light col-md-12 col-lg-4 col-12" style={{}}>
+						<div className="card-body ">
+							<p className="card-text ">
 								El sentido es muy importante para nosotros, evitemos que más autónomos cierren sus
 								negocios. Tomemos consciencia y apoyemos al comercio local.
 							</p>

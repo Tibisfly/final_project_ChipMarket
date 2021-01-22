@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => (
 	<div className="container-fluid">
-		<footer className="footer row mx-2 ">
-			<div className="col-6">
+		<footer className="" style={{ borderTop: "1px solid green", padding: "40px" }}>
+			<div className="d-flex justify-content-center">
 				<Link
 					to="/contact-us"
 					className="nav-link active font-weight-bold"
@@ -13,8 +13,7 @@ export const Footer = () => (
 					style={{ textDecoration: "none", color: "green" }}>
 					Envíanos un email
 				</Link>
-			</div>
-			<div className="col-6">
+
 				<Link
 					to="/about-us"
 					className="nav-link active font-weight-bold"

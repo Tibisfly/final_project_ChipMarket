@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-b2d4265c-8585-4c14-8b9a-6c32b36a2b07.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-c040b4fc-1ebc-4582-80a2-3d3bc1639fd3.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -14,7 +14,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			createUser(data, callback) {
-				console.log("esto es data", data);
 				const endpoint = `${baseUrl}/users`;
 				const config = {
 					method: "POST",
@@ -91,6 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ error: response });
 							throw "Usuario o contraseña incorrecta";
 						}
+						setStore({ error: null });
 						return response.json();
 					})
 					.then(json => {
@@ -109,8 +109,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			createCommerce(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/commerces`;
-				let headers = { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" };
-				headers["Authorization"] = `Bearer ${store.token}`;
 				const config = {
 					method: "POST",
 					body: JSON.stringify({
@@ -123,7 +121,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						country: data.country,
 						zip_code: data.zipCode
 					}),
-					headers: headers
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					}
 				};
 
 				fetch(endpoint, config)
@@ -131,7 +132,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						console.log(json, "de createcommerce");
 						setStore({ commerce: json });
 						callback();
 					})
@@ -153,7 +153,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						console.log("json de getoneUser", json);
 						setStore({ user: json });
 					});
 			},
@@ -243,7 +242,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						title: data.title,
 						description: data.description,
 						media_type: data.mediaType,
-						media_url: data.mediaUrl
+						media_url: data.mediaUrl,
+						commerce: data.commerce_id
 					}),
 					headers: headers
 				};

@@ -48,7 +48,7 @@ export function Card(props) {
 				</div>
 				<div className="follow align-self-center">
 					<Link
-						to="/feed"
+						to={`/feed/commerce/${props.commerceId}`}
 						type="button"
 						className="nav-link active font-weight-bold text-decoration-none"
 						aria-current="page"
@@ -59,7 +59,7 @@ export function Card(props) {
 				</div>
 				<div className="ml-auto p-2"></div>
 			</div>
-			<p className="ml-5 mb-1">Publicado hace 8 horas</p>
+			<p className="ml-5 mb-1">Publicado hace menos de un día</p>
 			<Link to={`/post/${props.postId}`}>
 				<img src={pathImg} className="img-fluid" />
 			</Link>

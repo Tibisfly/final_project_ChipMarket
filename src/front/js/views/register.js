@@ -110,10 +110,5 @@ export const Register = function(props) {
 				</div>
 			</section>
 		</div>
-
-		// 	<Link to="/commerces" type="button" className="btn btn-outline-dark">
-		// 		¿Eres un comercio?. Pincha aquí
-		// 	</Link>
-		// </div>
 	);
 };

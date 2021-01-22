@@ -154,7 +154,7 @@ export const LogIn = function(props) {
 								</div>
 							</form>
 							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">
-								<Link to="/users" style={{ textDecoration: "none", color: "green" }}>
+								<Link to="/register" style={{ textDecoration: "none", color: "green" }}>
 									¿Todavía no tienes cuenta? Pincha aquí y únete.
 								</Link>
 							</div>
