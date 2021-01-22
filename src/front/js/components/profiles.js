@@ -7,7 +7,7 @@ export const Profiles = function(props) {
 			<div className="d-flex mb-4">
 				<div>
 					<img
-						className="profile-pic mr-3 rounded-circle"
+						className="profile-pic mr-3 rounded"
 						src="https://i.pinimg.com/236x/d6/8e/84/d68e84d27da437b9079f39c6428d4f83.jpg"
 					/>
 
