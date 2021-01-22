@@ -47,15 +47,17 @@ export function Card(props) {
 					</Link>
 				</div>
 				<div className="follow align-self-center">
-					<i className="fas fa-ellipsis-h"></i>
-				</div>
-				<div className="ml-auto p-2">
-					<Link to="/feed" className="nav-link active font-weight-bold" aria-current="page" href="/feed">
-						<button type="button" className="btn btn-outline-success btn-sm">
-							Seguir
-						</button>
+					<Link
+						to="/feed"
+						type="button"
+						className="nav-link active font-weight-bold text-decoration-none"
+						aria-current="page"
+						href="/feed"
+						style={{ color: "green" }}>
+						Seguir
 					</Link>
 				</div>
+				<div className="ml-auto p-2"></div>
 			</div>
 			<p className="ml-5 mb-1">Publicado hace 8 horas</p>
 			<Link to={`/post/${props.postId}`}>
@@ -65,9 +67,9 @@ export function Card(props) {
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
-						<i className="far fa-bookmark lead mr-3"> Código promocional: {props.promo_code}</i>
-
-						<i className="far fa-heart lead mr-3"> 259 ChipLikes</i>
+						<i className="far fa-bookmark lead mr-3 mb-3"> Código promocional: {props.promo_code}</i>
+						<br />
+						{/* <i className="far fa-heart lead mr-3"> 259 ChipLikes</i> */}
 					</div>
 				</div>
 
@@ -76,11 +78,11 @@ export function Card(props) {
 				<p className="mb-0 my-3">{props.description}</p>
 
 				<ListOfComments
-				// comments={comment.map((value, index) => (
-				// 	<li className="list-group-item" key={index}>
-				// 		{value}
-				// 	</li>
-				// ))}
+					comments={comment.map((value, index) => (
+						<li className="list-group-item" key={index}>
+							{value}
+						</li>
+					))}
 				/>
 				<div className="d-flex border-top py-3 px-2">
 					<input

@@ -51,12 +51,11 @@ export const Feed = () => {
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
-
+							<SearchZipCode />
+							<br />
 							<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
 							<br />
 							<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
-							<br />
-							<SearchZipCode />
 						</div>
 						<div className="col-lg-9">{cardList}</div>
 					</div>

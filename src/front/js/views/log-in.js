@@ -5,6 +5,7 @@ import { Context } from "../store/appContext.js";
 import { ModalPassword } from "../components/modal-password.js";
 import "../../styles/forms.scss";
 import chipMarket from "../../img/chipmarket.png";
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from "reactstrap";
 
 export const LogIn = function(props) {
 	const { store, actions } = useContext(Context);
@@ -26,68 +27,68 @@ export const LogIn = function(props) {
 			}
 		});
 	}
+	const items = [
+		{
+			src:
+				"https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
+			altText: "ChipAddict",
+			caption: ""
+		},
+		{
+			src:
+				"https://images.unsplash.com/photo-1605043145824-470f996f9fe3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80",
+			altText: "ChipAddict",
+			caption: ""
+		},
+		{
+			src:
+				"https://images.unsplash.com/photo-1548345680-f5475ea5df84?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80",
+			altText: "ChipAddict",
+			caption: ""
+		}
+	];
+
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [animating, setAnimating] = useState(false);
+
+	const next = () => {
+		if (animating) return;
+		const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+		setActiveIndex(nextIndex);
+	};
+
+	const previous = () => {
+		if (animating) return;
+		const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+		setActiveIndex(nextIndex);
+	};
+
+	const goToIndex = newIndex => {
+		if (animating) return;
+		setActiveIndex(newIndex);
+	};
+
+	const slides = items.map(item => {
+		return (
+			<CarouselItem onExiting={() => setAnimating(true)} onExited={() => setAnimating(false)} key={item.src}>
+				<img src={item.src} alt={item.altText} id="carousel" />
+				<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+			</CarouselItem>
+		);
+	});
 
 	return (
 		<>
 			<section>
 				<div className="row g-0">
 					<div className="col-lg-7">
-						<>
-							<div
-								id="carouselExampleDark"
-								className="carousel carousel-dark slide"
-								data-bs-ride="carousel">
-								<ol className="carousel-indicators">
-									<li
-										data-bs-target="#carouselExampleDark"
-										data-bs-slide-to="0"
-										className="active"></li>
-									<li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
-								</ol>
-								<div className="carousel-inner">
-									<div className="carousel-item active">
-										<img
-											src="https://images.unsplash.com/photo-1555421689-491a97ff2040?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzJ8fGVjb21tZXJjZSUyMDEwNTB4OTYwJTIwcHh8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-											className="d-block w-100"
-											alt="..."
-										/>
-										<div className="carousel-caption d-none d-md-block">
-											<h5>Donde esta este texto??</h5>
-											<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-										</div>
-									</div>
-									<div className="carousel-item">
-										<img
-											src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDV8fHNob3BwaW5nJTIwLmpwZ3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-											className="d-block w-100 "
-											alt="..."
-										/>
-										<div className="carousel-caption d-none d-md-block">
-											<h5>Second slide label</h5>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-										</div>
-									</div>
-								</div>
-								<a
-									className="carousel-control-prev"
-									href="#carouselExampleDark"
-									role="button"
-									data-bs-slide="prev">
-									<span className="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span className="visually-hidden">Previous</span>
-								</a>
-								<a
-									className="carousel-control-next"
-									href="#carouselExampleDark"
-									role="button"
-									data-bs-slide="next">
-									<span className="carousel-control-next-icon" aria-hidden="true"></span>
-									<span className="visually-hidden">Next</span>
-								</a>
-							</div>
-						</>
+						<Carousel activeIndex={activeIndex} next={next} previous={previous}>
+							<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+							{slides}
+							<CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+							<CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+						</Carousel>
 					</div>
-
 					<div className="col-lg-5 d-flex flex-column align-items-end min-vh-100">
 						<hr />
 
@@ -142,7 +143,13 @@ export const LogIn = function(props) {
 									onClick={() => handleSubmit()}>
 									Iniciar Sesión
 								</button>
-								<div className="error" style={{ display: store.error != null ? "block" : "none" }}>
+								<div
+									className="error fw-bold"
+									style={{
+										display: store.error != null ? "block" : "none",
+										fontSize: "20px",
+										color: "red"
+									}}>
 									<p>Usuario y contraseña incorrectos</p>
 								</div>
 							</form>

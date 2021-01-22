@@ -12,7 +12,9 @@ export const CommercesLists = function(props) {
 			<div className="card">
 				<div className="card-body">
 					<div>
-						<p className="font-weight-bold text-muted">{props.title}</p>
+						<p className="font-weight-bold" style={{ color: "green" }}>
+							{props.title}
+						</p>
 					</div>
 					<div className="commerces-container">
 						{props.commerces.map((commerce, index) => {

@@ -6,15 +6,12 @@ export const ListOfComments = function(props) {
 	const [display, setDisplay] = useState("hide");
 
 	function handleShow() {
-	
-
 		if (show == true) {
 			setDisplay("hide");
 		} else {
 			setDisplay("show");
 		}
 		setShow(!show);
-	
 	}
 
 	return (
@@ -43,8 +40,8 @@ export const ListOfComments = function(props) {
 							className={`collapse ${display}`}
 							aria-labelledby="headingOne"
 							data-parent="#accordionExample">
-							<div className="card-body">
-								<ul></ul>
+							<div className="card-body border-bottom-0">
+								<ul>{props.comments}</ul>
 							</div>
 						</div>
 					</div>
@@ -54,5 +51,5 @@ export const ListOfComments = function(props) {
 	);
 };
 ListOfComments.propTypes = {
-    comments=PropTypes.array
-}
+	comments: PropTypes.array
+};

@@ -46,60 +46,61 @@ export const Register = function(props) {
 				<div className="container">
 					<div className="contact-form-row align-items-center">
 						<div className="form-field ">
+							<label htmlFor="inputFirstName">Nombre</label>
 							<input
 								type="text"
-								className="form-control w-100"
+								className="form-control w-100 mb-3"
 								id="inputFirstName"
 								placeholder="First name"
 								value={firstName}
 								onChange={event => setFirstName(event.target.value)}
 							/>
-							<label htmlFor="inputFirstName">Nombre</label>
 						</div>
 						<div className="form-field">
+							<label htmlFor="inputLastName">Apellidos</label>
 							<input
 								type="text"
-								className="form-control"
+								className="form-control mb-3"
 								id="inputLastName"
 								placeholder="Last name"
 								value={lastName}
 								onChange={event => setLastName(event.target.value)}
 							/>
-							<label htmlFor="inputLastName">Apellidos</label>
 						</div>
 						<div className="form-field">
+							<label htmlFor="inputEmail">Correo electrónico</label>
 							<input
 								type="email"
-								className="form-control"
+								className="form-control mb-3"
 								id="inputEmail"
 								placeholder="Email"
 								value={email}
 								onChange={event => setEmail(event.target.value)}
 							/>
-							<label htmlFor="inputEmail">Correo electrónico</label>
 						</div>
 						<div className="form-field">
+							<label htmlFor="inputPassword">Contraseña</label>
 							<input
 								type="password"
-								className="form-control"
+								className="form-control mb-3"
 								id="inputPassword"
 								placeholder="Password"
 								value={password}
 								onChange={event => setPassword(event.target.value)}
 							/>
-							<label htmlFor="inputPassword">Contraseña</label>
 						</div>
 						<div className="form-field">
+							<label htmlFor="inputUsername">Nombre de usuario</label>
 							<input
 								type="text"
-								className="form-control"
+								className="form-control mb-3"
 								id="inputUsername"
 								placeholder="Username"
 								value={username}
 								onChange={event => setUsername(event.target.value)}
 							/>
-							<label htmlFor="inputUsername">Nombre de usuario</label>
 						</div>
+						<br />
 						<div className="form-field">
 							<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
 								{store.token ? "Update" : "Create"}
