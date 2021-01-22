@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const SearchZipCode = function(props) {
 	return (
 		<>
-			<div className="card mt-5">
+			<div className="card">
 				<div className="card-body">
 					<div>
 						<p className="font-weight-bold text-muted mb-0">Encuentra las mejores ofertas</p>

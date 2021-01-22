@@ -23,51 +23,61 @@ export const SearchZipCode = function(props) {
 				<div className="row no-gutters">
 					<div className="col-4">
 						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=1" className="card-img-top" alt="imagen1" />
+							<Link to={`/post/${props.postId}`}>
+								<img
+									src="https://picsum.photos/800/600?random=2"
+									className="card-img-top"
+									alt="imagen1"
+								/>
+							</Link>
 						</div>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=2" className="card-img-top" alt="imagen2" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=5" className="card-img-top" alt="imagen2" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=3" className="card-img-top" alt="imagen3" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=7" className="card-img-top" alt="imagen3" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=4" className="card-img-top" alt="imagen4" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=3" className="card-img-top" alt="imagen4" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=5" className="card-img-top" alt="imagen5" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=8" className="card-img-top" alt="imagen5" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=6" className="card-img-top" alt="imagen6" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=9" className="card-img-top" alt="imagen6" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=7" className="card-img-top" alt="imagen7" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=10" className="card-img-top" alt="imagen7" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=8" className="card-img-top" alt="imagen8" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=3" className="card-img-top" alt="imagen8" />
+						</Link>
 					</div>
 					<div className="col-4">
-						<div className="card" style={{ width: "100%" }}>
-							<img src="https://picsum.photos/800/600?random=9" className="card-img-top" alt="imagen9" />
-						</div>
+						<Link to={`/post/${props.postId}`}>
+							<img src="https://picsum.photos/800/600?random=6" className="card-img-top" alt="imagen9" />
+						</Link>
 					</div>
 				</div>
 			</div>
 		</>
 	);
+};
+
+SearchZipCode.propTypes = {
+	postId: PropTypes.int
 };

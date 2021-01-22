@@ -10,8 +10,23 @@ export function Card(props) {
 	const [newComment, setNewComment] = useState([""]);
 	const [modal, setModal] = useState(false);
 
+	const [comment, setComment] = useState(["Primer comentario", "Segundo comentario"]);
+	const [inputValue, setInputValue] = useState("");
+
 	let imgRandom = Math.floor(Math.random() * 1000 + 1);
 	let pathImg = "https://picsum.photos/800/600?random=1" + imgRandom;
+
+	function handleChange(event) {
+		setInputValue(event.target.value);
+	}
+
+	const handleKeyPress = event => {
+		if (event.key === "Enter" && inputValue != "") {
+			setComment([...comment, inputValue]);
+
+			setInputValue("");
+		}
+	};
 
 	return (
 		<div className="card mb-5">
@@ -34,6 +49,13 @@ export function Card(props) {
 				<div className="follow align-self-center">
 					<i className="fas fa-ellipsis-h"></i>
 				</div>
+				<div className="ml-auto p-2">
+					<Link to="/feed" className="nav-link active font-weight-bold" aria-current="page" href="/feed">
+						<button type="button" className="btn btn-outline-success btn-sm">
+							Seguir
+						</button>
+					</Link>
+				</div>
 			</div>
 			<p className="ml-5 mb-1">Publicado hace 8 horas</p>
 			<Link to={`/post/${props.postId}`}>
@@ -43,28 +65,36 @@ export function Card(props) {
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
-						<i className="far fa-bookmark lead mr-3 font-weight-bold" />
-						<small>Código promocional: {props.promo_code}</small>
-						{/* <i className="far fa-heart lead mr-3"></i>
-						<i className="far fa-comment lead mr-3"></i>
-						<i className="far fa-paper-plane lead mr-3"></i> */}
-					</div>
-					<div></div>
-				</div>
-				{/* <p className="font-weight-bold">259 ChipLikes</p> */}
-				<p className="title">{props.title}</p>
-				<p className="mb-0">{props.description}</p>
+						<i className="far fa-bookmark lead mr-3"> Código promocional: {props.promo_code}</i>
 
-				<ListOfComments />
+						<i className="far fa-heart lead mr-3"> 259 ChipLikes</i>
+					</div>
+				</div>
+
+				<p className="title">{props.title}</p>
+
+				<p className="mb-0 my-3">{props.description}</p>
+
+				<ListOfComments
+				// comments={comment.map((value, index) => (
+				// 	<li className="list-group-item" key={index}>
+				// 		{value}
+				// 	</li>
+				// ))}
+				/>
 				<div className="d-flex border-top py-3 px-2">
 					<input
 						type="text"
 						placeholder="Agrega un comentario..."
 						className="form-control border-0"
-						// value={newComment}
-						// onChange={event => setNewComment(event.target.value)}>
-					></input>
-					<button type="submit" className="btn btn-link font-weight-bold text-decoration-none">
+						onChange={handleChange}
+						onKeyPress={handleKeyPress}
+						value={inputValue}></input>
+					<button
+						onClick={handleKeyPress}
+						type="submit"
+						className="btn btn-link font-weight-bold text-decoration-none"
+						style={{ color: "green" }}>
 						Publicar
 					</button>
 				</div>
@@ -82,5 +112,6 @@ Card.propTypes = {
 	promo_code: PropTypes.string,
 	comments: PropTypes.array,
 	commerceId: PropTypes.int,
-	postId: PropTypes.int
+	postId: PropTypes.int,
+	comments: PropTypes.array
 };

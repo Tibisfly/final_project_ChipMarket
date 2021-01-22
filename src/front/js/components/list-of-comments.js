@@ -6,7 +6,7 @@ export const ListOfComments = function(props) {
 	const [display, setDisplay] = useState("hide");
 
 	function handleShow() {
-		console.log("antes", show, display);
+	
 
 		if (show == true) {
 			setDisplay("hide");
@@ -14,7 +14,7 @@ export const ListOfComments = function(props) {
 			setDisplay("show");
 		}
 		setShow(!show);
-		console.log("después", show, display);
+	
 	}
 
 	return (
@@ -22,16 +22,17 @@ export const ListOfComments = function(props) {
 			<div className="container">
 				<div className="accordion" aria-expanded="true" id="accordionExample">
 					<div className="card">
-						<div className="card-header" id="headingOne">
+						<div className="card" id="headingOne">
 							<h2 className="mb-0">
 								<button
 									onClick={() => handleShow()}
-									className="btn btn-link btn-block text-left"
+									className="btn btn-link btn-block text-left text-decoration-none"
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseOne"
 									aria-expanded="true"
-									aria-controls="collapseOne">
+									aria-controls="collapseOne"
+									style={{ color: "green" }}>
 									Comentarios
 								</button>
 							</h2>
@@ -43,8 +44,7 @@ export const ListOfComments = function(props) {
 							aria-labelledby="headingOne"
 							data-parent="#accordionExample">
 							<div className="card-body">
-								Some placeholder content for the first accordion panel. This panel is shown by default,
-								thanks to the <code>.show</code> className.
+								<ul></ul>
 							</div>
 						</div>
 					</div>
@@ -53,3 +53,6 @@ export const ListOfComments = function(props) {
 		</>
 	);
 };
+ListOfComments.propTypes = {
+    comments=PropTypes.array
+}
