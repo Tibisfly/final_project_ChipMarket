@@ -7,13 +7,15 @@ export const Profiles = function(props) {
 			<div className="d-flex mb-4">
 				<div>
 					<img
-						className="profile-pic mr-3"
-						src="https://i.pinimg.com/236x/5e/21/b5/5e21b5fa45cc04f8fd35537496ebe6d0.jpg"
+						className="profile-pic mr-3 rounded-circle"
+						src="https://i.pinimg.com/236x/d6/8e/84/d68e84d27da437b9079f39c6428d4f83.jpg"
 					/>
+
 					<p className="d-block font-weight-bold mb-0 mt-4">{props.username}</p>
-					<small className="text-muted">
+					<br />
+					<p className="text-muted">
 						{props.firstName} {props.lastName}
-					</small>
+					</p>
 				</div>
 			</div>
 		</>

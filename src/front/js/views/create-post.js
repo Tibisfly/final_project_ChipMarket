@@ -34,6 +34,7 @@ export const CreatePost = function(props) {
 					<div className="container">
 						<div className="contact-form-row align-items-center">
 							<div className="form-field ">
+								<label htmlFor="inputTitle">Título de tu publicación</label>
 								<input
 									type="text"
 									className="form-control w-100"
@@ -42,9 +43,9 @@ export const CreatePost = function(props) {
 									value={title}
 									onChange={event => setTitle(event.target.value)}
 								/>
-								<label htmlFor="inputTitle">Título de tu publicación</label>
 							</div>
 							<div className="form-field">
+								<label htmlFor="inputDescription">Descripción de tu post</label>
 								<textarea
 									className="form-control"
 									id="inputDescription"
@@ -52,9 +53,9 @@ export const CreatePost = function(props) {
 									value={description}
 									onChange={event => setDescription(event.target.value)}
 								/>
-								<label htmlFor="inputDescription">Descripción de tu post</label>
 							</div>
 							<div className="form-field">
+								<label htmlFor="inputmediaURL">Introduce la URL de tu imagen</label>
 								<input
 									type="url"
 									pattern="https://.*"
@@ -64,9 +65,9 @@ export const CreatePost = function(props) {
 									value={mediaUrl}
 									onChange={event => setMediaUrl(event.target.value)}
 								/>
-								<label htmlFor="inputmediaURL">Introduce la URL de tu imagen</label>
 							</div>
 							<div className="form-field">
+								<label htmlFor="inputmediaType">Introduce la URL de vídeos.</label>
 								<input
 									type="url"
 									pattern="https://.*"
@@ -76,7 +77,6 @@ export const CreatePost = function(props) {
 									value={mediaType}
 									onChange={event => setMediaType(event.target.value)}
 								/>
-								<label htmlFor="inputmediaType">Introduce la URL de vídeos.</label>
 							</div>
 
 							<div className="form-field">

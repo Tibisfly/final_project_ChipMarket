@@ -62,7 +62,7 @@ class Commerces(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     business_name = db.Column(db.String(80), unique=True, nullable=False)
     title = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(300), nullable=False)
     street_name = db.Column(db.String(30), nullable=False) 
     street_number = db.Column(db.String(4), nullable=False)
     zip_code = db.Column(db.String(10), nullable=False)

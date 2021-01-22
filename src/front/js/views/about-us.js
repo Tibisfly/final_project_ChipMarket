@@ -18,11 +18,8 @@ export const AboutUs = () => {
 							{/* <span className="text-secondary">Will Catch Your Eye</span> */}
 						</h1>
 						<p className="lead">
-							Lorem fistrum a peich nisi benemeritaar benemeritaar esse ahorarr pupita. Mamaar ese pedazo
-							de papaar papaar ad por la gloria de mi madre elit duis aute diodenoo. Sed llevame al sircoo
-							hasta luego Lucas nisi caballo blanco caballo negroorl. Papaar ad por la gloria de mi madre
-							elit duis aute diodenoo. Sed llevame al sircoo hasta luego Lucas nisi caballo blanco caballo
-							negroorl.
+							Full Stack Developer multitasking que puede mantener tus dientes sanos. Optimista
+							empedernida.
 						</p>
 					</div>
 					<br></br>

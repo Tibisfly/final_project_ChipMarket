@@ -45,7 +45,7 @@ export const FeedCommerce = () => {
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-4">
+						<div className="col-lg-3">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
 								streetName={store.commerce.street_name}
@@ -53,11 +53,12 @@ export const FeedCommerce = () => {
 								zipCode={store.commerce.zip_code}
 								city={store.commerce.city}
 								country={store.commerce.city}
+								phoneNumber={store.commerce.phone_number}
+								website={store.commerce.website}
 							/>
-
 							<UploadPost />
 						</div>
-						<div className="col-lg-8">{cardList}</div>
+						<div className="col-lg-9">{cardList}</div>
 					</div>
 				</div>
 			</section>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import "../../styles/modal.scss";
@@ -10,7 +10,7 @@ export const ModalPassword = function(props) {
 
 	return (
 		<div
-			className="modal-password"
+			className="modal-password align-self-start"
 			tabIndex="-1"
 			role="dialog"
 			style={{ display: props.show ? "inline-block" : "none" }}>
@@ -20,14 +20,15 @@ export const ModalPassword = function(props) {
 						<h5 className="modal-title">
 							Por favor, introduzca su correo electrónico para reestablecer su contraseña.
 						</h5>
-						<button
+						<Link
+							to="/login"
 							onClick={() => props.onClose()}
 							type="button"
 							className="close"
 							data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
-						</button>
+						</Link>
 					</div>
 					<div className="modal-body">
 						<input
@@ -38,9 +39,7 @@ export const ModalPassword = function(props) {
 							aria-describedby="basic-addon1"
 						/>
 						<br />
-						<p className="text-center font-italic">
-							Le enviaremos un correo electrónico para reestablecer su contraseña.
-						</p>
+						<p className="text-center font-italic">Le enviaremos un correo electrónico, siga los pasos.</p>
 					</div>
 					<div className="modal-footer">
 						<button

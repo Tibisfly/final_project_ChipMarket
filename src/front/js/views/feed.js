@@ -45,19 +45,19 @@ export const Feed = () => {
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-4">
+						<div className="col-lg-3">
 							<Profiles
 								username={store.user.username}
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
-
+							<SearchZipCode />
+							<br />
 							<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
 							<br />
 							<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
-							<SearchZipCode />
 						</div>
-						<div className="col-lg-8">{cardList}</div>
+						<div className="col-lg-9">{cardList}</div>
 					</div>
 				</div>
 			</section>

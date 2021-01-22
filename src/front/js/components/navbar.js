@@ -11,54 +11,48 @@ export const Navbar = props => {
 	let handleLoggin = "";
 	if (store.token === null) {
 		handleLoggin = (
-			<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
-				<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-					<li className="nav-item font-weight-bold mr-3">
-						<Link type="button" to="/login" style={{ textDecoration: "none", color: "green" }}>
-							Iniciar Sesión
-						</Link>
-					</li>
-					<li className="nav-item font-weight-bold ml-3">
-						<Link type="button" to="/register" style={{ textDecoration: "none", color: "green" }}>
-							Registrarse
-						</Link>
-					</li>
-				</ul>
-			</div>
+			<>
+				<li className="nav-item font-weight-bold mr-3">
+					<Link type="button" to="/login" style={{ textDecoration: "none", color: "green" }}>
+						Iniciar Sesión
+					</Link>
+				</li>
+				<li className="nav-item font-weight-bold ml-3">
+					<Link type="button" to="/register" style={{ textDecoration: "none", color: "green" }}>
+						Registrarse
+					</Link>
+				</li>
+			</>
 		);
 	} else {
 		handleLoggin = (
 			<>
-				<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row-reverse">
-						<li className="nav-item font-weight-bold">
-							<Link
-								to="/commerces"
-								className="nav-link active mr-3"
-								style={{ textDecoration: "none", color: "black" }}>
-								¿Eres un comercio?. Únete a nuestra comunidad.
-							</Link>
-						</li>
-						<li className="nav-item font-weight-bold">
-							<Link
-								to="/feed"
-								className="nav-link active mr-3"
-								style={{ textDecoration: "none", color: "black" }}>
-								Perfil
-							</Link>
-						</li>
-						<li className="nav-item font-weight-bold mt-2">
-							<Link
-								className="align-self-center"
-								to="/"
-								type="button"
-								style={{ textDecoration: "none", color: "green" }}
-								onClick={() => actions.logOut()}>
-								Log Out
-							</Link>
-						</li>
-					</ul>
-				</div>
+				<li className="nav-item font-weight-bold">
+					<Link
+						to="/commerces"
+						className="nav-link active mr-3"
+						style={{ textDecoration: "none", color: "black" }}>
+						¿Eres un comercio?. Únete a nuestra comunidad.
+					</Link>
+				</li>
+				<li className="nav-item font-weight-bold">
+					<Link
+						to="/feed"
+						className="nav-link active mr-3"
+						style={{ textDecoration: "none", color: "black" }}>
+						Mi Perfil
+					</Link>
+				</li>
+				<li className="nav-item font-weight-bold mt-2">
+					<Link
+						className="align-self-center"
+						to="/"
+						type="button"
+						style={{ textDecoration: "none", color: "green" }}
+						onClick={() => actions.logOut()}>
+						Log Out
+					</Link>
+				</li>
 			</>
 		);
 	}
@@ -99,7 +93,7 @@ export const Navbar = props => {
 					<Link to="/" className="chip-market-navbar d-flex align-self-start">
 						<img
 							className="logo-login m-4"
-							width="150"
+							width="20%"
 							// src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
 							src={chipMarket}
 						/>
