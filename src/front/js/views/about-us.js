@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import tibi from "../../img/tibi.png";
 import kike from "../../img/kike.png";
+import "../../styles/home.scss";
 
 export const AboutUs = () => {
 	// const params = useParams();
@@ -9,7 +10,7 @@ export const AboutUs = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="jumbotron jumbotron-fluid bg-white">
+		<div className="jumbotron jumbotron-fluid" style={{ backgroundColor: "#fcf8f2" }}>
 			<div className="container">
 				<div className="row flex-column-reverse flex-md-row">
 					<div className="col-md-8">
@@ -28,6 +29,7 @@ export const AboutUs = () => {
 					</div>
 				</div>
 			</div>
+			<br />
 			<div className="container">
 				<div className="row flex-column-reverse flex-md-row">
 					<div className="col-md-4">

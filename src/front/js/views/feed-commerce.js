@@ -25,17 +25,18 @@ export const FeedCommerce = () => {
 	} else {
 		cardList = store.feed.map((post, index) => {
 			return (
-				<Card
-					key={index}
-					img=""
-					businessName={post.business_name}
-					commerceId={post.commerce_id}
-					title={post.title}
-					description={post.description}
-					promo_code={post.promo_code}
-					comments={post.comments}
-					postId={post.id}
-				/>
+				<div className="col-4" key={index}>
+					<Card
+						img=""
+						businessName={post.business_name}
+						commerceId={post.commerce_id}
+						title={post.title}
+						description={post.description}
+						promo_code={post.promo_code}
+						comments={post.comments}
+						postId={post.id}
+					/>
+				</div>
 			);
 		});
 	}
@@ -45,7 +46,7 @@ export const FeedCommerce = () => {
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-3">
+						<div className="col-lg-9">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
 								streetName={store.commerce.street_name}
@@ -56,10 +57,16 @@ export const FeedCommerce = () => {
 								phoneNumber={store.commerce.phone_number}
 								website={store.commerce.website}
 							/>
+						</div>
+						<div className="col-lg-3">
 							<UploadPost />
 						</div>
-						<div className="col-lg-9">{cardList}</div>
 					</div>
+				</div>
+			</section>
+			<section>
+				<div className="container-fluid my-5">
+					<div className="row">{cardList}</div>
 				</div>
 			</section>
 		</div>

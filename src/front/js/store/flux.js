@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			feed: [],
 			post: {},
 			commerce: [],
+			follow: [],
 			token: token,
 			error: null
 		},
@@ -99,7 +100,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						callback();
 					})
 					.catch(error => {
-						console.log("error");
+						setStore(error);
 					});
 			},
 			logOut() {
@@ -277,6 +278,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(json => {
 						setStore({ post: json });
+					});
+			},
+			followCommerce(data, callback) {
+				const store = getStore();
+				const endpoint = `${baseUrl}/followers`;
+				let headers = { "Content-Type": "application/json" };
+				headers["Authorization"] = `Bearer ${store.token}`;
+
+				const config = {
+					method: "POST",
+					body: JSON.stringify({
+						user: data.user_id,
+						commerce: data.commerce_id
+					}),
+					headers: headers
+				};
+
+				fetch(endpoint, config)
+					.then(response => {
+						return response.json();
+					})
+					.then(json => {
+						setStore({ follow: json.follow });
+						callback();
+					})
+					.catch(error => {
+						console.log(error);
 					});
 			}
 		}

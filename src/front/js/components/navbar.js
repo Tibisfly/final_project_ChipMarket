@@ -87,16 +87,16 @@ export const Navbar = props => {
 	return (
 		<>
 			<nav
-				className="navbar navbar-expand-lg navbar-light bg-light"
-				style={{ textDecoration: "none", color: "white" }}>
+				className="navbar navbar-expand-lg navbar-light"
+				style={{
+					textDecoration: "none",
+					color: "white",
+					backgroundColor: "fdf0e4",
+					borderBottom: "1px solid green"
+				}}>
 				<div className="container-fluid">
 					<Link to="/" className="chip-market-navbar d-flex align-self-start">
-						<img
-							className="logo-login m-4"
-							width="20%"
-							// src="https://i.pinimg.com/236x/91/c8/4f/91c84f43dfafccb35658e04d56970834.jpg"
-							src={chipMarket}
-						/>
+						<img className="logo-login m-4" width="15%" src={chipMarket} />
 					</Link>
 
 					<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">

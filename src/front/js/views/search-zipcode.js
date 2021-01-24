@@ -14,7 +14,7 @@ export const SearchZipCode = function(props) {
 							<div className="card-body d-flex ">
 								<img
 									src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=700&q=80"
-									className="rounded-circle"
+									className="rounded"
 									alt="imagen3"
 									style={{ width: "20%", height: "auto" }}
 								/>

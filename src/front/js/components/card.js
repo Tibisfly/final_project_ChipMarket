@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UpButton } from "./up-button.js";
 import { ListOfComments } from "./list-of-comments.js";
@@ -7,6 +7,9 @@ import { Context } from "../store/appContext.js";
 
 export function Card(props) {
 	const { store, actions } = useContext(Context);
+
+	const history = useHistory();
+
 	const [newComment, setNewComment] = useState([""]);
 	const [modal, setModal] = useState(false);
 
@@ -18,6 +21,17 @@ export function Card(props) {
 
 	function handleChange(event) {
 		setInputValue(event.target.value);
+	}
+
+	function handleSubmit() {
+		const data = {
+			user: user_id,
+			commerce: commerce_id
+		};
+
+		actions.followCommerce(data, () => {
+			useHistory(`/feed/commerce/${props.commerceId}`);
+		});
 	}
 
 	const handleKeyPress = event => {
@@ -51,7 +65,10 @@ export function Card(props) {
 						className="nav-link active font-weight-bold text-decoration-none"
 						aria-current="page"
 						href="/feed"
-						style={{ color: "green", marginTop: "12px", fontSize: "20px" }}>
+						style={{ color: "green", marginTop: "12px", fontSize: "20px" }}
+						onClick={() => {
+							handleSubmit;
+						}}>
 						Seguir
 					</Link>
 				</div>
