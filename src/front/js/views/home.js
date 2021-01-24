@@ -68,7 +68,7 @@ export const Home = () => {
 			</Carousel>
 			<br />
 			<section>
-				<div className="card my-5 border-0">
+				<div className="card my-5 border-0" style={{ marginTop: "15px" }}>
 					<div className="row g-0">
 						<div className="col-lg-4 d-flex justify-content-center">
 							<img
@@ -79,7 +79,7 @@ export const Home = () => {
 							/>
 						</div>
 						<div className="col-lg-8 my-5">
-							<div className="card-body">
+							<div className="card-body ">
 								<h5 className="card-title">UNA REALIDAD QUE PODEMOS MEJORAR JUNTOS.</h5>
 								<p className="card-text text-justify fs-2">
 									No es secreto que el año 2020 fue duro para todos, pero aún más para personas muy
@@ -97,7 +97,7 @@ export const Home = () => {
 				<div className="card mb-3 border-0 my-5">
 					<div className="row g-0">
 						<div className="col-lg-7 order-sm-2 order-lg-1">
-							<div className="card-body">
+							<div className="card-body" style={{ marginBotton: "30px" }}>
 								<h5 className="card-title">AHORRA TIEMPO Y DINERO</h5>
 								<p className="card-text text-justify fs-2">
 									¡Con ChipMarket es muy sencillo!. Simplemente introduciendo tu código postal puedes
@@ -106,7 +106,7 @@ export const Home = () => {
 								</p>
 							</div>
 						</div>
-						<div className="col-lg-5 order-sm-1 order-lg-2 rounded">
+						<div className="col-lg-5 order-sm-1 order-lg-2 rounded" style={{ marginBotton: "30px" }}>
 							<img
 								src="https://images.unsplash.com/photo-1560472355-536de3962603?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
 								alt="..."
@@ -117,7 +117,7 @@ export const Home = () => {
 					</div>
 				</div>
 			</section>
-			<div className="card my-5 border-0">
+			<div className="card my-5 border-0" style={{ marginBotton: "30px" }}>
 				<section>
 					<div className="row g-0">
 						<div className="col-lg-4 d-flex justify-content-center">
@@ -129,7 +129,7 @@ export const Home = () => {
 							/>
 						</div>
 						<div className="col-lg-8 my-5">
-							<div className="card-body">
+							<div className="card-body" style={{ marginBotton: "30px" }}>
 								<h5 className="card-title">JUNTOS COMO CIUDADANOS DEL MUNDO.</h5>
 								<p className="card-text text-justify fs-2">
 									Nuestra comunidad existe como apoyo al emprendedor, la fusión entre la tecnología y
@@ -141,10 +141,12 @@ export const Home = () => {
 					</div>
 				</section>
 
-				<div className="container d-flex flex-lg-row align-space-between row" style={{ margin: "20px 0" }}>
-					<div className="card text-dark bg-light col-md-6 col-lg-4 col-12" style={{}}>
-						<div className="card-body ">
-							<p className="card-text ">
+				<div className="container-fluid d-flex flex-lg-row" style={{ margin: "30px 0", marginTop: "150px" }}>
+					<div
+						className="card text-dark bg-light ml-3 col-md-6 col-lg-4 col-12"
+						style={{ marginRight: "15px" }}>
+						<div className="card-body">
+							<p className="card-text">
 								ChipMarket es una red social que crece gracias a ti. Desde tu perfil podrás disfrutar de
 								las ofertas únicas para ChipAddicts.
 							</p>
@@ -153,7 +155,7 @@ export const Home = () => {
 							</Link>
 						</div>
 					</div>
-					<div className="card text-dark bg-light col-md-6 col-lg-4 col-12" style={{}}>
+					<div className="card text-dark bg-light col-md-6 col-lg-4 col-12" style={{ marginRight: "15px" }}>
 						<div className="card-body ">
 							<p className="card-text">
 								¿Eres un comercio?, si te das de alta con ChipMarket podrás aparecer en la búsqueda por
@@ -165,7 +167,7 @@ export const Home = () => {
 							</Link>
 						</div>
 					</div>
-					<div className="card text-dark bg-light col-md-12 col-lg-4 col-12" style={{}}>
+					<div className="card text-dark bg-light col-md-12 col-lg-4 col-12" style={{ marginRight: "15px" }}>
 						<div className="card-body ">
 							<p className="card-text ">
 								El sentido es muy importante para nosotros, evitemos que más autónomos cierren sus
