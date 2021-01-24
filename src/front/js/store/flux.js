@@ -1,6 +1,6 @@
 import { node } from "prop-types";
 
-const baseUrl = "https://3001-c040b4fc-1ebc-4582-80a2-3d3bc1639fd3.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-b89eb109-0f8f-46e1-afc1-48b910fd29a2.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
