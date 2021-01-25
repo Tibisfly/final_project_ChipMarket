@@ -29,7 +29,7 @@ export const ListOfComments = function(props) {
 									data-target="#collapseOne"
 									aria-expanded="true"
 									aria-controls="collapseOne"
-									style={{ color: "green" }}>
+									style={{ color: "green", fontSize: "15px" }}>
 									Comentarios
 								</button>
 							</h2>

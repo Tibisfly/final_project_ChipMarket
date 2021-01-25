@@ -21,7 +21,11 @@ export const Feed = () => {
 
 	let cardList = "";
 	if (store.feed.length == 0) {
-		cardList = <div className="card text-center ">Oops.. Todavía no hay ninguna publicación</div>;
+		cardList = (
+			<div className="card text-center" style={{ backgroundColor: "#fcf8f2" }}>
+				Oops.. Todavía no hay ninguna publicación
+			</div>
+		);
 	} else {
 		cardList = store.feed.map((post, index) => {
 			return (
@@ -53,9 +57,19 @@ export const Feed = () => {
 							/>
 							<SearchZipCode />
 							<br />
-							<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
+							<CommercesLists
+								url="/commerces"
+								title="Mis Comercios"
+								commerces={store.user.commerce_list}
+								addCommerce="Añade a un Comercio"
+							/>
 							<br />
-							<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
+							<CommercesLists
+								url="/search/zipcode"
+								title="Siguiendo a:"
+								commerces={store.user.following_list}
+								addCommerce="Encuentra y sigue a tus comercios"
+							/>
 						</div>
 						<div className="col-lg-8">{cardList}</div>
 					</div>

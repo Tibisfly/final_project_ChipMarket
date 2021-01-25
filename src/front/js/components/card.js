@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UpButton } from "./up-button.js";
 import { ListOfComments } from "./list-of-comments.js";
@@ -7,6 +7,9 @@ import { Context } from "../store/appContext.js";
 
 export function Card(props) {
 	const { store, actions } = useContext(Context);
+
+	const history = useHistory();
+
 	const [newComment, setNewComment] = useState([""]);
 	const [modal, setModal] = useState(false);
 
@@ -18,6 +21,17 @@ export function Card(props) {
 
 	function handleChange(event) {
 		setInputValue(event.target.value);
+	}
+
+	function handleSubmit() {
+		const data = {
+			user: user_id,
+			commerce: commerce_id
+		};
+
+		actions.followCommerce(data, () => {
+			useHistory(`/feed/commerce/${props.commerceId}`);
+		});
 	}
 
 	const handleKeyPress = event => {
@@ -41,7 +55,7 @@ export function Card(props) {
 					</div>
 
 					<Link to={`/feed/commerce/${props.commerceId}`} className="text-dark text-decoration-none">
-						<h5 className="font-weight-bold align-self-center mt-3">{props.businessName}</h5>
+						<h6 className="font-weight-bold align-self-center mt-3">{props.businessName}</h6>
 					</Link>
 				</div>
 				<div className="follow align-self-center">
@@ -51,7 +65,10 @@ export function Card(props) {
 						className="nav-link active font-weight-bold text-decoration-none"
 						aria-current="page"
 						href="/feed"
-						style={{ color: "green", marginTop: "12px", fontSize: "20px" }}>
+						style={{ color: "green", marginTop: "12px", fontSize: "15px" }}
+						onClick={() => {
+							handleSubmit;
+						}}>
 						Seguir
 					</Link>
 				</div>
@@ -66,19 +83,25 @@ export function Card(props) {
 					<div className="flex-grow-1">
 						<i
 							className="far fa-bookmark lead mr-3 mb-3"
-							style={{ fontSize: "25px", fontWeight: "bold", color: "green" }}>
+							style={{
+								fontSize: "20px",
+								fontWeight: "bold",
+								color: "green"
+							}}>
 							{" "}
-							Código promocional: {props.promo_code}
+							<span style={{ fontFamily: "'Spartan', sans-serif", fontSize: "16px" }}>
+								Código promocional: {props.promo_code}
+							</span>
 						</i>
 						<br />
 						{/* <i className="far fa-heart lead mr-3"> 259 ChipLikes</i> */}
 					</div>
 				</div>
 
-				<h5 className="title font-weight-bold" style={{ marginTop: "15px" }}>
+				<h6 className="title font-weight-bold" style={{ marginTop: "15px" }}>
 					{props.title}
-				</h5>
-				<p className="mb-0 my-3" style={{ fontSize: "20px" }}>
+				</h6>
+				<p className="mb-0 my-3" style={{ fontSize: "15px" }}>
 					{props.description}
 				</p>
 
@@ -92,6 +115,7 @@ export function Card(props) {
 				<div className="d-flex border-0 py-3 px-2">
 					<input
 						type="text"
+						style={{ fontSize: "12px" }}
 						placeholder="Agrega un comentario..."
 						className="form-control border-0"
 						onChange={handleChange}

@@ -6,14 +6,17 @@ export const Profiles = function(props) {
 		<>
 			<div className="d-flex mb-4">
 				<div>
-					<h1 className="d-block font-weight-bold mb-0 mt-4">{props.username}</h1>
-					<br />
-					<h2 className="text-muted">
-						{props.firstName} {props.lastName}
+					<h2 className="d-block font-weight-bold mb-0 mt-4" style={{ color: "green" }}>
+						{props.username}
 					</h2>
+					<br />
+					<h3 className="text-muted">
+						{props.firstName} {props.lastName}
+					</h3>
 					<img
 						className="profile-pic mr-3 rounded"
-						src="https://i.pinimg.com/236x/d6/8e/84/d68e84d27da437b9079f39c6428d4f83.jpg"
+						src="https://i.pinimg.com/564x/9c/60/24/9c60245d48049836aad0c2f83e18bddd.jpg"
+						style={{ width: "70%" }}
 					/>
 				</div>
 			</div>

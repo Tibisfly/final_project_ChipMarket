@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Spartan');
 body{
-    background-color: white !important;
+    background-color:#fcf8f2;
     font-family:'Spartan', sans-serif;
 }
 #carousel{
@@ -16,5 +16,16 @@ body{
     .img-mobile{
         width: 100%;
     }
+}
+.card-vertical-v2020{
+    height: 100%;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 0 13px 36px 0 #eadfd1;
+    justify-content: center;
+    margin: auto;
+}
+.card-vertical-v2020 .card-vertical-v2020--image{
+    height: 120px;
 }
 

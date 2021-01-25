@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import tibi from "../../img/tibi.png";
 import kike from "../../img/kike.png";
+import "../../styles/home.scss";
 
 export const AboutUs = () => {
 	// const params = useParams();
@@ -9,7 +10,7 @@ export const AboutUs = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="jumbotron jumbotron-fluid bg-white">
+		<div className="jumbotron jumbotron-fluid" style={{ backgroundColor: "#fcf8f2" }}>
 			<div className="container">
 				<div className="row flex-column-reverse flex-md-row">
 					<div className="col-md-8">
@@ -19,7 +20,9 @@ export const AboutUs = () => {
 						</h1>
 						<p className="lead">
 							Full Stack Developer multitasking que puede mantener tus dientes sanos. Optimista
-							empedernida.
+							empedernida. Más de 10 años de experiencia en atención al público y gestión de equipos.
+							Amplia experiencia en el sector hospitalario. Enamorada del código y de este proyecto,
+							pienso que juntos como sociedad podemos mejorar el mundo.
 						</p>
 					</div>
 					<br></br>
@@ -28,6 +31,7 @@ export const AboutUs = () => {
 					</div>
 				</div>
 			</div>
+			<br />
 			<div className="container">
 				<div className="row flex-column-reverse flex-md-row">
 					<div className="col-md-4">

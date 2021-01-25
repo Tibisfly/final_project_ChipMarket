@@ -14,16 +14,16 @@ export const SearchZipCode = function(props) {
 							<div className="card-body d-flex ">
 								<img
 									src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=700&q=80"
-									className="rounded-circle"
+									className="rounded"
 									alt="imagen3"
 									style={{ width: "20%", height: "auto" }}
 								/>
 								<div className="card-body">
-									<h3 className="text-center font-weight-bold text-success">ChipAddict</h3>
-									<h4 className="text-center mt-3">
+									<h4 className="text-center font-weight-bold text-success">ChipAddict</h4>
+									<h5 className="text-center mt-3">
 										Estos son los comercios más cercanos a tu ubicación actual, para disfrutar de
 										las promociones debes seguir al ChipCommerce.
-									</h4>
+									</h5>
 								</div>
 							</div>
 						</div>

@@ -392,7 +392,7 @@ def handle_delete_posts(id):
 def handle_create_followers():
     user = authorized_user()
 
-    payload = json.loads(request.data)
+    payload = request.get_json()
     payload["user_id"] = user.id
     followers = Followers(**payload)
 

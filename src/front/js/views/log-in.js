@@ -150,7 +150,8 @@ export const LogIn = function(props) {
 										fontSize: "20px",
 										color: "red"
 									}}>
-									<p>Usuario y contraseña incorrectos</p>
+									<p className="error fw-bold">Usuario y contraseña incorrectos</p>
+									{console.log(store.error)}
 								</div>
 							</form>
 							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">

@@ -31,6 +31,14 @@ export const CommercesLists = function(props) {
 							);
 						})}
 					</div>
+					<div style={{ borderTop: "1px solid gray" }} className="text-center">
+						<Link
+							to={props.url}
+							className="text-decoration-none"
+							style={{ color: "green", marginTop: "20px" }}>
+							{props.addCommerce}
+						</Link>
+					</div>
 				</div>
 			</div>
 		</>
@@ -39,5 +47,7 @@ export const CommercesLists = function(props) {
 
 CommercesLists.propTypes = {
 	title: PropTypes.string,
-	commerces: PropTypes.array
+	commerces: PropTypes.array,
+	addCommerce: PropTypes.string,
+	url: PropTypes.string
 };
