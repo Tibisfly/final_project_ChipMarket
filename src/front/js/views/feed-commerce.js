@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "../components/card.js";
 import { Context } from "../store/appContext.js";
 import { CommercesProfiles } from "../components/commerces-profiles";
@@ -63,6 +63,14 @@ export const FeedCommerce = () => {
 							/>
 						</div>
 						<div className="col-lg-3">
+							<div className="card" style={{ marginBottom: "1rem" }}>
+								<Link to="/contact-us" style={{ color: "green" }} className="text-decoration-none">
+									<p className="text-center mx-2 my-3">
+										Comunícate con nosotros para mejorar el posicionamiento de tu negocio en la
+										búsqueda
+									</p>
+								</Link>
+							</div>
 							<UploadPost />
 						</div>
 					</div>

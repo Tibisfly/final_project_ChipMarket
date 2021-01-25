@@ -21,7 +21,8 @@ export const AboutUs = () => {
 						<p className="lead">
 							Full Stack Developer multitasking que puede mantener tus dientes sanos. Optimista
 							empedernida. Más de 10 años de experiencia en atención al público y gestión de equipos.
-							Amplia experiencia en el sector hospitalario. Enamorada del código.
+							Amplia experiencia en el sector hospitalario. Enamorada del código y de este proyecto,
+							pienso que juntos como sociedad podemos mejorar el mundo.
 						</p>
 					</div>
 					<br></br>
