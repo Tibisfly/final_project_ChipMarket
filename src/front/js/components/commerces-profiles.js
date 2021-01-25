@@ -13,15 +13,17 @@ export const CommercesProfiles = function(props) {
 							style={{ width: "100%" }}
 						/>
 					</div>
-					<div className="col-lg-4" style={{ margin: "" }}>
-						<p className="d-block font-weight-bold">{props.businessName}</p>
-						<p className="d-block  ">{props.streetName}</p>
-						<p className="d-block  ">{props.streetNumber}</p>
-						<p className="d-block  ">{props.city}</p>
-						<p className="d-block  ">{props.country}</p>
-						<p className="d-block  ">{props.zipCode}</p>
-						<p className="d-block  ">{props.phoneNumber}</p>
-						<p className="d-block  ">{props.website}</p>
+					<div className="col-lg-8" style={{ margin: "" }}>
+						<h3 className="d-block font-weight-bold" style={{ color: "green" }}>
+							{props.businessName}
+						</h3>
+						<h5 className="d-block  ">{props.streetName}</h5>
+						<h5 className="d-block  ">{props.streetNumber}</h5>
+						<h5 className="d-block  ">{props.city}</h5>
+						<h5 className="d-block  ">{props.country}</h5>
+						<h5 className="d-block  ">{props.zipCode}</h5>
+						<h5 className="d-block  ">{props.phoneNumber}</h5>
+						<h5 className="d-block  ">{props.website}</h5>
 					</div>
 				</div>
 			</div>

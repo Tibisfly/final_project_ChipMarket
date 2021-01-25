@@ -20,7 +20,7 @@ export const SearchZipCode = function(props) {
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<Link to="/search/zipcode" className="btn btn-outline-success btn-sm " type="button">
+						<Link to="/search/zipcode/28028" className="btn btn-outline-success btn-sm " type="button">
 							Search
 						</Link>
 					</div>

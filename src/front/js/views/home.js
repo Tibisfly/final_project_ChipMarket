@@ -174,13 +174,15 @@ export const Home = () => {
 										style={{ width: "50%", marginTop: "-2rem", paddingTop: "10px" }}
 									/>
 								</div>
-								<div className="card-vertical-v2020--text mx-2">
-									<h5>FÁCIL USO</h5>
-									<p>
-										ChipMarket es una red social que crece gracias a ti. Desde tu perfil podrás
-										disfrutar de las ofertas únicas para ChipAddicts.
-									</p>
-								</div>
+								<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
+									<div className="card-vertical-v2020--text mx-2">
+										<h5>FÁCIL USO</h5>
+										<p>
+											ChipMarket es una red social que crece gracias a ti. Desde tu perfil podrás
+											disfrutar de las ofertas únicas para ChipAddicts.
+										</p>
+									</div>
+								</Link>
 							</div>
 						</div>
 						<div className="text-center mt-5 col-md-4 col-12">
@@ -191,14 +193,16 @@ export const Home = () => {
 										style={{ width: "35%", marginTop: "-1rem", paddingTop: "10px" }}
 									/>
 								</div>
-								<div className="card-vertical-v2020--text mx-2">
-									<h5>POTENCIA TU NEGOCIO</h5>
-									<p>
-										¿Eres un comercio?, si te das de alta con ChipMarket podrás aparecer en la
-										búsqueda por Código Postal de los usuarios, tendrás tu perfil en donde cada post
-										será la entrada a nuevos clientes.
-									</p>
-								</div>
+								<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
+									<div className="card-vertical-v2020--text mx-2">
+										<h5>POTENCIA TU NEGOCIO</h5>
+										<p>
+											¿Eres un comercio?, si te das de alta con ChipMarket podrás aparecer en la
+											búsqueda por Código Postal de los usuarios, tendrás tu perfil en donde cada
+											post será la entrada a nuevos clientes.
+										</p>
+									</div>
+								</Link>
 							</div>
 						</div>
 						<div className="text-center mt-5 col-md-4 col-12">
@@ -209,14 +213,16 @@ export const Home = () => {
 										style={{ width: "35%", marginTop: "-1rem", paddingTop: "10px" }}
 									/>
 								</div>
-								<div className="card-vertical-v2020--text mx-2">
-									<h5>CORRE LA VOZ</h5>
-									<p>
-										El sentido es muy importante para nosotros, evitemos que más autónomos cierren
-										sus negocios. Invita a que más comercios formen parte de esta red. En la unión
-										está la fuerza.
-									</p>
-								</div>
+								<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
+									<div className="card-vertical-v2020--text mx-2">
+										<h5>CORRE LA VOZ</h5>
+										<p>
+											El sentido es muy importante para nosotros, evitemos que más autónomos
+											cierren sus negocios. Invita a que más comercios formen parte de esta red.
+											En la unión está la fuerza.
+										</p>
+									</div>
+								</Link>
 							</div>
 						</div>
 					</div>

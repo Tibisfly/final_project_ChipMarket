@@ -21,7 +21,11 @@ export const FeedCommerce = () => {
 
 	let cardList = "";
 	if (store.feed.length == 0) {
-		cardList = <div className="card text-center ">Oops.. Todavía no hay ninguna publicación</div>;
+		cardList = (
+			<div className="card text-center" style={{ backgroundColor: "#fcf8f2" }}>
+				Oops.. Todavía no hay ninguna publicación
+			</div>
+		);
 	} else {
 		cardList = store.feed.map((post, index) => {
 			return (

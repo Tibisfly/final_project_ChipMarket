@@ -20,7 +20,8 @@ export const AboutUs = () => {
 						</h1>
 						<p className="lead">
 							Full Stack Developer multitasking que puede mantener tus dientes sanos. Optimista
-							empedernida.
+							empedernida. Más de 10 años de experiencia en atención al público y gestión de equipos.
+							Amplia experiencia en el sector hospitalario. Enamorada del código.
 						</p>
 					</div>
 					<br></br>

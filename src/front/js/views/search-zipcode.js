@@ -19,11 +19,11 @@ export const SearchZipCode = function(props) {
 									style={{ width: "20%", height: "auto" }}
 								/>
 								<div className="card-body">
-									<h3 className="text-center font-weight-bold text-success">ChipAddict</h3>
-									<h4 className="text-center mt-3">
+									<h4 className="text-center font-weight-bold text-success">ChipAddict</h4>
+									<h5 className="text-center mt-3">
 										Estos son los comercios más cercanos a tu ubicación actual, para disfrutar de
 										las promociones debes seguir al ChipCommerce.
-									</h4>
+									</h5>
 								</div>
 							</div>
 						</div>
