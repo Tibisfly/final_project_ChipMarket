@@ -12,9 +12,7 @@ export const CommercesLists = function(props) {
 			<div className="card">
 				<div className="card-body">
 					<div>
-						<p className="font-weight-bold" style={{ color: "green" }}>
-							{props.title}
-						</p>
+						<p className="font-weight-bold text-success">{props.title}</p>
 					</div>
 					<div className="commerces-container">
 						{props.commerces.map((commerce, index) => {
@@ -31,11 +29,8 @@ export const CommercesLists = function(props) {
 							);
 						})}
 					</div>
-					<div style={{ borderTop: "1px solid gray" }} className="text-center">
-						<Link
-							to={props.url}
-							className="text-decoration-none"
-							style={{ color: "green", marginTop: "20px" }}>
+					<div className="text-center border-top border-success">
+						<Link to={props.url} className="text-decoration-none text-success mt-5">
 							{props.addCommerce}
 						</Link>
 					</div>

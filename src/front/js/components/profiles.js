@@ -14,9 +14,8 @@ export const Profiles = function(props) {
 						{props.firstName} {props.lastName}
 					</h3>
 					<img
-						className="profile-pic mr-3 rounded"
+						className="profile-pic mr-3 rounded w-100"
 						src="https://i.pinimg.com/564x/9c/60/24/9c60245d48049836aad0c2f83e18bddd.jpg"
-						style={{ width: "70%" }}
 					/>
 				</div>
 			</div>

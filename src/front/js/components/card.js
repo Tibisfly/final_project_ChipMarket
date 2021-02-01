@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { UpButton } from "./up-button.js";
 import { ListOfComments } from "./list-of-comments.js";
 import { Context } from "../store/appContext.js";
+import "../../styles/cards.scss";
 
 export function Card(props) {
 	const { store, actions } = useContext(Context);
@@ -48,8 +49,7 @@ export function Card(props) {
 				<div className="d-flex flex-grow-1">
 					<div className="profile-picture">
 						<img
-							style={{ width: "3rem", height: "3rem" }}
-							className="rounded-circle mr-3 mt-2"
+							className="img-profile-picture rounded-circle mr-3 mt-2"
 							src="https://i.pinimg.com/236x/59/54/6c/59546c2cf201e676b1c7b9f98df7a63b.jpg"
 						/>
 					</div>
@@ -59,18 +59,16 @@ export function Card(props) {
 					</Link>
 				</div>
 				<div className="follow align-self-center">
-					<Link
-						to={`/feed/commerce/${props.commerceId}`}
+					<button
 						type="button"
-						className="nav-link active font-weight-bold text-decoration-none"
+						className="follow-btn nav-link active font-weight-bold text-decoration-none"
 						aria-current="page"
 						href="/feed"
-						style={{ color: "green", marginTop: "12px", fontSize: "15px" }}
 						onClick={() => {
 							handleSubmit;
 						}}>
 						Seguir
-					</Link>
+					</button>
 				</div>
 				<div className="ml-auto p-2"></div>
 			</div>
@@ -81,29 +79,17 @@ export function Card(props) {
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
-						<i
-							className="far fa-bookmark lead mr-3 mb-3"
-							style={{
-								fontSize: "20px",
-								fontWeight: "bold",
-								color: "green"
-							}}>
+						<i className="far fa-bookmark lead mr-3 mb-3">
 							{" "}
-							<span style={{ fontFamily: "'Spartan', sans-serif", fontSize: "16px" }}>
-								Código promocional: {props.promo_code}
-							</span>
+							<span className="promo-code-text">Código promocional: {props.promo_code}</span>
 						</i>
 						<br />
 						{/* <i className="far fa-heart lead mr-3"> 259 ChipLikes</i> */}
 					</div>
 				</div>
 
-				<h6 className="title font-weight-bold" style={{ marginTop: "15px" }}>
-					{props.title}
-				</h6>
-				<p className="mb-0 my-3" style={{ fontSize: "15px" }}>
-					{props.description}
-				</p>
+				<h6 className="post-info title font-weight-bold">{props.title}</h6>
+				<p className="post-info description mb-0 my-3">{props.description}</p>
 
 				<ListOfComments
 					comments={comment.map((value, index) => (
@@ -115,7 +101,6 @@ export function Card(props) {
 				<div className="d-flex border-0 py-3 px-2">
 					<input
 						type="text"
-						style={{ fontSize: "12px" }}
 						placeholder="Agrega un comentario..."
 						className="form-control border-0"
 						onChange={handleChange}
@@ -124,8 +109,7 @@ export function Card(props) {
 					<button
 						onClick={handleKeyPress}
 						type="submit"
-						className="btn btn-link font-weight-bold text-decoration-none"
-						style={{ color: "green" }}>
+						className="btn btn-link font-weight-bold text-decoration-none text-success">
 						Publicar
 					</button>
 				</div>

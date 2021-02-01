@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
+import "../../styles/home.scss";
 
 export const SearchZipCode = function(props) {
 	return (
@@ -14,9 +15,8 @@ export const SearchZipCode = function(props) {
 							<div className="card-body d-flex ">
 								<img
 									src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=700&q=80"
-									className="rounded"
+									className="img-zipcode rounded"
 									alt="imagen3"
-									style={{ width: "20%", height: "auto" }}
 								/>
 								<div className="card-body">
 									<h4 className="text-center font-weight-bold text-success">ChipAddict</h4>

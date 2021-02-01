@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
 import chipMarket from "../../img/chipmarket.png";
+import "../../styles/home.scss";
 
 export const Navbar = props => {
 	const [modal, setModal] = useState(false);
@@ -12,13 +13,13 @@ export const Navbar = props => {
 	if (store.token === null) {
 		handleLoggin = (
 			<>
-				<li className="nav-item font-weight-bold mr-3">
-					<Link type="button" to="/login" style={{ textDecoration: "none", color: "green" }}>
+				<li className="nav-item font-weight-bold mr-3 text-decoration-none text-success">
+					<Link type="button" to="/login">
 						Iniciar Sesión
 					</Link>
 				</li>
-				<li className="nav-item font-weight-bold ml-3">
-					<Link type="button" to="/register" style={{ textDecoration: "none", color: "green" }}>
+				<li className="nav-item font-weight-bold ml-3 text-decoration-none text-success">
+					<Link type="button" to="/register">
 						Registrarse
 					</Link>
 				</li>
@@ -28,27 +29,20 @@ export const Navbar = props => {
 		handleLoggin = (
 			<>
 				<li className="nav-item font-weight-bold">
-					<Link
-						to="/commerces"
-						className="nav-link active mr-3"
-						style={{ textDecoration: "none", color: "black" }}>
+					<Link to="/commerces" className="nav-link active mr-3 text-decoration-none text-dark">
 						¿Eres un comercio?. Únete a nuestra comunidad.
 					</Link>
 				</li>
 				<li className="nav-item font-weight-bold">
-					<Link
-						to="/feed"
-						className="nav-link active mr-3"
-						style={{ textDecoration: "none", color: "black" }}>
+					<Link to="/feed" className="nav-link active mr-3 text-decoration-none text-dark">
 						Mi Perfil
 					</Link>
 				</li>
 				<li className="nav-item font-weight-bold mt-2">
 					<Link
-						className="align-self-center"
+						className="align-self-center text-decoration-none text-success"
 						to="/"
 						type="button"
-						style={{ textDecoration: "none", color: "green" }}
 						onClick={() => actions.logOut()}>
 						Log Out
 					</Link>
@@ -86,14 +80,7 @@ export const Navbar = props => {
 	// }
 	return (
 		<>
-			<nav
-				className="navbar navbar-expand-lg navbar-light"
-				style={{
-					textDecoration: "none",
-					color: "white",
-					backgroundColor: "fdf0e4",
-					borderBottom: "1px solid green"
-				}}>
+			<nav className="navbar navbar-expand-lg text-decoration-none">
 				<div className="container-fluid">
 					<Link to="/" className="chip-market-navbar d-flex align-self-start">
 						<img className="logo-login m-4" width="15%" src={chipMarket} />

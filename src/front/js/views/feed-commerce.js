@@ -6,6 +6,7 @@ import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
+import "../../styles/home.scss";
 
 export const FeedCommerce = () => {
 	const params = useParams();
@@ -21,11 +22,7 @@ export const FeedCommerce = () => {
 
 	let cardList = "";
 	if (store.feed.length == 0) {
-		cardList = (
-			<div className="card text-center" style={{ backgroundColor: "#fcf8f2" }}>
-				Oops.. Todavía no hay ninguna publicación
-			</div>
-		);
+		cardList = <div className="card no-feed text-center">Oops.. Todavía no hay ninguna publicación</div>;
 	} else {
 		cardList = store.feed.map((post, index) => {
 			return (
@@ -63,8 +60,8 @@ export const FeedCommerce = () => {
 							/>
 						</div>
 						<div className="col-lg-3">
-							<div className="card" style={{ marginBottom: "1rem" }}>
-								<Link to="/contact-us" style={{ color: "green" }} className="text-decoration-none">
+							<div className="card">
+								<Link to="/contact-us" className="membership text-decoration-none">
 									<p className="text-center mx-2 my-3">
 										Comunícate con nosotros para mejorar el posicionamiento de tu negocio en la
 										búsqueda

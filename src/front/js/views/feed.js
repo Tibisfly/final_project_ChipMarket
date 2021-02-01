@@ -6,6 +6,7 @@ import { Profiles } from "../components/profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
+import "../../styles/home.scss";
 
 export const Feed = () => {
 	const params = useParams();
@@ -22,9 +23,8 @@ export const Feed = () => {
 	let cardList = "";
 	if (store.feed.length == 0) {
 		cardList = (
-			<div className="card text-center" style={{ backgroundColor: "#fcf8f2" }}>
-				Oops.. Todavía no hay ninguna publicación
-			</div>
+			<div className="card no-feed text-center">Oops.. Todavía no hay ninguna publicación</div>
+			// este div quisiera centrarlo en todo el div de las columnas del feed para las cards y darle estilos.
 		);
 	} else {
 		cardList = store.feed.map((post, index) => {
