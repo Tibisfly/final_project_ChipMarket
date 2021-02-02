@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import Map from "../components/map.js";
+import credentials from "../components/credentials.js";
 import "../../styles/home.scss";
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from "reactstrap";
 import chipMarket from "../../img/chipmarket.png";
@@ -67,6 +68,14 @@ export const Home = () => {
 				<CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
 				<CarouselControl direction="next" directionText="Next" onClickHandler={next} />
 			</Carousel>
+			<div>
+				<Map
+					googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`}
+					containerElement={<div className="maps-container-element" />}
+					mapElement={<div className="maps-element" />}
+					loadingElement={<p>Cargando</p>}
+				/>
+			</div>
 			<br />
 			<section>
 				<div className="card my-5 border-0" style={{ backgroundColor: "#fcf8f2" }}>
