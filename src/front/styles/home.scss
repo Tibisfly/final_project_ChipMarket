@@ -48,3 +48,13 @@ body{
 .maps-element{
     height: 100%;
 }
+.leaflet-container{
+    width: 500px;
+    height: 500px;
+}
+.my-leaflet-map-container img {
+    max-height: none;
+}
+.map-test{
+    width: 500px;
+}

@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Map from "../components/map.js";
+import MapTest from "../components/map-view.js";
 import credentials from "../components/credentials.js";
-import "../../styles/home.scss";
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from "reactstrap";
 import chipMarket from "../../img/chipmarket.png";
+import "../../styles/home.scss";
 
 export const Home = () => {
 	const items = [
@@ -69,12 +70,13 @@ export const Home = () => {
 				<CarouselControl direction="next" directionText="Next" onClickHandler={next} />
 			</Carousel>
 			<div>
-				<Map
+				{/* <Map
 					googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`}
 					containerElement={<div className="maps-container-element" />}
 					mapElement={<div className="maps-element" />}
 					loadingElement={<p>Cargando</p>}
-				/>
+				/> */}
+				<MapTest />
 			</div>
 			<br />
 			<section>
