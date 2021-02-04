@@ -146,18 +146,14 @@ export const LogIn = function(props) {
 								<div
 									className="error fw-bold"
 									style={{
-										display: store.error != null ? "block" : "none",
-										fontSize: "20px",
-										color: "red"
+										display: store.error != null ? "block" : "none"
 									}}>
-									<p className="error fw-bold">Usuario y contraseña incorrectos</p>
+									<p className="error-login fw-bold">Usuario y contraseña incorrectos</p>
 									{console.log(store.error)}
 								</div>
 							</form>
-							<div className="btn btn-link d-flex flex-row-reverse text-end w-100">
-								<Link to="/register" style={{ textDecoration: "none", color: "green" }}>
-									¿Todavía no tienes cuenta? Pincha aquí y únete.
-								</Link>
+							<div className="register-login btn btn-link d-flex flex-row-reverse text-end w-100 text-decoration-none">
+								<Link to="/register">¿Todavía no tienes cuenta? Pincha aquí y únete.</Link>
 							</div>
 						</div>
 

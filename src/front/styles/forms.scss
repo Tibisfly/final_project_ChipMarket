@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Spartan');
+
 body{
     background-color: #fcf8f2 ;
 }
@@ -62,6 +62,13 @@ input:hover{
     font-size: 18px;
     line-height: 26px;
     font-weight: 400;
+}
+.error-login{
+    color: red;
+    font-size: "20px";
+}
+.register-login{
+    color: green;
 }
 
 

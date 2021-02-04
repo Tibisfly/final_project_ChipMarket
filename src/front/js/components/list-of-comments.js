@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "../../styles/cards.scss";
 
 export const ListOfComments = function(props) {
 	const [show, setShow] = useState(false);
@@ -23,13 +24,12 @@ export const ListOfComments = function(props) {
 							<h2 className="mb-0">
 								<button
 									onClick={() => handleShow()}
-									className="btn btn-link btn-block text-left text-decoration-none"
+									className="comments-button btn btn-link btn-block text-left text-decoration-none text-success"
 									type="button"
 									data-toggle="collapse"
 									data-target="#collapseOne"
 									aria-expanded="true"
-									aria-controls="collapseOne"
-									style={{ color: "green", fontSize: "15px" }}>
+									aria-controls="collapseOne">
 									Comentarios
 								</button>
 							</h2>

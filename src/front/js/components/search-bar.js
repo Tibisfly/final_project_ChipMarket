@@ -6,7 +6,7 @@ export const SearchBar = function() {
     return (
     <div className="bar">
 	    <form action="" method="">		    
-		<input type="search" placeholder="Buscar...">		    	
+		<input type="search" placeholder="Buscar..."/>		    	
 		<button>Buscar</button>
 	    </form>
     </div>);

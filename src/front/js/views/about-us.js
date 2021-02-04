@@ -10,7 +10,7 @@ export const AboutUs = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="jumbotron jumbotron-fluid" style={{ backgroundColor: "#fcf8f2" }}>
+		<div className="jumbotron jumbotron-fluid">
 			<div className="container">
 				<div className="row flex-column-reverse flex-md-row">
 					<div className="col-md-8">

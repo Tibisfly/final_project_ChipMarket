@@ -117,7 +117,7 @@ class Followers(db.Model):
     commerces = db.relationship("Commerces")
 
     def __str__(self):
-        return  '{}:{}'.format(self.user.username, self.commerce.business_name) 
+        return  '{}:{}'.format(self.user.username, self.commerces.business_name) 
     
     def serialize(self):
     #self.commerce.post, hacer la relacion que alejandro explico en clases de comments. simplificar peticiones. 

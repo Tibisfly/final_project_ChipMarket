@@ -7,7 +7,7 @@ export const SearchZipCode = function(props) {
 			<div className="card">
 				<div className="card-body">
 					<div>
-						<p className="font-weight-bold  mb-0 text-center" style={{ color: "green" }}>
+						<p className="font-weight-bold  mb-0 text-justify text-success">
 							Encuentra las mejores ofertas cerca de ti.
 						</p>
 						<br />
