@@ -3,79 +3,58 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Map from "../components/map.js";
 import MapTest from "../components/map-view.js";
+import { Navbar } from "../components/navbar.js";
 import credentials from "../components/credentials.js";
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from "reactstrap";
+import manoConIphone from "../../img/chipmarket.png";
 import chipMarket from "../../img/chipmarket.png";
 import "../../styles/home.scss";
 
 export const Home = () => {
-	const items = [
-		{
-			src:
-				"https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80",
-			altText: "ChipAddict",
-			caption: "Tu comercio de barrio al alcance de un click"
-		},
-		{
-			src:
-				"https://images.unsplash.com/photo-1509803992307-5ed1ac32efda?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-			altText: "ChipAddict",
-			caption: "Las mejores ofertas cerca de ti"
-		},
-		{
-			src:
-				"https://images.unsplash.com/photo-1603056724920-fdecbb3b7d37?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-			altText: "ChipAddict",
-			caption: ""
-		}
-	];
-
-	const [activeIndex, setActiveIndex] = useState(0);
-	const [animating, setAnimating] = useState(false);
-
-	const next = () => {
-		if (animating) return;
-		const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-		setActiveIndex(nextIndex);
-	};
-
-	const previous = () => {
-		if (animating) return;
-		const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-		setActiveIndex(nextIndex);
-	};
-
-	const goToIndex = newIndex => {
-		if (animating) return;
-		setActiveIndex(newIndex);
-	};
-
-	const slides = items.map(item => {
-		return (
-			<CarouselItem onExiting={() => setAnimating(true)} onExited={() => setAnimating(false)} key={item.src}>
-				<img src={item.src} alt={item.altText} id="carousel" />
-				<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-			</CarouselItem>
-		);
-	});
-
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container my-5">
-			<Carousel activeIndex={activeIndex} next={next} previous={previous}>
-				<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-				{slides}
-				<CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-				<CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-			</Carousel>
+		<div className="container-fluid">
+			<div className="hero">
+				<h1 className="home-title">Ahorra tiempo y dinero</h1>
+				<h1 className="home-subtitle">With faded secondary text</h1>
+			</div>
+			<div className="goop goop__SvgWrapper-sc-1g583nk-1 ddrtzv home" color="bg.default">
+				<svg
+					fillRule="evenodd"
+					clipRule="evenodd"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-labelledby="title"
+					viewBox="0 0 1920 240"
+					id="goop"
+					className="goop__InlineSvg-sc-1g583nk-0 cCVJVf">
+					<title id="title">goop</title>
+					<g>
+						<path d="M1920,144.5l0,95.5l-1920,0l0,-65.5c196,-36 452.146,-15.726 657.5,8.5c229.698,27.098 870,57 1262.5,-38.5Z"></path>
+					</g>
+				</svg>
+			</div>
+			<div className="container">
+				<div className="row">
+					<div className="col-12 col-lg-1" />
+					<div className="col-12 col-lg-10 text-center">
+						<h2 className="home-main-text-div">
+							<div className="is-inview">Weflow is a physical,</div>
+							<div className="is-inview">mental and spiritual</div>
+							<div className="is-inview">journey through </div>
+							<div className="is-inview">mindful movement </div>
+						</h2>
+					</div>
+				</div>
+			</div>
 			<div>
-				{/* <Map
+				{manoConIphone}
+				<Map
 					googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`}
 					containerElement={<div className="maps-container-element" />}
 					mapElement={<div className="maps-element" />}
 					loadingElement={<p>Cargando</p>}
-				/> */}
+				/>
 				<MapTest />
 			</div>
 			<br />
@@ -239,6 +218,7 @@ export const Home = () => {
 					</div>
 				</div>
 			</section>
+			{/* </div> */}
 		</div>
 	);
 };

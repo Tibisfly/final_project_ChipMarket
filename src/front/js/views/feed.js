@@ -45,7 +45,28 @@ export const Feed = () => {
 	}
 
 	return (
-		<div className="post">
+		<div className="container-fluid m-0 p-0 post">
+			<div className="background-home">
+				<div className="background-home-grd">
+					<h1 className="title-feed">Encuentra los comercios cerca de ti</h1>
+					<p>Aprovecha de los descuentos</p>
+				</div>
+				<div className="goop goop__SvgWrapper-sc-1g583nk-1 ddrtzv" color="bg.default">
+					<svg
+						fillRule="evenodd"
+						clipRule="evenodd"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-labelledby="title"
+						viewBox="0 0 1920 240"
+						id="goop"
+						className="goop__InlineSvg-sc-1g583nk-0 cCVJVf">
+						<title id="title">goop</title>
+						<g>
+							<path d="M1920,144.5l0,95.5l-1920,0l0,-65.5c196,-36 452.146,-15.726 657.5,8.5c229.698,27.098 870,57 1262.5,-38.5Z"></path>
+						</g>
+					</svg>
+				</div>
+			</div>
 			<section>
 				<div className="container">
 					<div className="row">

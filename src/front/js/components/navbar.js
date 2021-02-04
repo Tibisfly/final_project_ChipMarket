@@ -2,24 +2,24 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
+
 import chipMarket from "../../img/chipmarket.png";
 import "../../styles/home.scss";
 
 export const Navbar = props => {
-	const [modal, setModal] = useState(false);
 	const { store, actions } = useContext(Context);
 
 	let handleLoggin = "";
 	if (store.token === null) {
 		handleLoggin = (
 			<>
-				<li className="nav-item font-weight-bold mr-3 text-decoration-none text-success">
-					<Link type="button" to="/login">
+				<li className="nav-item active">
+					<Link className="nav-link" type="button" to="/login">
 						Iniciar Sesión
 					</Link>
 				</li>
-				<li className="nav-item font-weight-bold ml-3 text-decoration-none text-success">
-					<Link type="button" to="/register">
+				<li className="nav-item ">
+					<Link className="nav-link" type="button" to="/register">
 						Registrarse
 					</Link>
 				</li>
@@ -28,22 +28,18 @@ export const Navbar = props => {
 	} else {
 		handleLoggin = (
 			<>
-				<li className="nav-item font-weight-bold">
-					<Link to="/commerces" className="nav-link active mr-3 text-decoration-none text-dark">
+				<li className="nav-item">
+					<Link to="/commerces" className="nav-link">
 						¿Eres un comercio?. Únete a nuestra comunidad.
 					</Link>
 				</li>
-				<li className="nav-item font-weight-bold">
-					<Link to="/feed" className="nav-link active mr-3 text-decoration-none text-dark">
+				<li className="nav-item">
+					<Link to="/feed" className="nav-links">
 						Mi Perfil
 					</Link>
 				</li>
-				<li className="nav-item font-weight-bold mt-2">
-					<Link
-						className="align-self-center text-decoration-none text-success"
-						to="/"
-						type="button"
-						onClick={() => actions.logOut()}>
+				<li className="nav-item">
+					<Link className="nav-link" to="/" type="button" onClick={() => actions.logOut()}>
 						Log Out
 					</Link>
 				</li>
@@ -80,14 +76,23 @@ export const Navbar = props => {
 	// }
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg text-decoration-none">
-				<div className="container-fluid">
-					<Link to="/" className="chip-market-navbar d-flex align-self-start">
+			<nav className="navbar navbar-expand-lg">
+				<div className="navbar-brand">
+					<Link to="/" className="navbar-logo">
 						<img className="logo-login m-4" width="15%" src={chipMarket} />
 					</Link>
-
-					<div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
-						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+					<button
+						className="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span className="navbar-toggler-icon" />
+					</button>
+					<div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+						<ul className="navbar-nav style-ul-navbar">
 							{/* <li className="nav-item">
 								<a
 									className="nav-link font-weight-bold pointer"
