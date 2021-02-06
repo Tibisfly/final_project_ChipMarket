@@ -27,67 +27,16 @@ export const LogIn = function(props) {
 			}
 		});
 	}
-	const items = [
-		{
-			src:
-				"https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
-			altText: "ChipAddict",
-			caption: ""
-		},
-		{
-			src:
-				"https://images.unsplash.com/photo-1605043145824-470f996f9fe3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80",
-			altText: "ChipAddict",
-			caption: ""
-		},
-		{
-			src:
-				"https://images.unsplash.com/photo-1548345680-f5475ea5df84?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80",
-			altText: "ChipAddict",
-			caption: ""
-		}
-	];
-
-	const [activeIndex, setActiveIndex] = useState(0);
-	const [animating, setAnimating] = useState(false);
-
-	const next = () => {
-		if (animating) return;
-		const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-		setActiveIndex(nextIndex);
-	};
-
-	const previous = () => {
-		if (animating) return;
-		const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-		setActiveIndex(nextIndex);
-	};
-
-	const goToIndex = newIndex => {
-		if (animating) return;
-		setActiveIndex(newIndex);
-	};
-
-	const slides = items.map(item => {
-		return (
-			<CarouselItem onExiting={() => setAnimating(true)} onExited={() => setAnimating(false)} key={item.src}>
-				<img src={item.src} alt={item.altText} id="carousel" />
-				<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-			</CarouselItem>
-		);
-	});
 
 	return (
 		<>
-			<section>
+			<div className="container-fluid">
 				<div className="row g-0">
 					<div className="col-lg-7">
-						<Carousel activeIndex={activeIndex} next={next} previous={previous}>
-							<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-							{slides}
-							<CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-							<CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-						</Carousel>
+						<img
+							className="img-login w-100"
+							src="https://images.unsplash.com/photo-1605043145824-470f996f9fe3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
+						/>
 					</div>
 					<div className="col-lg-5 d-flex flex-column align-items-end min-vh-100">
 						<hr />
@@ -160,7 +109,7 @@ export const LogIn = function(props) {
 						<ModalPassword show={modal} onClose={() => setModal(false)} />
 					</div>
 				</div>
-			</section>
+			</div>
 		</>
 	);
 };

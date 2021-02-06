@@ -16,8 +16,9 @@ export const Home = () => {
 	return (
 		<div className="container-fluid">
 			<div className="hero">
-				<h1 className="home-title">Ahorra tiempo y dinero</h1>
-				<h1 className="home-subtitle">With faded secondary text</h1>
+				<h1 className="home-title">
+					Ahorra tiempo y dinero <p>Prueba</p>
+				</h1>
 			</div>
 			<div className="goop goop__SvgWrapper-sc-1g583nk-1 ddrtzv home" color="bg.default">
 				<svg
@@ -48,13 +49,12 @@ export const Home = () => {
 				</div>
 			</div>
 			<div>
-				{manoConIphone}
-				<Map
+				{/* <Map
 					googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`}
 					containerElement={<div className="maps-container-element" />}
 					mapElement={<div className="maps-element" />}
 					loadingElement={<p>Cargando</p>}
-				/>
+				/> */}
 				<MapTest />
 			</div>
 			<br />
