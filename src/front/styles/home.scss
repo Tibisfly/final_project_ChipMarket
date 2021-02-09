@@ -8,15 +8,16 @@
     width: 100%;
     height: 100vh;
     opacity: 1;
-	background: url("https://images.pexels.com/photos/4033005/pexels-photo-4033005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") center  / cover;
+	background: url("https://images.unsplash.com/photo-1509803992307-5ed1ac32efda?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80") center center / cover no-repeat;
 }
 .home-title{
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	-webkit-transform-origin-x: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 	color: #fff;
-	font : normal 600 100px/1 'Open Sans', sans-serif;
+	font : normal 600 72px/1 'Open Sans', sans-serif;
 	text-align: center;
 	white-space: nowrap;
 }
@@ -154,7 +155,7 @@ Link:hover{
     pointer-events: none;
 }
 .ddrtzv.home{
-    bottom: -192px;
+    bottom: -142px;
 }
 @media (max-width: 1088px){
 .ddrtzv {

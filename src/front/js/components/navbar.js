@@ -76,7 +76,7 @@ export const Navbar = props => {
 	// }
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg">
+			<nav className="navbar">
 				<div className="navbar-brand">
 					<Link to="/" className="navbar-logo">
 						<img className="logo-login m-4" width="15%" src={chipMarket} />
