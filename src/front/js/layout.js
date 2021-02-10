@@ -6,7 +6,7 @@ import { Home } from "./views/home";
 import { Feed } from "./views/feed";
 import { FeedCommerce } from "./views/feed-commerce";
 import injectContext from "./store/appContext";
-
+import { NavbarNuevo } from "./components/navbar-nuevo";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
@@ -29,7 +29,8 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					{/* <Navbar /> */}
+					<NavbarNuevo />
 					<Switch>
 						<Route exact path="/">
 							<Home />

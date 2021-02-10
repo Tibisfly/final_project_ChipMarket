@@ -46,8 +46,8 @@ export const Feed = () => {
 
 	return (
 		<div className="container-fluid m-0 p-0 post">
-			<div className="background-home">
-				<div className="background-home-grd">
+			<div className="background-feed">
+				<div className="background-feed-grd">
 					<h1 className="title-feed">Encuentra los comercios cerca de ti</h1>
 					<p>Aprovecha de los descuentos</p>
 				</div>
