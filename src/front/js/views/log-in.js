@@ -30,15 +30,17 @@ export const LogIn = function(props) {
 
 	return (
 		<>
-			<div className="container-fluid">
-				<div className="row g-0">
-					<div className="col-lg-7">
-						<img
-							className="img-login w-100"
-							src="https://images.unsplash.com/photo-1605043145824-470f996f9fe3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-						/>
+			<div className="container-fluid login-wrapper">
+				{/* <div className="jumbotron">
+					<h1 className="login-hero-text">Ahorra tiempo</h1>
+				</div> */}
+				<div className="row g-0 h-auto">
+					<div className="login-img col-lg-6 col-md-12 col-sm-12 my-auto order-2 order-lg-1">
+						<div className="">
+							<h1>Prueba</h1>
+						</div>
 					</div>
-					<div className="col-lg-5 d-flex flex-column align-items-end min-vh-100">
+					<div className="col-lg-6 col-md-12 col-sm-12 d-flex flex-column align-items-end my-auto order-1 order-lg-2 ">
 						<hr />
 
 						<div className="title-login px-lg-5 py-lg-4 p-4 mt-4 w-100">
