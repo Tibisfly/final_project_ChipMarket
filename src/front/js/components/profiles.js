@@ -6,7 +6,7 @@ export const Profiles = function(props) {
 		<>
 			<div className="d-flex mb-4">
 				<div>
-					<h2 className="d-block font-weight-bold mb-0 mt-4" style={{ color: "green" }}>
+					<h2 className="d-block font-weight-bold" style={{ color: "green" }}>
 						{props.username}
 					</h2>
 					<br />

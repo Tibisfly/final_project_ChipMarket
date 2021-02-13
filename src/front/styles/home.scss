@@ -1,6 +1,6 @@
 
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:wght@700");
-// @import url("https://fonts.googleapis.com/css?family=Roboto:wght@500");
+
 
 * {
 	margin: 0;
@@ -164,35 +164,35 @@ body{
 
 
 
-.hero {
-    position: relative;
-    width: auto;
-    height: 100vh;
-    opacity: 1;
-	background: url("https://images.pexels.com/photos/761977/pexels-photo-761977.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") center center / cover no-repeat;
-}
-.home-title{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	color: white;
-	font : normal 600 72px/1 'Open Sans', sans-serif;
-	text-align: center;
-	white-space: nowrap;
-}
-.home-subtitle{
-    margin:auto;
-    vertical-align:middle;
-}
+// .hero {
+//     position: relative;
+//     width: auto;
+//     height: 100vh;
+//     opacity: 1;
+// 	background: url("https://images.pexels.com/photos/761977/pexels-photo-761977.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") center center / cover no-repeat;
+// }
+// .home-title{
+// 	position: absolute;
+// 	top: 50%;
+// 	left: 50%;
+// 	-webkit-transform: translate(-50%, -50%);
+// 	transform: translate(-50%, -50%);
+// 	color: white;
+// 	font : normal 600 72px/1 'Open Sans', sans-serif;
+// 	text-align: center;
+// 	white-space: nowrap;
+// }
+// .home-subtitle{
+//     margin:auto;
+//     vertical-align:middle;
+// }
 
-.site-navigation{
-    opacity: 1;
-    visibility: inherit;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-}
+// .site-navigation{
+//     opacity: 1;
+//     visibility: inherit;
+//     font-family: 'Open Sans', sans-serif;
+//     display: flex;
+// }
 @media (min-width: 1200px){
     .site-navigation{
         padding: 3rem 5.3rem;
@@ -257,22 +257,20 @@ Link:hover{
     width: 100%;
     height: 600px;
 }
-.background-feed{
-    position: relative;
-    width: 100%;
-    height:700px;
+.background-feed-img{
+    
     background-image: url('https://images.unsplash.com/photo-1603056724920-fdecbb3b7d37?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
     background-repeat: no-repeat;
     background-position: right;
 }
-.background-feed-grd{
-    position: absolute;
-    width: 100%;
-    height:700px;
-    background: rgb(246,239,232);
-    background: linear-gradient(83deg, rgba(246,239,232,1) 0%, rgba(246,239,232,1) 55%, rgba(255,255,255,0) 81%);
+// .background-feed-grd{
+//     position: absolute;
+//     width: 100%;
+//     height:700px;
+//     background: rgb(246,239,232);
+//     background: linear-gradient(83deg, rgba(246,239,232,1) 0%, rgba(246,239,232,1) 55%, rgba(255,255,255,0) 81%);
 
-}
+// }
 
 
 @media (max-width: 768px){
@@ -293,7 +291,26 @@ Link:hover{
     
 }
 .title-feed{
-    color: green;
-    font-size: 50px;
-    
+    font-size: 1.5rem;
+    text-align: start;
+    margin-left: 3rem;
+    color: #5FBC94;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem;
+}
+.feed-text-content{
+    font-size: 1.5rem;
+    text-align: start;
+    margin-left: 3rem;
+    color: #5FBC94;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem;
+}
+.banner-feed{
+    height: 100vh;
+    width: 100%;
 }
