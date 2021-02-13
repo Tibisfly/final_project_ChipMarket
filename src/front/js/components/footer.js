@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export const Footer = () => (
-	<div className="container-fluid">
-		<footer className="border-top border-success p-5">
-			<div className="d-flex justify-content-center">
+	<footer className="">
+		{/* <div className="d-flex justify-content-center">
 				<Link
 					to="/contact-us"
 					className="nav-link active font-weight-bold text-decoration-none text-success"
@@ -18,7 +17,6 @@ export const Footer = () => (
 					aria-current="page">
 					Sobre nosotros
 				</Link>
-			</div>
-		</footer>
-	</div>
+			</div> */}
+	</footer>
 );

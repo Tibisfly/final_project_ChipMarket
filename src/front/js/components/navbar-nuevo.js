@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
 import Navbar from "react-bootstrap/Navbar";
+import ChipMarketNew from "../../img/ChipMarketNew.png";
 import "../../styles/navbar.scss";
 
 export const NavbarNuevo = props => {
@@ -31,9 +33,9 @@ export const NavbarNuevo = props => {
 		<header className="header">
 			<Navbar variant="light" fixed="top" className={scrollClass.className}>
 				<div className="container-fluid">
-					<a className="navbar-brand" href="#">
-						Navbar
-					</a>
+					<Link to="/" className="navbar-brand">
+						ChipMarket
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"

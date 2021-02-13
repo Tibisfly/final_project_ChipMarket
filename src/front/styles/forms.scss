@@ -1,87 +1,106 @@
 
 body{
-    background-color: #fcf8f2 ;
+    background-color: white;
 }
 .row{
- 
+    font-size: 1.2rem;
     font-family:'Spartan', sans-serif;
     font-weight: 300;
 }
-.login-wrapper{
-height: 100vh;
-min-height: 745px;
+.login-izq{
+    height:100vh;
+    width: auto;
+    position: relative;
+    background-repeat: no-repeat;
+    background-image: url('https://images.pexels.com/photos/5709269/pexels-photo-5709269.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-size: cover;
+}
+.login-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-image: url('https://blush.design/api/download?shareUri=pXV78aFm4&w=800&h=800&fm=png');
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+.login-center form{
+    padding-top: 3rem;
+    padding-left: 3rem;
+   
 }
 
-.jumbotron{
-    background-image: url('https://image.freepik.com/vector-gratis/fondo-abstracto-blanco_23-2148810113.jpg');
+.form-width{
+    width: 85% !important;
+ }
+
+@media (min-width: 992px){
+    .login-center form{
+        padding-left: 8rem;
+    }
+
+    .form-width{
+        width: 65% !important;
+    }
 }
-.login-img{
-    max-height: 100vh;
-    opacity: 1;
-    background: url('https://images.unsplash.com/photo-1537130508986-20f4fd870b4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80');
+.login-center h1{
+    text-align: center;
+    margin-top: 4rem;
+}
+.login-center h2{
+    text-align: center;
 }
 .form-control{
     min-height: 3.125rem;
     line-height: initial;
 }
-
 input:hover{
     background-color: #a0b8fc;
 }
 .profile-head {
     transform: translateY(5rem)
 }
-
-.cover {
-    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
-    background-size: cover;
-    background-repeat: no-repeat
+.register-login a {
+    color:rgba(0, 0, 0, 0.9);
 }
-
-
 .create-user{
-    max-width: 800px;
-    min-width: 50%;
     margin:80px auto;
     position: relative;
-    background: #ceecd2;
-    background: linear-gradient(to right, #e4eee3, #caf8c1);
-    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    border-radius: 10px;
-
-
+    padding: 1rem;
 }
-.create-user .title{
-    // text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 1px;
-    // font-size: 3rem;
-    line-height: 48px;
-    padding-bottom: 20px;
-    color: green;
+// .create-user .title{
+//     // text-transform: uppercase;
+//     text-align: center;
+//     letter-spacing: 1px;
+//     // font-size: 3rem;
+//     line-height: 48px;
+//     padding-bottom: 20px;
+//     color: green;
 
-}
-.contact-form-row{
-    position: relative;
-    margin: 32px 0;
-}
+// }
+// .contact-form-row{
+//     position: relative;
+//     margin: 32px 0;
+// }
 .form-control{
     width: 100%;
     height: 36px;
     border-width: 0 0 2px 0;
-    border-color: green;
-    font-size: 18px;
+    border-color: #361F5B;
+    font-size: 1rem;
     line-height: 26px;
-    font-weight: 400;
+    font-weight: 5rem;
+}
+.login.btn.btn-success{
+    display: flex;
+    flex-direction: row-reverse;
 }
 .error-login{
     color: red;
     font-size: "20px";
 }
-.register-login{
-    color: green;
-}
+
+
 
 
 
