@@ -23,7 +23,12 @@ export const Feed = () => {
 	let cardList = "";
 	if (store.feed.length == 0) {
 		cardList = (
-			<div className="card no-feed text-center">Oops.. Todavía no hay ninguna publicación</div>
+			<>
+				<div className="card no-feed text-center oops-msg">
+					Oops... Todavía no hay ninguna publicación
+					<Link to="/search/zipcode/28028">Consigue las mejores ofertas</Link>
+				</div>
+			</>
 			// este div quisiera centrarlo en todo el div de las columnas del feed para las cards y darle estilos.
 		);
 	} else {
@@ -47,17 +52,10 @@ export const Feed = () => {
 	return (
 		<>
 			<div className="container-fluid ">
-				<div className="row banner-feed">
-					<div className="col-lg-6 col-md-6 col-12 title-feed-container">
-						<div className="message-content">
-							<div className="title-feed">Ahorra tiempo y dinero</div>
-							<div className="message-banner">
-								<p className="feed-text-content">Mientras apoyas al comercio local.</p>
-								<p>Únete a nuestra comunidad y descubre ofertas únicas cerca de ti.</p>
-							</div>
-						</div>
-					</div>
-					<div className="col-lg-6 col-12 background-feed-img"></div>
+				<div className="title-feed">
+					Utiliza la barra de búsqueda superior
+					<br></br>
+					<span className="feed-text-content">para encontrar las ofertas más cercanas</span>
 				</div>
 			</div>
 
@@ -87,13 +85,13 @@ export const Feed = () => {
 							/> */}
 						</div>
 						<div className="col-lg-12">{cardList}</div>
-						<div className="row">
-							<div className="col-lg-6 upgrade-img">
-								<img src="https://images.unsplash.com/photo-1443110189928-4448af4a2bc5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1194&q=80" />
-							</div>
-							<div className="col-lg-6 col-12 upgrade-to-commerce">
-								¿Quieres darte de alta como comercio?
-								<Link to="/commerces">Pincha aquí</Link>
+						<div className="container-fluid">
+							<div className="row banner-feed">
+								<div className="col-lg-6 col-12 upgrade-img" />
+								<div className="col-lg-6 col-12 feed-text-content">
+									<div>¿Quieres darte de alta como comercio?</div>
+									<Link to="/commerces">Pincha aquí</Link>
+								</div>
 							</div>
 						</div>
 					</div>

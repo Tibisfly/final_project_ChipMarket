@@ -2,23 +2,32 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
-import Navbar from "react-bootstrap/Navbar";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 import ChipMarketNew from "../../img/ChipMarketNew.png";
 import "../../styles/navbar.scss";
 
 export const NavbarNuevo = props => {
-	const [scrollClass, setScrollClass] = useState({ className: "light-color" });
+	const [scrollClass, setScrollClass] = useState({
+		className: "light-color navbar navbar-expand-lg fixed-top"
+	});
 
 	const handleScroll = () => {
 		var homeIzq = document.getElementById("home-izq");
 		if (homeIzq) {
 			if (window.pageYOffset > homeIzq.clientHeight) {
-				setScrollClass({ className: "light-color" });
+				setScrollClass({
+					className: "light-color navbar navbar-expand-lg fixed-top"
+				});
 			} else {
-				setScrollClass({ className: "no-color" });
+				setScrollClass({
+					className: "no-color navbar navbar-expand-lg fixed-top"
+				});
 			}
 		}
 	};
+
+	const [isOpen, setIsOpen] = useState(false);
+	const toggle = () => setIsOpen(!isOpen);
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll, { passive: true });
@@ -31,8 +40,86 @@ export const NavbarNuevo = props => {
 
 	return (
 		<header className="header">
-			<Navbar variant="light" fixed="top" className={scrollClass.className}>
-				<div className="container-fluid">
+			<nav className={scrollClass.className}>
+				{/* <Navbar variant="light" fixed="top" className={scrollClass.className}> */}
+				<div className="container-fluid navbar-light">
+					<a className="navbar-brand" href="#">
+						Navbar scroll
+					</a>
+					<button
+						className="navbar-toggler "
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarScroll"
+						aria-controls="navbarScroll"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span className="navbar-toggler-icon"></span>
+					</button>
+					<div className="collapse navbar-collapse navbarScrollCcs" id="navbarScroll">
+						<form className="d-flex form-search-navbar">
+							<input
+								className="form-control me-2"
+								type="search"
+								placeholder="Search"
+								aria-label="Search"></input>
+							<button className="btn search-button" type="submit">
+								Search
+							</button>
+						</form>
+						<ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+							<li className="nav-item dropdown">
+								<a
+									className="nav-link dropdown-toggle"
+									href="#"
+									id="navbarScrollingDropdown"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									Eres usuario?
+								</a>
+								<ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+									<li>
+										<a className="dropdown-item" href="#">
+											Iniciar sesión
+										</a>
+									</li>
+									<li>
+										<a className="dropdown-item" href="#">
+											Crear una cuenta
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li className="nav-item dropdown">
+								<a
+									className="nav-link dropdown-toggle"
+									href="#"
+									id="navbarScrollingDropdown"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false">
+									Eres comercio?
+								</a>
+								<ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+									<li>
+										<a className="dropdown-item" href="#">
+											Iniciar sesión
+										</a>
+									</li>
+									<li>
+										<a className="dropdown-item" href="#">
+											Crear una cuenta
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			{/* <div className="container-fluid">
 					<Link to="/" className="navbar-brand">
 						ChipMarket
 					</Link>
@@ -46,7 +133,19 @@ export const NavbarNuevo = props => {
 						aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<div className="collapse navbar-collapse" id="navbarSupportedContent">
+
+					<form className="d-flex">
+						<input
+							className="form-control search-navbar"
+							type="search"
+							placeholder="Introduce tu código postal"
+							aria-label="Search"
+						/>
+						<button className="btn btn-outline-success" type="submit">
+							Search
+						</button>
+					</form>
+					<div className="" id="navbarSupportedContent">
 						<ul className="navbar-nav m-auto mb-2 mb-lg-0">
 							<li className="nav-item">
 								<a className="nav-link active" aria-current="page" href="#">
@@ -95,20 +194,9 @@ export const NavbarNuevo = props => {
 								</a>
 							</li>
 						</ul>
-						<form className="d-flex">
-							<input
-								className="form-control me-2"
-								type="search"
-								placeholder="Search"
-								aria-label="Search"
-							/>
-							<button className="btn btn-outline-success" type="submit">
-								Search
-							</button>
-						</form>
 					</div>
-				</div>
-			</Navbar>
+				</div> */}
+			{/* </Navbar> */}
 			{/* <nav className="navbar navbar-expand-lg navbar-light bg-light" fixed="top">
 				<div className="container-fluid">
 					<a className="navbar-brand" href="#">

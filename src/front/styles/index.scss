@@ -34,3 +34,12 @@ footer{
     height: 190px;
     overflow-y:auto;
 }
+.button-purple, .button-green:hover{
+    background-color: #361F5B;
+    color: white;
+}
+.button-green, .button-purple:hover{
+    background-color: #5FBC94;
+    border:1px solid white;
+    color: white;
+}
