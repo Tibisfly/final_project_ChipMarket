@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "../components/card.js";
 import { Context } from "../store/appContext.js";
 import { Profiles } from "../components/profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
-import "../../styles/home.scss";
+import "../../styles/feed.scss";
 
 export const Feed = () => {
 	const params = useParams();
@@ -64,29 +64,38 @@ export const Feed = () => {
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-4">
+						<div className="col-lg-12">
 							<Profiles
 								username={store.user.username}
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
-							<SearchZipCode />
-							<br />
+							{/* <SearchZipCode />
+						
 							<CommercesLists
 								url="/commerces"
 								title="Mis Comercios"
 								commerces={store.user.commerce_list}
 								addCommerce="Añade a un Comercio"
 							/>
-							<br />
+						
 							<CommercesLists
 								url="/search/zipcode"
 								title="Siguiendo a:"
 								commerces={store.user.following_list}
 								addCommerce="Encuentra y sigue a tus comercios"
-							/>
+							/> */}
 						</div>
-						<div className="col-lg-8">{cardList}</div>
+						<div className="col-lg-12">{cardList}</div>
+						<div className="row">
+							<div className="col-lg-6 upgrade-img">
+								<img src="https://images.unsplash.com/photo-1443110189928-4448af4a2bc5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1194&q=80" />
+							</div>
+							<div className="col-lg-6 col-12 upgrade-to-commerce">
+								¿Quieres darte de alta como comercio?
+								<Link to="/commerces">Pincha aquí</Link>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>

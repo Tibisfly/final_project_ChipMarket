@@ -22,12 +22,16 @@ export const Home = () => {
 								<p>Únete a nuestra comunidad y descubre ofertas únicas cerca de ti.</p>
 							</div>
 							<div className="botones-banner">
-								<button type="button" className="banner-user-button btn btn-info rounded-pill">
-									¿Eres un Usuario?
-								</button>
-								<button type="button" className="banner-commerce-button btn btn-info rounded-pill">
-									¿Eres un Comercio?
-								</button>
+								<Link to="/register">
+									<button type="button" className="banner-user-button btn btn-info rounded-pill">
+										¿Eres un Usuario?
+									</button>
+								</Link>
+								<Link to="/commerces">
+									<button type="button" className="banner-commerce-button btn btn-info rounded-pill">
+										¿Eres un Comercio?
+									</button>
+								</Link>
 							</div>
 						</div>
 					</div>
