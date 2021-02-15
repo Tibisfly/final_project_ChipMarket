@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { CommercesLists } from "./commerces-lists.js";
 
 export const Profiles = function(props) {
+	const [dropdownOpen1, setDropdownOpen1] = useState(false);
+
+	const toggle1 = () => setDropdownOpen1(prevState => !prevState);
+
+	const { store, actions } = useContext(Context);
+
 	return (
 		<>
 			<div className="container-fluid">
@@ -15,7 +24,7 @@ export const Profiles = function(props) {
 								/>
 							</div>
 						</div>
-						<div className="col-5 user-info-feed">
+						<div className="col-6 user-info-feed">
 							<div>
 								<div className="nickname-feed">{props.username}</div>
 
@@ -25,26 +34,17 @@ export const Profiles = function(props) {
 							</div>
 						</div>
 						<div className="col-3">
-							<div className="dropdown">
-								<button
-									className="btn btn-primary dropdown-toggle"
-									type="button"
-									data-toggle="dropdown">
-									Dropdown Example
-									<span className="caret"></span>
-								</button>
-								<ul className="dropdown-menu">
-									<li>
-										<a href="#">HTML</a>
-									</li>
-									<li>
-										<a href="#">CSS</a>
-									</li>
-									<li>
-										<a href="#">JavaScript</a>
-									</li>
-								</ul>
-							</div>
+							<Dropdown className="dropdown-principal" isOpen={dropdownOpen1} toggle={toggle1}>
+								<DropdownToggle caret>¿Eres un usuario?</DropdownToggle>
+								<DropdownMenu>
+									<DropdownItem>
+										<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
+									</DropdownItem>
+									<DropdownItem>
+										<CommercesLists title="Siguiendo a:" commerces={store.user.following_list} />
+									</DropdownItem>
+								</DropdownMenu>
+							</Dropdown>
 						</div>
 					</div>
 				</div>

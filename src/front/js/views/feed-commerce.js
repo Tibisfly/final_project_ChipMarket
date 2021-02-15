@@ -51,7 +51,7 @@ export const FeedCommerce = () => {
 			<div className="container-fluid ">
 				<div className="title-feed-commerce">
 					Eres nuestra inspiración - Añade publicaciones diarias - Haz tu marca atractiva
-					<Link to="">Posiciona tu negocio en la búsqueda</Link>
+					<Link to="/contact-us">Posiciona tu negocio en la búsqueda</Link>
 				</div>
 			</div>
 
@@ -74,7 +74,7 @@ export const FeedCommerce = () => {
 				</div>
 			</section>
 			<section>
-				<div className="container-fluid">
+				<div className="container">
 					<div className="row">{cardList}</div>
 				</div>
 			</section>

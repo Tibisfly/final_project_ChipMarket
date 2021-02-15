@@ -14,11 +14,8 @@ export const SearchZipCode = function(props) {
 					<div className="col-lg-12">
 						<div className="container-fluid ">
 							<div className="title-search-zipcode">
-								Estos son los comercios más cercanos a ti.
-								<br>
-									Reclama tu oferta en el local con el código promocional que encontrarás en cada
-									publicación.
-								</br>
+								Estos son los comercios más cercanos a ti. Reclama tu oferta en el local con el código
+								promocional que encontrarás en cada publicación.
 							</div>
 						</div>
 					</div>

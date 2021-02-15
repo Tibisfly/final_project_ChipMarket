@@ -1,12 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import ChipMarketNew from "../../img/ChipMarketNew.png";
+import {
+	Collapse,
+	Navbar,
+	NavbarToggler,
+	NavbarBrand,
+	Nav,
+	NavItem,
+	NavLink,
+	Dropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem
+} from "reactstrap";
+import LogotipoChipMarketCanva from "../../img/LogotipoChipMarket.png";
 import "../../styles/navbar.scss";
 
 export const NavbarNuevo = props => {
+	const { store, actions } = useContext(Context);
+
+	const params = useParams();
+
 	const [scrollClass, setScrollClass] = useState({
 		className: "light-color navbar navbar-expand-lg fixed-top"
 	});
@@ -26,8 +42,11 @@ export const NavbarNuevo = props => {
 		}
 	};
 
-	const [isOpen, setIsOpen] = useState(false);
-	const toggle = () => setIsOpen(!isOpen);
+	const [dropdownOpen1, setDropdownOpen1] = useState(false);
+	const [dropdownOpen2, setDropdownOpen2] = useState(false);
+
+	const toggle1 = () => setDropdownOpen1(prevState => !prevState);
+	const toggle2 = () => setDropdownOpen2(prevState => !prevState);
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll, { passive: true });
@@ -38,12 +57,65 @@ export const NavbarNuevo = props => {
 		};
 	}, []);
 
+	let handleLogginUser = "";
+	if (store.token === null) {
+		handleLogginUser = (
+			<>
+				<DropdownItem>
+					<Link to="/login">Iniciar Sesión</Link>
+				</DropdownItem>
+				<DropdownItem>
+					<Link to="/register">Crear una cuenta</Link>
+				</DropdownItem>
+			</>
+		);
+	} else {
+		handleLogginUser = (
+			<>
+				<DropdownItem>
+					<Link to="/feed">Mi perfil</Link>
+				</DropdownItem>
+				<DropdownItem>
+					<Link to="/" type="button" onClick={() => actions.logOut()}>
+						Log Out
+					</Link>
+				</DropdownItem>
+			</>
+		);
+	}
+	let handleLogginCommerce = "";
+	if (store.token === null) {
+		handleLogginCommerce = (
+			<>
+				<DropdownItem>
+					<Link to="/login-commerce">Iniciar Sesión</Link>
+				</DropdownItem>
+				<DropdownItem>
+					<Link to="/commerces">Crear una cuenta</Link>
+				</DropdownItem>
+			</>
+		);
+	} else {
+		handleLogginCommerce = (
+			<>
+				<DropdownItem>
+					<Link to="/feed/commerce/1">Mi perfil</Link>
+				</DropdownItem>
+				<DropdownItem>
+					<Link to="/" type="button" onClick={() => actions.logOut()}>
+						Log Out
+					</Link>
+				</DropdownItem>
+			</>
+		);
+	}
+
 	return (
 		<header className="header">
 			<nav className={scrollClass.className}>
 				<div className="container-fluid navbar-light">
 					<Link to="/" className="navbar-brand">
-						ChipMarket
+						<img src={LogotipoChipMarketCanva} width="70" />
 					</Link>
 					<button
 						className="navbar-toggler "
@@ -56,6 +128,30 @@ export const NavbarNuevo = props => {
 						<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse navbarScrollCcs" id="navbarScroll">
+						<form className="d-flex form-search-navbar">
+							<input
+								className="form-control me-2"
+								type="search"
+								placeholder="Introduce tu código postal"
+								aria-label="Search"></input>
+							<button className="btn search-button" type="submit">
+								<Link to="search/zipcode/28028" className="text-decoration-none">
+									Buscar
+								</Link>
+							</button>
+						</form>
+						<div className="d-flex">
+							<Dropdown className="dropdown-principal" isOpen={dropdownOpen1} toggle={toggle1}>
+								<DropdownToggle caret>¿Eres un usuario?</DropdownToggle>
+								<DropdownMenu>{handleLogginUser}</DropdownMenu>
+							</Dropdown>
+							<Dropdown isOpen={dropdownOpen2} toggle={toggle2}>
+								<DropdownToggle caret>¿Eres un comercio?</DropdownToggle>
+								<DropdownMenu>{handleLogginCommerce}</DropdownMenu>
+							</Dropdown>
+						</div>
+					</div>
+					{/* <div className="collapse navbar-collapse navbarScrollCcs" id="navbarScroll">
 						<form className="d-flex form-search-navbar">
 							<input
 								className="form-control me-2"
@@ -114,7 +210,7 @@ export const NavbarNuevo = props => {
 								</ul>
 							</li>
 						</ul>
-					</div>
+					</div> */}
 				</div>
 			</nav>
 

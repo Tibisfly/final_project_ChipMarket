@@ -11,7 +11,7 @@ import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
 import { CommercesForm } from "./views/commerces-form";
-// import { CommercesProfiles } from "./views/commerces-profiles";
+import { LogInCommerce } from "./views/log-in-commerce.js";
 import { SearchZipCode } from "./views/search-zipcode";
 import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
@@ -58,6 +58,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<LogIn />
+						</Route>
+						<Route exact path="/login-commerce">
+							<LogInCommerce />
 						</Route>
 						<Route exact path="/about-us">
 							<AboutUs />

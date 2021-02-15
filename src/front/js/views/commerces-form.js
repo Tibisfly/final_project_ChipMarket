@@ -45,13 +45,13 @@ export const CommercesForm = function(props) {
 		<>
 			<div className="container-fluid register-log-in">
 				<div className="welcoming-register">
-					{store.token
-						? "ChipAddict, Por favor, actualiza tus datos"
+					{store.commerce.id
+						? "ChipCommerce, por favor actualiza tus datos"
 						: "Estás a un paso más cerca de obtener las mejores ofertas cerca de ti. Por favor, rellena tus datos y únete a la ChipFamily"}
 				</div>
 			</div>
 			<div className="create-user">
-				<h1 className="title">{false ? "Actualiza tu comercio" : "Crea tu comercio"}</h1>
+				<h1 className="title">{store.commerce.id ? "Actualiza tu comercio" : "Crea tu comercio"}</h1>
 				<form>
 					<div className="form-group">
 						<label htmlFor="inputBusinessName">Nombre del comercio</label>

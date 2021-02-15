@@ -69,7 +69,7 @@ export const Feed = () => {
 								lastName={store.user.last_name}
 							/>
 						</div>
-						<div className="col-lg-12">{cardList}</div>
+						<div className="col-lg-12 m-0">{cardList}</div>
 						<div className="container-fluid">
 							<div className="row banner-feed">
 								<div className="col-lg-6 col-12 upgrade-img" />

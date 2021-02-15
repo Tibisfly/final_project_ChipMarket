@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { CommercesLists } from "./commerces-lists.js";
 // import "../../styles/feed.scss";
 
 export const CommercesProfiles = function(props) {
+	const { store, actions } = useContext(Context);
+
+	const [dropdownOpen1, setDropdownOpen2] = useState(false);
+
+	const toggle1 = () => setDropdownOpen1(prevState => !prevState);
+
 	return (
 		<>
 			<div className="container-fluid">
@@ -10,7 +20,10 @@ export const CommercesProfiles = function(props) {
 					<div className="row">
 						<div className="col-3">
 							<div className="avatar-container">
-								<img className="avatar rounded-circle" src="" />
+								<img
+									className="avatar rounded-circle"
+									src="https://www.ferrokey.eu/media/wysiwyg/45_1.jpg"
+								/>
 							</div>
 						</div>
 
@@ -29,26 +42,9 @@ export const CommercesProfiles = function(props) {
 							<div className="info-commerce-feed">{props.website}</div>
 						</div>
 						<div className="col-2">
-							<div className="dropdown">
-								<button
-									className="btn btn-primary dropdown-toggle"
-									type="button"
-									data-toggle="dropdown">
-									Dropdown Example
-									<span className="caret"></span>
-								</button>
-								<ul className="dropdown-menu">
-									<li>
-										<a href="#">HTML</a>
-									</li>
-									<li>
-										<a href="#">CSS</a>
-									</li>
-									<li>
-										<a href="#">JavaScript</a>
-									</li>
-								</ul>
-							</div>
+							<Link to="/create/post" type="button">
+								Añade una publicación
+							</Link>
 						</div>
 					</div>
 				</div>

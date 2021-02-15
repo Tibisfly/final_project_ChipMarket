@@ -9,12 +9,12 @@
    
 }
 .title-search-zipcode{
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
     margin: 7rem auto 3rem;
     padding: 3rem;
     color: #361F5B;
-    background: url('../img/womanjump.png') no-repeat center;
+    background: url('../img/mapsearch.png') no-repeat center;
     background-size: cover;
 }
 .title-feed{
@@ -69,7 +69,11 @@
     text-align: left;
     margin-top: 4%;
 }
-
+.profile-users-info a{
+    font-size: 1rem;
+    color: #361F5B;
+    text-decoration: none;
+}
 .avatar{
     width: 100%;
     height: auto;
