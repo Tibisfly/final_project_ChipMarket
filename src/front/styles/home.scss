@@ -127,9 +127,9 @@ body{
 .text-landing-top{
     background-color: aliceblue;
     border-radius: 15px;
--webkit-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
--moz-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
+    box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
     height: fit-content;
     margin: 15px 0;
     transform: rotate(-10deg);
@@ -138,9 +138,9 @@ box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
 .text-landing-bottom{
     background-color: aliceblue;
     border-radius: 15px;
--webkit-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
--moz-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
+    box-shadow: -8px 9px 21px 0px rgba(0,0,0,0.75);
     height: fit-content;
     margin: 15px 0;
     z-index: 1;
@@ -221,20 +221,15 @@ Link:hover{
     height: 120px;
     height: fit-content;
 }
-.card-vertical-v2020 .card-vertical-v2020--image .img1{
-     width: 50%;
-     margin-top: -2rem;
-     padding-top: 10px;    max-height: 115px;
-}
-.card-vertical-v2020 .card-vertical-v2020--image .img2,
-.card-vertical-v2020 .card-vertical-v2020--image .img3{
+
+.card-vertical-v2020 .card-vertical-v2020--image img{
      width: 35%;
      margin-top: -1rem;
-     padding-top: 10px;    max-height: 115px;
+     padding: 10px 0;    
 }
 
 .card-vertical-v2020:hover{
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 .membership.text-decoration-none{

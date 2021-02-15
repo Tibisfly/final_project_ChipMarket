@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../styles/feed.scss";
 
 export const Profiles = function(props) {
 	return (

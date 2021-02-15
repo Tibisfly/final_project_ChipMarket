@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import "../../styles/forms.scss";
+import "../../styles/feed.scss";
 
 export const CreatePost = function(props) {
 	const [title, setTitle] = useState("");
@@ -28,8 +29,17 @@ export const CreatePost = function(props) {
 
 	return (
 		<>
+			<div className="container-fluid ">
+				<div className="title-feed">
+					Hola ChipCommerce,
+					<br></br>
+					<span className="feed-text-content">
+						Añade una pubicación y no olvides especificar la fecha de validez en la descripción.
+					</span>
+				</div>
+			</div>
 			<div className="container">
-				<section className="create-user">
+				<section className="create-post">
 					<h1 className="title">Añade una publicación</h1>
 					<div className="container">
 						<div className="contact-form-row align-items-center">

@@ -18,10 +18,7 @@ footer{
 .pointer{
     cursor: pointer;
 }
-.post{
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-}
+
 .profile-picture rounded-circle mr-3{
     width: 3rem;
     height: 3rem;
@@ -34,12 +31,17 @@ footer{
     height: 190px;
     overflow-y:auto;
 }
-.button-purple, .button-green:hover{
+.button-purple, .button-green:hover, .button-green-register:hover, .button-green-login:hover{
     background-color: #361F5B;
     color: white;
 }
-.button-green, .button-purple:hover{
+.button-green-register{
     background-color: #5FBC94;
     border:1px solid white;
     color: white;
+    border-radius: 15px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    width: 100%;
 }

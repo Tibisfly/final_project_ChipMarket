@@ -1,4 +1,22 @@
-
+.title-feed-commerce, .title-feed-commerce Link{
+    font-size: 4rem;
+    text-align: center;
+    margin: 7rem auto 3rem;
+    padding: 3rem;
+    color: #361F5B;
+    background: url('../img/market-feed.png') no-repeat center;
+    background-size: cover;
+   
+}
+.title-search-zipcode{
+    font-size: 4rem;
+    text-align: center;
+    margin: 7rem auto 3rem;
+    padding: 3rem;
+    color: #361F5B;
+    background: url('../img/womanjump.png') no-repeat center;
+    background-size: cover;
+}
 .title-feed{
     font-size: 5rem;
     text-align: center;
@@ -14,7 +32,6 @@
     margin: 3rem auto;
 }
 .background-feed-img{
-    
     background-image: url('https://images.unsplash.com/photo-1603056724920-fdecbb3b7d37?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
     background-repeat: no-repeat;
     background-position: right;
@@ -32,13 +49,22 @@
 .profile-users-info .nickname-feed{
     color: #361F5B;
     font-size: 3rem;
+    line-height: initial;
     
 }
 .profile-users-info .username-feed{
     color: #5FBC94;
     font-size: 2rem;
 }
-
+.profile-users-info .business-feed{
+    color: #361F5B;
+    font-size: 3rem;
+    line-height: initial;
+}
+.profile-users-info .info-commerce-feed{
+    color: #5FBC94;
+    font-size: 1.5rem;
+}
 .profile-users-info .user-info-feed{
     text-align: left;
     margin-top: 4%;
@@ -78,4 +104,5 @@
     color:#361F5B;
     font-size: 1.25rem;
     text-decoration: underline;
+    padding: 1rem;
 }

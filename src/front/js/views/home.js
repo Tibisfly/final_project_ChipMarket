@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import MapTest from "../components/map-view.js";
 import { Navbar } from "../components/navbar.js";
 import manoConIphone from "../../img/chipmarket.png";
 import chipMarket from "../../img/chipmarket.png";
-import chipMarket from "../../img/patilla-reloj.jpg.png";
+import patillaReloj from "../../img/patilla-reloj.jpg";
 import "../../styles/home.scss";
 
 export const Home = () => {
@@ -103,70 +102,65 @@ export const Home = () => {
 					</div>
 				</div> */}
 			</div>
+			<div className="container-fluid">
+				<section className="three-cards">
+					<div className="container">
+						<div className="row" style={{ marginBottom: "6rem", marginTop: "6rem" }}>
+							<div className="text-center mt-5 col-lg-4 col-12">
+								<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
+									<div className="card-vertical-v2020 v2020 p-4">
+										<div className="card-vertical-v2020--image mx-auto">
+											<img src={patillaReloj} />
+										</div>
+										<div className="card-vertical-v2020--text mx-2">
+											<h5>FÁCIL USO</h5>
+											<p>
+												ChipMarket es una red social que crece gracias a ti. Desde tu perfil
+												podrás disfrutar de las ofertas únicas para ChipAddicts.
+											</p>
+										</div>
+									</div>
+								</Link>
+							</div>
+							<div className="text-center mt-5 col-lg-4 col-12">
+								<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
+									<div className="card-vertical-v2020 v2020 p-4">
+										<div className="card-vertical-v2020--image mx-auto">
+											<img src="https://upload.wikimedia.org/wikipedia/en/2/26/Common_face_of_one_euro_coin.jpg" />
+										</div>
 
-			<section className="three-cards">
-				<div className="container">
-					<div className="row" style={{ marginBottom: "6rem", marginTop: "6rem" }}>
-						<div className="text-center mt-5 col-lg-4 col-12">
-							<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
-								<div className="card-vertical-v2020 v2020 p-4">
-									<div className="card-vertical-v2020--image mx-auto">
-										<img className="img1" src="../../patilla-reloj.jpg" />
+										<div className="card-vertical-v2020--text mx-2">
+											<h5>POTENCIA TU NEGOCIO</h5>
+											<p>
+												¿Eres un comercio?, si te das de alta con ChipMarket podrás aparecer en
+												la búsqueda por Código Postal de los usuarios, tendrás tu perfil en
+												donde cada post será la entrada a nuevos clientes.
+											</p>
+										</div>
 									</div>
-									<div className="card-vertical-v2020--text mx-2">
-										<h5>FÁCIL USO</h5>
-										<p>
-											ChipMarket es una red social que crece gracias a ti. Desde tu perfil podrás
-											disfrutar de las ofertas únicas para ChipAddicts.
-										</p>
+								</Link>
+							</div>
+							<div className="text-center mt-5 col-lg-4 col-12">
+								<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
+									<div className="card-vertical-v2020 v2020 p-4">
+										<div className="card-vertical-v2020--image mx-auto">
+											<img src="https://www.codot.gov/business/civilrights/assets/team-icon.png/@@images/image.png" />
+										</div>
+										<div className="card-vertical-v2020--text mx-2">
+											<h5>CORRE LA VOZ</h5>
+											<p>
+												El sentido es muy importante para nosotros, evitemos que más autónomos
+												cierren sus negocios. Invita a que más comercios formen parte de esta
+												red. En la unión está la fuerza.
+											</p>
+										</div>
 									</div>
-								</div>
-							</Link>
-						</div>
-						<div className="text-center mt-5 col-lg-4 col-12">
-							<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
-								<div className="card-vertical-v2020 v2020 p-4">
-									<div className="card-vertical-v2020--image mx-auto">
-										<img
-											className="img2"
-											src="https://upload.wikimedia.org/wikipedia/en/2/26/Common_face_of_one_euro_coin.jpg"
-										/>
-									</div>
-
-									<div className="card-vertical-v2020--text mx-2">
-										<h5>POTENCIA TU NEGOCIO</h5>
-										<p>
-											¿Eres un comercio?, si te das de alta con ChipMarket podrás aparecer en la
-											búsqueda por Código Postal de los usuarios, tendrás tu perfil en donde cada
-											post será la entrada a nuevos clientes.
-										</p>
-									</div>
-								</div>
-							</Link>
-						</div>
-						<div className="text-center mt-5 col-lg-4 col-12">
-							<Link to="/register" className="text-decoration-none" style={{ color: "black" }}>
-								<div className="card-vertical-v2020 v2020 p-4">
-									<div className="card-vertical-v2020--image mx-auto">
-										<img
-											className="img3"
-											src="https://www.codot.gov/business/civilrights/assets/team-icon.png/@@images/image.png"
-										/>
-									</div>
-									<div className="card-vertical-v2020--text mx-2">
-										<h5>CORRE LA VOZ</h5>
-										<p>
-											El sentido es muy importante para nosotros, evitemos que más autónomos
-											cierren sus negocios. Invita a que más comercios formen parte de esta red.
-											En la unión está la fuerza.
-										</p>
-									</div>
-								</div>
-							</Link>
+								</Link>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</>
 	);
 };

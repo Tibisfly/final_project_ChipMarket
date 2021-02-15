@@ -41,11 +41,10 @@ export const NavbarNuevo = props => {
 	return (
 		<header className="header">
 			<nav className={scrollClass.className}>
-				{/* <Navbar variant="light" fixed="top" className={scrollClass.className}> */}
 				<div className="container-fluid navbar-light">
-					<a className="navbar-brand" href="#">
-						Navbar scroll
-					</a>
+					<Link to="/" className="navbar-brand">
+						ChipMarket
+					</Link>
 					<button
 						className="navbar-toggler "
 						type="button"
@@ -61,7 +60,7 @@ export const NavbarNuevo = props => {
 							<input
 								className="form-control me-2"
 								type="search"
-								placeholder="Search"
+								placeholder="Introduce tu código postal"
 								aria-label="Search"></input>
 							<button className="btn search-button" type="submit">
 								Search
@@ -76,17 +75,17 @@ export const NavbarNuevo = props => {
 									role="button"
 									data-bs-toggle="dropdown"
 									aria-expanded="false">
-									Eres usuario?
+									¿Eres un usuario?
 								</a>
 								<ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 									<li>
 										<a className="dropdown-item" href="#">
-											Iniciar sesión
+											Inicia sesión
 										</a>
 									</li>
 									<li>
 										<a className="dropdown-item" href="#">
-											Crear una cuenta
+											Crea una cuenta
 										</a>
 									</li>
 								</ul>
@@ -99,17 +98,17 @@ export const NavbarNuevo = props => {
 									role="button"
 									data-bs-toggle="dropdown"
 									aria-expanded="false">
-									Eres comercio?
+									¿Eres un comercio?
 								</a>
 								<ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 									<li>
 										<a className="dropdown-item" href="#">
-											Iniciar sesión
+											Inicia sesión
 										</a>
 									</li>
 									<li>
 										<a className="dropdown-item" href="#">
-											Crear una cuenta
+											Date de alta
 										</a>
 									</li>
 								</ul>

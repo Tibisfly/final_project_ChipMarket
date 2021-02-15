@@ -2,11 +2,35 @@
 body{
     background-color: white;
 }
-.row{
-    font-size: 1.2rem;
-    font-family:'Spartan', sans-serif;
-    font-weight: 300;
+// REGISTER - UPDATE
+.welcoming-register{
+    display: flex;
+    flex-direction: column;
+    font-size: 5rem;
+    justify-content: center;
+    margin: 7rem auto 3rem;
+    color: #361F5B;
+    background: url('../img/register-transparency.png') no-repeat center;
+    background-size: cover;
+    height: 150%;
+    text-align: center;
 }
+.create-user{
+    margin:17rem auto;
+    position: relative;
+    padding: 1rem;
+}
+.create-user .title{
+    font-weight: 600;
+    line-height: 4.2;
+    text-align: center;
+    font-size: 2.7rem;
+}
+.create-user .form-field{
+    margin-top: 15px;
+}
+
+// LOGIN
 .login-izq{
     height:100vh;
     width: auto;
@@ -18,86 +42,69 @@ body{
 .login-center{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     position: relative;
     background-image: url('https://blush.design/api/download?shareUri=pXV78aFm4&w=800&h=800&fm=png');
-    background-size: cover; 
+    background-size: cover;
     background-repeat: no-repeat;
+    margin-top: 12rem;
 }
-.login-center form{
-    padding-top: 3rem;
-    padding-left: 3rem;
-   
+.login-center h1, .login-center h2{
+    color: #361F5B;
+    font-size: 2rem;
+    margin-left: 6rem;
+    font-weight: bold;
 }
+.error-login{
+    color: red;
+    font-size: 3rem;
+}
+.login-container{
+    justify-content: center;
+}
+.login-forms{
+    width: 100%;
+}
+.button-green-login{
+    background-color: #5FBC94;
+    border:1px solid white;
+    color: white;
+    border-radius: 15px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    width: 60%;
+    margin-left: 10rem;
+}
+.register-login .text-decoration{
+    font-size: 1.5rem;
+    color: #361F5B;
+}
+// @media (min-width: 992px){
+//     .login-center form{
+//         padding-left: 8rem;
+//     }
 
+//     .form-width{
+//         width: 65%;
+//     }
+// }
+
+
+// GENERAL FORMS
 .form-width{
-    width: 85% !important;
+    width: 100%;
  }
 
-@media (min-width: 992px){
-    .login-center form{
-        padding-left: 8rem;
-    }
-
-    .form-width{
-        width: 65% !important;
-    }
-}
-.login-center h1{
-    text-align: center;
-    margin-top: 4rem;
-}
-.login-center h2{
-    text-align: center;
-}
-.form-control{
-    min-height: 3.125rem;
-    line-height: initial;
-}
 input:hover{
     background-color: #a0b8fc;
 }
 .profile-head {
     transform: translateY(5rem)
 }
-.register-login a {
-    color:rgba(0, 0, 0, 0.9);
-}
-.create-user{
-    margin:80px auto;
-    position: relative;
-    padding: 1rem;
-}
-// .create-user .title{
-//     // text-transform: uppercase;
-//     text-align: center;
-//     letter-spacing: 1px;
-//     // font-size: 3rem;
-//     line-height: 48px;
-//     padding-bottom: 20px;
-//     color: green;
 
-// }
-// .contact-form-row{
-//     position: relative;
-//     margin: 32px 0;
-// }
-.form-control{
-    width: 100%;
-    height: 36px;
-    // border-width: 0 0 2px 0;
-    border-color: #361F5B;
-    font-size: 1rem;
-    line-height: 26px;
-}
-.login.btn.btn-success{
-    display: flex;
-    flex-direction: row-reverse;
-}
-.error-login{
-    color: red;
-    font-size: "20px";
-}
+
+
 
 
 

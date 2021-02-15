@@ -35,9 +35,9 @@ export const LogIn = function(props) {
 					<h1>Bienvenido ChipAddict</h1>
 
 					<h2>No olvides seguir a tus comercios preferidos y aprovechar las ofertas.</h2>
-					<div>
-						<form>
-							<div className="form-group ">
+					<div className="container-fluid">
+						<form className="login-forms">
+							<div className="form-group">
 								<label htmlFor="staticEmail" className="form-label font-weight-bold">
 									Correo electrónico
 								</label>
@@ -75,7 +75,7 @@ export const LogIn = function(props) {
 									</label>
 								</div>
 							</div>
-							<button type="button" className="login btn btn-success" onClick={() => handleSubmit()}>
+							<button type="button" className="button-green-login" onClick={() => handleSubmit()}>
 								Iniciar Sesión
 							</button>
 							<div
@@ -88,8 +88,8 @@ export const LogIn = function(props) {
 							</div>
 						</form>
 					</div>
-					<div className="register-login btn btn-link text-decoration-none">
-						<Link to="/register" type="button">
+					<div className="register-login">
+						<Link to="/register" type="button" className="text-decoration">
 							¿Todavía no tienes cuenta? Pincha aquí y únete.
 						</Link>
 					</div>

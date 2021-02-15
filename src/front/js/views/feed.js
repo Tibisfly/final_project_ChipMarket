@@ -68,21 +68,6 @@ export const Feed = () => {
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
-							{/* <SearchZipCode />
-						
-							<CommercesLists
-								url="/commerces"
-								title="Mis Comercios"
-								commerces={store.user.commerce_list}
-								addCommerce="Añade a un Comercio"
-							/>
-						
-							<CommercesLists
-								url="/search/zipcode"
-								title="Siguiendo a:"
-								commerces={store.user.following_list}
-								addCommerce="Encuentra y sigue a tus comercios"
-							/> */}
 						</div>
 						<div className="col-lg-12">{cardList}</div>
 						<div className="container-fluid">
