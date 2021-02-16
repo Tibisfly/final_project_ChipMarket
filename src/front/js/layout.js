@@ -6,12 +6,12 @@ import { Home } from "./views/home";
 import { Feed } from "./views/feed";
 import { FeedCommerce } from "./views/feed-commerce";
 import injectContext from "./store/appContext";
-
+import { NavbarNuevo } from "./components/navbar-nuevo";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Register } from "./views/register";
 import { CommercesForm } from "./views/commerces-form";
-// import { CommercesProfiles } from "./views/commerces-profiles";
+import { LogInCommerce } from "./views/log-in-commerce.js";
 import { SearchZipCode } from "./views/search-zipcode";
 import { LogIn } from "./views/log-in";
 import { AboutUs } from "./views/about-us";
@@ -29,7 +29,8 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					{/* <Navbar /> */}
+					<NavbarNuevo />
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -57,6 +58,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<LogIn />
+						</Route>
+						<Route exact path="/login-commerce">
+							<LogInCommerce />
 						</Route>
 						<Route exact path="/about-us">
 							<AboutUs />

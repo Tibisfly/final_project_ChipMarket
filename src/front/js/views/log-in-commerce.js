@@ -5,7 +5,7 @@ import { Context } from "../store/appContext.js";
 import { ModalPassword } from "../components/modal-password.js";
 import "../../styles/forms.scss";
 
-export const LogIn = function(props) {
+export const LogInCommerce = function(props) {
 	const { store, actions } = useContext(Context);
 
 	const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export const LogIn = function(props) {
 		};
 		actions.logIn(data, () => {
 			if (store.error == null) {
-				history.push("/feed");
+				history.push(`/feed`);
 			}
 		});
 	}
@@ -29,12 +29,14 @@ export const LogIn = function(props) {
 	return (
 		<div className="container-fluid">
 			<div className="row">
-				<div className="col-lg-4 col-12 login-izq" />
+				<div className="col-lg-4 col-12 login-commerce-izq" />
 
 				<div className="col-lg-8 col-12 login-center">
-					<h1>Bienvenido ChipAddict</h1>
+					<h1>Bienvenido ChipCommerce</h1>
 
-					<h2>No olvides seguir a tus comercios preferidos y aprovechar las ofertas.</h2>
+					<h2>
+						Recuerda que mientras más publicaciones mejorarás tu visibilidad en el feed de los usuarios.
+					</h2>
 					<div className="container-fluid">
 						<form className="login-forms">
 							<div className="form-group">
@@ -89,8 +91,8 @@ export const LogIn = function(props) {
 						</form>
 					</div>
 					<div className="register-login">
-						<Link to="/register" type="button" className="text-decoration">
-							¿Todavía no tienes cuenta? Pincha aquí y únete.
+						<Link to="/commerces" type="button" className="text-decoration">
+							¿Todavía no te has dado de alta como comercio? Pincha aquí y únete.
 						</Link>
 					</div>
 				</div>

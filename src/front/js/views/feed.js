@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "../components/card.js";
 import { Context } from "../store/appContext.js";
 import { Profiles } from "../components/profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
-import "../../styles/home.scss";
+import "../../styles/feed.scss";
+import "../../styles/navbar.scss";
 
 export const Feed = () => {
 	const params = useParams();
@@ -23,7 +24,12 @@ export const Feed = () => {
 	let cardList = "";
 	if (store.feed.length == 0) {
 		cardList = (
-			<div className="card no-feed text-center">Oops.. Todavía no hay ninguna publicación</div>
+			<>
+				<div className="card no-feed text-center oops-msg">
+					Oops... Todavía no hay ninguna publicación
+					<Link to="/search/zipcode/28028">Consigue las mejores ofertas</Link>
+				</div>
+			</>
 			// este div quisiera centrarlo en todo el div de las columnas del feed para las cards y darle estilos.
 		);
 	} else {
@@ -45,57 +51,38 @@ export const Feed = () => {
 	}
 
 	return (
-		<div className="container-fluid m-0 p-0 post">
-			<div className="background-home">
-				<div className="background-home-grd">
-					<h1 className="title-feed">Encuentra los comercios cerca de ti</h1>
-					<p>Aprovecha de los descuentos</p>
-				</div>
-				<div className="goop goop__SvgWrapper-sc-1g583nk-1 ddrtzv" color="bg.default">
-					<svg
-						fillRule="evenodd"
-						clipRule="evenodd"
-						xmlns="http://www.w3.org/2000/svg"
-						aria-labelledby="title"
-						viewBox="0 0 1920 240"
-						id="goop"
-						className="goop__InlineSvg-sc-1g583nk-0 cCVJVf">
-						<title id="title">goop</title>
-						<g>
-							<path d="M1920,144.5l0,95.5l-1920,0l0,-65.5c196,-36 452.146,-15.726 657.5,8.5c229.698,27.098 870,57 1262.5,-38.5Z"></path>
-						</g>
-					</svg>
+		<>
+			<div className="container-fluid ">
+				<div className="title-feed">
+					Utiliza la barra de búsqueda superior
+					<br></br>
+					<span className="feed-text-content">para encontrar las ofertas más cercanas</span>
 				</div>
 			</div>
+
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-4">
+						<div className="col-lg-12">
 							<Profiles
 								username={store.user.username}
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
 							/>
-							<SearchZipCode />
-							<br />
-							<CommercesLists
-								url="/commerces"
-								title="Mis Comercios"
-								commerces={store.user.commerce_list}
-								addCommerce="Añade a un Comercio"
-							/>
-							<br />
-							<CommercesLists
-								url="/search/zipcode"
-								title="Siguiendo a:"
-								commerces={store.user.following_list}
-								addCommerce="Encuentra y sigue a tus comercios"
-							/>
 						</div>
-						<div className="col-lg-8">{cardList}</div>
+						<div className="col-lg-12 m-0">{cardList}</div>
+						<div className="container-fluid">
+							<div className="row banner-feed">
+								<div className="col-lg-6 col-12 upgrade-img" />
+								<div className="col-lg-6 col-12 feed-text-content">
+									<div>¿Quieres darte de alta como comercio?</div>
+									<Link to="/commerces">Pincha aquí</Link>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
-		</div>
+		</>
 	);
 };

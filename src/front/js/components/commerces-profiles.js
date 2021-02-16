@@ -1,26 +1,46 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { CommercesLists } from "./commerces-lists.js";
+// import "../../styles/feed.scss";
 
 export const CommercesProfiles = function(props) {
+	const { store, actions } = useContext(Context);
+
+	const [dropdownOpen1, setDropdownOpen2] = useState(false);
+
+	const toggle1 = () => setDropdownOpen1(prevState => !prevState);
+
 	return (
 		<>
-			<div className="container">
-				<div className="row">
-					<div className="col-lg-4">
-						<img
-							className="profile-pic rounded w-100 p-3"
-							src="https://images.unsplash.com/photo-1560105214-ad76e8531c42?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-						/>
-					</div>
-					<div className="col-lg-8" style={{ margin: "" }}>
-						<h3 className="d-block font-weight-bold text-success">{props.businessName}</h3>
-						<h5 className="d-block  ">{props.streetName}</h5>
-						<h5 className="d-block  ">{props.streetNumber}</h5>
-						<h5 className="d-block  ">{props.city}</h5>
-						<h5 className="d-block  ">{props.country}</h5>
-						<h5 className="d-block  ">{props.zipCode}</h5>
-						<h5 className="d-block  ">{props.phoneNumber}</h5>
-						<h5 className="d-block  ">{props.website}</h5>
+			<div className="container-fluid">
+				<div className="profile-users-info">
+					<div className="row">
+						<div className="col-3">
+							<div className="avatar-container">
+								<img
+									className="avatar rounded-circle"
+									src="https://www.ferrokey.eu/media/wysiwyg/45_1.jpg"
+								/>
+							</div>
+						</div>
+
+						<div className="col-7 user-info-feed">
+							<div className="business-feed">{props.businessName}</div>
+							<div className="info-commerce-feed">
+								{props.streetName}, {props.streetNumber}
+							</div>
+
+							<div className="info-commerce-feed">
+								{props.city} - {props.country}
+							</div>
+
+							<div className="info-commerce-feed">{props.zipCode}</div>
+							<div className="info-commerce-feed">{props.phoneNumber}</div>
+							<div className="info-commerce-feed">{props.website}</div>
+						</div>
 					</div>
 				</div>
 			</div>

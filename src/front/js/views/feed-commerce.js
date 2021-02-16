@@ -6,7 +6,8 @@ import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
-import "../../styles/home.scss";
+import "../../styles/feed.scss";
+import "../../styles/navbar.scss";
 
 export const FeedCommerce = () => {
 	const params = useParams();
@@ -22,11 +23,15 @@ export const FeedCommerce = () => {
 
 	let cardList = "";
 	if (store.feed.length == 0) {
-		cardList = <div className="card no-feed text-center">Oops.. Todavía no hay ninguna publicación</div>;
+		cardList = (
+			<div className="card no-feed text-center oops-msg">
+				Oops.. Todavía no hay ninguna publicación<Link to="/create/post">Añade una publicación</Link>
+			</div>
+		);
 	} else {
 		cardList = store.feed.map((post, index) => {
 			return (
-				<div className="col-4" key={index}>
+				<div className="col-12" key={index}>
 					<Card
 						img=""
 						businessName={post.business_name}
@@ -43,11 +48,18 @@ export const FeedCommerce = () => {
 	}
 
 	return (
-		<div className="post">
+		<>
+			<div className="container-fluid ">
+				<div className="title-feed-commerce">
+					Eres nuestra inspiración - Añade publicaciones diarias - Haz tu marca atractiva
+					<Link to="/contact-us">Posiciona tu negocio en la búsqueda</Link>
+				</div>
+			</div>
+
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-9">
+						<div className="col-lg-8 col-12">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
 								streetName={store.commerce.street_name}
@@ -59,25 +71,22 @@ export const FeedCommerce = () => {
 								website={store.commerce.website}
 							/>
 						</div>
-						<div className="col-lg-3">
-							<div className="card">
-								<Link to="/contact-us" className="membership text-decoration-none">
-									<p className="text-center mx-2 my-3">
-										Comunícate con nosotros para mejorar el posicionamiento de tu negocio en la
-										búsqueda
-									</p>
-								</Link>
-							</div>
-							<UploadPost />
+						<div className="col-lg-4 col-12 ">
+							<Link to="/create/post" type="button">
+								Añade una publicación
+							</Link>
+							<Link>
+								<button>Seguir</button>
+							</Link>
 						</div>
 					</div>
 				</div>
 			</section>
 			<section>
-				<div className="container-fluid my-5">
+				<div className="container">
 					<div className="row">{cardList}</div>
 				</div>
 			</section>
-		</div>
+		</>
 	);
 };

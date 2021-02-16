@@ -1,0 +1,112 @@
+.title-feed-commerce, .title-feed-commerce Link{
+    font-size: 4rem;
+    text-align: center;
+    margin: 7rem auto 3rem;
+    padding: 3rem;
+    color: #361F5B;
+    background: url('../img/market-feed.png') no-repeat center;
+    background-size: cover;
+   
+}
+.title-search-zipcode{
+    font-size: 3rem;
+    text-align: center;
+    margin: 7rem auto 3rem;
+    padding: 3rem;
+    color: #361F5B;
+    background: url('../img/mapsearch.png') no-repeat center;
+    background-size: cover;
+}
+.title-feed{
+    font-size: 5rem;
+    text-align: center;
+    margin: 7rem auto 3rem;
+    color: #361F5B;
+    background: url('../img/mapa-transp2.png') no-repeat center;
+    background-size: cover;
+}
+.feed-text-content{
+    font-size: 2.5rem;
+    text-align: center;
+    color: #5FBC94;
+    margin: 3rem auto;
+}
+.background-feed-img{
+    background-image: url('https://images.unsplash.com/photo-1603056724920-fdecbb3b7d37?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.profile-users-info{
+    color: #361F5B;
+    font-size: 3rem;
+    width: 100%;
+    height: auto;
+    margin: 3rem auto;
+    text-align: center;
+    display: flex;
+}
+.profile-users-info .nickname-feed{
+    color: #361F5B;
+    font-size: 3rem;
+    line-height: initial;
+    
+}
+.profile-users-info .username-feed{
+    color: #5FBC94;
+    font-size: 2rem;
+}
+.profile-users-info .business-feed{
+    color: #361F5B;
+    font-size: 3rem;
+    line-height: initial;
+}
+.profile-users-info .info-commerce-feed{
+    color: #5FBC94;
+    font-size: 1.5rem;
+}
+.profile-users-info .user-info-feed{
+    text-align: left;
+    margin-top: 4%;
+}
+.profile-users-info a{
+    font-size: 1rem;
+    color: #361F5B;
+    text-decoration: none;
+}
+.avatar{
+    width: 100%;
+    height: auto;
+}
+
+.card.no-feed{
+    background-color: white;
+}
+
+.banner-feed {
+    margin: 5% 0;
+}
+
+.banner-feed .upgrade-img{
+    background-image: url('https://images.unsplash.com/photo-1443110189928-4448af4a2bc5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1194&q=80');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.banner-feed .feed-text-content a{
+    color:#361F5B;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+.oops-msg{
+    font-size: 1.5rem;
+    text-align: center;
+    color: #5FBC94;
+    margin: 3rem auto;
+}
+.oops-msg a{
+    color:#361F5B;
+    font-size: 1.25rem;
+    text-decoration: underline;
+    padding: 1rem;
+}

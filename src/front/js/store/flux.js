@@ -1,5 +1,4 @@
-const baseUrl = "https://3001-coffee-squid-56rgoz45.ws-eu03.gitpod.io/api";
-
+const baseUrl = "https://3001-gray-hare-vtytnpg1.ws-eu03.gitpod.io/api";
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -8,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			feed: [],
 			post: {},
 			commerce: [],
-			follow: [],
+			follows: [],
 			token: token,
 			error: null
 		},
@@ -279,6 +278,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ post: json });
 					});
 			},
+			getFollowCommerce(id) {
+				const store = getStore();
+				const endpoint = `${baseUrl}${id}/followers/`;
+				const method = "GET";
+				const headers = { "Content-Type": "application/json" };
+
+				if (store.token) {
+					headers["Authorization"] = `Bearer ${store.token}`;
+				}
+
+				const config = {
+					method: method,
+					headers: headers
+				};
+				fetch(endpoint, config)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						setStore({ follows: data });
+						console.log("followers: ", store.followers);
+					});
+			},
 			followCommerce(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/followers`;
@@ -299,7 +320,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						setStore({ follow: json.follow });
+						actions.getFollowCommerce();
 						callback();
 					})
 					.catch(error => {

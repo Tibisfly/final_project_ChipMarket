@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UpButton } from "./up-button.js";
 import { ListOfComments } from "./list-of-comments.js";
@@ -7,6 +7,8 @@ import { Context } from "../store/appContext.js";
 import "../../styles/cards.scss";
 
 export function Card(props) {
+	const params = useParams();
+
 	const { store, actions } = useContext(Context);
 
 	const history = useHistory();
@@ -27,12 +29,10 @@ export function Card(props) {
 	function handleSubmit() {
 		const data = {
 			user: user_id,
-			commerce: commerce_id
+			commerce: parseInt(id)
 		};
 
-		actions.followCommerce(data, () => {
-			useHistory(`/feed/commerce/${props.commerceId}`);
-		});
+		actions.followCommerce(data);
 	}
 
 	const handleKeyPress = event => {
@@ -59,16 +59,18 @@ export function Card(props) {
 					</Link>
 				</div>
 				<div className="follow align-self-center">
-					<button
-						type="button"
-						className="follow-btn nav-link active font-weight-bold text-decoration-none"
-						aria-current="page"
-						href="/feed"
-						onClick={() => {
-							handleSubmit;
-						}}>
-						Seguir
-					</button>
+					<Link to={`/feed/commerce/${id}`}>
+						<button
+							type="button"
+							className="follow-btn nav-link active font-weight-bold text-decoration-none"
+							aria-current="page"
+							href="/feed"
+							onClick={() => {
+								handleSubmit;
+							}}>
+							Seguir
+						</button>
+					</Link>
 				</div>
 				<div className="ml-auto p-2"></div>
 			</div>

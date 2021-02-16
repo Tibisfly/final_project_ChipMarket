@@ -1,0 +1,59 @@
+.no-color{
+    background-color: transparent;
+    color: white;
+}
+.no-color .navbar-brand{
+    color:black;
+}
+.light-color{
+    background-color: #5FBC94;
+}
+.search-navbar{
+    border: 1px solid #361F5B;
+    border-radius: 15px;
+    margin-right: 15px;
+}
+.navbar-nav-scroll{
+    --bs-scroll-height: 100px;
+}
+.dropdown{
+    margin:0 15px;
+}
+
+.dropdown .dropdown-item a{
+    font-size: 1rem;
+}
+
+.form-search-navbar{
+    margin-left: 10%;
+}
+
+.form-search-navbar .form-control,
+.form-search-navbar .search-button a{
+    border-radius: 15px;
+    margin: 0 5px;
+}
+.light-color .form-search-navbar .search-button,
+.no-color .form-search-navbar .search-button:hover, .navbar .dropdown .dropdown-toggle {
+    background-color: #361F5B;
+    color: white;
+}
+.no-color .form-search-navbar .search-button,
+.light-color .form-search-navbar .search-button:hover,
+.navbar .dropdown .dropdown-toggle:hover {
+    background-color: #5FBC94;
+    border:1px solid white;
+    color: white;
+}
+
+
+@media (min-width: 992px){
+    .navbarScrollCcs{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.search-button a, .search-button a:hover {
+    font-size: 1rem;
+    color:white;
+}

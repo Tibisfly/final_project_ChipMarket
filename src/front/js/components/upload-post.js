@@ -7,15 +7,10 @@ export const UploadPost = function(props) {
 
 	return (
 		<>
-			<div className="card ">
-				<div className="card-body">
-					<p className="font-weight-bold text-success">Sube una foto</p>
-					<Link to="/create/post" type="button" className="btn btn-link-light d-flex">
-						<i className="fas fa-plus align-self-center mr-3" />
-						<span>Añade una publicación</span>
-					</Link>
-				</div>
-			</div>
+			<p className="font-weight-bold text-success">Sube una foto</p>
+			<Link to="/create/post" type="button" className="btn btn-link-light d-flex">
+				Añade una publicación
+			</Link>
 		</>
 	);
 };

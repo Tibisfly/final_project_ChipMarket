@@ -3,33 +3,32 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
+import MapTest from "../components/map-view.js";
 import "../../styles/home.scss";
 
 export const SearchZipCode = function(props) {
 	return (
 		<>
-			<div className="container my-3">
+			<div className="container-fluid">
 				<div className="row">
-					<div className="col-lg-10">
-						<div className="card">
-							<div className="card-body d-flex ">
-								<img
-									src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=700&q=80"
-									className="img-zipcode rounded"
-									alt="imagen3"
-								/>
-								<div className="card-body">
-									<h4 className="text-center font-weight-bold text-success">ChipAddict</h4>
-									<h5 className="text-center mt-3">
-										Estos son los comercios más cercanos a tu ubicación actual, para disfrutar de
-										las promociones debes seguir al ChipCommerce.
-									</h5>
-								</div>
+					<div className="col-lg-12">
+						<div className="container-fluid ">
+							<div className="title-search-zipcode">
+								Sigue a los comercios más cerca de ti. Reclama tu oferta en el local con el código
+								promocional que encontrarás en cada publicación.
 							</div>
+							{/* <div className="title-search-zipcode">
+								Utiliza la barra superior para encontrar los comercios más cercanos a ti. Sigue a los
+								comercios y reclama tu oferta en el local con el código promocional que encontrarás en
+								cada publicación.
+							</div> */}
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<MapTest />
+
 			<div className="container-fluid mb-3">
 				<div className="row no-gutters">
 					<div className="col-4">
