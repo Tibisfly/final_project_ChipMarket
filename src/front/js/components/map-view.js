@@ -73,7 +73,7 @@ const MapTest = () => {
 	return (
 		<div className="map-test">
 			{/* <div>{center}</div> */}
-			<MapContainer center={{ lat: 40.42678727667202, lng: -3.6672587479438 }} zoom={15} scrollWheelZoom={false}>
+			<MapContainer center={{ lat: 40.42678727667202, lng: -3.6672587479438 }} zoom={20} scrollWheelZoom={false}>
 				<TileLayer
 					attribution='&copy; <a href="https://www.maptiler.com/">MapTiler</a> &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=wHKJGX6RktBjxZuy5hCf"

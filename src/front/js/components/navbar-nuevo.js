@@ -24,7 +24,7 @@ export const NavbarNuevo = props => {
 	const params = useParams();
 
 	const [scrollClass, setScrollClass] = useState({
-		className: "light-color navbar navbar-expand-lg fixed-top"
+		classNavbar: "light-color navbar navbar-expand-lg fixed-top"
 	});
 
 	const handleScroll = () => {
@@ -32,15 +32,21 @@ export const NavbarNuevo = props => {
 		if (homeIzq) {
 			if (window.pageYOffset > homeIzq.clientHeight) {
 				setScrollClass({
-					className: "light-color navbar navbar-expand-lg fixed-top"
+					classNavbar: "light-color navbar navbar-expand-lg fixed-top"
 				});
 			} else {
 				setScrollClass({
-					className: "no-color navbar navbar-expand-lg fixed-top"
+					classNavbar: "no-color navbar navbar-expand-lg fixed-top"
 				});
 			}
 		}
 	};
+
+	function restoreNavbar() {
+		setScrollClass({
+			classNavbar: "light-color navbar navbar-expand-lg fixed-top"
+		});
+	}
 
 	const [dropdownOpen1, setDropdownOpen1] = useState(false);
 	const [dropdownOpen2, setDropdownOpen2] = useState(false);
@@ -75,6 +81,7 @@ export const NavbarNuevo = props => {
 				<DropdownItem>
 					<Link to="/feed">Mi perfil</Link>
 				</DropdownItem>
+
 				<DropdownItem>
 					<Link to="/" type="button" onClick={() => actions.logOut()}>
 						Log Out
@@ -99,7 +106,10 @@ export const NavbarNuevo = props => {
 		handleLogginCommerce = (
 			<>
 				<DropdownItem>
-					<Link to="/feed/commerce/1">Mi perfil</Link>
+					<Link to="/feed">Mi Perfil</Link>
+				</DropdownItem>
+				<DropdownItem>
+					<Link to="/create/post">Haz una publicación</Link>
 				</DropdownItem>
 				<DropdownItem>
 					<Link to="/" type="button" onClick={() => actions.logOut()}>
@@ -112,7 +122,7 @@ export const NavbarNuevo = props => {
 
 	return (
 		<header className="header">
-			<nav className={scrollClass.className}>
+			<nav className={scrollClass.classNavbar}>
 				<div className="container-fluid navbar-light">
 					<Link to="/" className="navbar-brand">
 						<img src={LogotipoChipMarketCanva} width="70" />

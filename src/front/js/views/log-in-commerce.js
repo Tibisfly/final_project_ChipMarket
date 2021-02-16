@@ -21,7 +21,7 @@ export const LogInCommerce = function(props) {
 		};
 		actions.logIn(data, () => {
 			if (store.error == null) {
-				history.push(`/feed/commerce/${commerce.commerce_id}`);
+				history.push(`/feed`);
 			}
 		});
 	}

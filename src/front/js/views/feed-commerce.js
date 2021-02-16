@@ -7,6 +7,7 @@ import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
 import "../../styles/feed.scss";
+import "../../styles/navbar.scss";
 
 export const FeedCommerce = () => {
 	const params = useParams();
@@ -58,7 +59,7 @@ export const FeedCommerce = () => {
 			<section>
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-12">
+						<div className="col-lg-8 col-12">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
 								streetName={store.commerce.street_name}
@@ -69,6 +70,14 @@ export const FeedCommerce = () => {
 								phoneNumber={store.commerce.phone_number}
 								website={store.commerce.website}
 							/>
+						</div>
+						<div className="col-lg-4 col-12 ">
+							<Link to="/create/post" type="button">
+								Añade una publicación
+							</Link>
+							<Link>
+								<button>Seguir</button>
+							</Link>
 						</div>
 					</div>
 				</div>

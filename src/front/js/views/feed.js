@@ -7,6 +7,7 @@ import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
 import "../../styles/feed.scss";
+import "../../styles/navbar.scss";
 
 export const Feed = () => {
 	const params = useParams();

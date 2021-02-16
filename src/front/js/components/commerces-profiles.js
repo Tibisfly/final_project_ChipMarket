@@ -41,11 +41,6 @@ export const CommercesProfiles = function(props) {
 							<div className="info-commerce-feed">{props.phoneNumber}</div>
 							<div className="info-commerce-feed">{props.website}</div>
 						</div>
-						<div className="col-2">
-							<Link to="/create/post" type="button">
-								Añade una publicación
-							</Link>
-						</div>
 					</div>
 				</div>
 			</div>
