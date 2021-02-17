@@ -19,20 +19,11 @@ export function Card(props) {
 	const [comment, setComment] = useState(["Que ofertaza!!", "Guao, me parece genial, mañana voy a buscar mi oferta"]);
 	const [inputValue, setInputValue] = useState("");
 
-	let imgRandom = Math.floor(Math.random() * 1000 + 1);
-	let pathImg = "https://picsum.photos/800/600?random=1" + imgRandom;
+	// let imgRandom = Math.floor(Math.random() * 1000 + 1);
+	// let pathImg = "https://picsum.photos/800/600?random=1" + imgRandom;
 
 	function handleChange(event) {
 		setInputValue(event.target.value);
-	}
-
-	function handleSubmit() {
-		const data = {
-			user: user_id,
-			commerce: parseInt(id)
-		};
-
-		actions.followCommerce(data);
 	}
 
 	const handleKeyPress = event => {
@@ -54,35 +45,23 @@ export function Card(props) {
 						/>
 					</div>
 
-					<Link to={`/feed/commerce/${props.commerceId}`} className="text-dark text-decoration-none">
+					{/* <Link to={`/feed/commerce/${props.commerceId}`} className="text-dark text-decoration-none"> */}
+					<Link to="/feed/commerce/1" className="text-dark text-decoration-none">
 						<h6 className="font-weight-bold align-self-center mt-3">{props.businessName}</h6>
 					</Link>
 				</div>
-				<div className="follow align-self-center">
-					<Link to={`/feed/commerce/${id}`}>
-						<button
-							type="button"
-							className="follow-btn nav-link active font-weight-bold text-decoration-none"
-							aria-current="page"
-							href="/feed"
-							onClick={() => {
-								handleSubmit;
-							}}>
-							Seguir
-						</button>
-					</Link>
-				</div>
-				<div className="ml-auto p-2"></div>
 			</div>
-			<Link to={`/post/${props.postId}`}>
-				<img src={pathImg} className="img-fluid" />
+
+			{/* <Link to={`/post/${props.postId}`}> */}
+			<Link to={"/post/1"}>
+				{props.mediaUrl}
+				<img src={props.mediaUrl} className="img-fluid" />
 			</Link>
 
 			<div className="card-body">
 				<div className="d-flex">
 					<div className="flex-grow-1">
 						<i className="far fa-bookmark lead mr-3 mb-3">
-							{" "}
 							<span className="promo-code-text">Código promocional: {props.promo_code}</span>
 						</i>
 						<br />

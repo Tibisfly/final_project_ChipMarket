@@ -391,13 +391,17 @@ def handle_delete_posts(id):
 @api.route('/followers', methods=['POST'])
 def handle_create_followers():
     user = authorized_user()
-
     payload = request.get_json()
+    print("Hola, todo bien", payload)
+    
     payload["user_id"] = user.id
     followers = Followers(**payload)
 
+
     db.session.add(followers)
     db.session.commit()
+
+    print("Hola, todo bien SE GUARDO") 
 
     return jsonify(followers.serialize()), 201
 
@@ -431,25 +435,22 @@ def handle_followers_commerce(commerce_id):
     return jsonify(users), 200
 
 #Dejar de seguir.
-@api.route('/commerces/<int:follow_id>/followers', methods=['DELETE'])
-def handle_delete_followers(follow_id):
+@api.route('/commerces/followers/<int:commerce_id>/<int:user_id>', methods=['DELETE'])
+def handle_delete_followers(commerce_id, user_id):
+    user = authorized_user()
+    
+    followers = Followers.query.filter_by(commerce_id = commerce_id, user_id=user_id, deleted_at=None)
 
-    follow = Followers.query.get(follow_id)
+    if not followers:
+        return "Commerce not followed", 404
 
-    if not follow:
-        return "Post not found", 404
+    # payload = request.get_json()
 
-    payload = request.get_json()
-
-    if "deleted_at" in payload:
-        follow.deleted_at = payload["deleted_at"]
-    else:
-        return "No estás introduciendo la fecha de borrado"
-
-    data = follow.serialize()
+    # data = follow.serialize()
+    db.session.delete(followers)
     db.session.commit()
 
-    return jsonify("This follower has been eliminated successfully", data), 200
+    return jsonify("This follower has been eliminated successfully"), 200
 
 
 ################################## LIKES #########################################

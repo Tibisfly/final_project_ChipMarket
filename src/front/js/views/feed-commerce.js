@@ -19,6 +19,7 @@ export const FeedCommerce = () => {
 	useEffect(() => {
 		actions.getCommerceFeed(params.id);
 		actions.getOneCommerce(params.id);
+		actions.getOneUser();
 	}, []);
 
 	let cardList = "";
@@ -31,9 +32,9 @@ export const FeedCommerce = () => {
 	} else {
 		cardList = store.feed.map((post, index) => {
 			return (
-				<div className="col-12" key={index}>
+				<div className="col-10" key={index}>
 					<Card
-						img=""
+						mediaUrl={post.media_url}
 						businessName={post.business_name}
 						commerceId={post.commerce_id}
 						title={post.title}
@@ -49,17 +50,18 @@ export const FeedCommerce = () => {
 
 	return (
 		<>
-			<div className="container-fluid ">
-				<div className="title-feed-commerce">
-					Eres nuestra inspiración - Añade publicaciones diarias - Haz tu marca atractiva
-					<Link to="/contact-us">Posiciona tu negocio en la búsqueda</Link>
-				</div>
-			</div>
-
 			<section>
-				<div className="container">
-					<div className="row">
-						<div className="col-lg-8 col-12">
+				<div className="container feed-commerce-container">
+					<div className="row row-profile-header">
+						<div className="col-lg-3">
+							<div className="avatar-container">
+								<img
+									className="avatar rounded-circle"
+									src="https://www.ferrokey.eu/media/wysiwyg/45_1.jpg"
+								/>
+							</div>
+						</div>
+						<div className="col-lg-9 col-12">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
 								streetName={store.commerce.street_name}
@@ -69,22 +71,20 @@ export const FeedCommerce = () => {
 								country={store.commerce.city}
 								phoneNumber={store.commerce.phone_number}
 								website={store.commerce.website}
+								description={store.commerce.description}
 							/>
 						</div>
-						<div className="col-lg-4 col-12 ">
+						{/* <div className="col-lg-4 col-12 ">
 							<Link to="/create/post" type="button">
 								Añade una publicación
 							</Link>
-							<Link>
-								<button>Seguir</button>
-							</Link>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</section>
 			<section>
 				<div className="container">
-					<div className="row">{cardList}</div>
+					<div className="row justify-content-center">{cardList}</div>
 				</div>
 			</section>
 		</>

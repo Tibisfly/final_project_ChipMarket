@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { ModalUpload } from "./modal-upload";
 import { Context } from "../store/appContext";
 import {
@@ -19,6 +19,8 @@ import LogotipoChipMarketCanva from "../../img/LogotipoChipMarket.png";
 import "../../styles/navbar.scss";
 
 export const NavbarNuevo = props => {
+	let location = useLocation();
+
 	const { store, actions } = useContext(Context);
 
 	const params = useParams();
@@ -28,7 +30,7 @@ export const NavbarNuevo = props => {
 	});
 
 	const handleScroll = () => {
-		var homeIzq = document.getElementById("home-izq");
+		const homeIzq = document.getElementById("home-izq");
 		if (homeIzq) {
 			if (window.pageYOffset > homeIzq.clientHeight) {
 				setScrollClass({
@@ -55,13 +57,20 @@ export const NavbarNuevo = props => {
 	const toggle2 = () => setDropdownOpen2(prevState => !prevState);
 
 	useEffect(() => {
-		window.addEventListener("scroll", handleScroll, { passive: true });
-		handleScroll();
+		let showTransparent = location.pathname === "/";
+		if (showTransparent) {
+			window.addEventListener("scroll", handleScroll, { passive: true });
+			handleScroll();
 
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+			return () => {
+				window.removeEventListener("scroll", handleScroll);
+			};
+		} else {
+			setScrollClass({
+				classNavbar: "light-color navbar navbar-expand-lg fixed-top"
+			});
+		}
+	}, [location]);
 
 	let handleLogginUser = "";
 	if (store.token === null) {

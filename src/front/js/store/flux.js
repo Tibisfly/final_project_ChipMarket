@@ -1,4 +1,5 @@
 const baseUrl = "https://3001-gray-hare-vtytnpg1.ws-eu03.gitpod.io/api";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
 	return {
@@ -34,7 +35,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
+						console.log(json);
 						setStore({ token: json.token });
+
 						localStorage.setItem("token", json.token);
 						callback();
 					})
@@ -303,16 +306,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			followCommerce(data, callback) {
 				const store = getStore();
 				const endpoint = `${baseUrl}/followers`;
-				let headers = { "Content-Type": "application/json" };
-				headers["Authorization"] = `Bearer ${store.token}`;
-
 				const config = {
 					method: "POST",
 					body: JSON.stringify({
-						user: data.user_id,
-						commerce: data.commerce_id
+						user_id: data.user_id,
+						commerce_id: data.commerce_id
 					}),
-					headers: headers
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*",
+						Authorization: `Bearer ${store.token}`
+					}
+				};
+				fetch(endpoint, config)
+					.then(response => {
+						if (response.status == 403) {
+							setStore({ error: response });
+							throw "Usuario o contraseña incorrecta";
+						}
+						setStore({ error: null });
+						return response.json();
+					})
+					.then(json => {
+						setStore({ token: json.token });
+						localStorage.setItem("token", json.token);
+						callback();
+					})
+					.catch(error => {
+						setStore(error);
+					});
+			},
+			deleteFollowCommerce(data, callback) {
+				const endpoint = `${baseUrl}/commerces/followers/${data.commerce_id}/${data.user_id}`;
+
+				const config = {
+					method: "DELETE"
 				};
 
 				fetch(endpoint, config)
@@ -320,11 +348,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						actions.getFollowCommerce();
-						callback();
-					})
-					.catch(error => {
-						console.log(error);
+						return console.log(json());
 					});
 			}
 		}
