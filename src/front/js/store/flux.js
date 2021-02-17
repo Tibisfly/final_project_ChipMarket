@@ -1,6 +1,4 @@
-
 const baseUrl = "https://3001-coral-dog-ua2bxtz5.ws-eu03.gitpod.io/api";
-
 
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");

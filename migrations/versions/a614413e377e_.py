@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 414e4571f283
+Revision ID: a614413e377e
 Revises: 
-Create Date: 2021-02-17 17:16:09.800830
+Create Date: 2021-02-17 20:03:38.534962
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '414e4571f283'
+revision = 'a614413e377e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -41,7 +41,7 @@ def upgrade():
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('business_name', sa.String(length=80), nullable=False),
     sa.Column('title', sa.String(length=80), nullable=False),
-    sa.Column('description', sa.String(length=300), nullable=False),
+    sa.Column('description', sa.String(length=500), nullable=False),
     sa.Column('street_name', sa.String(length=30), nullable=False),
     sa.Column('street_number', sa.String(length=4), nullable=False),
     sa.Column('zip_code', sa.String(length=10), nullable=False),
@@ -76,7 +76,7 @@ def upgrade():
     sa.Column('promo_expired_at', sa.DateTime(), nullable=True),
     sa.Column('promo_code', sa.String(length=10), nullable=True),
     sa.Column('media_type', sa.String(length=200), nullable=True),
-    sa.Column('media_url', sa.String(length=255), nullable=True),
+    sa.Column('media_url', sa.String(length=400), nullable=True),
     sa.Column('title', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=500), nullable=True),
     sa.ForeignKeyConstraint(['commerce_id'], ['commerces.id'], ),

@@ -1,3 +1,9 @@
+// COMMERCES LISTS
+.cargando{
+    margin: 5rem;
+}
+
+
 .feed-commerce-container {
     margin-top: 10rem;
 }
@@ -145,10 +151,9 @@
     background-color: white;
 }
 
-// .banner-feed {
-//     margin: 5% 0;
-// }
-
+.banner-feed{
+    background-color: aliceblue;
+}
 .banner-feed .upgrade-img{
     background-image: url('https://images.unsplash.com/photo-1443110189928-4448af4a2bc5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1194&q=80');
     background-repeat: no-repeat;

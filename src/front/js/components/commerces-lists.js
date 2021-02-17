@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { DropdownItem } from "reactstrap";
+import "../../styles/feed.scss";
 
 export const CommercesLists = function(props) {
 	if (!props.commerces) {
-		return <div>Cargando. . .</div>;
+		return <div className="cargando">Aún no sigues a ningún comercio.</div>;
 	}
 
 	return (
