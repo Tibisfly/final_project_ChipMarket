@@ -17,8 +17,8 @@ export const Feed = () => {
 	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
-		actions.getUserFeed();
 		actions.getOneUser();
+		actions.getUserFeed();
 	}, []);
 
 	let cardList = "";
@@ -37,13 +37,13 @@ export const Feed = () => {
 			return (
 				<Card
 					key={index}
-					img=""
+					mediaUrl={post.media_url}
 					businessName={post.business_name}
 					title={post.title}
 					description={post.description}
 					promo_code={post.promo_code}
 					comments={post.comments}
-					commerceId={post.commerce_id}
+					// commerceId={post.commerce_id}
 					postId={post.id}
 				/>
 			);
@@ -62,7 +62,7 @@ export const Feed = () => {
 
 			<section>
 				<div className="container">
-					<div className="row">
+					<div className="row  m-0 justify-content-lg-center">
 						<div className="col-lg-12">
 							<Profiles
 								username={store.user.username}
@@ -70,7 +70,7 @@ export const Feed = () => {
 								lastName={store.user.last_name}
 							/>
 						</div>
-						<div className="col-lg-12 m-0">{cardList}</div>
+						<div className="col-lg-10">{cardList}</div>
 						<div className="container-fluid">
 							<div className="row banner-feed">
 								<div className="col-lg-6 col-12 upgrade-img" />
