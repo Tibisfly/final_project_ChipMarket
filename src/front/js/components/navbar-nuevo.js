@@ -115,7 +115,7 @@ export const NavbarNuevo = props => {
 		handleLogginCommerce = (
 			<>
 				<DropdownItem>
-					<Link to="/feed">Mi Perfil</Link>
+					<Link to={`/feed/commerce/${store.commerce.commerce_id}`}>Mi Perfil</Link>
 				</DropdownItem>
 				<DropdownItem>
 					<Link to="/create/post">Haz una publicación</Link>

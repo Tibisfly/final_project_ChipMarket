@@ -14,29 +14,6 @@ const MapTest = () => {
 		className: "leaflet-venue-icon"
 	});
 
-	// function handleMarkers() {
-	// 	const commerces = [
-	// 		{
-	// 			businessName: "Ferretería Ayala",
-	// 			lat: 40.42678727667202,
-	// 			lng: -3.6672587479438
-	// 		},
-	// 		{
-	// 			businessName: "Panarte",
-	// 			lat: 40.426785832905,
-	// 			lng: -3.668250674020496
-	// 		}
-	// 	];
-
-	// 	return commerces.map((commerce, key) => {
-	// 		<Marker position={{ lat: commerce.lat, lng: commerce.lng }} icon={markerIcon} key={key}>
-	// 			<Popup>
-	// 				<b>{commerce.businessName}</b>
-	// 			</Popup>
-	// 		</Marker>;
-	// 	});
-	// }
-
 	const commerces = [
 		{
 			businessName: "Ferretería Ayala",
@@ -72,7 +49,6 @@ const MapTest = () => {
 
 	return (
 		<div className="map-test">
-			{/* <div>{center}</div> */}
 			<MapContainer center={{ lat: 40.42678727667202, lng: -3.6672587479438 }} zoom={20} scrollWheelZoom={false}>
 				<TileLayer
 					attribution='&copy; <a href="https://www.maptiler.com/">MapTiler</a> &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -108,14 +84,6 @@ const MapTest = () => {
 						<b>Pinturas Pami</b>
 					</Popup>
 				</Marker>
-				{/* {commerces.map((commerce, key) => { */}
-				{/* // <Marker position={{ lat: commerce.lat, lng: commerce.lng }} icon={markerIcon} key={key}>
-					// 	<Popup>
-					// 		<b>{commerce.businessName}</b>
-					// 	</Popup>
-					// </Marker>;
-
-				// })} */}
 			</MapContainer>
 		</div>
 	);

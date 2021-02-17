@@ -11,7 +11,7 @@ export const CommercesLists = function(props) {
 	return (
 		<>
 			<div>
-				<p className="font-weight-bold text-success">{props.title}</p>
+				<p className="font-weight-bold title-following">{props.title}</p>
 			</div>
 			<div className="commerces-container">
 				{props.commerces.map((commerce, index) => {

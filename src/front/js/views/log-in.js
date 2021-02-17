@@ -51,7 +51,7 @@ export const LogIn = function(props) {
 								type="email"
 								className="form-control"
 								id="exampleFormControlInput1"
-								placeholder="name@example.com"
+								placeholder="tucorreo@ejemplo.com"
 							/>
 						</div>
 						<div className="mt-3">

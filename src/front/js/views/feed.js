@@ -6,6 +6,7 @@ import { Profiles } from "../components/profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
+import LogoBlue from "../../img/logo-blue.png";
 import "../../styles/feed.scss";
 import "../../styles/navbar.scss";
 
@@ -27,7 +28,7 @@ export const Feed = () => {
 			<>
 				<div className="card no-feed text-center oops-msg">
 					Oops... Todavía no hay ninguna publicación
-					<Link to="/search/zipcode/28028">Consigue las mejores ofertas</Link>
+					<Link to="/search/zipcode/28028">Consigue los comercios cerca de ti</Link>
 				</div>
 			</>
 			// este div quisiera centrarlo en todo el div de las columnas del feed para las cards y darle estilos.
@@ -54,9 +55,10 @@ export const Feed = () => {
 		<>
 			<div className="container-fluid ">
 				<div className="title-feed">
-					Utiliza la barra de búsqueda superior
-					<br></br>
-					<span className="feed-text-content">para encontrar las ofertas más cercanas</span>
+					<img src={LogoBlue} />
+					<p className="title-feed-text">
+						Utiliza la barra de búsqueda superior para encontrar las ofertas más cercanas
+					</p>
 				</div>
 			</div>
 

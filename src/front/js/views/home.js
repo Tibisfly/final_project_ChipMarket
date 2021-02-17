@@ -25,7 +25,7 @@ export const Home = () => {
 								<Link to="/register">
 									<button
 										type="button"
-										className="banner-user-button btn btn-info rounded-pill button-purple">
+										className="banner-user-button btn btn-info rounded-pill button-green">
 										¿Eres un Usuario?
 									</button>
 								</Link>

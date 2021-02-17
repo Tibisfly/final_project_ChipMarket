@@ -4,30 +4,28 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { Register } from "./register.js";
 import MapTest from "../components/map-view.js";
+import Hands from "../../img/Hands.png";
 import "../../styles/home.scss";
 
 export const SearchZipCode = function(props) {
 	return (
 		<>
 			<div className="container-fluid">
-				<div className="row">
-					<div className="col-lg-12">
-						<div className="container-fluid ">
-							<div className="title-search-zipcode">
+				<div className="row contenedor-maps">
+					<div className="col-lg-6 col-12">
+						<div className="title-search-zipcode">
+							<img className="logo-container-login-commerce" src={Hands} />
+							{/* <p>
 								Sigue a los comercios más cerca de ti. Reclama tu oferta en el local con el código
 								promocional que encontrarás en cada publicación.
-							</div>
-							{/* <div className="title-search-zipcode">
-								Utiliza la barra superior para encontrar los comercios más cercanos a ti. Sigue a los
-								comercios y reclama tu oferta en el local con el código promocional que encontrarás en
-								cada publicación.
-							</div> */}
+							</p> */}
 						</div>
+					</div>
+					<div className="col-lg-6">
+						<MapTest />
 					</div>
 				</div>
 			</div>
-
-			<MapTest />
 
 			<div className="container-fluid mb-3">
 				<div className="row no-gutters">
