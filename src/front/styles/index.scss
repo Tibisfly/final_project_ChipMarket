@@ -13,8 +13,25 @@ body{
     white-space: nowrap;
 }
 footer{
+    
     white-space: nowrap;
+    font-size: 20px;
+    padding-bottom: 30px;
+    
 }
+#send{
+    color:#5FBC94;
+}
+#about{
+    color:#5FBC94;
+}
+#send:hover{
+    color:#361F5B;
+}
+#about:hover{
+    color:#361F5B;
+}
+
 .pointer{
     cursor: pointer;
 }
