@@ -116,10 +116,10 @@ export const Register = function(props) {
 							</div>
 						</div>
 					</div>
+					<div className="commerce d-flex justify-content-center">
+						<Link to="/commerces">Si tienes un negocio, dale de alta pinchando aquí</Link>
+					</div>
 				</section>
-				<div className="">
-					<Link to="/commerces">Si tienes un negocio, dale de alta pinchando aquí</Link>
-				</div>
 			</div>
 		</>
 	);

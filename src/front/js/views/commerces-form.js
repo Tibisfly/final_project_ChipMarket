@@ -5,6 +5,11 @@ import { Register } from "./register.js";
 import "../../styles/forms.scss";
 
 export const CommercesForm = function(props) {
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("");
 	const [businessName, setBusinessName] = useState("");
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -51,10 +56,66 @@ export const CommercesForm = function(props) {
 						: "Estás a un paso más cerca de obtener las mejores ofertas cerca de ti. Por favor, rellena tus datos y únete a la ChipFamily"}
 				</div>
 			</div>
-			<div className="create-user">
+
+			<div className="container create-user">
 				<h1 className="title">{store.commerce.id ? "Actualiza tu comercio" : "Crea tu comercio"}</h1>
 				<form>
-					<div className="form-group">
+					<div className="form-field ">
+						<label htmlFor="inputFirstName">Nombre</label>
+						<input
+							type="text"
+							className="form-control"
+							id="inputFirstName"
+							placeholder="First name"
+							value={firstName}
+							onChange={event => setFirstName(event.target.value)}
+						/>
+					</div>
+					<div className="form-field">
+						<label htmlFor="inputLastName">Apellidos</label>
+						<input
+							type="text"
+							className="form-control"
+							id="inputLastName"
+							placeholder="Last name"
+							value={lastName}
+							onChange={event => setLastName(event.target.value)}
+						/>
+					</div>
+					<div className="form-field">
+						<label htmlFor="inputEmail">Correo electrónico</label>
+						<input
+							type="email"
+							className="form-control "
+							id="inputEmail"
+							placeholder="Email"
+							value={email}
+							onChange={event => setEmail(event.target.value)}
+						/>
+					</div>
+					<div className="form-field">
+						<label htmlFor="inputPassword">Contraseña</label>
+						<input
+							type="password"
+							className="form-control"
+							id="inputPassword"
+							placeholder="Password"
+							value={password}
+							onChange={event => setPassword(event.target.value)}
+						/>
+					</div>
+					<div className="form-field">
+						<label htmlFor="inputUsername">Nombre de usuario</label>
+						<input
+							type="text"
+							className="form-control"
+							id="inputUsername"
+							placeholder="Username"
+							value={username}
+							onChange={event => setUsername(event.target.value)}
+						/>
+					</div>
+					<div className="form-field">
 						<label htmlFor="inputBusinessName">Nombre del comercio</label>
 						<input
 							type="text"
@@ -64,7 +125,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setBusinessName(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputTitle">Añada una palabra clave que lo defina</label>
 						<input
 							type="text"
@@ -75,7 +136,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setTitle(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="description">Descripción de tu negocio:</label>
 						<textarea
 							className="form-control"
@@ -85,7 +146,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setDescription(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputCountry">País</label>
 						<input
 							type="text"
@@ -95,7 +156,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setCountry(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputCity">Ciudad</label>
 						<input
 							type="text"
@@ -105,7 +166,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setCity(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputStreetName">Dirección Postal</label>
 						<input
 							type="text"
@@ -116,7 +177,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setStreetName(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputStreetName">Número</label>
 						<input
 							type="text"
@@ -127,7 +188,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setStreetNumber(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputZipCode">Código Postal</label>
 						<input
 							type="text"
@@ -138,7 +199,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setZipCode(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputPhone">Número de contacto</label>
 						<input
 							type="text"
@@ -148,7 +209,7 @@ export const CommercesForm = function(props) {
 							onChange={event => setPhoneNumber(event.target.value)}
 						/>
 					</div>
-					<div className="form-group">
+					<div className="form-field">
 						<label htmlFor="inputWebsite">Página web</label>
 						<input
 							type="text"
@@ -158,9 +219,12 @@ export const CommercesForm = function(props) {
 							onChange={event => setWebsite(event.target.value)}
 						/>
 					</div>
-					<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
-						{params.id ? "Update" : "Create"}
-					</button>
+					<br />
+					<div className="form-field">
+						<button type="button" className="button-green-register" onClick={handleSubmit}>
+							{params.id ? "Update" : "Create"}
+						</button>
+					</div>
 				</form>
 			</div>
 		</>
