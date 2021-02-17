@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
 import { ModalPassword } from "../components/modal-password.js";
 import "../../styles/forms.scss";
+import LogoBlue from "../../img/logo-blue.png";
 
 export const LogInCommerce = function(props) {
 	const { store, actions } = useContext(Context);
@@ -29,76 +30,73 @@ export const LogInCommerce = function(props) {
 	return (
 		<div className="container-fluid">
 			<div className="row">
-				<div className="col-lg-4 col-12 login-commerce-izq" />
+				<div className="col-lg-6 col-12 login-commerce-izq" />
 
-				<div className="col-lg-8 col-12 login-center">
-					<h1>Bienvenido ChipCommerce</h1>
-
-					<h2>
-						Recuerda que mientras más publicaciones mejorarás tu visibilidad en el feed de los usuarios.
-					</h2>
-					<div className="container-fluid">
-						<form className="login-forms">
-							<div className="form-group">
-								<label htmlFor="staticEmail" className="form-label font-weight-bold">
-									Correo electrónico
-								</label>
-
-								<input
-									type="email"
-									className="form-control form-width"
-									id="staticEmail"
-									value={email}
-									onChange={event => setEmail(event.target.value)}
-									placeholder="Ingresa tu correo electrónico"
-								/>
+				<div className="col-lg-6 col-12 login-center-commerce">
+					<div className="the-login-container">
+						<div className="row">
+							<div className="col-lg-8 titles-login-commerce">
+								<h1>Bienvenido ChipCommerce</h1>
+								<h2>Potenciemos tu negocio</h2>
 							</div>
-							<div className="form-group ">
-								<label htmlFor="inputPassword" className="form-label font-weight-bold">
-									Contraseña
-								</label>
-								<input
-									type="password"
-									className="form-control form-width"
-									id="inputPassword"
-									value={password}
-									onChange={event => setPassword(event.target.value)}
-									placeholder="Ingresa tu contraseña"
-								/>
+							<div className="col-lg-4 ">
+								<img className="logo-container-login-commerce" src={LogoBlue} />
 							</div>
+						</div>
+						<div className="mb-3">
+							<label htmlFor="exampleFormControlInput1" className="form-label">
+								Correo electrónico
+							</label>
+							<input
+								type="email"
+								className="form-control"
+								id="exampleFormControlInput1"
+								placeholder="tucorreo@ejemplo.com"
+							/>
+						</div>
+						<div className="mt-3">
+							<label htmlFor="formControlInput1" className="form-label">
+								Contraseña
+							</label>
+							<input
+								type="password"
+								className="form-control"
+								id="formControlInput1"
+								placeholder="Introduce tu contraseña"
+							/>
+						</div>
+						<div>
 							<button type="button" className="btn btn-link text-muted " onClick={() => setModal(true)}>
 								¿Olvidó su contraseña?. Pinche aquí.
 							</button>
-							<div className="form-group">
-								<div className="form-check">
-									<input type="checkbox" className="form-check-input" id="dropdownCheck" />
-									<label className="form-check-label" htmlFor="dropdownCheck">
-										Recuérdame
-									</label>
-								</div>
-							</div>
-							<button type="button" className="button-green-login" onClick={() => handleSubmit()}>
-								Iniciar Sesión
-							</button>
-							<div
-								className="error fw-bold"
-								style={{
-									display: store.error != null ? "block" : "none"
-								}}>
-								<p className="error-login fw-bold">Usuario y contraseña incorrectos</p>
-								{console.log(store.error)}
-							</div>
-						</form>
-					</div>
-					<div className="register-login">
-						<Link to="/commerces" type="button" className="text-decoration">
-							¿Todavía no te has dado de alta como comercio? Pincha aquí y únete.
-						</Link>
+						</div>
+						<div className="form-check">
+							<input className="form-check-input" type="checkbox" id="gridCheck" />
+							<label className="form-check-label" htmlFor="gridCheck">
+								Recuérdame
+							</label>
+						</div>
+						<div className="register-login">
+							<Link to="/register" type="button" className="text-decoration">
+								¿Todavía no tienes cuenta? Pincha aquí y únete.
+							</Link>
+						</div>
+						<button type="button" className="button-green-login" onClick={() => handleSubmit()}>
+							Iniciar Sesión
+						</button>
+						<div
+							className="error fw-bold"
+							style={{
+								display: store.error != null ? "block" : "none"
+							}}>
+							<p className="error-login fw-bold">Usuario y contraseña incorrectos</p>
+							{console.log(store.error)}
+						</div>
 					</div>
 				</div>
-
-				<ModalPassword show={modal} onClose={() => setModal(false)} />
 			</div>
+
+			<ModalPassword show={modal} onClose={() => setModal(false)} />
 		</div>
 	);
 };

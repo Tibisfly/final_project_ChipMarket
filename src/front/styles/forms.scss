@@ -15,6 +15,9 @@ body{
     height: 150%;
     text-align: center;
 }
+.label{
+        font-size: 1.25rem;
+}
 .create-user{
     margin:17rem auto;
     position: relative;
@@ -34,72 +37,88 @@ body{
 .login-izq{
     height:100vh;
     width: auto;
+    margin-top: 7rem;
     position: relative;
     background-repeat: no-repeat;
-    background-image: url('https://images.pexels.com/photos/5709269/pexels-photo-5709269.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-image: url('../img/login-transparente.png');
     background-size: cover;
 }
+.logo-container-login{
+    margin-left: -8rem;
+    margin-top:-2rem;
+}
 .login-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
     background-image: url('https://blush.design/api/download?shareUri=pXV78aFm4&w=800&h=800&fm=png');
     background-size: cover;
     background-repeat: no-repeat;
-    margin-top: 12rem;
+    margin-top: 7rem;
+    justify-content: center;
 }
 .login-center h1, .login-center h2{
     color: #361F5B;
-    font-size: 2rem;
-    margin-left: 6rem;
-    font-weight: bold;
+    font-size: 3rem;
+    line-height: 2.5rem;
+    margin-bottom: 2rem;
+}
+.login-center .form-control{
+        width: 78%;
 }
 .error-login{
     color: red;
-    font-size: 3rem;
+    font-size: 1.5rem;
+    margin-left: 13rem;
+    margin-top: 2rem;
 }
-.login-container{
+.the-login-container{
+    margin-top: 7rem;
     justify-content: center;
-}
-.login-forms{
-    width: 100%;
 }
 .button-green-login{
     background-color: #5FBC94;
     border:1px solid white;
     color: white;
     border-radius: 15px;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1.25rem;
-    width: 60%;
-    margin-left: 10rem;
+    margin-top: 3rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+    width: 80%;
+   
 }
 .register-login .text-decoration{
-    font-size: 1.5rem;
+    font-size: 1.10rem;
     color: #361F5B;
+    margin-left: 22rem;
 }
 
 //LOGIN COMMERCE
+.logo-container-login-commerce{
+    margin-left: -7rem;
+    margin-top:-2rem;
+}
 .login-commerce-izq{
     height:100vh;
     width: auto;
     position: relative;
     background-repeat: no-repeat;
-    background-image: url('https://images.unsplash.com/photo-1594400315019-a03cc9acb85a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80');
-    background-size: cover;
+    background-image: url('../img/login-commerce.png');
+    margin-top: 8rem;
+
 }
-// @media (min-width: 992px){
-//     .login-center form{
-//         padding-left: 8rem;
-//     }
-
-//     .form-width{
-//         width: 65%;
-//     }
-// }
-
+.login-center-commerce{
+    background-image: url('https://blush.design/api/download?shareUri=pXV78aFm4&w=800&h=800&fm=png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 7rem;
+    justify-content: center;
+    margin-left: -3rem;
+}
+.titles-login-commerce{
+    padding-top: 1rem;
+    padding-left: 2.25rem;
+}
+.login-center-commerce .form-control{
+        width: 78%;
+}
 
 // GENERAL FORMS
 .form-width{
