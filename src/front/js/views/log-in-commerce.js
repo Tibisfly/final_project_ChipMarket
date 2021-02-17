@@ -22,7 +22,7 @@ export const LogInCommerce = function(props) {
 		};
 		actions.logIn(data, () => {
 			if (store.error == null) {
-				history.push(`/feed`);
+				history.push(`/feed/commerce/1`);
 			}
 		});
 	}

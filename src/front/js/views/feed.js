@@ -27,7 +27,7 @@ export const Feed = () => {
 		cardList = (
 			<>
 				<div className="card no-feed text-center oops-msg">
-					Oops... Todavía no hay ninguna publicación
+					Oops... Todavía no sigues a ningún comercio.
 					<Link to="/search/zipcode/28028">Consigue los comercios cerca de ti</Link>
 				</div>
 			</>
