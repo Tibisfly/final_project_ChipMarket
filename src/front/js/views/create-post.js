@@ -41,10 +41,12 @@ export const CreatePost = function(props) {
 			<div className="container">
 				<section className="create-post">
 					<h1 className="title">Añade una publicación</h1>
+					<br />
 					<div className="container">
 						<div className="contact-form-row align-items-center">
 							<div className="form-field ">
 								<label htmlFor="inputTitle">Título de tu publicación</label>
+								<br />
 								<input
 									type="text"
 									className="form-control w-100"
@@ -54,6 +56,7 @@ export const CreatePost = function(props) {
 									onChange={event => setTitle(event.target.value)}
 								/>
 							</div>
+							<br />
 							<div className="form-field">
 								<label htmlFor="inputDescription">Descripción de tu post</label>
 								<textarea
@@ -64,6 +67,7 @@ export const CreatePost = function(props) {
 									onChange={event => setDescription(event.target.value)}
 								/>
 							</div>
+							<br />
 							<div className="form-field">
 								<label htmlFor="inputmediaURL">Introduce la URL de tu imagen</label>
 								<input
@@ -76,6 +80,7 @@ export const CreatePost = function(props) {
 									onChange={event => setMediaUrl(event.target.value)}
 								/>
 							</div>
+							<br />
 							<div className="form-field">
 								<label htmlFor="inputmediaType">Introduce la URL de vídeos.</label>
 								<input
@@ -88,12 +93,13 @@ export const CreatePost = function(props) {
 									onChange={event => setMediaType(event.target.value)}
 								/>
 							</div>
-
+							<br />
 							<div className="form-field">
-								<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
-									{false ? "Update" : "Create"}
+								<button type="button" className="button-green-register" onClick={handleSubmit}>
+									{false ? "Upgrade" : "Crear"}
 								</button>
 							</div>
+							<br />
 						</div>
 					</div>
 				</section>

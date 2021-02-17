@@ -43,15 +43,9 @@ export const AboutUs = () => {
 							{/* <span className="text-secondary">Full-Stack Developer</span> */}
 						</h1>
 						<p className="lead">
-							Hace más de doce años que trabajo en diseño y desarrollo de productos digitales en la
-							intersección entre tecnología, diseño y negocio. He participado tanto en pequeños proyectos
-							como en grandes empresa. Mi experiencia y formación adquirida en marketing, comunicación y
-							desarrollo de negocio me han preparado para definir soluciones y liderar su implementación
-							práctica. Mi perfil multidisciplinar me ha permitido abordar proyectos con un enfoque
-							creativo, innovador y orientado a resultados, con el desafío personal de encontrar para cada
-							situación la mejor vía de generación de valor con los medios disponibles. Me desenvuelvo con
-							facilidad y confianza tanto en contextos técnicos como de negocio, con gran capacidad
-							comunicativa en español, inglés y francés, incluso en situaciones multiculturales.
+							Full Stack Developer, aficionado a aprender sobre las diferentes culturas del mundo, a un
+							buen libro, al cine, a las excursiones por la naturaleza y los idiomas, habla Inglés y
+							Francés. Encantado con la tecnologia y los beneficios que trae a la vida de las personas.
 						</p>
 					</div>
 				</div>
