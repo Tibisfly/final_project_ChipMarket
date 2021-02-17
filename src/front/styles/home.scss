@@ -76,19 +76,22 @@ body{
 .home-izq .message-content .title-banner{
     font-size: 6rem;
     font-weight: bold;
-    color:#361F5B;
+    color:#EC7A50;
     text-align: start;
     margin-left: 3rem;
+    line-height: 6rem;
 }
 .mientras{
-    color: #5FBC94;
-    font-size: 2rem;;
+    margin-top: 2rem;
+    color: #361F5B;
+    font-size: 2.5rem;;
 }
 .home-izq .message-content .message-banner{
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: start;
     margin-left: 3rem;
-    color: #5FBC94;
+    color: #361F5B;
+    line-height: 3rem;
 }
 .botones-banner{
     display: flex;
@@ -113,6 +116,7 @@ body{
     max-width: 1920px;
     margin: 10rem auto;
     text-align: center;
+    background-image: url('');
 }
 .fila-sup {
     margin: 10rem 3rem;
@@ -158,7 +162,7 @@ body{
         font-size: 1.5rem;
     }
 }
-.three-cards{
+.three-cards, .three-cards-container{
     background-color: aliceblue;
 }
 

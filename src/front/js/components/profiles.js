@@ -48,7 +48,7 @@ export const Profiles = function(props) {
 						}}
 						type="button"
 						role="tab">
-						Mis comercios
+						Mis ChipCommerce
 					</button>
 				</div>
 			</nav>
@@ -68,8 +68,8 @@ export const Profiles = function(props) {
 								<div className="col-3">
 									<div className="avatar-container">
 										<img
-											className="avatar rounded-circle"
-											src="https://i.pinimg.com/564x/9c/60/24/9c60245d48049836aad0c2f83e18bddd.jpg"
+											className="avatar-user rounded-circle"
+											src="https://blush.design/api/download?shareUri=mXoOjZqW_&c=Hair_0%7E724133_Skin_0%7Ed4a181_Top_0%7E60ade6&w=800&h=800&fm=png"
 										/>
 									</div>
 								</div>
@@ -94,8 +94,8 @@ export const Profiles = function(props) {
 					id="nav-profile"
 					role="tabpanel"
 					aria-labelledby="nav-commerce-following-tab">
-					<div>
-						<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
+					<div className="following-user-profile">
+						<CommercesLists title="Siguiendo a:" commerces={store.user.commerce_list} />
 					</div>
 				</div>
 				<div
@@ -107,7 +107,7 @@ export const Profiles = function(props) {
 					role="tabpanel"
 					aria-labelledby="nav-my-commerces-tab">
 					<div>
-						<CommercesLists title="Mis Comercios" commerces={store.user.commerce_list} />
+						<CommercesLists title="Mis Comercios dados de alta:" commerces={store.user.commerce_list} />
 					</div>
 				</div>
 			</div>

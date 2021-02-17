@@ -19,13 +19,13 @@ export const Home = () => {
 							<div className="title-banner">Ahorra tiempo y dinero</div>
 							<div className="message-banner">
 								<p className="mientras">Mientras apoyas al comercio local.</p>
-								<p>Únete a nuestra comunidad y descubre ofertas únicas cerca de ti.</p>
+								<p> Únete a nuestra comunidad y descubre ofertas únicas cerca de ti.</p>
 							</div>
 							<div className="botones-banner">
 								<Link to="/register">
 									<button
 										type="button"
-										className="banner-user-button btn btn-info rounded-pill button-purple">
+										className="banner-user-button btn btn-info rounded-pill button-green">
 										¿Eres un Usuario?
 									</button>
 								</Link>
@@ -102,7 +102,7 @@ export const Home = () => {
 					</div>
 				</div> */}
 			</div>
-			<div className="container-fluid">
+			<div className="container-fluid three-cards-container">
 				<section className="three-cards">
 					<div className="container">
 						<div className="row" style={{ marginBottom: "6rem", marginTop: "6rem" }}>

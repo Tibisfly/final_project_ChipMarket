@@ -74,11 +74,6 @@ export const FeedCommerce = () => {
 								description={store.commerce.description}
 							/>
 						</div>
-						{/* <div className="col-lg-4 col-12 ">
-							<Link to="/create/post" type="button">
-								Añade una publicación
-							</Link>
-						</div> */}
 					</div>
 				</div>
 			</section>

@@ -6,10 +6,10 @@
     color:black;
 }
 .light-color{
-    background-color: #5FBC94;
+    background-color: #74BAE8;
 }
 .search-navbar{
-    border: 1px solid #361F5B;
+    border: 1px solid  #5FBC94;
     border-radius: 15px;
     margin-right: 15px;
 }
@@ -35,13 +35,13 @@
 }
 .light-color .form-search-navbar .search-button,
 .no-color .form-search-navbar .search-button:hover, .navbar .dropdown .dropdown-toggle {
-    background-color: #361F5B;
+    background-color: #5FBC94;
     color: white;
 }
 .no-color .form-search-navbar .search-button,
 .light-color .form-search-navbar .search-button:hover,
 .navbar .dropdown .dropdown-toggle:hover {
-    background-color: #5FBC94;
+    background-color: #361F5B;
     border:1px solid white;
     color: white;
 }

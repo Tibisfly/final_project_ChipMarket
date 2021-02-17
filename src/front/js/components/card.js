@@ -53,7 +53,7 @@ export function Card(props) {
 			</div>
 
 			{/* <Link to={`/post/${props.postId}`}> */}
-			<Link to={"/post/1"}>
+			<Link to="/post/1">
 				{props.mediaUrl}
 				<img src={props.mediaUrl} className="img-fluid" />
 			</Link>
@@ -107,7 +107,9 @@ Card.propTypes = {
 	businessName: PropTypes.string,
 	promo_code: PropTypes.string,
 	comments: PropTypes.array,
-	commerceId: PropTypes.int,
-	postId: PropTypes.int,
+
 	comments: PropTypes.array
 };
+
+// postId: PropTypes.int,
+// 	commerceId: PropTypes.int,

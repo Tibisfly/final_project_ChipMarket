@@ -14,7 +14,7 @@ export const PostView = function(props) {
 	return (
 		<div className="container my-5">
 			<Card
-				img=""
+				mediaUrl={store.post.mediaUrl}
 				businessName={store.post.business_name}
 				title={store.post.title}
 				description={store.post.description}
