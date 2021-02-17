@@ -392,16 +392,11 @@ def handle_delete_posts(id):
 def handle_create_followers():
     user = authorized_user()
     payload = request.get_json()
-    print("Hola, todo bien", payload)
-    
     payload["user_id"] = user.id
     followers = Followers(**payload)
 
-
     db.session.add(followers)
     db.session.commit()
-
-    print("Hola, todo bien SE GUARDO") 
 
     return jsonify(followers.serialize()), 201
 
@@ -439,15 +434,7 @@ def handle_followers_commerce(commerce_id):
 def handle_delete_followers(commerce_id, user_id):
     user = authorized_user()
     
-    followers = Followers.query.filter_by(commerce_id = commerce_id, user_id=user_id, deleted_at=None)
-
-    if not followers:
-        return "Commerce not followed", 404
-
-    # payload = request.get_json()
-
-    # data = follow.serialize()
-    db.session.delete(followers)
+    Followers.query.filter_by(commerce_id = commerce_id, user_id=user_id, deleted_at=None).delete()
     db.session.commit()
 
     return jsonify("This follower has been eliminated successfully"), 200

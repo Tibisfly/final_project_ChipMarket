@@ -337,10 +337,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			deleteFollowCommerce(data, callback) {
+				const store = getStore();
 				const endpoint = `${baseUrl}/commerces/followers/${data.commerce_id}/${data.user_id}`;
 
 				const config = {
-					method: "DELETE"
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*",
+						Authorization: `Bearer ${store.token}`
+					}
 				};
 
 				fetch(endpoint, config)
@@ -348,7 +354,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						return console.log(json());
+						actions.getFollowCommerce(data.user_id);
+						callback();
+					})
+					.catch(error => {
+						setStore(error);
 					});
 			}
 		}
