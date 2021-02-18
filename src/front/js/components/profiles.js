@@ -6,7 +6,6 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap
 import classnames from "classnames";
 import { CommercesLists } from "./commerces-lists.js";
 import "../../styles/feed.scss";
-import { Profile } from "../../img/profile.png";
 
 export const Profiles = function(props) {
 	const [activeTab, setActiveTab] = useState("1");
@@ -66,12 +65,7 @@ export const Profiles = function(props) {
 					<div className="container-fluid">
 						<div className="profile-users-info">
 							<div className="row">
-								<div className="col-3">
-									<div className="avatar-container">
-										<img className="avatar-user rounded-circle" src={Profile} />
-									</div>
-								</div>
-								<div className="col-6 user-info-feed">
+								<div className="col-12 user-info-feed">
 									<div>
 										<div className="nickname-feed">{props.username}</div>
 

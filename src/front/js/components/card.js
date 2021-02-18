@@ -103,6 +103,3 @@ Card.propTypes = {
 	postId: PropTypes.int,
 	commerceId: PropTypes.int
 };
-
-// postId: PropTypes.int,
-// 	commerceId: PropTypes.int,

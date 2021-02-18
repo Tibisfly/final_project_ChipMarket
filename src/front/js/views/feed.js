@@ -7,6 +7,7 @@ import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
 import LogoBlue from "../../img/logo-blue2.png";
+import Profile from "../../img/profile.png";
 import "../../styles/feed.scss";
 import "../../styles/navbar.scss";
 
@@ -75,7 +76,12 @@ export const Feed = () => {
 			<section>
 				<div className="container">
 					<div className="row  m-0 justify-content-lg-center">
-						<div className="col-lg-12">
+						<div className="col-lg-3">
+							<div className="avatar-container">
+								<img className="avatar-user rounded-circle" src={Profile} />
+							</div>
+						</div>
+						<div className="col-lg-9">
 							<Profiles
 								username={store.user.username}
 								firstName={store.user.first_name}

@@ -16,7 +16,6 @@ export const AboutUs = () => {
 					<div className="col-md-8">
 						<h1>
 							<span> Tibisay Vielma Toro</span>
-							{/* <span className="text-secondary">Will Catch Your Eye</span> */}
 						</h1>
 						<p className="lead">
 							Full Stack Developer multitasking que puede mantener tus dientes sanos. Optimista
