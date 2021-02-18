@@ -52,7 +52,9 @@ def sitemap():
 @app.route('/<path:path>', methods=['GET'])
 def serve_any_other_file(path):
     if not os.path.isfile(os.path.join(static_file_dir, path)):
-        path = os.path.join(path, 'index.html')
+        path =  'index.html'
+    else:
+        print("Path "+path+" is a file")
     response = send_from_directory(static_file_dir, path)
     if DEBUG:
         response.cache_control.max_age = 0 # avoid cache memory
