@@ -14,16 +14,19 @@ export const CreatePost = function(props) {
 
 	const { store, actions } = useContext(Context);
 
+	const params = useParams();
+
 	function handleSubmit() {
 		const data = {
 			title: title,
 			description: description,
 			mediaType: mediaType,
-			mediaUrl: mediaUrl
+			mediaUrl: mediaUrl,
+			commerce_id: params.id
 		};
 
 		actions.createPost(data, () => {
-			history.push("/feed/commerce/" + store.commerce.id);
+			history.push(`/feed/commerce/${params.id}`);
 		});
 	}
 
@@ -31,11 +34,7 @@ export const CreatePost = function(props) {
 		<>
 			<div className="container-fluid ">
 				<div className="title-feed">
-					Hola ChipCommerce,
-					<br></br>
-					<span className="feed-text-content">
-						Añade una pubicación y no olvides especificar la fecha de validez en la descripción.
-					</span>
+					<p className="title-feed-text">Hola ChipCommerce, añade una publicación.</p>
 				</div>
 			</div>
 			<div className="container">

@@ -115,10 +115,7 @@ export const NavbarNuevo = props => {
 		handleLogginCommerce = (
 			<>
 				<DropdownItem>
-					<Link to={`/feed/commerce/${store.commerce.commerce_id}`}>Mi Perfil</Link>
-				</DropdownItem>
-				<DropdownItem>
-					<Link to="/create/post">Haz una publicación</Link>
+					<Link to="/feed">Mi Perfil</Link>
 				</DropdownItem>
 				<DropdownItem>
 					<Link to="/" type="button" onClick={() => actions.logOut()}>
@@ -154,7 +151,7 @@ export const NavbarNuevo = props => {
 								placeholder="Introduce tu código postal"
 								aria-label="Search"></input>
 							<button className="btn search-button" type="submit">
-								<Link to="search/zipcode/28028" className="text-decoration-none">
+								<Link to="/search/zipcode/28028" className="text-decoration-none">
 									Buscar
 								</Link>
 							</button>

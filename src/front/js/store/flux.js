@@ -1,4 +1,4 @@
-const baseUrl = "https://3001-coral-dog-ua2bxtz5.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-violet-orangutan-twxob9a7.ws-eu03.gitpod.io/api";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			post: {},
 			commerce: [],
 			follows: [],
+			myCommerces: [],
 			token: token,
 			error: null
 		},
@@ -90,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => {
 						if (response.status == 403) {
 							setStore({ error: response });
-							throw "Usuario o contraseña incorrecta";
+							return response.json();
 						}
 						setStore({ error: null });
 						return response.json();
@@ -209,7 +210,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						setStore({ feed: json });
+						setStore({ feed: json.feed, follows: json.follows, myCommerces: json.my_commerces });
 					});
 			},
 			getCommerceFeed(id) {
@@ -245,7 +246,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						description: data.description,
 						media_type: data.mediaType,
 						media_url: data.mediaUrl,
-						commerce: data.commerce_id
+						commerce_id: data.commerce_id
 					}),
 					headers: headers
 				};
@@ -322,14 +323,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => {
 						if (response.status == 403) {
 							setStore({ error: response });
-							throw "Usuario o contraseña incorrecta";
+							return response.json();
 						}
 						setStore({ error: null });
 						return response.json();
 					})
 					.then(json => {
-						setStore({ token: json.token });
-						localStorage.setItem("token", json.token);
 						callback();
 					})
 					.catch(error => {
@@ -354,7 +353,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(json => {
-						actions.getFollowCommerce(data.user_id);
 						callback();
 					})
 					.catch(error => {

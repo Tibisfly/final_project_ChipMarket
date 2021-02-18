@@ -6,6 +6,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap
 import classnames from "classnames";
 import { CommercesLists } from "./commerces-lists.js";
 import "../../styles/feed.scss";
+import { Profile } from "../../img/profile.png";
 
 export const Profiles = function(props) {
 	const [activeTab, setActiveTab] = useState("1");
@@ -67,10 +68,7 @@ export const Profiles = function(props) {
 							<div className="row">
 								<div className="col-3">
 									<div className="avatar-container">
-										<img
-											className="avatar-user rounded-circle"
-											src="https://blush.design/api/download?shareUri=mXoOjZqW_&c=Hair_0%7E724133_Skin_0%7Ed4a181_Top_0%7E60ade6&w=800&h=800&fm=png"
-										/>
+										<img className="avatar-user rounded-circle" src={Profile} />
 									</div>
 								</div>
 								<div className="col-6 user-info-feed">
@@ -95,7 +93,7 @@ export const Profiles = function(props) {
 					role="tabpanel"
 					aria-labelledby="nav-commerce-following-tab">
 					<div className="following-user-profile">
-						<CommercesLists title="Siguiendo a:" commerces={store.user.commerce_list} />
+						<CommercesLists title="Siguiendo a:" commerces={store.follows} />
 					</div>
 				</div>
 				<div
@@ -107,7 +105,7 @@ export const Profiles = function(props) {
 					role="tabpanel"
 					aria-labelledby="nav-my-commerces-tab">
 					<div>
-						<CommercesLists title="Mis Comercios dados de alta:" commerces={store.user.commerce_list} />
+						<CommercesLists title="Mis Comercios dados de alta:" commerces={store.myCommerces} />
 					</div>
 				</div>
 			</div>
@@ -118,5 +116,7 @@ export const Profiles = function(props) {
 Profiles.propTypes = {
 	firstName: PropTypes.string,
 	lastName: PropTypes.string,
-	username: PropTypes.string
+	username: PropTypes.string,
+	myCommerces: PropTypes.array,
+	follows: PropTypes.array
 };

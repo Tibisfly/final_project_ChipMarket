@@ -6,6 +6,7 @@ import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
+import AvatarCommerce from "../../img/avatarCommerce.png";
 import "../../styles/feed.scss";
 import "../../styles/navbar.scss";
 
@@ -26,7 +27,8 @@ export const FeedCommerce = () => {
 	if (store.feed.length == 0) {
 		cardList = (
 			<div className="card no-feed text-center oops-msg">
-				Oops.. Todavía no hay ninguna publicación<Link to="/create/post">Añade una publicación</Link>
+				Oops.. Todavía no hay ninguna publicación
+				<Link to={`/create/post/${params.id}`}>Añade una publicación</Link>
 			</div>
 		);
 	} else {
@@ -55,10 +57,7 @@ export const FeedCommerce = () => {
 					<div className="row row-profile-header">
 						<div className="col-lg-3">
 							<div className="avatar-container">
-								<img
-									className="avatar rounded-circle"
-									src="https://www.ferrokey.eu/media/wysiwyg/45_1.jpg"
-								/>
+								<img className="avatar rounded-circle" src={AvatarCommerce} />
 							</div>
 						</div>
 						<div className="col-lg-9 col-12">

@@ -38,8 +38,8 @@ class Users(db.Model):
         
         for follow in self.followers:
             following_list.append({
-                "business_name": follow.commerce.business_name,
-                "commerce_id": follow.commerce.id
+                "business_name": follow.commerces.business_name,
+                "commerce_id": follow.commerces.id
             })
             
         return{
@@ -114,7 +114,7 @@ class Followers(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),  nullable=False)
     
     user = db.relationship("Users")
-    commerce = db.relationship("Commerces")
+    commerces = db.relationship("Commerces")
 
     def __str__(self):
         return  '{}:{}'.format(self.user.username, self.commerces.business_name) 
@@ -126,7 +126,7 @@ class Followers(db.Model):
             "commerce_id": self.commerce_id,
             "user_id": self.user_id,
             "user": self.user.serialize(),
-            "commerce": self.commerce.serialize(),
+            "commerce": self.commerces.serialize(),
         }
 
 class Posts(db.Model):

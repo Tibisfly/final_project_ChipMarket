@@ -80,7 +80,6 @@ export const CommercesForm = function(props) {
 							type="text"
 							className="form-control"
 							id="inputFirstName"
-							placeholder="First name"
 							value={firstName}
 							onChange={event => setFirstName(event.target.value)}
 						/>
@@ -91,7 +90,6 @@ export const CommercesForm = function(props) {
 							type="text"
 							className="form-control"
 							id="inputLastName"
-							placeholder="Last name"
 							value={lastName}
 							onChange={event => setLastName(event.target.value)}
 						/>
@@ -102,7 +100,6 @@ export const CommercesForm = function(props) {
 							type="email"
 							className="form-control "
 							id="inputEmail"
-							placeholder="Email"
 							value={email}
 							onChange={event => setEmail(event.target.value)}
 						/>
@@ -113,7 +110,6 @@ export const CommercesForm = function(props) {
 							type="password"
 							className="form-control"
 							id="inputPassword"
-							placeholder="Password"
 							value={password}
 							onChange={event => setPassword(event.target.value)}
 						/>
@@ -124,7 +120,6 @@ export const CommercesForm = function(props) {
 							type="text"
 							className="form-control"
 							id="inputUsername"
-							placeholder="Username"
 							value={username}
 							onChange={event => setUsername(event.target.value)}
 						/>
@@ -362,9 +357,11 @@ export const CommercesForm = function(props) {
 		<>
 			<div className="container-fluid register-log-in">
 				<div className="welcoming-register">
-					{store.commerce.id
-						? "ChipCommerce, por favor actualiza tus datos"
-						: "Estás a un paso más cerca de obtener las mejores ofertas cerca de ti. Por favor, rellena tus datos y únete a la ChipFamily"}
+					{store.token
+						? "ChipAddict, Por favor, actualiza tus datos"
+						: "Estás a un paso más cerca de obtener las mejores ofertas cerca de ti."}
+					<br />
+					{store.token ? "" : "Por favor, rellena tus datos y únete a la ChipFamily"}
 				</div>
 			</div>
 

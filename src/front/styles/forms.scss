@@ -6,33 +6,36 @@ body{
 .welcoming-register{
     display: flex;
     flex-direction: column;
-    font-size: 4rem;
+    font-size: 3rem;
     justify-content: center;
     margin: 7rem auto 3rem;
     color: #361F5B;
     background: url('../img/register-transparency.png') no-repeat center;
     background-size: cover;
-    height: 150%;
+    height: 100%;
     text-align: center;
+    padding: 0 5rem;
 }
 .label{
         font-size: 1.25rem;
 }
-.create-user{
-    margin:17rem auto;
+.create-user, .contact-user{
+    margin:11rem auto;
     position: relative;
     padding: 1rem;
 }
-.create-user .title{
+.create-user .title, .contact-user .title{
     font-weight: 600;
     line-height: 4.2;
     text-align: center;
     font-size: 2.7rem;
 }
-.create-user .form-field{
+.create-user .form-field, .contact-user .form-field{
     margin-top: 15px;
 }
-
+.contact-user{
+    margin:5rem auto;
+}
 
 // LOGIN
 .login-izq{

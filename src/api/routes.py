@@ -40,7 +40,7 @@ def get_list_of(Models):
 
 def create_one(Model, required, types, payload=None):
     payload = payload or request.get_json()
-
+    print(payload.items())
     for key, value in payload.items():
         if key in types and not isinstance(value, types[key]):
             abort(400, f"{key} is not {types[key]}")
@@ -294,10 +294,8 @@ def handle_delete_commerce(id):
 @api.route('commerces/posts', methods=['POST'])
 def handle_create_posts():
     user = authorized_user()
-    commerce = user.commerces[0]
 
     payload = request.get_json()
-    payload["commerce_id"] = commerce.id
     # commerce = Commerces.query.filter_by(id = payload["commerce_id"], deleted_at=None).first()
 
     # if commerce is None:
@@ -309,7 +307,7 @@ def handle_create_posts():
 
     required = ["title", "description", "media_type", "media_url", "commerce_id"]
     types = {
-        "commerce_id": int,
+        "commerce_id": str,
         "media_type": str,
         "media_url": str,
         "title": str,
@@ -325,13 +323,18 @@ def handle_create_posts():
 def handle_list_posts():
     user = authorized_user()
 
+    my_commerces = Commerces.query.filter_by(owner_id = user.id, deleted_at=None )
+
     follows = Followers.query.filter_by(user_id = user.id, deleted_at=None)
     commerce_ids = [f.commerce_id for f in follows] #forma de hacer un loop en una línea (pythonic)
     posts = Posts.query.filter(Posts.commerce_id.in_(commerce_ids)).order_by(Posts.updated_at.desc())
+    follows_commerces = Commerces.query.filter(Commerces.id.in_(commerce_ids))
 
-    feed = [post.serialize() for post in posts]
+    follows_serialized = [follow.serialize() for follow in follows_commerces]
+    feed_serialized = [post.serialize() for post in posts]
+    my_commerces_serialized = [commerce.serialize() for commerce in my_commerces]
 
-    return jsonify(feed), 200
+    return jsonify(follows = follows_serialized, feed = feed_serialized, my_commerces = my_commerces_serialized), 200
 
 @api.route('commerces/feed/<int:commerce_id>', methods=['GET'])
 def handle_get_commerce_feed(commerce_id):

@@ -52,6 +52,8 @@ export const LogIn = function(props) {
 								className="form-control"
 								id="exampleFormControlInput1"
 								placeholder="tucorreo@ejemplo.com"
+								value={email}
+								onChange={event => setEmail(event.target.value)}
 							/>
 						</div>
 						<div className="mt-3">
@@ -63,6 +65,8 @@ export const LogIn = function(props) {
 								className="form-control"
 								id="formControlInput1"
 								placeholder="Introduce tu contraseña"
+								value={password}
+								onChange={event => setPassword(event.target.value)}
 							/>
 						</div>
 						<div>
@@ -90,7 +94,6 @@ export const LogIn = function(props) {
 								display: store.error != null ? "block" : "none"
 							}}>
 							<p className="error-login fw-bold">Usuario y contraseña incorrectos</p>
-							{console.log(store.error)}
 						</div>
 					</div>
 				</div>

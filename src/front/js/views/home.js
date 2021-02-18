@@ -58,13 +58,14 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
-
-			<div className="container">
-				<div className="container-principal-msg">
+			<div className="container-principal-msg">
+				<div className="container">
 					<div className="home-principal-msg">
 						Según tu localización encontrarás comercios cercanos con ofertas únicas para ChipAddicts.{" "}
 					</div>
 				</div>
+			</div>
+			<div className="container">
 				<div className="row fila-sup">
 					<div className="col-lg-7 order-lg-1 order-2">
 						<img
