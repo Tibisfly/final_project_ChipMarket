@@ -7,7 +7,7 @@ import L from "leaflet";
 
 const MapTest = () => {
 	const markerIcon = new L.icon({
-		iconUrl: require({MarkerImg}),
+		iconUrl: MarkerImg,
 		shadowSize: [35, 45],
 		iconSize: [40, 40],
 		iconAnchor: [17, 46],
