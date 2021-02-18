@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM, { Link } from "react-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import MarkerImg from "../../img/marker.png"
+import MarkerImg from "../../img/marker.png";
 import L from "leaflet";
 
 const MapTest = () => {
