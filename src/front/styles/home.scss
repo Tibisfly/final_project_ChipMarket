@@ -293,3 +293,52 @@ Link:hover{
     padding: 1rem;
     border-radius: 40px;
 }
+
+.img__wrap {
+  position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.img__description_layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(236, 122, 80, 0.6);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    padding: 1rem;
+    border-radius: 40px;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description_layer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.img__description {
+  transition: .2s;
+  transform: translateY(1em);
+}
+.search-name{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.search-address, .search-offers{
+    font-size: 1.5rem;
+    margin-bottom:0px ;
+}
+
+.img__wrap:hover .img__description {
+  transform: translateY(0);
+}
