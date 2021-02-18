@@ -95,7 +95,7 @@ export const Profiles = function(props) {
 					role="tabpanel"
 					aria-labelledby="nav-commerce-following-tab">
 					<div className="following-user-profile">
-						<CommercesLists title="Siguiendo a:" commerces={store.user.commerce_list} />
+						<CommercesLists title="Siguiendo a:" commerces={store.follows} />
 					</div>
 				</div>
 				<div
@@ -107,7 +107,7 @@ export const Profiles = function(props) {
 					role="tabpanel"
 					aria-labelledby="nav-my-commerces-tab">
 					<div>
-						<CommercesLists title="Mis Comercios dados de alta:" commerces={store.user.commerce_list} />
+						<CommercesLists title="Mis Comercios dados de alta:" commerces={store.myCommerces} />
 					</div>
 				</div>
 			</div>
@@ -118,5 +118,7 @@ export const Profiles = function(props) {
 Profiles.propTypes = {
 	firstName: PropTypes.string,
 	lastName: PropTypes.string,
-	username: PropTypes.string
+	username: PropTypes.string,
+	myCommerces: PropTypes.array,
+	follows: PropTypes.array
 };

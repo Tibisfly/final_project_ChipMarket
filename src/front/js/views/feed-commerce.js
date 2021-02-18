@@ -26,7 +26,8 @@ export const FeedCommerce = () => {
 	if (store.feed.length == 0) {
 		cardList = (
 			<div className="card no-feed text-center oops-msg">
-				Oops.. Todavía no hay ninguna publicación<Link to="/create/post">Añade una publicación</Link>
+				Oops.. Todavía no hay ninguna publicación
+				<Link to={`/create/post/${params.id}`}>Añade una publicación</Link>
 			</div>
 		);
 	} else {

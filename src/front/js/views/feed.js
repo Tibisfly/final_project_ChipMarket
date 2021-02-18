@@ -81,6 +81,8 @@ export const Feed = () => {
 								username={store.user.username}
 								firstName={store.user.first_name}
 								lastName={store.user.last_name}
+								myCommerces={store.myCommerces}
+								follows={store.follows}
 							/>
 						</div>
 						<div className="col-lg-10">{cardList}</div>

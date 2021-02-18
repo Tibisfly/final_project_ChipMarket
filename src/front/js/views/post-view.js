@@ -14,16 +14,20 @@ export const PostView = function(props) {
 
 	return (
 		<div className="container post-view">
-			<Card
-				mediaUrl={store.post.mediaUrl}
-				businessName={store.post.business_name}
-				title={store.post.title}
-				description={store.post.description}
-				promo_code={store.post.promo_code}
-				comments={store.post.comments}
-				commerceId={store.post.commerce_id}
-				postId={store.post.id}
-			/>
+			<div className="row justify-content-center">
+				<div className="col-10 ">
+					<Card
+						mediaUrl={store.post.media_url}
+						businessName={store.post.business_name}
+						title={store.post.title}
+						description={store.post.description}
+						promo_code={store.post.promo_code}
+						comments={store.post.comments}
+						commerceId={store.post.commerce_id}
+						postId={store.post.id}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 };

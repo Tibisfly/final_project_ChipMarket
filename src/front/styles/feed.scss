@@ -1,6 +1,8 @@
 // COMMERCES LISTS
 .cargando{
-    margin: 5rem;
+    margin: 1rem auto 9rem;
+    font-size: 1rem;
+    color: #7FBC94;
 }
 
 
@@ -67,7 +69,7 @@
 
 //PROFILES
 
-.follow-button, .add-post-button{
+.follow-button, .add-post-button, .add-post-button:focus, .follow-button:focus{
     background-color: #361F5B;
     color: white;
 }
@@ -89,7 +91,7 @@
     text-decoration: underline;
     font-size: 1.25rem;
 }
-.follow-success{
+.follow-success, .follow-success:focus{
     background-color: #5FBC94;
     border:1px solid white;
     color: white;

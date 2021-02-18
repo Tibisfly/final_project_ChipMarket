@@ -14,16 +14,19 @@ export const CreatePost = function(props) {
 
 	const { store, actions } = useContext(Context);
 
+	const params = useParams();
+
 	function handleSubmit() {
 		const data = {
 			title: title,
 			description: description,
 			mediaType: mediaType,
-			mediaUrl: mediaUrl
+			mediaUrl: mediaUrl,
+			commerce_id: params.id
 		};
 
 		actions.createPost(data, () => {
-			history.push("/feed/commerce/1");
+			history.push(`/feed/commerce/${params.id}`);
 		});
 	}
 

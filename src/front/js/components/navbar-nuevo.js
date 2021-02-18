@@ -115,10 +115,7 @@ export const NavbarNuevo = props => {
 		handleLogginCommerce = (
 			<>
 				<DropdownItem>
-					<Link to={`/feed/commerce/${store.commerce.commerce_id}`}>Mi Perfil</Link>
-				</DropdownItem>
-				<DropdownItem>
-					<Link to="/create/post">Haz una publicación</Link>
+					<Link to="/feed">Mi Perfil</Link>
 				</DropdownItem>
 				<DropdownItem>
 					<Link to="/" type="button" onClick={() => actions.logOut()}>

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Tab, Tabs } from "reactstrap";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import classnames from "classnames";
@@ -15,39 +15,52 @@ export const CommercesProfiles = function(props) {
 
 	const [activeTab, setActiveTab] = useState("1");
 
+	const params = useParams();
+
 	const toggle = tab => {
 		if (activeTab !== tab) setActiveTab(tab);
 	};
-
+	const history = useHistory();
 	const { store, actions } = useContext(Context);
 
 	const [dropdownOpen1, setDropdownOpen2] = useState(false);
 
-	let handleButton = "";
-	if (store.commerce.owner_id == store.user.id) {
-		handleButton = (
-			<Link to="/create/post" type="button">
-				<button className="follow-button btn btn-secondary">Añade una publicación</button>
-			</Link>
-		);
-	} else {
-		const isFollow = store.user.following_list.filter(({ commerce_id }) => commerce_id == store.commerce.id);
-		if (isFollow != null && isFollow.length > 0) {
-			handleButton = (
-				<button className="follow-success btn btn-secondary" onClick={() => handleSubmitUnfollow()}>
-					Siguiendo
-				</button>
-			);
+	const [followText, setFollowText] = useState("");
+	const [followClass, setFollowClass] = useState("");
+
+	useEffect(() => {
+		setTimeout(function() {
+			if (store.commerce.owner_id == store.user.id || !store.user.following_list) {
+				setFollowText("Añade una publicación");
+				setFollowClass("follow-button btn btn-secondary");
+			} else {
+				if (store.user.following_list) {
+					const isFollow = store.user.following_list.filter(
+						({ commerce_id }) => commerce_id == store.commerce.id
+					);
+					if (isFollow != null && isFollow.length > 0) {
+						setFollowText("Siguiendo");
+						setFollowClass("follow-success btn btn-secondary");
+					} else {
+						setFollowText("Seguir");
+						setFollowClass("add-post-button btn btn-secondary");
+					}
+				}
+			}
+		}, 2000);
+	}, [store]);
+
+	function handleSubmit() {
+		if (followText == "Siguiendo") {
+			handleSubmitUnfollow();
+		} else if (followText == "Seguir") {
+			handleSubmitFollow();
 		} else {
-			handleButton = (
-				<button className="add-post-button btn btn-secondary" onClick={() => handleSubmit()}>
-					Seguir
-				</button>
-			);
+			history.push(`/create/post/${params.id}`);
 		}
 	}
 
-	function handleSubmit() {
+	function handleSubmitFollow() {
 		const data = {
 			user_id: store.user.id,
 			commerce_id: store.commerce.id
@@ -55,11 +68,8 @@ export const CommercesProfiles = function(props) {
 
 		actions.followCommerce(data, () => {
 			if (store.error == null) {
-				handleButton = (
-					<button className="follow-success btn btn-secondary" onClick={() => handleSubmitUnfollow()}>
-						Siguiendo
-					</button>
-				);
+				setFollowText("Siguiendo");
+				setFollowClass("follow-success btn btn-secondary");
 			}
 		});
 	}
@@ -72,11 +82,8 @@ export const CommercesProfiles = function(props) {
 
 		actions.deleteFollowCommerce(data, () => {
 			if (store.error == null) {
-				handleButton = (
-					<button className="add-post-button btn btn-secondary" onClick={() => handleSubmit()}>
-						Seguir
-					</button>
-				);
+				setFollowText("Seguir");
+				setFollowClass("add-post-button btn btn-secondary");
 			}
 		});
 	}
@@ -106,7 +113,11 @@ export const CommercesProfiles = function(props) {
 						Descripción del comercio
 					</button>
 
-					<div className="buttons-actions">{handleButton}</div>
+					<div className="buttons-actions">
+						<button className={followClass} onClick={() => handleSubmit()}>
+							{followText}
+						</button>
+					</div>
 				</div>
 			</nav>
 			<div className="tab-content" id="nav-tabContent">

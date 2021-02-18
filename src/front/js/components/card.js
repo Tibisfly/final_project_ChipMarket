@@ -42,15 +42,13 @@ export function Card(props) {
 						/>
 					</div>
 
-					{/* <Link to={`/feed/commerce/${props.commerceId}`} className="text-dark text-decoration-none"> */}
-					<Link to="/feed/commerce/1" className="text-dark text-decoration-none">
+					<Link to={`/feed/commerce/${props.commerceId}`} className="text-dark text-decoration-none">
 						<h6 className="font-weight-bold align-self-center mt-3">{props.businessName}</h6>
 					</Link>
 				</div>
 			</div>
 
-			{/* <Link to={`/post/${props.postId}`}> */}
-			<Link to="/post/1">
+			<Link to={`/post/${props.postId}`}>
 				<img src={props.mediaUrl} className="img-fluid" />
 			</Link>
 
@@ -102,8 +100,8 @@ Card.propTypes = {
 	businessName: PropTypes.string,
 	promo_code: PropTypes.string,
 	comments: PropTypes.array,
-
-	comments: PropTypes.array
+	postId: PropTypes.int,
+	commerceId: PropTypes.int
 };
 
 // postId: PropTypes.int,

@@ -10,6 +10,11 @@ import "../../styles/home.scss";
 export const SearchZipCode = function(props) {
 	return (
 		<>
+			<div className="container">
+				<div className="mapa-principal-msg">
+					Según tu localización encontrarás comercios cercanos con ofertas únicas para ChipAddicts.
+				</div>
+			</div>
 			<div className="container-fluid">
 				<div className="row contenedor-maps">
 					<div className="col-lg-6 col-12">
@@ -27,11 +32,6 @@ export const SearchZipCode = function(props) {
 				</div>
 			</div>
 
-			<div className="container">
-				<div className="home-principal-msg">
-					Según tu localización encontrarás comercios cercanos con ofertas únicas para ChipAddicts.{" "}
-				</div>
-			</div>
 			<div className="container-fluid mb-3">
 				<div className="row no-gutters">
 					<div className="col-4">
@@ -89,7 +89,7 @@ export const SearchZipCode = function(props) {
 						</Link>
 					</div>
 					<div className="col-4">
-						<Link to={`/feed/commerce/1`}>
+						<Link to={`/feed/commerce/7`}>
 							<img
 								src="https://media.timeout.com/images/105251564/image.jpg"
 								className="card-img-top"
@@ -98,7 +98,7 @@ export const SearchZipCode = function(props) {
 						</Link>
 					</div>
 					<div className="col-4">
-						<Link to={`/feed/commerce/1`}>
+						<Link to={`/feed/commerce/8`}>
 							<img
 								src="https://static.miweb.padigital.es/var/m_8/88/88e/64988/950003-734149-img5.jpg"
 								className="card-img-top"
@@ -107,7 +107,7 @@ export const SearchZipCode = function(props) {
 						</Link>
 					</div>
 					<div className="col-4">
-						<Link to={`/feed/commerce/1`}>
+						<Link to={`/feed/commerce/9`}>
 							<img
 								src="http://tabernalagaditana.com/wp-content/uploads/2013/11/solea1.jpg"
 								className="card-img-top"
