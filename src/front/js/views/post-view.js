@@ -11,8 +11,9 @@ export const PostView = function(props) {
 	useEffect(() => {
 		actions.getPost(params.id);
 	}, []);
+
 	return (
-		<div className="container my-5">
+		<div className="container post-view">
 			<Card
 				mediaUrl={store.post.mediaUrl}
 				businessName={store.post.business_name}

@@ -1,4 +1,4 @@
-const baseUrl = "https://3001-coral-dog-ua2bxtz5.ws-eu03.gitpod.io/api";
+const baseUrl = "https://3001-violet-orangutan-twxob9a7.ws-eu03.gitpod.io/api";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
@@ -90,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => {
 						if (response.status == 403) {
 							setStore({ error: response });
-							throw "Usuario o contraseña incorrecta";
+							return response.json();
 						}
 						setStore({ error: null });
 						return response.json();

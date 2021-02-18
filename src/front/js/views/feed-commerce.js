@@ -57,7 +57,7 @@ export const FeedCommerce = () => {
 							<div className="avatar-container">
 								<img
 									className="avatar rounded-circle"
-									src="https://www.ferrokey.eu/media/wysiwyg/45_1.jpg"
+									src="https://blush.design/api/download?shareUri=WO3OGL4xv&c=Hair_0%7Ea55728_Skin_0%7Eeac7a8_Top_0%7Ee6985f&w=800&h=800&fm=png"
 								/>
 							</div>
 						</div>

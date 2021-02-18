@@ -31,7 +31,7 @@
     margin-top: 7rem;
 
 }
-.title-feed, .title-feed-text{
+.title-feed{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -45,6 +45,13 @@
     color: #361F5B;
     background: url('../img/mapa-transp2.png') no-repeat center;
     background-size: cover;
+}
+.title-feed-text{
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    text-align: center;
+    color: #361F5B;
 }
 .feed-text-content{
     font-size: 2.5rem;
@@ -171,11 +178,26 @@
     color: #5FBC94;
     margin: 3rem auto;
 }
+.oops-msg .form-search-navbar{
+    justify-content: center;
+}
 .oops-msg a{
     color:#361F5B;
     font-size: 1.25rem;
     text-decoration: underline;
     padding: 1rem;
+}
+.oops-msg .search-button{
+    background-color: #5FBC94;
+    color: white;
+}
+.oops-msg .search-button:hover {
+    background-color: #361F5B;
+    border:1px solid white;
+    color: white;
+}
+.oops-msg input{
+    width: 60%;
 }
 .buttons-actions{
     position: absolute;

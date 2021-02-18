@@ -325,13 +325,14 @@ def handle_create_posts():
 def handle_list_posts():
     user = authorized_user()
 
+    my_commerces = Commerces.query.filter_by(owner_id = user.id, deleted_at=None )
     follows = Followers.query.filter_by(user_id = user.id, deleted_at=None)
     commerce_ids = [f.commerce_id for f in follows] #forma de hacer un loop en una línea (pythonic)
     posts = Posts.query.filter(Posts.commerce_id.in_(commerce_ids)).order_by(Posts.updated_at.desc())
 
     feed = [post.serialize() for post in posts]
 
-    return jsonify(feed), 200
+    return jsonify(feed, my_commerces, follows), 200
 
 @api.route('commerces/feed/<int:commerce_id>', methods=['GET'])
 def handle_get_commerce_feed(commerce_id):

@@ -19,9 +19,6 @@ export function Card(props) {
 	const [comment, setComment] = useState(["Que ofertaza!!", "Guao, me parece genial, mañana voy a buscar mi oferta"]);
 	const [inputValue, setInputValue] = useState("");
 
-	// let imgRandom = Math.floor(Math.random() * 1000 + 1);
-	// let pathImg = "https://picsum.photos/800/600?random=1" + imgRandom;
-
 	function handleChange(event) {
 		setInputValue(event.target.value);
 	}
@@ -54,7 +51,6 @@ export function Card(props) {
 
 			{/* <Link to={`/post/${props.postId}`}> */}
 			<Link to="/post/1">
-				{props.mediaUrl}
 				<img src={props.mediaUrl} className="img-fluid" />
 			</Link>
 
@@ -65,7 +61,6 @@ export function Card(props) {
 							<span className="promo-code-text">Código promocional: {props.promo_code}</span>
 						</i>
 						<br />
-						{/* <i className="far fa-heart lead mr-3"> 259 ChipLikes</i> */}
 					</div>
 				</div>
 

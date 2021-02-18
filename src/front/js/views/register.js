@@ -45,7 +45,9 @@ export const Register = function(props) {
 				<div className="welcoming-register">
 					{store.token
 						? "ChipAddict, Por favor, actualiza tus datos"
-						: "Estás a un paso más cerca de obtener las mejores ofertas cerca de ti. Por favor, rellena tus datos y únete a la ChipFamily"}
+						: "Estás a un paso más cerca de obtener las mejores ofertas cerca de ti."}
+					<br />
+					{store.token ? "" : "Por favor, rellena tus datos y únete a la ChipFamily"}
 				</div>
 			</div>
 			<div className="container">
@@ -59,7 +61,6 @@ export const Register = function(props) {
 									type="text"
 									className="form-control"
 									id="inputFirstName"
-									placeholder="First name"
 									value={firstName}
 									onChange={event => setFirstName(event.target.value)}
 								/>
@@ -70,7 +71,6 @@ export const Register = function(props) {
 									type="text"
 									className="form-control"
 									id="inputLastName"
-									placeholder="Last name"
 									value={lastName}
 									onChange={event => setLastName(event.target.value)}
 								/>
@@ -81,7 +81,6 @@ export const Register = function(props) {
 									type="email"
 									className="form-control "
 									id="inputEmail"
-									placeholder="Email"
 									value={email}
 									onChange={event => setEmail(event.target.value)}
 								/>
@@ -92,7 +91,6 @@ export const Register = function(props) {
 									type="password"
 									className="form-control"
 									id="inputPassword"
-									placeholder="Password"
 									value={password}
 									onChange={event => setPassword(event.target.value)}
 								/>
@@ -103,7 +101,6 @@ export const Register = function(props) {
 									type="text"
 									className="form-control"
 									id="inputUsername"
-									placeholder="Username"
 									value={username}
 									onChange={event => setUsername(event.target.value)}
 								/>
@@ -115,9 +112,6 @@ export const Register = function(props) {
 								</button>
 							</div>
 						</div>
-					</div>
-					<div className="commerce d-flex justify-content-center">
-						<Link to="/commerces">Si tienes un negocio, dale de alta pinchando aquí</Link>
 					</div>
 				</section>
 			</div>

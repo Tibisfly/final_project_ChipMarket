@@ -119,6 +119,7 @@ body{
     max-width: 1920px;
     margin: 10rem auto;
     text-align: center;
+    background-color: white;
     
 }
 .fila-sup {
@@ -275,3 +276,11 @@ Link:hover{
     
 }
 
+// ZIPCODE SEARCH
+.card-img-top{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 1rem;
+    border-radius: 40px;
+}

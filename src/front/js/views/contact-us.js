@@ -17,37 +17,33 @@ export const ContactUs = function() {
 
 	return (
 		<div className="container">
-			<section className="create-user">
+			<section className="contact-user">
 				<h1 className="title">Háblanos sobre ti.</h1>
 				<div className="container">
 					<div className="contact-form-row align-items-center">
 						<div className="form-field ">
-							<input
-								type="text"
-								className="form-control w-100"
-								id="inputFirstName"
-								placeholder="First name"
-							/>
 							<label htmlFor="inputFirstName">Nombre</label>
+							<input type="text" className="form-control w-100" id="inputFirstName" />
 						</div>
 						<div className="form-field">
-							<input type="text" className="form-control" id="inputLastName" placeholder="Last name" />
 							<label htmlFor="inputLastName">Apellidos</label>
+							<input type="text" className="form-control" id="inputLastName" />
 						</div>
 						<div className="form-field">
-							<input type="email" className="form-control" id="inputEmail" placeholder="Email" />
-							<label htmlFor="inputEmail">Correo electrónico</label>
+							<label htmlFor="inputEmail">Email</label>
+							<input type="email" className="form-control" id="inputEmail" />
 						</div>
 						<div className="form-field">
+							<label htmlFor="inputEmail">Mensaje</label>
 							<textarea
 								className="form-control"
 								id="inputDescription"
-								placeholder="Escribe tu mensaje aqui."
+								placeholder="Escribe tu mensaje aquí."
 							/>
 							{/* <label htmlFor="inputDescription">Descripción de tu post</label> */}
 						</div>
 						<div className="form-field">
-							<button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
+							<button type="button" className="button-green-register" onClick={handleSubmit}>
 								Enviar
 							</button>
 						</div>

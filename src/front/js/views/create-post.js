@@ -23,7 +23,7 @@ export const CreatePost = function(props) {
 		};
 
 		actions.createPost(data, () => {
-			history.push("/feed/commerce/" + store.commerce.id);
+			history.push("/feed/commerce/1");
 		});
 	}
 
@@ -31,11 +31,7 @@ export const CreatePost = function(props) {
 		<>
 			<div className="container-fluid ">
 				<div className="title-feed">
-					Hola ChipCommerce,
-					<br></br>
-					<span className="feed-text-content">
-						Añade una pubicación y no olvides especificar la fecha de validez en la descripción.
-					</span>
+					<p className="title-feed-text">Hola ChipCommerce, añade una publicación.</p>
 				</div>
 			</div>
 			<div className="container">

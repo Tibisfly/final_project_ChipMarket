@@ -6,7 +6,7 @@ import { Profiles } from "../components/profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import { SearchZipCode } from "../components/search-zip-code";
-import LogoBlue from "../../img/logo-blue.png";
+import LogoBlue from "../../img/logo-blue2.png";
 import "../../styles/feed.scss";
 import "../../styles/navbar.scss";
 
@@ -26,9 +26,20 @@ export const Feed = () => {
 	if (store.feed.length == 0) {
 		cardList = (
 			<>
-				<div className="card no-feed text-center oops-msg">
+				<div className="no-feed text-center oops-msg">
 					Oops... Todavía no sigues a ningún comercio.
-					<Link to="/search/zipcode/28028">Consigue los comercios cerca de ti</Link>
+					<form className="d-flex form-search-navbar">
+						<input
+							className="form-control me-2"
+							type="search"
+							placeholder="Introduce tu código postal"
+							aria-label="Search"></input>
+						<button className="btn search-button" type="submit">
+							<Link to="/search/zipcode/28028" className="text-decoration-none">
+								Buscar
+							</Link>
+						</button>
+					</form>
 				</div>
 			</>
 			// este div quisiera centrarlo en todo el div de las columnas del feed para las cards y darle estilos.
@@ -73,13 +84,16 @@ export const Feed = () => {
 							/>
 						</div>
 						<div className="col-lg-10">{cardList}</div>
-						<div className="container-fluid">
-							<div className="row banner-feed">
-								<div className="col-lg-6 col-12 upgrade-img" />
-								<div className="col-lg-6 col-12 feed-text-content">
-									<div>¿Quieres darte de alta como comercio?</div>
-									<Link to="/commerces">Pincha aquí</Link>
-								</div>
+					</div>
+				</div>
+
+				<div className="container-fluid banner-feed">
+					<div className="container">
+						<div className="row ">
+							<div className="col-lg-6 col-12 upgrade-img" />
+							<div className="col-lg-6 col-12 feed-text-content">
+								<div>¿Quieres darte de alta como comercio?</div>
+								<Link to="/commerces">Pincha aquí</Link>
 							</div>
 						</div>
 					</div>

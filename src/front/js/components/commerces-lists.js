@@ -7,6 +7,10 @@ import "../../styles/feed.scss";
 export const CommercesLists = function(props) {
 	if (!props.commerces) {
 		return <div className="cargando">Aún no sigues a ningún comercio.</div>;
+	} else {
+		if (props.commerces.length < 1) {
+			return <div className="cargando">Aún no sigues a ningún comercio.</div>;
+		}
 	}
 
 	return (
