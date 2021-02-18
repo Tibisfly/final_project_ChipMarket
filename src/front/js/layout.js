@@ -27,7 +27,7 @@ const Layout = () => {
 
 	return (
 		<div className="d-flex flex-column h-100">
-			<BrowserRouter basename={basename}>
+			<BrowserRouter basename="https://chipmarket.herokuapp.com/">
 				<ScrollToTop>
 					{/* <Navbar /> */}
 					<NavbarNuevo />

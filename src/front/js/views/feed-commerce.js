@@ -6,7 +6,7 @@ import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
-import AvatarCommerce from "../../img/avatarCommerce.png";
+// import AvatarCommerce from "../../img/avatarCommerce.png";
 import "../../styles/feed.scss";
 import "../../styles/navbar.scss";
 
@@ -57,7 +57,7 @@ export const FeedCommerce = () => {
 					<div className="row row-profile-header justify-content-lg-center">
 						<div className="col-lg-2">
 							<div className="avatar-container">
-								<img className="avatar rounded-circle" src={AvatarCommerce} />
+								<img className="avatar rounded-circle" src="https://chipmarket.herokuapp.com/avatarCommerce.png" />
 							</div>
 						</div>
 						<div className="col-lg-8 col-12">
