@@ -47,7 +47,7 @@ const Layout = () => {
 						<Route exact path="/commerces">
 							<CommercesForm />
 						</Route>
-						<Route exact path="/search/zipcode">
+						<Route exact path="/search/zipcode/28028">
 							<SearchZipCode />
 						</Route>
 						<Route exact path="/create/post/:id">
