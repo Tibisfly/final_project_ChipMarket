@@ -151,7 +151,7 @@ export const NavbarNuevo = props => {
 								placeholder="Introduce tu código postal"
 								aria-label="Search"></input>
 							<button className="btn search-button" type="submit">
-								<Link to="/search/zipcode/28028" className="text-decoration-none">
+								<Link to="/search/zipcode" className="text-decoration-none">
 									Buscar
 								</Link>
 							</button>
