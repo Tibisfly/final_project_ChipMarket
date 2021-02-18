@@ -54,13 +54,13 @@ export const FeedCommerce = () => {
 		<>
 			<section>
 				<div className="container feed-commerce-container">
-					<div className="row row-profile-header">
-						<div className="col-lg-3">
+					<div className="row row-profile-header justify-content-lg-center">
+						<div className="col-lg-2">
 							<div className="avatar-container">
 								<img className="avatar rounded-circle" src={AvatarCommerce} />
 							</div>
 						</div>
-						<div className="col-lg-9 col-12">
+						<div className="col-lg-8 col-12">
 							<CommercesProfiles
 								businessName={store.commerce.business_name}
 								streetName={store.commerce.street_name}

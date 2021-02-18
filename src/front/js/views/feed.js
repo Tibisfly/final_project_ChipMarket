@@ -76,12 +76,12 @@ export const Feed = () => {
 			<section>
 				<div className="container">
 					<div className="row  m-0 justify-content-lg-center">
-						<div className="col-lg-3">
+						<div className="col-lg-2">
 							<div className="avatar-container">
 								<img className="avatar-user rounded-circle" src={Profile} />
 							</div>
 						</div>
-						<div className="col-lg-9">
+						<div className="col-lg-8">
 							<Profiles
 								username={store.user.username}
 								firstName={store.user.first_name}
