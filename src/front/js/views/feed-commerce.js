@@ -6,6 +6,7 @@ import { CommercesProfiles } from "../components/commerces-profiles";
 import { CommercesLists } from "../components/commerces-lists";
 import { UploadPost } from "../components/upload-post";
 import PropTypes from "prop-types";
+import AvatarCommerce from "../../img/avatarCommerce.png";
 import "../../styles/feed.scss";
 import "../../styles/navbar.scss";
 
@@ -56,10 +57,7 @@ export const FeedCommerce = () => {
 					<div className="row row-profile-header">
 						<div className="col-lg-3">
 							<div className="avatar-container">
-								<img
-									className="avatar rounded-circle"
-									src="https://blush.design/api/download?shareUri=WO3OGL4xv&c=Hair_0%7Ea55728_Skin_0%7Eeac7a8_Top_0%7Ee6985f&w=800&h=800&fm=png"
-								/>
+								<img className="avatar rounded-circle" src={AvatarCommerce} />
 							</div>
 						</div>
 						<div className="col-lg-9 col-12">

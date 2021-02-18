@@ -42,7 +42,6 @@ export const Feed = () => {
 					</form>
 				</div>
 			</>
-			// este div quisiera centrarlo en todo el div de las columnas del feed para las cards y darle estilos.
 		);
 	} else {
 		cardList = store.feed.map((post, index) => {
