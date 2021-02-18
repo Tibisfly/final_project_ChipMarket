@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import ReactDOM, { Link } from "react-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import Marker from "../../img/marker.png"
+import MarkerImg from "../../img/marker.png"
 import L from "leaflet";
 
 const MapTest = () => {
 	const markerIcon = new L.icon({
-		iconUrl: require({Marker}),
+		iconUrl: require({MarkerImg}),
 		shadowSize: [35, 45],
 		iconSize: [40, 40],
 		iconAnchor: [17, 46],
