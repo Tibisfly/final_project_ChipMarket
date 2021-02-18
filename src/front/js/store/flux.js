@@ -1,4 +1,4 @@
-const baseUrl = "https://3001-silver-mammal-vw4nutuw.ws-eu03.gitpod.io/api";
+const baseUrl = "api";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
