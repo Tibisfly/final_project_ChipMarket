@@ -1,4 +1,4 @@
-const baseUrl = "api";
+const baseUrl = "./apwei";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	const token = localStorage.getItem("token");
