@@ -140,7 +140,29 @@ input:hover{
     padding-top: 30px;
 }
 
-
+// MEDIA
+@media (max-width: 1400px){
+    .logo-container-login {
+        margin-left: -5rem;
+        margin-top: -2rem;
+    }
+    .login-center{
+        margin-top: 3rem;
+    }
+    .login-center h1, .login-center h2{
+        font-size: 2rem;
+        margin: 45px;
+        line-height: 0;
+    }
+    .register-login .text-decoration {
+        font-size: 1rem;
+        margin-left: 11rem;
+    }
+     .login-center-commerce{
+        margin-top: 5rem;
+        margin-left: 0;
+    }   
+}
 
 
 

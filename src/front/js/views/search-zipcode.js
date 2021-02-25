@@ -121,7 +121,7 @@ export const SearchZipCode = function(props) {
 								<div className="img__description_layer">
 									<p className="img__description search-name">Papelería Borrego</p>
 									<p className="img__description search-address">
-										Local, Calle Rafael Juan y Seva, 5. Madrid
+										Local, Calle Rafael Juan y Seva, 5.
 									</p>
 									<p className="img__description search-offers">3 ofertas activas.</p>
 								</div>
@@ -155,7 +155,7 @@ export const SearchZipCode = function(props) {
 								<div className="img__description_layer">
 									<p className="img__description search-name">Talleres Díaz Auto</p>
 									<p className="img__description search-address">
-										Calle del Vizconde de Matamala, 14. Madrid
+										Calle del Vizconde de Matamala, 14
 									</p>
 									<p className="img__description search-offers">2 ofertas activas.</p>
 								</div>
@@ -171,7 +171,7 @@ export const SearchZipCode = function(props) {
 									alt="imagen9"
 								/>
 								<div className="img__description_layer">
-									<p className="img__description search-name">El Perro Gamberro. Tabernita</p>
+									<p className="img__description search-name">El Perro Gamberro</p>
 									<p className="img__description search-address">
 										Calle Benito de Castro, nº 4. Madrid
 									</p>
