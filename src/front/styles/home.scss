@@ -345,3 +345,45 @@ Link:hover{
 .jumbotron{
     margin-top:10rem;
 }
+
+
+
+// MEDIA //
+@media (max-width: 1400px){
+    .home-izq .message-content .title-banner{
+        font-size: 4rem;
+        line-height: 5rem;
+        margin-top: 20%;
+    }
+}
+@media (max-width: 992px){
+    .home-izq .message-content .title-banner{
+        font-size: 3rem;
+        line-height: 3rem;
+        margin-left: 5px;
+    }
+    .home-izq .message-content .message-banner{
+        margin-left: 5px;
+    }
+    .home-izq .botones-banner {
+        flex-direction: column;
+    }
+    .home-izq .banner-user-button, .home-izq .banner-commerce-button {
+        margin:10px 0 0 0;
+
+    }
+}
+@media (max-width: 768px){
+    .home-izq{
+        height: 100vh;
+    }
+    .home-principal-msg {
+        font-size: 2rem;
+    }
+    .fila-sup {
+        margin: 5rem 3rem;
+    }
+    .botones-banner {
+        margin-left: 0;
+    }
+}

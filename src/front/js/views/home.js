@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Navbar } from "../components/navbar.js";
 import manoConIphone from "../../img/chipmarket.png";
 import chipMarket from "../../img/chipmarket.png";
 import patillaReloj from "../../img/patilla-reloj.jpg";

@@ -57,7 +57,10 @@ export const FeedCommerce = () => {
 					<div className="row row-profile-header justify-content-lg-center">
 						<div className="col-lg-2">
 							<div className="avatar-container">
-								<img className="avatar rounded-circle" src="https://blush.design/api/download?shareUri=LWrrd3gN4&c=Hair_0%7Eb58143_Skin_0%7Ed4a181_Top_0%7Ee6985f&w=800&h=800&fm=png" />
+								<img
+									className="avatar rounded-circle"
+									src="https://blush.design/api/download?shareUri=LWrrd3gN4&c=Hair_0%7Eb58143_Skin_0%7Ed4a181_Top_0%7Ee6985f&w=800&h=800&fm=png"
+								/>
 							</div>
 						</div>
 						<div className="col-lg-8 col-12">
